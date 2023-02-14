@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>移动端touch事件 | BLOG.WDTWO.COM</title>
+
+    <meta name="description" content="&lt;ul&gt;
+&lt;li&gt;js检测是否支持touch&lt;/li&gt;
+&lt;li&gt;获取touch的当前位置&lt;/li&gt;
+&lt;/ul&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="cn,default" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "移动端touch事件 | BLOG.WDTWO.COM"  />
+    <meta property="og:description" content= "&lt;ul&gt;
+&lt;li&gt;js检测是否支持touch&lt;/li&gt;
+&lt;li&gt;获取touch的当前位置&lt;/li&gt;
+&lt;/ul&gt;" />
+    <meta property="og:url" content="https://blog.wdtwo.com/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Gary Wang" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;ul&gt;
+&lt;li&gt;js检测是否支持touch&lt;/li&gt;
+&lt;li&gt;获取touch的当前位置&lt;/li&gt;
+&lt;/ul&gt;" />
+    <meta name="twitter:title" content="移动端touch事件 | BLOG.WDTWO.COM"/>
+    <meta name="twitter:description" content="&lt;ul&gt;
+&lt;li&gt;js检测是否支持touch&lt;/li&gt;
+&lt;li&gt;获取touch的当前位置&lt;/li&gt;
+&lt;/ul&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;ul&gt;
+&lt;li&gt;js检测是否支持touch&lt;/li&gt;
+&lt;li&gt;获取touch的当前位置&lt;/li&gt;
+&lt;/ul&gt;",
+            "author": { "@type": "Person", "name": "Gary Wang" },
+            "@type": "BlogPosting",
+            "url": "https://blog.wdtwo.com/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://blog.wdtwo.comundefined"
+            },
+            "name": "Gary Wang"
+            },
+            "headline": "移动端touch事件 | BLOG.WDTWO.COM",
+            "datePublished": "2023-02-14T00:32:18.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://blog.wdtwo.com/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="KND4IB080T" data-api-key="c90188229c5b4a4aee387019cb42cd60" data-index-name="hexo">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>BLOG.WDTWO.COM</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">主页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/photography">图集</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">主页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/photography">图集</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cle3nhjz3001h18w0fhvy5m27" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      移动端touch事件
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2023-02-14T00:32:18.000Z" itemprop="datePublished">2023-02-14</time>
+</div>
+
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li></ul>
+            </div>
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <ul>
+<li>js检测是否支持touch</li>
+<li>获取touch的当前位置</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="js检测是否支持touch"><a href="#js检测是否支持touch" class="headerlink" title="js检测是否支持touch"></a>js检测是否支持touch</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasTouch = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> touchObj=&#123;&#125;;</span><br><span class="line">  touchObj.<span class="property">isSupportTouch</span> = <span class="string">&quot;ontouchend&quot;</span> <span class="keyword">in</span> <span class="variable language_">document</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">  touchObj.<span class="property">isEvent</span>=touchObj.<span class="property">isSupportTouch</span>?<span class="string">&#x27;touchstart&#x27;</span>:<span class="string">&#x27;click&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> touchObj.<span class="property">isEvent</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasTouch</span>());</span><br></pre></td></tr></table></figure>
+<h2 id="获取touch的当前位置"><a href="#获取touch的当前位置" class="headerlink" title="获取touch的当前位置"></a>获取touch的当前位置</h2><h4 id="jQuery写法：jQuery写法："><a href="#jQuery写法：jQuery写法：" class="headerlink" title="jQuery写法：jQuery写法："></a>jQuery写法：jQuery写法：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;touchstart&#x27;</span>,<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> _touch = e.<span class="property">originalEvent</span>.<span class="property">targetTouches</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> _x= _touch.<span class="property">pageX</span>,_y= _touch.<span class="property">pageY</span>;</span><br><span class="line">    $(<span class="string">&#x27;.logo&#x27;</span>).<span class="title function_">html</span>(_x + <span class="string">&#x27;,&#x27;</span> + _y);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;touchmove&#x27;</span>,<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> _touch = e.<span class="property">originalEvent</span>.<span class="property">targetTouches</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> _x= _touch.<span class="property">pageX</span>,_y= _touch.<span class="property">pageY</span>;</span><br><span class="line">    $(<span class="string">&#x27;.logo&#x27;</span>).<span class="title function_">html</span>(_x + <span class="string">&#x27;,&#x27;</span> + _y);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;touchend&#x27;</span>,<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> _touch = e.<span class="property">originalEvent</span>.<span class="property">changedTouches</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> _x= _touch.<span class="property">pageX</span>,_y= _touch.<span class="property">pageY</span>;</span><br><span class="line">    $(<span class="string">&#x27;.logo&#x27;</span>).<span class="title function_">html</span>(_x + <span class="string">&#x27;,&#x27;</span> + _y);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="javascript写法："><a href="#javascript写法：" class="headerlink" title="javascript写法："></a>javascript写法：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">handleTouchEvent</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="comment">//只跟踪一次触摸</span></span><br><span class="line">    <span class="keyword">if</span> (event.<span class="property">touches</span>.<span class="property">length</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> output = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;output&quot;</span>);</span><br><span class="line">        <span class="keyword">switch</span> (event.<span class="property">type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;touchstart&quot;</span>:</span><br><span class="line">                output.<span class="property">innerHTML</span> = <span class="string">&quot;Touch started (&quot;</span> + event.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">clientX</span> + <span class="string">&quot;,&quot;</span> + event.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">clientY</span> + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;touchend&quot;</span>:</span><br><span class="line">                output.<span class="property">innerHTML</span> += <span class="string">&quot;Touch ended (&quot;</span> + event.<span class="property">changedTouches</span>[<span class="number">0</span>].<span class="property">clientX</span> + <span class="string">&quot;,&quot;</span> + event.<span class="property">changeTouches</span>[<span class="number">0</span>].<span class="property">clientY</span> + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;touchmove&quot;</span>:</span><br><span class="line">                event.<span class="title function_">preventDefault</span>(); <span class="comment">//阻止滚动</span></span><br><span class="line">                output.<span class="property">innerHTML</span> += <span class="string">&quot;Touch moved (&quot;</span> + event.<span class="property">changedTouches</span>[<span class="number">0</span>].<span class="property">clientX</span> + <span class="string">&quot;,&quot;</span> + event.<span class="property">changedTouches</span>[<span class="number">0</span>].<span class="property">clientY</span> + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;touchstart&quot;</span>, handleTouchEvent, <span class="literal">false</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;touchend&quot;</span>, handleTouchEvent, <span class="literal">false</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;touchmove&quot;</span>, handleTouchEvent, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          文件加载进度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/02/14/%E6%95%B0%E5%AD%97%E8%BD%AC%E9%92%B1%E6%A0%BC%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">数字转钱格式</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=移动端touch事件 - BLOG.WDTWO.COM&url=https%3A%2F%2Fblog.wdtwo.com%2F2023%2F02%2F14%2F%25E7%25A7%25BB%25E5%258A%25A8%25E7%25AB%25AFtouch%25E4%25BA%258B%25E4%25BB%25B6%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=移动端touch事件 - BLOG.WDTWO.COM&u=https%3A%2F%2Fblog.wdtwo.com%2F2023%2F02%2F14%2F%25E7%25A7%25BB%25E5%258A%25A8%25E7%25AB%25AFtouch%25E4%25BA%258B%25E4%25BB%25B6%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=移动端touch事件 - BLOG.WDTWO.COM&url=https://blog.wdtwo.com/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <ion-icon name="search"></ion-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algolia/" rel="tag">Algolia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bruno-Simon/" rel="tag">Bruno Simon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/" rel="tag">Date</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bat/" rel="tag">bat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/" rel="tag">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcore/" rel="tag">gcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/indexDB/" rel="tag">indexDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/" rel="tag">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/" rel="tag">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macd/" rel="tag">macd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/" rel="tag">threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/" rel="tag">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8C%BB/" rel="tag">中医</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%B0%E7%82%B9/" rel="tag">买点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%AA%E6%B5%B7%E5%8E%A6/" rel="tag">倪海厦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%A0%E8%87%B3%E9%A1%BA/" rel="tag">张至顺</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/" rel="tag">搬瓦工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" rel="tag">视频处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E9%9F%B3%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频音频剪辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97/" rel="tag">说文解字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%8B%E5%8A%BF/" rel="tag">趋势</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/14/%E6%89%B9%E5%A4%84%E7%90%86bat%E6%8F%92%E4%BB%B6/">批处理bat插件</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86/">m3u8格式ts文件解密</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6/">文件加载进度</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6/">移动端touch事件</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E6%95%B0%E5%AD%97%E8%BD%AC%E9%92%B1%E6%A0%BC%E5%BC%8F/">数字转钱格式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            BLOG.WDTWO.COM &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
