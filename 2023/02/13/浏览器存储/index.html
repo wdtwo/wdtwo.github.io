@@ -8,7 +8,11 @@
     
     <title>浏览器存储 | BLOG.WDTWO.COM</title>
 
-    <meta name="description" content="个人学习总结">
+    <meta name="description" content="&lt;ul&gt;
+&lt;li&gt;cookie&lt;/li&gt;
+&lt;li&gt;localStorage&lt;/li&gt;
+&lt;li&gt;indexDB&lt;/li&gt;
+&lt;/ul&gt;">
     <meta name="keywords" content="">
 
     
@@ -16,17 +20,33 @@
     <meta property="og:locale" content="cn,default" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "浏览器存储 | BLOG.WDTWO.COM"  />
-    <meta property="og:description" content= "个人学习总结" />
+    <meta property="og:description" content= "&lt;ul&gt;
+&lt;li&gt;cookie&lt;/li&gt;
+&lt;li&gt;localStorage&lt;/li&gt;
+&lt;li&gt;indexDB&lt;/li&gt;
+&lt;/ul&gt;" />
     <meta property="og:url" content="https://blog.wdtwo.com/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/index.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="Gary Wang" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="个人学习总结" />
+    <meta property="og:description" content="&lt;ul&gt;
+&lt;li&gt;cookie&lt;/li&gt;
+&lt;li&gt;localStorage&lt;/li&gt;
+&lt;li&gt;indexDB&lt;/li&gt;
+&lt;/ul&gt;" />
     <meta name="twitter:title" content="浏览器存储 | BLOG.WDTWO.COM"/>
-    <meta name="twitter:description" content="个人学习总结"/>
+    <meta name="twitter:description" content="&lt;ul&gt;
+&lt;li&gt;cookie&lt;/li&gt;
+&lt;li&gt;localStorage&lt;/li&gt;
+&lt;li&gt;indexDB&lt;/li&gt;
+&lt;/ul&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "个人学习总结",
+            "description": "&lt;ul&gt;
+&lt;li&gt;cookie&lt;/li&gt;
+&lt;li&gt;localStorage&lt;/li&gt;
+&lt;li&gt;indexDB&lt;/li&gt;
+&lt;/ul&gt;",
             "author": { "@type": "Person", "name": "Gary Wang" },
             "@type": "BlogPosting",
             "url": "https://blog.wdtwo.com/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/index.html",
@@ -159,7 +179,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cle2nil1r00119kw0epaaex5z" class="article article-type-post" itemscope
+    <article id="post-cle3i5cu10010qsw0auf93mj4" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -201,7 +221,12 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <span id="more"></span>
+            <ul>
+<li>cookie</li>
+<li>localStorage</li>
+<li>indexDB</li>
+</ul>
+<span id="more"></span>
 
 <h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p><code>document.cookie属性来创建、读取、删除</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;username=Tom&quot;</span>;</span><br><span class="line"><span class="comment">//创建带过期时间的cookie</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">`username=Tom;expires=<span class="subst">$&#123;<span class="keyword">new</span> date(<span class="string">&quot;2019-1-1&quot;</span>)&#125;</span>`</span>;</span><br><span class="line"><span class="comment">//创建带目录的cookie</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;username=Tom;path=/&quot;</span>;</span><br></pre></td></tr></table></figure>
