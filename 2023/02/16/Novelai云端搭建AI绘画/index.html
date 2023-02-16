@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>Novelai云端搭建AI绘画 | BLOG.WDTWO.COM</title>
+
+    <meta name="description" content="&lt;ul&gt;
+&lt;li&gt;AI绘画&lt;/li&gt;
+&lt;li&gt;google colab 云端运行&lt;/li&gt;
+&lt;/ul&gt;">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="cn,default" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "Novelai云端搭建AI绘画 | BLOG.WDTWO.COM"  />
+    <meta property="og:description" content= "&lt;ul&gt;
+&lt;li&gt;AI绘画&lt;/li&gt;
+&lt;li&gt;google colab 云端运行&lt;/li&gt;
+&lt;/ul&gt;" />
+    <meta property="og:url" content="https://blog.wdtwo.com/2023/02/16/Novelai%E4%BA%91%E7%AB%AF%E6%90%AD%E5%BB%BAAI%E7%BB%98%E7%94%BB/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Gary Wang" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;ul&gt;
+&lt;li&gt;AI绘画&lt;/li&gt;
+&lt;li&gt;google colab 云端运行&lt;/li&gt;
+&lt;/ul&gt;" />
+    <meta name="twitter:title" content="Novelai云端搭建AI绘画 | BLOG.WDTWO.COM"/>
+    <meta name="twitter:description" content="&lt;ul&gt;
+&lt;li&gt;AI绘画&lt;/li&gt;
+&lt;li&gt;google colab 云端运行&lt;/li&gt;
+&lt;/ul&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;ul&gt;
+&lt;li&gt;AI绘画&lt;/li&gt;
+&lt;li&gt;google colab 云端运行&lt;/li&gt;
+&lt;/ul&gt;",
+            "author": { "@type": "Person", "name": "Gary Wang" },
+            "@type": "BlogPosting",
+            "url": "https://blog.wdtwo.com/2023/02/16/Novelai%E4%BA%91%E7%AB%AF%E6%90%AD%E5%BB%BAAI%E7%BB%98%E7%94%BB/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://blog.wdtwo.comundefined"
+            },
+            "name": "Gary Wang"
+            },
+            "headline": "Novelai云端搭建AI绘画 | BLOG.WDTWO.COM",
+            "datePublished": "2023-02-16T03:34:35.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://blog.wdtwo.com/2023/02/16/Novelai%E4%BA%91%E7%AB%AF%E6%90%AD%E5%BB%BAAI%E7%BB%98%E7%94%BB/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="KND4IB080T" data-api-key="c90188229c5b4a4aee387019cb42cd60" data-index-name="hexo">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>BLOG.WDTWO.COM</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">主页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/photography">图集</a>
+                
+                <a href="/collection">收藏</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">主页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/photography">图集</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cle6kkjbe0003ekw09hk9hmvh" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Novelai云端搭建AI绘画
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2023-02-16T03:34:35.000Z" itemprop="datePublished">2023-02-16</time>
+</div>
+
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/colab/" rel="tag">colab</a></li></ul>
+            </div>
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <ul>
+<li>AI绘画</li>
+<li>google colab 云端运行</li>
+</ul>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iG4y1f75S">视频教学链接</a></p>
+<ul>
+<li>AI训练文件 : <a target="_blank" rel="noopener" href="https://jdssl.lanzouw.com/i9ayx0i6dc4j">下载地址</a></li>
+<li>加密解密工具 : <a target="_blank" rel="noopener" href="https://github.com/JingShing/Encryptor-Decryptor/releases/tag/ver1.0">下载地址</a></li>
+<li>谷歌colab：<a target="_blank" rel="noopener" href="https://colab.research.google.com/">链接地址</a></li>
+</ul>
+<h2 id="后台自运行代码："><a href="#后台自运行代码：" class="headerlink" title="后台自运行代码："></a>后台自运行代码：</h2><p>为了房纸colab挂机后台停止运行 在浏览器console中输入这段代码可以一直激活页面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ConnectButton</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Connect pushed&quot;</span>);</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#top-toolbar &gt; colab-connect-button&quot;</span>).<span class="property">shadowRoot</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#connect&quot;</span>).<span class="title function_">click</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setInterval</span>(<span class="title class_">ConnectButton</span>,<span class="number">60000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><ol>
+<li>下载文件</li>
+<li>安装python3.10.6环境</li>
+<li>运行Encryptor解密文件</li>
+<li>打开ImageAi-colab-ver -&gt; webui -&gt; txt</li>
+<li>Encryptor文件点导入把上面的txt文件导入</li>
+<li>在key中写入<code>novelai</code>点解密(decrycpt)</li>
+<li>解密文件同级目录产生解密后的txt</li>
+<li>把解密后的txt改成ipynb格式</li>
+<li>打开谷歌colab页面点击上传</li>
+<li>把解密后的ipynb格式文件上传</li>
+<li>点击右上角连线</li>
+<li>点击执行阶段-&gt;全部执行</li>
+<li>等待大概6分钟后出现访问地址表示安装成功</li>
+<li>在控制台中输入防止休眠代码</li>
+</ol>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+  <div class="article-copyright hairline">
+    <p>
+      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+    </p>
+  </div>
+  
+
+    
+
+    
+<nav class="article-nav">
+  
+  
+    <a href="/2023/02/14/%E5%9B%BE%E7%89%87%E6%89%93%E5%8C%85%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">图片打包隐藏文件</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=Novelai云端搭建AI绘画 - BLOG.WDTWO.COM&url=https%3A%2F%2Fblog.wdtwo.com%2F2023%2F02%2F16%2FNovelai%25E4%25BA%2591%25E7%25AB%25AF%25E6%2590%25AD%25E5%25BB%25BAAI%25E7%25BB%2598%25E7%2594%25BB%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=Novelai云端搭建AI绘画 - BLOG.WDTWO.COM&u=https%3A%2F%2Fblog.wdtwo.com%2F2023%2F02%2F16%2FNovelai%25E4%25BA%2591%25E7%25AB%25AF%25E6%2590%25AD%25E5%25BB%25BAAI%25E7%25BB%2598%25E7%2594%25BB%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=Novelai云端搭建AI绘画 - BLOG.WDTWO.COM&url=https://blog.wdtwo.com/2023/02/16/Novelai%E4%BA%91%E7%AB%AF%E6%90%AD%E5%BB%BAAI%E7%BB%98%E7%94%BB/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <ion-icon name="search"></ion-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algolia/" rel="tag">Algolia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bruno-Simon/" rel="tag">Bruno Simon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/" rel="tag">Date</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bat/" rel="tag">bat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/" rel="tag">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcore/" rel="tag">gcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/indexDB/" rel="tag">indexDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/" rel="tag">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/" rel="tag">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macd/" rel="tag">macd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/" rel="tag">threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/" rel="tag">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8C%BB/" rel="tag">中医</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%B0%E7%82%B9/" rel="tag">买点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%AA%E6%B5%B7%E5%8E%A6/" rel="tag">倪海厦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" rel="tag">加密解密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%A0%E8%87%B3%E9%A1%BA/" rel="tag">张至顺</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/" rel="tag">搬瓦工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" rel="tag">视频处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E9%9F%B3%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频音频剪辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97/" rel="tag">说文解字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%8B%E5%8A%BF/" rel="tag">趋势</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2023/02/16/Novelai%E4%BA%91%E7%AB%AF%E6%90%AD%E5%BB%BAAI%E7%BB%98%E7%94%BB/">Novelai云端搭建AI绘画</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E5%9B%BE%E7%89%87%E6%89%93%E5%8C%85%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/">图片打包隐藏文件</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E6%89%B9%E5%A4%84%E7%90%86bat%E6%8F%92%E4%BB%B6/">批处理bat插件</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86/">m3u8格式ts文件解密</a>
+          </li>
+        
+          <li>
+            <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6/">文件加载进度</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            BLOG.WDTWO.COM &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
