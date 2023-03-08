@@ -8,7 +8,9 @@
     
     <title>golang学习笔记 | BLOG.WDTWO.COM</title>
 
-    <meta name="description" content="&lt;p&gt;25个关键字&lt;/p&gt;">
+    <meta name="description" content="&lt;ul&gt;
+&lt;li&gt;环境配置&lt;/li&gt;
+&lt;/ul&gt;">
     <meta name="keywords" content="">
 
     
@@ -16,17 +18,25 @@
     <meta property="og:locale" content="cn,default" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "golang学习笔记 | BLOG.WDTWO.COM"  />
-    <meta property="og:description" content= "&lt;p&gt;25个关键字&lt;/p&gt;" />
+    <meta property="og:description" content= "&lt;ul&gt;
+&lt;li&gt;环境配置&lt;/li&gt;
+&lt;/ul&gt;" />
     <meta property="og:url" content="https://blog.wdtwo.com/2023/03/03/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="Gary Wang" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="&lt;p&gt;25个关键字&lt;/p&gt;" />
+    <meta property="og:description" content="&lt;ul&gt;
+&lt;li&gt;环境配置&lt;/li&gt;
+&lt;/ul&gt;" />
     <meta name="twitter:title" content="golang学习笔记 | BLOG.WDTWO.COM"/>
-    <meta name="twitter:description" content="&lt;p&gt;25个关键字&lt;/p&gt;"/>
+    <meta name="twitter:description" content="&lt;ul&gt;
+&lt;li&gt;环境配置&lt;/li&gt;
+&lt;/ul&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "&lt;p&gt;25个关键字&lt;/p&gt;",
+            "description": "&lt;ul&gt;
+&lt;li&gt;环境配置&lt;/li&gt;
+&lt;/ul&gt;",
             "author": { "@type": "Person", "name": "Gary Wang" },
             "@type": "BlogPosting",
             "url": "https://blog.wdtwo.com/2023/03/03/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html",
@@ -159,7 +169,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clesczzd8000q2ow0gcct1cf1" class="article article-type-post" itemscope
+    <article id="post-clez4774w0010lww02ma4gpqq" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -201,7 +211,9 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>25个关键字</p>
+            <ul>
+<li>环境配置</li>
+</ul>
 <span id="more"></span>
 
 <p>if else switch case default break return goto fallthrough for continue type struct var const map func interface range import package defer go select chan</p>
@@ -249,6 +261,109 @@
 </li>
 <li>完成</li>
 </ol>
+<h2 id="基本结构和基本数据类型"><a href="#基本结构和基本数据类型" class="headerlink" title="基本结构和基本数据类型"></a>基本结构和基本数据类型</h2><h3 id="文件名、关键字与标识符"><a href="#文件名、关键字与标识符" class="headerlink" title="文件名、关键字与标识符"></a>文件名、关键字与标识符</h3><h4 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h4><ul>
+<li>源文件以<code>.go</code>为后缀，只有小写字母，例如<code>scanner.go</code>。</li>
+<li>如果文件名由多个部分组成，则使用下划线<code>_</code>分隔，例如<code>scanner_test.go</code>。</li>
+<li>不能包含空格或者其他特殊字符。</li>
+</ul>
+<p><code>错误示范</code></p>
+<ul>
+<li>1ab(以数字开头)</li>
+<li>case（关键字）</li>
+<li>a+b（运算符）</li>
+</ul>
+<h3 id="25个关键字或保留字"><a href="#25个关键字或保留字" class="headerlink" title="25个关键字或保留字"></a>25个关键字或保留字</h3><p>break<br>default<br>func<br>interface<br>select<br>case<br>defer<br>go<br>map<br>struct<br>chan<br>else<br>goto<br>package<br>switch<br>const<br>fallthrough<br>if<br>range<br>type<br>continue<br>for<br>import<br>return<br>var</p>
+<h3 id="36个预定义标识符"><a href="#36个预定义标识符" class="headerlink" title="36个预定义标识符"></a>36个预定义标识符</h3><p>append<br>bool<br>byte<br>cap<br>close<br>complex<br>complex64<br>complex128<br>copy<br>false<br>float32<br>float64<br>imag<br>int<br>int8<br>int16<br>int32<br>int64<br>iota<br>len<br>make<br>new<br>nil<br>panic<br>print<br>println<br>real<br>recover<br>string<br>true<br>uint<br>uint8</p>
+<p><strong>程序一般由关键字、敞亮、变量、运算符、类型和函数构成。</strong></p>
+<p>##基本结构和要素</p>
+<p>demo</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> fmt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="包的概念、导入与可见性"><a href="#包的概念、导入与可见性" class="headerlink" title="包的概念、导入与可见性"></a>包的概念、导入与可见性</h2><ul>
+<li>一个go文件只能属于一个包</li>
+<li>一个包可以有多个go文件</li>
+<li>非注释的第一行必须指明这个文件属于哪个包 <code>package main</code></li>
+<li><code>package main</code>表示一个可独立执行的程序</li>
+<li>每个<strong>go应用程序</strong>都包含一个名为main的包</li>
+<li>如果编译包名不是main 那么编译后产生的对象文件会是<code>name.a</code> 而不是可执行程序</li>
+<li>所有包名必须使用小写字母</li>
+</ul>
+<h4 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h4><ul>
+<li><p>直接使用的包叫标准库。</p>
+</li>
+<li><p>windows位置在go根目录的子目录<code>pkg/windows_386</code></p>
+</li>
+<li><p>linux在<code>pkg/linux_amd64</code> 如果32位则在<code>linux_386</code></p>
+</li>
+<li><p>一般情况，标准包会放在<code>$GOROOT/pkg/$GOOS_$GOARCH/</code>目录下</p>
+</li>
+<li><p>如果想构建一个程序，则包和包内的文件都必须以正确的顺序金星编译。包的依赖关系决定了其构建顺序。</p>
+</li>
+<li><p>属于同一个包的源文件必须全部被一起编译，一个包即是一个编译单元，因此根据惯例，每个目录都只包含一个包。</p>
+</li>
+<li><p>如果对一个包金星更改或重新编译，所有引用了这个包的客户端程序都必须全部重新编译。</p>
+</li>
+</ul>
+<p>包模型采用显式依赖关系的机制来达到快速编译的目的，编译器会从后缀名为<code>.o</code>的对象文件（需要且只需要）中提取传递依赖类型的信息。</p>
+<p>如果 <code>a.go</code>依赖 <code>b.go</code>，而 <code>b.go</code>依赖 <code>c.go</code><br>则编译顺序为<code>c.go</code> <code>b.go</code> <code>a.go</code></p>
+<p>每个go文件通过import连接在一起</p>
+<h4 id="import写法"><a href="#import写法" class="headerlink" title="import写法"></a>import写法</h4><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;os&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span>;<span class="keyword">import</span> <span class="string">&quot;os&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> (<span class="string">&quot;fmt&quot;</span>;<span class="string">&quot;os&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>导入多个包时，最好按照字母顺序排列 更易读<br>如果包名不是以<code>.``./</code>开头，则会全局查找</p>
+<p>除了<code>_</code>以外，包中所有代码对象的标识符必须是惟一的，相同标识符可以在不同包中使用，所以可以用包名来区分。</p>
+<h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><p>当标识符（包括敞亮、变量、类型、函数名、结构字段等等）以一个大写字母开头那么使用这种形式的标识符的对象可以被外部包的代码所使用（客户端需先导入这个包），这被称为到处（类似面向对象的public）。<br>标识符如果小写字母开头，则对外不可见，但是它们再整个包的内部是可见并且可用的（类似private）<br>大写字母可以使用任何Unicode编码的字符，比如希腊文，不仅仅是ASCII码中的大写字母。</p>
+<p>可以通过包别名来避免包名冲突。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> fm <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    fm.Printf(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>如果你导入一个包没有使用它，则会在构建时候引发错误，</strong><br>如<code>imported and not used: os</code>遵循了GO的格言：没有不必要的代码！</p>
+<h4 id="包的分级声明和初始化"><a href="#包的分级声明和初始化" class="headerlink" title="包的分级声明和初始化"></a>包的分级声明和初始化</h4><p>可以在import导入包以后声明零个或者多个常量const、变量var、类型type。<br>这些在本包中都是全局的，可以被本包中函数调用。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">functionName</span><span class="params">()</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>main函数是每个执行程序必须的，一般来说都是在启动后第一个执行的函数（如果有init（）会先执行init（））<br>如果main包没有main函数，则会报错<code>undefined: main.main</code>.<br>main函数没有参数也没有返回类型。如果不小心添加了则会引发报错：<br><code>func main must have no arguments and no return values results.</code></p>
+<p>在程序开始执行并初始化完成后，第一个调用的函数是main.main()，该函数一旦返回就表示程序执行完毕。</p>
+<p>函数<code>&#123;</code>必须和声明在一行，否则会报错<code>build-error: syntax error: unexpected semicolon or newline before &#123;</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">functionName</span><span class="params">(params1 type1,params2 type2)</span></span>(return1 type1,return2 type2)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//demo </span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sum</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;<span class="keyword">return</span> a+b&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`                                                                                     </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 类型</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">基本类型</span></span><br><span class="line"><span class="string">int</span></span><br><span class="line"><span class="string">float </span></span><br><span class="line"><span class="string">bool</span></span><br><span class="line"><span class="string">string</span></span><br><span class="line"><span class="string">结构化的（复合类型）</span></span><br><span class="line"><span class="string">struct</span></span><br><span class="line"><span class="string">array</span></span><br><span class="line"><span class="string">slice</span></span><br><span class="line"><span class="string">map</span></span><br><span class="line"><span class="string">channel</span></span><br><span class="line"><span class="string">只描述类型的行为</span></span><br><span class="line"><span class="string">interface</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">结构化的类型没有真正的值，他们使用nil（null）作为默认值</span></span><br><span class="line"><span class="string">**Go语言不存在类型集成。**</span></span><br><span class="line"><span class="string">函数也可以是一个确定的类型，就是以函数作为返回类型。这种类型的声明要写在函数名和可选参数的参数列表之后</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>golang</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FunctionName</span> <span class="params">(a type1,b type2)</span></span> typeFunc</span><br></pre></td></tr></table></figure>
+<p>可以在函数体中的某处返回使用类型为typeFunc的变量var<code>return var</code></p>
+<p>一个函数可以有多个返回值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">FunctionName</span> <span class="params">(a type1,b type2 )</span></span> (t1 type1, t2 type2) &#123;</span><br><span class="line">    <span class="keyword">return</span> var1,var2</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种多返回值一般用于判断某个函数是否执行成功或与其他返回值一同返回错误消息<br>使用 type 关键字可以定义自己的类型，可以定义一个结构体，也可以定义一个已经存在的类型别名：<code>type IZ int</code><br>这里并不是真正意义上的别名，使用这种方法定义的类型可以有更多特性，且在类型转换时必须显式转换。</p>
+<p>声明变量：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a IZ = <span class="number">5</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果有多个类型需要定义，可以使用因式分解关键字的方式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> (</span><br><span class="line"></span><br><span class="line">    IZ <span class="type">int</span></span><br><span class="line">    FZ <span class="type">float64</span></span><br><span class="line">    STR <span class="type">string</span></span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>**每个值都必须在经过编译后属于某个变量（编译器必须能够推断出所有值得类型），因为GO语言是一种静态类型语言。</p>
+<h2 id="go程序的一般结构"><a href="#go程序的一般结构" class="headerlink" title="go程序的一般结构"></a>go程序的一般结构</h2><ol>
+<li>先完成import，开始对变量常量和类型的定义</li>
+<li>如果存在init函数，则对该函数定义（每个含有该函数的包都会首先执行此函数）</li>
+<li>如果当前包是main包，则定义main函数。</li>
+<li>定义其余的函数，首先是类型的方法，接着是按照main函数中先后调用的顺序来定义的相关函数，如果有很多函数，可以按照字母顺序来进行排序</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c = <span class="string">&quot;C&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> v <span class="type">int</span> = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a <span class="type">int</span></span><br><span class="line">    Func1()</span><br><span class="line">    fmt.Print()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t T)</span></span> Method1()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Func1</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>go程序的执行顺序</p>
+<ol>
+<li>按照顺序导入main引用的包，然后再没给包中执行如下流程</li>
+<li>如果该包引入了其他包,则从第一步开始递归执行,但是每个包只会被导入一次</li>
+<li>然后以相反的顺序在每个包中初始化常量和变量,如果该包含有init函数的话,则调用该函数</li>
+<li>在完成这一切后,main也执行同样的过程,最后调用main函数开始执行程序</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">valueOfTypeB = typeB(valueOfTypeA)</span><br><span class="line"></span><br><span class="line"><span class="comment">//类型B的值 = 类型B(类型A的值)</span></span><br><span class="line">a := <span class="number">5.0</span></span><br><span class="line">b := <span class="type">int</span>(a)</span><br><span class="line"><span class="comment">// b == 5.0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
 
@@ -272,6 +387,15 @@
 
     
 <nav class="article-nav">
+  
+    <a href="/2023/03/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          git常用命令
+        
+      </div>
+    </a>
   
   
     <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
@@ -351,7 +475,7 @@
   <div class="widget-wrap widget-tags">
     <div class="widget-title"><span>Tags</span></div>
     <div class="widget-inner">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algolia/" rel="tag">Algolia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bruno-Simon/" rel="tag">Bruno Simon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/" rel="tag">Date</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bat/" rel="tag">bat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/" rel="tag">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcore/" rel="tag">gcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/indexDB/" rel="tag">indexDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/" rel="tag">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/" rel="tag">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stablediffusion/" rel="tag">stablediffusion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/" rel="tag">threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/" rel="tag">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8C%BB/" rel="tag">中医</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%AA%E6%B5%B7%E5%8E%A6/" rel="tag">倪海厦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" rel="tag">加密解密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%A0%E8%87%B3%E9%A1%BA/" rel="tag">张至顺</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/" rel="tag">搬瓦工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" rel="tag">视频处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97/" rel="tag">说文解字</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algolia/" rel="tag">Algolia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bruno-Simon/" rel="tag">Bruno Simon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/" rel="tag">Date</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bat/" rel="tag">bat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/" rel="tag">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gcore/" rel="tag">gcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/indexDB/" rel="tag">indexDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/" rel="tag">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/" rel="tag">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stablediffusion/" rel="tag">stablediffusion</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/" rel="tag">threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/" rel="tag">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8C%BB/" rel="tag">中医</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">云服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%AA%E6%B5%B7%E5%8E%A6/" rel="tag">倪海厦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" rel="tag">加密解密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%A0%E8%87%B3%E9%A1%BA/" rel="tag">张至顺</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/" rel="tag">搬瓦工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" rel="tag">视频处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97/" rel="tag">说文解字</a></li></ul>
     </div>
   </div>
 
@@ -364,6 +488,14 @@
       <ul>
         
           <li>
+            <a href="/2023/03/08/golang%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AEPrint/">golang参数设置Print</a>
+          </li>
+        
+          <li>
+            <a href="/2023/03/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
+          </li>
+        
+          <li>
             <a href="/2023/03/03/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">golang学习笔记</a>
           </li>
         
@@ -373,14 +505,6 @@
         
           <li>
             <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9/">倪海厦-259经典配方</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB%E7%A7%98%E6%96%B9-%E6%B2%BB%E8%84%B1%E5%8F%91/">中医秘方-治脱发</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB%E7%A7%98%E6%96%B9-%E4%BF%9D%E5%81%A5%E7%A7%98%E6%96%B9/">中医秘方-保健秘方</a>
           </li>
         
       </ul>
