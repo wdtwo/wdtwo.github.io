@@ -169,7 +169,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clezi9hjn000qqcw00nnucp6v" class="article article-type-post" itemscope
+    <article id="post-clf64iafh000r5ow01drgf5se" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -398,6 +398,55 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">val,err = Func1(var1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="init-函数"><a href="#init-函数" class="headerlink" title="init()函数"></a>init()函数</h2><p>初始化优先执行,在main之前,大多用于检验或者修复,以保证程序状态的正确性.</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>整数:<ul>
+<li>int8（-128 -&gt; 127）</li>
+<li>int16（-32768 -&gt; 32767）</li>
+<li>int32（-2,147,483,648 -&gt; 2,147,483,647）</li>
+<li>int64（-9,223,372,036,854,775,808 -&gt; 9,223,372,036,854,775,807）</li>
+</ul>
+</li>
+<li>无符号整数：<ul>
+<li>uint8（0 -&gt; 255）</li>
+<li>uint16（0 -&gt; 65,535）</li>
+<li>uint32（0 -&gt; 4,294,967,295）</li>
+<li>uint64（0 -&gt; 18,446,744,073,709,551,615）</li>
+</ul>
+</li>
+<li>浮点型（IEEE-754 标准）：<ul>
+<li>float32（+- 1e-45 -&gt; +- 3.4 * 1e38）</li>
+<li>float64（+- 5 1e-324 -&gt; 107 1e308）</li>
+</ul>
+</li>
+</ul>
+<p><strong>int是计算最快的一种类型</strong></p>
+<p><strong>应该尽可能使用float64,因为<code>math</code>包中所有关于数学运算的函数都会要求接收这个类型.</strong></p>
+<p>可以通过前面补<code>0</code>来表示八进制<code>077</code>;通过增加<code>0x</code>表示十六进制<code>0xFF</code>;使用<code>e</code>来表示10的连乘<code>1e3=1000,6.022e23=6.022x1e23</code></p>
+<p>可以通过<code>a := uint64(0)</code>来同事完成类型转换和赋值操作,a的类型就算uint64</p>
+<p>go中不允许不同类型之间的混合使用,但是对于常量的类型限制非常少,因此允许常量之间的混合使用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> a <span class="type">int</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="type">int64</span></span><br><span class="line">	a = <span class="number">15</span></span><br><span class="line">	b = a + a <span class="comment">//编译错误 cannot use a + a (value of type int) as int64 value in assignment</span></span><br><span class="line">	b = b + <span class="number">5</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>正确做法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> n <span class="type">int16</span> = <span class="number">34</span></span><br><span class="line">	<span class="keyword">var</span> m <span class="type">int32</span></span><br><span class="line">	m = <span class="type">int32</span>(n)</span><br><span class="line">	fmt.Println(n)</span><br><span class="line">	fmt.Println(m)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>数字值转换<br>进行类似<code>a32BitInt = int32(a32Float)</code>的转换时,小数点后的数字将被丢弃.这种情况一般发生在从取值范围大到取值范围小的类型时,或者写一个判断保护一下:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//int转uint8</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Uint8FromInt</span><span class="params">(n <span class="type">int</span>)</span></span> (<span class="type">uint8</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="number">0</span> &lt;= n &amp;&amp; n &lt;= math.MaxUint8 &#123; <span class="comment">//如果小于零或者不超过uint8的范围则转换</span></span><br><span class="line">		<span class="keyword">return</span> <span class="type">uint8</span>(n), <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>, fmt.Errorf(<span class="string">&quot;%d error&quot;</span>, n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//float64转int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IntFromFloat64</span><span class="params">(x <span class="type">float64</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> math.MinInt32 &lt;= x &amp;&amp; x &lt;= math.MaxInt32 &#123;</span><br><span class="line">		whole, fraction := math.Modf(x) <span class="comment">//把浮点数拆分成整数和小数两个部分</span></span><br><span class="line">		<span class="built_in">println</span>(whole)</span><br><span class="line">		<span class="built_in">println</span>(fraction)</span><br><span class="line">		<span class="keyword">if</span> fraction &gt;= <span class="number">0.5</span> &#123; <span class="comment">//四舍五入向上取整</span></span><br><span class="line">			whole++</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="type">int</span>(whole)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">panic</span>(fmt.Sprintf(<span class="string">&quot;%g is out of the int32 range&quot;</span>, x))<span class="comment">//panic是内置函数,用于引发运行时的错误.类似于console.error()</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h2><p>go拥有以下复数类型:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="type">complex64</span> (<span class="number">32</span> 位实数和虚数)</span><br><span class="line"><span class="type">complex128</span> (<span class="number">64</span> 位实数和虚数)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>复数使用<code>re+imI</code>来表示,其中<code>re</code>代表实数部分,<code>im</code>代表虚数部分,<code>I</code>代表根号负1<br>示例:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a <span class="type">complex64</span> = <span class="number">5</span> + <span class="number">10i</span></span><br><span class="line">fmt.Println(a)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果<code>re</code>和<code>im</code>都是float32,那么类型为complex64的复数c可以通过以下方式来获得</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">c = <span class="built_in">complex</span>(re,im)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>函数<code>real(c)</code>和<code>imag(c)</code>可以分别获取相应的实数和虚数部分</p>
+<p><code>cmath</code>包中包含了一些操作复数的公共方法.如果你对内存的要求不高,最好使用complex128作为计算类型,因为相关函数都使用这个类型的参数.</p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>位运算只能用于整数类型的变量,且需要当它们拥有等长位模式时.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//按位与 &amp;</span></span><br><span class="line"><span class="number">1</span> &amp; <span class="number">1</span> <span class="comment">//-&gt; 1</span></span><br><span class="line"><span class="number">1</span> &amp; <span class="number">0</span> <span class="comment">//-&gt; 0</span></span><br><span class="line"><span class="comment">//按位或 | </span></span><br><span class="line"><span class="number">1</span> | <span class="number">1</span> <span class="comment">//-&gt; 1</span></span><br><span class="line"><span class="number">1</span> | <span class="number">0</span> <span class="comment">//-&gt; 1</span></span><br><span class="line"><span class="comment">//按位异或 ^</span></span><br><span class="line"><span class="number">1</span> ^ <span class="number">1</span> <span class="comment">//-&gt; 0</span></span><br><span class="line"><span class="number">1</span> ^ <span class="number">0</span> <span class="comment">//-&gt; 1</span></span><br><span class="line"><span class="number">0</span> ^ <span class="number">0</span> <span class="comment">//-&gt; 0</span></span><br><span class="line"><span class="comment">//位清除%^</span></span><br><span class="line"><span class="comment">//将指定位置上的值设置为0.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
 
         </div>
 
