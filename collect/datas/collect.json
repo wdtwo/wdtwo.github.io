@@ -3,10 +3,6 @@
         "category": "搜索引擎",
         "data": [
             {
-                "name": "magi",
-                "url": "https://magi.com/"
-            },
-            {
                 "name": "bing",
                 "url": "https://cn.bing.com/"
             },
@@ -62,14 +58,6 @@
             {
                 "name": "html转amp工具",
                 "url": "https://amptemplates.com/converter/"
-            },
-            {
-                "name": "批量查询域名1",
-                "url": "http://www.yumingco.com/"
-            },
-            {
-                "name": "批量查询域名2",
-                "url": "https://tool.22.cn/"
             },
             {
                 "name": "百度文库下载助手",
@@ -756,6 +744,14 @@
         "category": "VPS",
         "data": [
             {
+                "name": "批量查询域名1",
+                "url": "http://www.yumingco.com/"
+            },
+            {
+                "name": "批量查询域名2",
+                "url": "https://tool.22.cn/"
+            },
+            {
                 "name" : "免费cdn+waf",
                 "url"  : "https://auth.gcore.com/login/signin"
             },
@@ -776,8 +772,15 @@
                 "name": "youtube订阅管理",
                 "url": "https://www.youtube.com/subscription_manager"
             },
+            
+            {
+                "name": "ip归属地查询",
+                "info":"whatismyipaddress",
+                "url": "https://whatismyipaddress.com/"
+            },
             {
                 "name": "ip多地检测",
+                "info":"ping.pe",
                 "url": "https://ping.pe/"
             },
             {
@@ -786,7 +789,7 @@
             },
             {
                 "name": "测速网",
-                "url": "https://www.speedtest.cn/"
+                "url": "https://www.speedtest.net/"
             },
             {
                 "name": "virmach",
