@@ -79,11 +79,11 @@
 						element.id = `id${parseInt(Math.random()*999999)}`
 					});
 					this.collectList = obj
-				}).catch(()=>{
-					console.log(error)
+				}).catch((err)=>{
+					console.log(err)
 					this.$message({
 						type:"error",
-						message:error
+						message:err
 					})
 				})
 			},
