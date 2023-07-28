@@ -73,7 +73,7 @@
 			created(){
 				//init beforeCreate created beforeMount mounted beforeUpdate updated beforeDestroy destroyed
 				//get请求
-				axios.get('/datas/collect.json').then((res)=>{
+				axios.get('./datas/collect.json').then((res)=>{
 					let obj = res.data
 					obj.forEach(element => {
 						element.id = `id${parseInt(Math.random()*999999)}`
