@@ -10,7 +10,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="format-detection" content="email=no">
-	<title></title>
+	<title>收藏夹</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 			<el-aside width="200px">
 				<div class="logo flex">
 					<i class="el-icon-cpu m-r-10"></i>
-					工具收藏
+					收藏夹
 				</div>
 				<el-menu>
 					<el-menu-item v-for="(v,i) in collectList" :key="i" :tabindex="i">
@@ -44,7 +44,7 @@
 						<li v-for="(item,i) in collectList" :key="i" :tabindex="i">
 							<h3 :ref="item.id">{{item.category}}</h3>
 							<div class="flex flex-jus-start flex-item-start flex-wrap">
-								<a :href="v.url" class="link" v-for="(v,j) in item.data" :key="i">
+								<a :href="v.url" class="link" v-for="(v,j) in item.data" :key="i" target="_blank">
 									<div>{{v.name}}</div>
 									<p>{{v.info || "暂无"}}</p>
 									<i class="el-icon-link"></i>
@@ -53,7 +53,7 @@
 						</li>
 					</ul>
 				</main>
-				<el-footer>blog.wdtwo.com</el-footer>
+				<el-footer><a href="/">blog.wdtwo.com</a></el-footer>
 			</el-container>
 		</el-container>
 
@@ -67,7 +67,7 @@
 		var app = new Vue({
 			el:'#app',
 			data:{
-				title     : '工具地址',
+				title     : '收藏夹',
 				collectList	  : [""]
 			},
 			created(){
@@ -98,14 +98,6 @@
 			}
 		})
 
-
-
-
 	</script>
-
-
-
-
-
 </body>
 </html>
