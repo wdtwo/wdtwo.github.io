@@ -757,13 +757,23 @@
             },
             {
                 "name" : "cloudflare",
-                "url"  : "https://www.cloudflare-cn.com/"
+                "url"  : "https://www.cloudflare.com/"
             },
             {
                 "name" : "免费域名",
+                "info" : "freenom 已暂停，正在接受诉讼",
                 "url"  : "https://www.freenom.com/"
             },
-           
+            {
+                "name" : "免费二级域名",
+                "info" : "eu.org，审批慢",
+                "url"  : "https://nic.eu.org"
+            },
+            {
+                "name" : "免费二级域名hk",
+                "info" : "不定时开放，需要抽卡",
+                "url"  : "https://www.now.cc/"
+            },
             {
                 "name" : "学生免费域名",
                 "url"  : "https://nc.me/"
@@ -792,16 +802,16 @@
                 "url": "https://www.speedtest.net/"
             },
             {
-                "name": "virmach",
-                "url": "https://virmach.com/special-offers/"
+                "name" : "virmach",
+                "url"  : "https://virmach.com/special-offers/"
             },
             {
-                "name": "搬瓦工en",
-                "url": "https://bandwagonhost.com/"
+                "name" : "搬瓦工en",
+                "url"  : "https://bandwagonhost.com/"
             },
             {
-                "name": "搬瓦工cn",
-                "url": "https://bwh88.net/"
+                "name" : "搬瓦工cn",
+                "url"  : "https://bwh88.net/"
             },
             {
                 "name" : "老毛子特价vps",
@@ -812,35 +822,22 @@
                 "url"  : "https://www.mrkevin.net/share/1383.html"
             },
             {
-                "name" : "免费二级域名eu.org",
-                "url"  : "https://nic.eu.org"
+                "name" : "cloudflare优选",
+                "info" : "CloudFlareYes",
+                "url"  : "https://stock.hostmonit.com/CloudFlareYes"
             },
             {
-                "name" : "免费二级域名hk",
-                "url"  : "https://www.now.cc/"
+                "name" : "cloudflare优选",
+                "info" : "阿拉伯语，自动查询",
+                "url"  : "https://vfarid.github.io/cf-ip-scanner/?max=30"
+            },
+            {
+                "name" : "全球热门网站排行",
+                "info" : "similarweb.com",
+                "url"  : "https://www.similarweb.com/zh/top-websites/"
             }
         ],
         "hide": [
-            {
-                "name" : "免费cdn+waf",
-                "url"  : "https://auth.gcore.com/login/signin"
-            },
-            {
-                "name" : "cloudflare",
-                "url"  : "https://www.cloudflare-cn.com/"
-            },
-            {
-                "name": "youtube订阅管理",
-                "url": "https://www.youtube.com/subscription_manager"
-            },
-            {
-                "name": "测速网",
-                "url": "https://www.speedtest.cn/"
-            },
-            {
-                "name": "virmach",
-                "url": "https://virmach.com/special-offers/"
-            },
             {
                 "name" : "v2rayN",
                 "url"  : "https://github.com/2dust/v2rayN/releases"
@@ -852,14 +849,6 @@
             {
                 "name" : "免费账号",
                 "url"  : "https://free-ss.site/"
-            },
-            {
-                "name" : "VPS常用测试脚本合集",
-                "url"  : "https://www.mrkevin.net/share/1383.html"
-            },
-            {
-                "name" : "老毛子特价vps",
-                "url"  : "https://justhost.ru/services/vps/?tariff=1#changeconfig"
             },
             {
                 "name" : "SOFTETHER VPN",
