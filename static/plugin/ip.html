@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>随机密码</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="author" content="GaryWang">
+		<meta name='renderer' content='webkit'>
+		<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<link rel="stylesheet" href="./css/site.css">
+		<style>
+			.row {max-width: 900px;margin:15px auto 0;}
+			.row input,.row textarea {display: block;width: 100%;}
+		</style>
+	</head>
+<body>
+	
+	<div class="row" style="margin-top: 50px;">
+		<div class="col-md-2 offset-lg-3">ip段</div>
+		<div class="col-md-5">
+			<input type="text" class="form-control" id="ip" placeholder="192.168.1.1/10">
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2 offset-md-3">输出字符</div>
+		<div class="col-md-5">
+			<textarea name="" class="form-control" id="output" cols="30" rows="2" readonly></textarea>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2 offset-md-3"></div>
+		<div class="col-md-5">
+			<input type="button" id="btn" value="输出ip" class="btn btn-primary">
+		</div>
+	</div>
+	<script>
+		/*
+		 * by:http://www.wdtwo.com/
+		 * time:2020-04-21
+		 * 更改css的排列方式
+		 * ps:转载请注明出处
+		 * */
+		document.querySelector('#btn').addEventListener('click',function(){
+			//108.156.0.0/14
+		    // 示例使用：
+			let ip = document.querySelector(e)('#ip').value
+			const { firstIP, lastIP } = calculateSubnetFirstAndLastIP(ip.split('/')[0], ip.split('/')[1]);
+			const randomIPs = generateRandomIPsBetween(firstIP, lastIP, 10);
+			const numberOfIPsBetween = countIPsBetween(firstIP, lastIP);
+			let str = `
+			第一个IP地址:${firstIP},
+			最后一个IP地址:${lastIP},
+			随机取出的10个IP地址:${randomIPs},
+			两个IP地址之间共有多少个IP:${numberOfIPsBetween}
+			`
+			document.querySelector('#output').value = str
+			console.log(mima)
+		})
+
+		function calculateSubnetFirstAndLastIP(networkAddress, prefixLength) {
+			// 将子网地址转换为32位整数
+			const networkNumber = ipToNumber(networkAddress);
+		
+			// 计算子网掩码中的主机位数
+			const hostBits = 32 - prefixLength;
+		
+			// 计算子网中可用的IP数量
+			const availableIPs = 2 ** hostBits;
+		
+			// 计算子网的第一个IP地址和最后一个IP地址
+			const firstIPNumber = networkNumber;
+			const lastIPNumber = networkNumber + availableIPs - 1;
+		
+			// 将32位整数转换回IP地址格式
+			const firstIP = numberToIP(firstIPNumber);
+			const lastIP = numberToIP(lastIPNumber);
+		
+			return { firstIP, lastIP };
+		}
+		
+		function getRandomInt(min, max) {
+			// 生成指定范围内的随机整数（包括最小值，但不包括最大值）
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
+		
+		function ipToNumber(ipAddress) {
+			// 将IP地址拆分成四个部分
+			const ipParts = ipAddress.split(".");
+		
+			// 确保IP地址有四个部分
+			if (ipParts.length !== 4) {
+			throw new Error("Invalid IP address format");
+			}
+		
+			// 将每个部分转换为数值，并合并成一个32位的整数
+			const ipNumber = ipParts.reduce((acc, part) => (acc << 8) + parseInt(part, 10), 0);
+		
+			return ipNumber;
+		}
+		
+		function numberToIP(ipNumber) {
+			// 将32位整数拆分成四个部分，并转换回IP地址格式
+			const ipParts = [];
+			for (let i = 3; i >= 0; i--) {
+			const part = (ipNumber >>> (i * 8)) & 255;
+			ipParts.push(part);
+			}
+		
+			const ipAddress = ipParts.join(".");
+			return ipAddress;
+		}
+		
+		function generateRandomIPsBetween(startIP, endIP, count) {
+			const startNumber = ipToNumber(startIP);
+			const endNumber = ipToNumber(endIP);
+		
+			const randomIPs = [];
+		
+			// 在起始和结束IP地址之间生成指定数量的随机IP地址
+			for (let i = 0; i < count; i++) {
+			const randomIPNumber = getRandomInt(startNumber, endNumber + 1);
+			const randomIP = numberToIP(randomIPNumber);
+			randomIPs.push(randomIP);
+			}
+		
+			return randomIPs;
+		}
+		function countIPsBetween(startIP, endIP) {
+			const startNumber = ipToNumber(startIP);
+			const endNumber = ipToNumber(endIP);
+		
+			// 计算两个IP地址之间的IP数量（包括起始IP和结束IP）
+			const count = endNumber - startNumber + 1;
+		
+			return count;
+		}
+
+	</script>
+</body>
+</html>
