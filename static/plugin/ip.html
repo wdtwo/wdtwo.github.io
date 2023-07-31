@@ -35,7 +35,7 @@
 	<div class="row" style="margin-top: 50px;">
 		<div class="col-md-2 offset-md-3">输出字符</div>
 		<div class="col-md-5">
-			<textarea name="" class="form-control" id="output" cols="30" rows="2" readonly></textarea>
+			<div id="output" class="form-control"></div>
 		</div>
 	</div>
 	<div class="row">
@@ -59,7 +59,7 @@
 			随机取出的10个IP地址:${randomIPs},
 			两个IP地址之间共有多少个IP:${numberOfIPsBetween}
 			`
-			document.querySelector('#output').value = str
+			document.querySelector('#output').innerHTML = str
 			console.log(mima)
 		})
 
