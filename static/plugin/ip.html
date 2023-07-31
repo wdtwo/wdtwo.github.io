@@ -26,13 +26,13 @@
 			<input type="text" class="form-control" id="ip" placeholder="192.168.1.1/10">
 		</div>
 	</div>
-	<div class="row" style="margin-top: 50px;">
+	<div class="row">
 		<div class="col-md-2 offset-lg-3">随机个数</div>
 		<div class="col-md-5">
 			<input type="text" class="form-control" id="len" placeholder="10">
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-top: 50px;">
 		<div class="col-md-2 offset-md-3">输出字符</div>
 		<div class="col-md-5">
 			<textarea name="" class="form-control" id="output" cols="30" rows="2" readonly></textarea>
@@ -48,8 +48,8 @@
 		document.querySelector('#btn').addEventListener('click',function(){
 			//108.156.0.0/14
 		    // 示例使用：
-			let ip = document.querySelector(e)('#ip').value
-			let len = document.querySelector(e)('#len').value || 10
+			let ip = document.querySelector('#ip').value
+			let len = document.querySelector('#len').value || 10
 			const { firstIP, lastIP } = calculateSubnetFirstAndLastIP(ip.split('/')[0], ip.split('/')[1]);
 			const randomIPs = generateRandomIPsBetween(firstIP, lastIP, len);
 			const numberOfIPsBetween = countIPsBetween(firstIP, lastIP);
