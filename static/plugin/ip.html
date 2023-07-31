@@ -35,7 +35,7 @@
 	<div class="row" style="margin-top: 50px;">
 		<div class="col-md-2 offset-md-3">输出字符</div>
 		<div class="col-md-5">
-			<div id="output" class="form-control"></div>
+			<div id="output" style="padding:15px;white-space:normal;"></div>
 		</div>
 	</div>
 	<div class="row">
@@ -54,10 +54,12 @@
 			const randomIPs = generateRandomIPsBetween(firstIP, lastIP, len);
 			const numberOfIPsBetween = countIPsBetween(firstIP, lastIP);
 			let str = `
-			第一个IP地址:${firstIP},
-			最后一个IP地址:${lastIP},
-			随机取出的10个IP地址:${randomIPs},
-			两个IP地址之间共有多少个IP:${numberOfIPsBetween}
+			第一个IP地址:${firstIP},<br />
+			最后一个IP地址:${lastIP},<br />
+			随机取出的10个IP地址:<br />
+			${randomIPs.join("<br />")}
+			<br />
+			共有 ${numberOfIPsBetween} 个IP
 			`
 			document.querySelector('#output').innerHTML = str
 			console.log(mima)
