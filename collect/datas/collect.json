@@ -779,6 +779,12 @@
     {
         "category": "Github",
         "data": [
+            
+            {
+                "name": "导航网站开发",
+                "info" : "hexo-theme-webstack",
+                "url": "https://github.com/HCLonely/hexo-theme-webstack"
+            },
             {
                 "name": "全球免费api合集",
                 "url": "https://github.com/public-apis/public-apis"
