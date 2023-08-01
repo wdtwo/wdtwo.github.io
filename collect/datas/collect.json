@@ -302,6 +302,11 @@
         "category": "视频工具",
         "data": [
             {
+                "name" : "视频编辑插件ffmpeg",
+                "info" : "ffmpeg",
+                "url"  : "http://www.ffmpeg.org/"
+            },
+            {
                 "name": "简视频",
                 "info" : "图片视频素材",
                 "url": "https://www.aewz.com/"
@@ -607,7 +612,7 @@
         ]
     },
     {
-        "category": "在线学习",
+        "category": "视频教程",
         "data": [
             {
                 "name" : "英文在线学习",
@@ -636,12 +641,7 @@
             {
                 "name" : "w3schools",
                 "url"  : "https://www.w3schools.com/"
-            }
-        ]
-    },
-    {
-        "category": "视频教程",
-        "data": [
+            },
             {
                 "name" : "25学堂",
                 "url"  : "https://www.25xt.com/"
@@ -692,10 +692,6 @@
             {
                 "name" : "求索之路",
                 "url"  : "https://www.qiusuozhilu.com/"
-            },
-            {
-                "name" : "全历史",
-                "url"  : "https://www.allhistory.com/"
             },
             {
                 "name" : "全历史",
@@ -1120,11 +1116,6 @@
         "category": "其他工具",
         "data": [
             {
-                "name" : "视频编辑插件ffmpeg",
-                "info" : "ffmpeg",
-                "url"  : "http://www.ffmpeg.org/"
-            },
-            {
                 "name" : "关键词变成图形",
                 "info" : "关键词变成图形",
                 "url"  : "http://yciyun.com/"
@@ -1191,12 +1182,11 @@
             {
                 "name" : "中文百科",
                 "url"  : "https://www.baike.com.cn/"
-            }
-        ]
-    },
-    {
-        "category": "古诗词",
-        "data": [
+            },
+            {
+                "name" : "百度汉语",
+                "url"  : "https://hanyu.baidu.com/"
+            },
             {
                 "name" : "古诗文网",
                 "url"  : "https://www.gushiwen.cn/"
