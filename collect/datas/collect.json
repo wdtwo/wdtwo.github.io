@@ -983,10 +983,6 @@
                 "url": "https://www.youtube.com/subscription_manager"
             },
             {
-                "name" : "virmach",
-                "url"  : "https://virmach.com/special-offers/"
-            },
-            {
                 "name" : "搬瓦工en",
                 "url"  : "https://bandwagonhost.com/"
             },
@@ -995,15 +991,49 @@
                 "url"  : "https://bwh88.net/"
             },
             {
+                "name" : "VPS常用测试脚本合集",
+                "url"  : "https://www.mrkevin.net/share/1383.html"
+            },
+            {
+                "name" : "virmach",
+                "url"  : "https://virmach.com/special-offers/"
+            },
+            {
                 "name" : "老毛子特价vps",
                 "url"  : "https://justhost.ru/services/vps/?tariff=1#changeconfig"
             },
             {
-                "name" : "VPS常用测试脚本合集",
-                "url"  : "https://www.mrkevin.net/share/1383.html"
+                "name" : "廉价vps",
+                "info" : "pacificrack",
+                "url"  : "https://pacificrack.com/portal/index.php/store/cloud-instances"
+            },
+            {
+                "name" : "随时跑路vps",
+                "info" : "racknerd",
+                "url"  : "https://my.racknerd.com/index.php?rp=/store/shared-hosting"
+            },
+            {
+                "name" : "vps",
+                "info" : "buyvm",
+                "url"  : "https://buyvm.net/"
+            },
+            {
+                "name": "VPS常用测试脚本合集",
+                "info":"",
+                "url": "https://www.mrkevin.net/share/1383.html"
             }
         ],
         "hide": [
+            {
+                "name" : "VPN Gate",
+                "info" : "公共vpn中继服务器",
+                "url"  : "https://www.vpngate.net/cn/"
+            },
+            {
+                "name" : "SOFTETHER VPN",
+                "info" : "softether",
+                "url"  : "https://www.softether.org/5-download"
+            },
             {
                 "name" : "v2rayN",
                 "url"  : "https://github.com/2dust/v2rayN/releases"
@@ -1021,6 +1051,10 @@
                 "url"  : "https://free-ss.site/"
             },
             {
+                "name" : "v2ray免费账号",
+                "url"  : "https://t1.free-air.org/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7/"
+            },
+            {
                 "name" : "SOFTETHER VPN",
                 "url"  : "https://www.softether.org/5-download"
             },
@@ -1036,6 +1070,21 @@
                 "name": "v2ray管理面板",
                 "info":"v2board",
                 "url": "https://v2board.com/"
+            },
+            {
+                "name": "ss文档",
+                "info":"",
+                "url": "https://shadowsocks.org/"
+            },
+            {
+                "name": "蓝灯",
+                "info":"",
+                "url": "https://github.com/getlantern/download"
+            },
+            {
+                "name": "秋水一冰",
+                "info":"",
+                "url": "https://teddysun.com/"
             }
         ]
     },
