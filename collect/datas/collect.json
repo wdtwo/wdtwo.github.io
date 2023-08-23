@@ -1284,6 +1284,19 @@
                 "url"  : "https://www.afreecatv.com/"
             }
         ]
+    },
+    {
+        "category": "android软件下载",
+        "data": [
+            {
+                "name" : "android旧版apk下载",
+                "url"  : "https://apkcombo.com/zh/"
+            },
+            {
+                "name" : "小米roms下载",
+                "url"  : "https://xiaomirom.com/"
+            },
+        ]
     }
     
 ]
