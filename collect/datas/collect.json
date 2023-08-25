@@ -1092,6 +1092,11 @@
         "category": "设计导航",
         "data": [
             {
+                "name" : "微软灵感设计",
+                "info" : "designer.microsoft",
+                "url"  : "https://designer.microsoft.com/"
+            },
+            {
                 "name" : "优设导航",
                 "info" : "设计师网址导航",
                 "url"  : "http://hao.uisdc.com/"
