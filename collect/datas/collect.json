@@ -331,7 +331,7 @@
                 "url": "https://m3u8-player.com/"
             },
             {
-                "name": "pexels.com",
+                "name": "pexels",
                 "info" : "免费视频图片素材",
                 "url": "https://www.pexels.com/zh-cn/"
             }
@@ -1100,6 +1100,31 @@
                 "name" : "behance",
                 "info" : "图片素材",
                 "url"  : "https://www.behance.net/"
+            },
+            {
+                "name" : "freepik",
+                "info" : "图片素材",
+                "url"  : "https://www.freepik.com/"
+            },
+            {
+                "name" : "vecteezy",
+                "info" : "图片素材",
+                "url"  : "https://www.vecteezy.com/"
+            },
+            {
+                "name" : "unsplash",
+                "info" : "图片素材",
+                "url"  : "https://unsplash.com/"
+            },
+            {
+                "name" : "pixabay",
+                "info" : "图片素材",
+                "url"  : "https://pixabay.com/"
+            },
+            {
+                "name" : "depositphotos",
+                "info" : "图片素材",
+                "url"  : "https://depositphotos.com/cn/"
             },
             {
                 "name" : "设计导航",
