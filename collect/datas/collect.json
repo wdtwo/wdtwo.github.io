@@ -89,7 +89,13 @@
                 "name": "记灵",
                 "info":"",
                 "url": "https://remeins.com/"
+            },
+            {
+                "name": "analytics google 网站分析",
+                "info":"",
+                "url": "https://analytics.google.com/analytics/web/"
             }
+            
         ]
     },
     {
@@ -151,6 +157,14 @@
     {
         "category": "AI工具",
         "data": [
+            {
+                "name": "google bard",
+                "url": "https://bard.google.com/"
+            },
+            {
+                "name": "chatGPT",
+                "url": "https://chat.openai.com/"
+            },
             {
                 "name": "AI人工智能图片放大",
                 "url": "https://bigjpg.com/"
@@ -706,6 +720,15 @@
         ]
     },
     {
+        "category": "学习资源",
+        "data": [
+            {
+                "name" : "图欧学习资源库",
+                "url"  : "https://tuostudy.com/"
+            }
+        ]
+    },
+    {
         "category": "博客",
         "data": [
             {
@@ -739,6 +762,10 @@
             {
                 "name" : "博客园",
                 "url"  : "https://www.cnblogs.com/"
+            },
+            {
+                "name" : "卡提诺",
+                "url"  : "https://ck101.tw/"
             }
         ]
     },
@@ -936,6 +963,11 @@
                 "url": "https://ping.pe/"
             },
             {
+                "name": "ipv6查询",
+                "info":"ipw",
+                "url": "https://ipw.cn/ipv6/"
+            },
+            {
                 "name": "ipip",
                 "url": "https://www.ipip.net/ip.html"
             },
@@ -1102,14 +1134,14 @@
                 "url"  : "http://hao.uisdc.com/"
             },
             {
-                "name" : "behance",
-                "info" : "图片素材",
-                "url"  : "https://www.behance.net/"
-            },
-            {
                 "name" : "freepik",
                 "info" : "图片素材",
                 "url"  : "https://www.freepik.com/"
+            },
+            {
+                "name" : "behance",
+                "info" : "图片素材",
+                "url"  : "https://www.behance.net/"
             },
             {
                 "name" : "vecteezy",
@@ -1320,12 +1352,40 @@
         "data": [
             {
                 "name" : "android旧版apk下载",
+                "info" : "uptodown",
+                "url"  : "https://cn.uptodown.com/windows"
+            },
+            {
+                "name" : "android旧版apk下载",
+                "info" : "afreecatv",
                 "url"  : "https://apkcombo.com/zh/"
+            },
+            {
+                "name" : "android旧版apk下载",
+                "info" : "apkpure",
+                "url"  : "https://apkpure.com/cn/"
             },
             {
                 "name" : "小米roms下载",
                 "url"  : "https://xiaomirom.com/"
+            },
+            {
+                "name" : "Xiaomi 全系列机型 ROM 包下载站汇总",
+                "url"  : "https://web.vip.miui.com/page/info/mio/mio/detail?isTop=1&postId=5896315"
             }
+        ]
+    },
+    {
+        "category": "小说",
+        "data": [
+            {
+                "name" : "皇帝之家",
+                "url"  : "https://www.huangdizhijia.com/index.html"
+            },
+            {
+                "name" : "皇帝之家",
+                "url"  : "http://downnovel.com/"
+            },
         ]
     }
     
