@@ -770,46 +770,6 @@
         ]
     },
     {
-        "category": "电子书",
-        "data": [
-            {
-                "name" : "电子书博物馆",
-                "info" : "Z-Library",
-                "url"  : "https://cn1lib.is/"
-            },
-            {
-                "name" : "英文原版pdf",
-                "info" : "SaltTiger",
-                "url"  : "https://www.salttiger.com/"
-            },
-            {
-                "name" : "英文原版pdf",
-                "info" : "itbook",
-                "url"  : "https://itbook.download/"
-            },
-            {
-                "name" : "IT电子书",
-                "info" : "it-ebooks",
-                "url"  : "http://it-ebooks.info/"
-            },
-            {
-                "name" : "电子书在线看",
-                "info" : "gitbook",
-                "url"  : "https://www.gitbook.com/"
-            },
-            {
-                "name" : "中文书籍索引",
-                "info" : "github.com",
-                "url"  : "https://github.com/justjavac/free-programming-books-zh_CN"
-            },
-            {
-                "name" : "中华典藏",
-                "url"  : "https://www.zhonghuadiancang.com/"
-            }
-            
-        ]
-    },
-    {
         "category": "Github",
         "data": [
             
@@ -1330,6 +1290,85 @@
             {
                 "name" : "insCode",
                 "url"  : "https://inscode.csdn.net/bounties"
+            },
+            {
+                "name" : "程序员客栈",
+                "url"  : "https://www.proginn.com/"
+            },
+            {
+                "name" : "码市",
+                "url"  : "https://codemart.com/"
+            },
+            {
+                "name" : "猪八戒",
+                "url"  : "https://www.zbj.com/"
+            },
+            {
+                "name" : "众包",
+                "url"  : "https://zb.oschina.net/"
+            },
+            {
+                "name" : "智城",
+                "url"  : "http://www.taskcity.com/"
+            },
+            {
+                "name" : "实现",
+                "info" : "远程工作",
+                "url"  : "https://shixian.com/"
+            },
+            {
+                "name" : "猿急送",
+                "url"  : "https://www.yuanjisong.com/"
+            },
+            {
+                "name" : "人人开发",
+                "url"  : "http://rrkf.com/"
+            },
+            {
+                "name" : "开发邦",
+                "url"  : "https://www.kaifabang.com/"
+            },
+            {
+                "name" : "电鸭",
+                "url"  : "https://eleduck.com/"
+            },
+            {
+                "name" : "快码",
+                "url"  : "https://kuaimacode.com/"
+            },
+            {
+                "name" : "英选",
+                "url"  : "https://www.yingxuan.co/"
+            },
+            {
+                "name" : "upwork",
+                "info" : "国外",
+                "url"  : "https://www.upwork.com/"
+            },
+            {
+                "name" : "freelance",
+                "info" : "国外",
+                "url"  : "https://www.freelance.com/"
+            },
+            {
+                "name" : "dribbble",
+                "info" : "国外",
+                "url"  : "https://dribbble.com/jobs"
+            },
+            {
+                "name" : "remoteok",
+                "info" : "国外",
+                "url"  : "https://remoteok.com/"
+            },
+            {
+                "name" : "toptal",
+                "info" : "国外",
+                "url"  : "https://www.toptal.com/"
+            },
+            {
+                "name" : "wellfound",
+                "info" : "国外",
+                "url"  : "https://wellfound.com/remote"
             }
         ]
     },
@@ -1351,18 +1390,18 @@
         "category": "android软件下载",
         "data": [
             {
-                "name" : "android旧版apk下载",
-                "info" : "uptodown",
+                "name" : "uptodown",
+                "info" : "android旧版apk下载",
                 "url"  : "https://cn.uptodown.com/windows"
             },
             {
-                "name" : "android旧版apk下载",
-                "info" : "afreecatv",
+                "name" : "afreecatv",
+                "info" : "android旧版apk下载",
                 "url"  : "https://apkcombo.com/zh/"
             },
             {
-                "name" : "android旧版apk下载",
-                "info" : "apkpure",
+                "name" : "apkpure",
+                "info" : "android旧版apk下载",
                 "url"  : "https://apkpure.com/cn/"
             },
             {
@@ -1370,11 +1409,54 @@
                 "url"  : "https://xiaomirom.com/"
             },
             {
-                "name" : "Xiaomi 全系列机型 ROM 包下载站汇总",
+                "name" : "Xiaomi 全系列机型",
+                "info" : "ROM 包下载站汇总",
                 "url"  : "https://web.vip.miui.com/page/info/mio/mio/detail?isTop=1&postId=5896315"
             }
         ]
     },
+
+    {
+        "category": "电子书",
+        "data": [
+            {
+                "name" : "电子书博物馆",
+                "info" : "Z-Library",
+                "url"  : "https://cn1lib.is/"
+            },
+            {
+                "name" : "英文原版pdf",
+                "info" : "SaltTiger",
+                "url"  : "https://www.salttiger.com/"
+            },
+            {
+                "name" : "英文原版pdf",
+                "info" : "itbook",
+                "url"  : "https://itbook.download/"
+            },
+            {
+                "name" : "IT电子书",
+                "info" : "it-ebooks",
+                "url"  : "http://it-ebooks.info/"
+            },
+            {
+                "name" : "电子书在线看",
+                "info" : "gitbook",
+                "url"  : "https://www.gitbook.com/"
+            },
+            {
+                "name" : "中文书籍索引",
+                "info" : "github.com",
+                "url"  : "https://github.com/justjavac/free-programming-books-zh_CN"
+            },
+            {
+                "name" : "中华典藏",
+                "url"  : "https://www.zhonghuadiancang.com/"
+            }
+            
+        ]
+    },
+
     {
         "category": "小说",
         "data": [
@@ -1383,10 +1465,274 @@
                 "url"  : "https://www.huangdizhijia.com/index.html"
             },
             {
-                "name" : "皇帝之家",
+                "name" : "笔趣阁",
                 "url"  : "http://downnovel.com/"
+            },
+            {
+                "name" : "裁判文书网",
+                "url"  : "https://wenshu.court.gov.cn/"
+            },
+            {
+                "name" : "绍古斋",
+                "url"  : "https://www.shaoguzhai.com/"
+            },
+            {
+                "name" : "一味书屋",
+                "url"  : "http://www.1wei.com/"
+            },
+            {
+                "name" : "书格",
+                "url"  : "https://www.shuge.org/"
+            },
+            {
+                "name" : "旧版书格",
+                "url"  : "https://www.shuge.org/meet/topic/37039/"
+            },
+            {
+                "name" : "知识图谱",
+                "url"  : "https://cnkgraph.com/Book"
+            },
+            {
+                "name" : "国学网",
+                "url"  : "http://www.guoxue.com/"
+            },
+            {
+                "name" : "中国国家图书馆",
+                "url"  : "http://read.nlc.cn/allSearch/searchList?searchType=10024&showType=1&pageNo=1"
+            },
+            {
+                "name" : "HathiTrust数字图书馆",
+                "url"  : "https://www.hathitrust.org/"
+            },
+            {
+                "name" : "日本数字图书馆",
+                "url"  : "https://www.digital.archives.go.jp/"
+            },
+            {
+                "name" : "哈弗数字图书馆",
+                "url"  : "https://library.harvard.edu/"
+            },
+            {
+                "name" : "日本内阁文库藏汉籍",
+                "url"  : "https://www.maguang.net/archives/2835"
+            },
+            {
+                "name" : "剑桥中国研习社",
+                "url"  : "http://www.camcc.org/"
+            },
+            {
+                "name" : "苦瓜书盘",
+                "url"  : "https://kgbook.com/"
+            },
+            {
+                "name" : "读书导航",
+                "url"  : "http://www.zoudupai.com/"
+            },
+            {
+                "name" : "熊猫搜书",
+                "url"  : "https://xmsoushu.com/"
+            },
+            {
+                "name" : "码农书籍",
+                "url"  : "https://www.manongbook.com/"
+            },
+            {
+                "name" : "搜书",
+                "url"  : "https://sobooks.net/"
+            },
+            {
+                "name" : "书籍搜索",
+                "url"  : "https://bks.thefuture.top/"
+            },
+            {
+                "name" : "极客图书",
+                "url"  : "https://jikbook.com/"
+            },
+            {
+                "name" : "kindle图书下载",
+                "url"  : "https://bookfere.com/ebook"
             }
         ]
     }
-    
+    {
+        "category": "网赚",
+        "data": [
+            {
+                "name" : "雪球",
+                "info" : "",
+                "url"  : "https://xueqiu.com/"
+            },
+            {
+                "name" : "巨潮",
+                "info" : "",
+                "url"  : "http://uc.cninfo.com.cn/user/index"
+            },
+            {
+                "name" : "上交所",
+                "info" : "",
+                "url"  : "http://www.sse.com.cn/disclosure/listedinfo/announcement/"
+            },
+            {
+                "name" : "深交所",
+                "info" : "",
+                "url"  : "http://www.szse.cn/"
+            },
+            {
+                "name" : "上证e互动",
+                "info" : "",
+                "url"  : "http://sns.sseinfo.com/index.do"
+            },{
+                "name" : "深交所互动易",
+                "info" : "",
+                "url"  : "https://irm.cninfo.com.cn/"
+            },
+            {
+                "name" : "东财龙虎榜",
+                "info" : "",
+                "url"  : "https://data.eastmoney.com/stock/lhb.html"
+            },
+            {
+                "name" : "同花顺",
+                "info" : "",
+                "url"  : "https://www.10jqka.com.cn/"
+            },
+            {
+                "name" : "同花顺投顾",
+                "info" : "",
+                "url"  : "https://t.10jqka.com.cn/"
+            },
+            {
+                "name" : "同花顺行情中心",
+                "info" : "",
+                "url"  : "http://q.10jqka.com.cn/"
+            },
+            {
+                "name" : "同花顺异动",
+                "info" : "",
+                "url"  : "http://yuanchuang.10jqka.com.cn/mrnxgg_list/"
+            },
+            {
+                "name" : "生意社",
+                "info" : "",
+                "url"  : "http://www.100ppi.com/"
+            },
+            {
+                "name" : "郑商所",
+                "info" : "",
+                "url"  : "http://www.czce.com.cn/"
+            },
+            {
+                "name" : "烯牛数据",
+                "info" : "",
+                "url"  : "https://www.xiniudata.com/"
+            },
+            {
+                "name" : "选股吧",
+                "info" : "",
+                "url"  : "https://xuangubao.cn/"
+            },
+            {
+                "name" : "中债信息网",
+                "info" : "",
+                "url"  : "https://www.chinabond.com.cn/"
+            },{
+                "name" : "财联社",
+                "info" : "",
+                "url"  : "https://www.cls.cn/"
+            },
+            {
+                "name" : "牛散最新持股",
+                "info" : "",
+                "url"  : "http://cwzx.shdjt.com/top500.asp?pd=1"
+            },
+            {
+                "name" : "金投网",
+                "info" : "",
+                "url"  : "https://quote.cngold.org/gjs/swhj_zghj.html"
+            },
+            {
+                "name" : "外汇交易中心",
+                "info" : "",
+                "url"  : "https://www.chinamoney.com.cn/chinese/index.html"
+            },
+            {
+                "name" : "股债利差",
+                "info" : "",
+                "url"  : "https://legulegu.com/stockdata/equity-bond-spread"
+            },{
+                "name" : "缠中说禅",
+                "info" : "",
+                "url"  : "https://blog.sina.com.cn/s/articlelist_1215172700_0_1.html"
+            },
+            {
+                "name" : "中国持有美债",
+                "info" : "",
+                "url"  : "https://www.ceicdata.com.cn/zh-hans/china/holdings-of-us-treasury-securities"
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },{
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },{
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            },
+            {
+                "name" : "",
+                "info" : "",
+                "url"  : ""
+            }
+            
+        ]
+    },
 ]
