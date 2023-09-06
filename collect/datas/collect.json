@@ -18,22 +18,71 @@
         ]
     },
     {
-        "category": "前端导航",
+        "category": "聚合工具",
         "data": [
             {
-                "name": "印记中国",
-                "info":"docschina",
-                "url": "https://docschina.org/"
+                "name": "不求人导航",
+                "url": "https://video.bqrdh.com/"
             },
             {
-                "name": "segmentfault",
-                "info":"segmentfault",
-                "url": "https://segmentfault.com/"
+                "name": "Tbox导航",
+                "url": "https://www.tboxn.com/"
             },
             {
-                "name": "稀土掘金",
-                "info":"juejin",
-                "url": "https://juejin.cn/"
+                "name": "小众技术",
+                "info":"聚合工具",
+                "url": "https://www.xiaozhongjishu.com/"
+            },
+            {
+                "name": "磁力天堂",
+                "info":"聚合工具",
+                "url": "https://btlm.cc/"
+            }
+        ]
+    },
+    {
+        "category": "AI工具",
+        "data": [
+            {
+                "name": "google bard",
+                "url": "https://bard.google.com/"
+            },
+            {
+                "name": "chatGPT",
+                "url": "https://chat.openai.com/"
+            },
+            {
+                "name": "文心一言",
+                "url": "https://yiyan.baidu.com/"
+            },
+            {
+                "name": "AI人工智能图片放大",
+                "url": "https://bigjpg.com/"
+            },
+            {
+                "name": "RWKV-Runner",
+                "info":"大语言模型",
+                "url": "https://github.com/josStorer/RWKV-Runner/blob/master/README_ZH.md"
+            },
+            {
+                "name": "写作宝",
+                "info":"AI驱动的文字生产力工具",
+                "url": "https://www.aixiezuobao.com/?stzhljx20230607-344459386"
+            },
+            {
+                "name": "飞浆",
+                "info":"paddlepaddle",
+                "url": "https://www.paddlepaddle.org.cn/"
+            },
+            {
+                "name": "灵感中心",
+                "info":"百度AI",
+                "url": "https://inspiration.baidu.com/app?refer_page=use_app&srcid=&tplname=&order=&lid=&source=aisearch&is_immersed=0"
+            },
+            {
+                "name": "controlnet使用说明",
+                "info":"",
+                "url": "https://stable-diffusion-art.com/controlnet/"
             }
         ]
     },
@@ -95,7 +144,6 @@
                 "info":"",
                 "url": "https://analytics.google.com/analytics/web/"
             }
-            
         ]
     },
     {
@@ -154,48 +202,7 @@
             }
         ]
     },
-    {
-        "category": "AI工具",
-        "data": [
-            {
-                "name": "google bard",
-                "url": "https://bard.google.com/"
-            },
-            {
-                "name": "chatGPT",
-                "url": "https://chat.openai.com/"
-            },
-            {
-                "name": "AI人工智能图片放大",
-                "url": "https://bigjpg.com/"
-            },
-            {
-                "name": "RWKV-Runner",
-                "info":"大语言模型",
-                "url": "https://github.com/josStorer/RWKV-Runner/blob/master/README_ZH.md"
-            },
-            {
-                "name": "写作宝",
-                "info":"AI驱动的文字生产力工具",
-                "url": "https://www.aixiezuobao.com/?stzhljx20230607-344459386"
-            },
-            {
-                "name": "飞浆",
-                "info":"paddlepaddle",
-                "url": "https://www.paddlepaddle.org.cn/"
-            },
-            {
-                "name": "灵感中心",
-                "info":"百度AI",
-                "url": "https://inspiration.baidu.com/app?refer_page=use_app&srcid=&tplname=&order=&lid=&source=aisearch&is_immersed=0"
-            },
-            {
-                "name": "controlnet使用说明",
-                "info":"",
-                "url": "https://stable-diffusion-art.com/controlnet/"
-            }
-        ]
-    },
+    
     {
         "category": "图片工具",
         "data": [
@@ -256,31 +263,9 @@
             }
         ]
     },
+    
     {
-        "category": "聚合工具",
-        "data": [
-            {
-                "name": "不求人导航",
-                "url": "https://video.bqrdh.com/"
-            },
-            {
-                "name": "Tbox导航",
-                "url": "https://www.tboxn.com/"
-            },
-            {
-                "name": "小众技术",
-                "info":"聚合工具",
-                "url": "https://www.xiaozhongjishu.com/"
-            },
-            {
-                "name": "磁力天堂",
-                "info":"聚合工具",
-                "url": "https://btlm.cc/"
-            }
-        ]
-    },
-    {
-        "category": "CDN",
+        "category": "CDN资源",
         "data": [
             {
                 "name": "字节静态资源公共库",
@@ -632,103 +617,6 @@
         ]
     },
     {
-        "category": "视频教程",
-        "data": [
-            {
-                "name" : "英文在线学习",
-                "url"  : "https://laracasts.com/"
-            },
-            {
-                "name" : "webGL教学网",
-                "url"  : "http://www.hewebgl.com/"
-            },
-            {
-                "name" : "php第一社区",
-                "url"  : "https://www.php1.cn/"
-            },
-            {
-                "name" : "php开发者社区",
-                "url"  : "http://www.phpchina.com/"
-            },
-            {
-                "name" : "廖雪峰",
-                "url"  : "https://www.liaoxuefeng.com/"
-            },
-            {
-                "name" : "google技术学习",
-                "url"  : "https://codelabs.developers.google.com/"
-            },
-            {
-                "name" : "w3schools",
-                "url"  : "https://www.w3schools.com/"
-            },
-            {
-                "name" : "25学堂",
-                "url"  : "https://www.25xt.com/"
-            },
-            {
-                "name" : "51cto",
-                "url"  : "https://edu.51cto.com/"
-            },
-            {
-                "name" : "尚学堂",
-                "url"  : "http://www.bjsxt.com/"
-            },
-            {
-                "name" : "IT教程吧",
-                "url"  : "https://www.itjc8.com/"
-            },
-            {
-                "name" : "慕课网",
-                "url"  : "https://www.imooc.com/"
-            },
-            {
-                "name" : "php中文网",
-                "url"  : "https://www.php.cn/"
-            },
-            {
-                "name" : "我要自学网",
-                "info" : "电脑办公,平面设计,室内设计,室外设计,影视动画,机械设计,工业自动,程序设计,会计课程",
-                "url"  : "https://www.51zxw.net/"
-            },
-            {
-                "name" : "溜溜自学",
-                "info" : "室内设计,建筑景观,视频制作,平面设计,游戏动画,工业产品",
-                "url"  : "https://zixue.3d66.com/"
-            }
-        ]
-    },
-    {
-        "category": "公共教育",
-        "data": [
-            {
-                "name" : "中小学智慧教育",
-                "url"  : "https://www.zxx.edu.cn/"
-            },
-            {
-                "name" : "公共教育资源服务平台",
-                "url"  : "https://www.eduyun.cn/"
-            },
-            {
-                "name" : "求索之路",
-                "url"  : "https://www.qiusuozhilu.com/"
-            },
-            {
-                "name" : "全历史",
-                "url"  : "https://www.allhistory.com/"
-            }
-        ]
-    },
-    {
-        "category": "学习资源",
-        "data": [
-            {
-                "name" : "图欧学习资源库",
-                "url"  : "https://tuostudy.com/"
-            }
-        ]
-    },
-    {
         "category": "博客",
         "data": [
             {
@@ -909,10 +797,6 @@
                 "url"  : "https://www.now.cc/"
             },
             {
-                "name" : "学生免费域名",
-                "url"  : "https://nc.me/"
-            },
-            {
                 "name": "ip归属地查询",
                 "info":"whatismyipaddress",
                 "url": "https://whatismyipaddress.com/"
@@ -924,7 +808,7 @@
             },
             {
                 "name": "ipv6查询",
-                "info":"ipw",
+                "info":"ipw.cn",
                 "url": "https://ipw.cn/ipv6/"
             },
             {
@@ -936,28 +820,28 @@
                 "url": "https://www.speedtest.net/"
             },
             {
-                "name" : "cloudflare优选",
-                "info" : "CloudFlareYes",
+                "name" : "CloudFlareYes",
+                "info" : "cloudflare优选",
                 "url"  : "https://stock.hostmonit.com/CloudFlareYes"
             },
             {
-                "name" : "cloudflare优选",
-                "info" : "阿拉伯语，自动查询",
+                "name" : "阿拉伯语，自动查询",
+                "info" : "cloudflare优选",
                 "url"  : "https://vfarid.github.io/cf-ip-scanner/?max=30"
             },
             {
-                "name" : "cdn节点",
-                "info" : "cloudfront",
+                "name" : "cloudfront",
+                "info" : "cdn节点",
                 "url"  : "https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips"
             },
             {
-                "name" : "cdn节点",
-                "info" : "cloudflare",
+                "name" : "cloudflare",
+                "info" : "cdn节点",
                 "url"  : "https://www.cloudflare.com/ips-v4"
             },
             {
-                "name" : "cdn节点",
-                "info" : "gcore",
+                "name" : "gcore",
+                "info" : "cdn节点",
                 "url"  : "https://api.gcorelabs.com/cdn/public-net-list"
             },
             {
@@ -1081,17 +965,12 @@
         ]
     },
     {
-        "category": "设计导航",
+        "category": "素材",
         "data": [
             {
                 "name" : "微软灵感设计",
                 "info" : "designer.microsoft",
                 "url"  : "https://designer.microsoft.com/"
-            },
-            {
-                "name" : "优设导航",
-                "info" : "设计师网址导航",
-                "url"  : "http://hao.uisdc.com/"
             },
             {
                 "name" : "freepik",
@@ -1124,6 +1003,21 @@
                 "url"  : "https://depositphotos.com/cn/"
             },
             {
+                "name" : "大作flickr",
+                "info" : "付费",
+                "url"  : "http://www.bigbigwork.com/flickr.html"
+            }
+        ]
+    },
+    {
+        "category": "设计",
+        "data": [
+            {
+                "name" : "优设导航",
+                "info" : "设计师网址导航",
+                "url"  : "http://hao.uisdc.com/"
+            },
+            {
                 "name" : "设计导航",
                 "info" : "设计导航",
                 "url"  : "http://hao.shejidaren.com/"
@@ -1149,26 +1043,6 @@
                 "url"  : "https://www.lanqb.com/topics/brush"
             },
             {
-                "name" : "大作flickr",
-                "info" : "付费",
-                "url"  : "http://www.bigbigwork.com/flickr.html"
-            }
-        ]
-    },
-    {
-        "category": "3D设计",
-        "data": [
-            {
-                "name": "blender",
-                "info" : "建模",
-                "url": "https://blender.bgteach.com/"
-            }
-        ]
-    },
-    {
-        "category": "LOGO设计",
-        "data": [
-            {
                 "name": "logosc",
                 "url": "https://www.logosc.cn/"
             },
@@ -1183,6 +1057,11 @@
             {
                 "name": "logoaa",
                 "url": "https://www.logoaa.com/"
+            },
+            {
+                "name": "blender",
+                "info" : "建模",
+                "url": "https://blender.bgteach.com/"
             }
         ]
     },
@@ -1415,7 +1294,103 @@
             }
         ]
     },
-
+    {
+        "category": "视频教程",
+        "data": [
+            {
+                "name" : "英文在线学习",
+                "url"  : "https://laracasts.com/"
+            },
+            {
+                "name" : "webGL教学网",
+                "url"  : "http://www.hewebgl.com/"
+            },
+            {
+                "name" : "php第一社区",
+                "url"  : "https://www.php1.cn/"
+            },
+            {
+                "name" : "php开发者社区",
+                "url"  : "http://www.phpchina.com/"
+            },
+            {
+                "name" : "廖雪峰",
+                "url"  : "https://www.liaoxuefeng.com/"
+            },
+            {
+                "name" : "google技术学习",
+                "url"  : "https://codelabs.developers.google.com/"
+            },
+            {
+                "name" : "w3schools",
+                "url"  : "https://www.w3schools.com/"
+            },
+            {
+                "name" : "25学堂",
+                "url"  : "https://www.25xt.com/"
+            },
+            {
+                "name" : "51cto",
+                "url"  : "https://edu.51cto.com/"
+            },
+            {
+                "name" : "尚学堂",
+                "url"  : "http://www.bjsxt.com/"
+            },
+            {
+                "name" : "IT教程吧",
+                "url"  : "https://www.itjc8.com/"
+            },
+            {
+                "name" : "慕课网",
+                "url"  : "https://www.imooc.com/"
+            },
+            {
+                "name" : "php中文网",
+                "url"  : "https://www.php.cn/"
+            },
+            {
+                "name" : "我要自学网",
+                "info" : "电脑办公,平面设计,室内设计,室外设计,影视动画,机械设计,工业自动,程序设计,会计课程",
+                "url"  : "https://www.51zxw.net/"
+            },
+            {
+                "name" : "溜溜自学",
+                "info" : "室内设计,建筑景观,视频制作,平面设计,游戏动画,工业产品",
+                "url"  : "https://zixue.3d66.com/"
+            }
+        ]
+    },
+    {
+        "category": "公共教育",
+        "data": [
+            {
+                "name" : "中小学智慧教育",
+                "url"  : "https://www.zxx.edu.cn/"
+            },
+            {
+                "name" : "公共教育资源服务平台",
+                "url"  : "https://www.eduyun.cn/"
+            },
+            {
+                "name" : "求索之路",
+                "url"  : "https://www.qiusuozhilu.com/"
+            },
+            {
+                "name" : "全历史",
+                "url"  : "https://www.allhistory.com/"
+            }
+        ]
+    },
+    {
+        "category": "学习资源",
+        "data": [
+            {
+                "name" : "图欧学习资源库",
+                "url"  : "https://tuostudy.com/"
+            }
+        ]
+    },
     {
         "category": "电子书",
         "data": [
@@ -1452,25 +1427,6 @@
             {
                 "name" : "中华典藏",
                 "url"  : "https://www.zhonghuadiancang.com/"
-            }
-            
-        ]
-    },
-
-    {
-        "category": "小说",
-        "data": [
-            {
-                "name" : "皇帝之家",
-                "url"  : "https://www.huangdizhijia.com/index.html"
-            },
-            {
-                "name" : "笔趣阁",
-                "url"  : "http://downnovel.com/"
-            },
-            {
-                "name" : "裁判文书网",
-                "url"  : "https://wenshu.court.gov.cn/"
             },
             {
                 "name" : "绍古斋",
@@ -1519,6 +1475,24 @@
             {
                 "name" : "剑桥中国研习社",
                 "url"  : "http://www.camcc.org/"
+            }
+        ]
+    },
+
+    {
+        "category": "小说",
+        "data": [
+            {
+                "name" : "皇帝之家",
+                "url"  : "https://www.huangdizhijia.com/index.html"
+            },
+            {
+                "name" : "笔趣阁",
+                "url"  : "http://downnovel.com/"
+            },
+            {
+                "name" : "裁判文书网",
+                "url"  : "https://wenshu.court.gov.cn/"
             },
             {
                 "name" : "苦瓜书盘",
