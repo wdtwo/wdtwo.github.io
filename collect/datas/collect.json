@@ -1553,7 +1553,7 @@
                 "url"  : "https://bookfere.com/ebook"
             }
         ]
-    }
+    },
     {
         "category": "网赚",
         "data": [
@@ -1668,71 +1668,7 @@
                 "name" : "中国持有美债",
                 "info" : "",
                 "url"  : "https://www.ceicdata.com.cn/zh-hans/china/holdings-of-us-treasury-securities"
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },{
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },{
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
-            },
-            {
-                "name" : "",
-                "info" : "",
-                "url"  : ""
             }
-            
         ]
-    },
+    }
 ]
