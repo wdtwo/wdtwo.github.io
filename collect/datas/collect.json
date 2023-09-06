@@ -83,6 +83,31 @@
                 "name": "controlnet使用说明",
                 "info":"",
                 "url": "https://stable-diffusion-art.com/controlnet/"
+            },
+            {
+                "name": "照片头像动起来",
+                "info":"图片转视频",
+                "url": "https://www.myheritage.es/deep-nostalgia"
+            },
+            {
+                "name": "照片阅读文本",
+                "info":"图片转视频",
+                "url": "https://studio.d-id.com/"
+            },
+            {
+                "name": "照片周期运动",
+                "info":"图片转视频",
+                "url": "https://convert.leiapix.com/"
+            },
+            {
+                "name": "civitai模型库",
+                "info":"AI生成图片",
+                "url": "https://civitai.com/"
+            },
+            {
+                "name": "huggingface模型库",
+                "info":"AI生成图片",
+                "url": "https://huggingface.co/"
             }
         ]
     },
@@ -212,7 +237,7 @@
             }, 
             {
                 "name": "图片压缩",
-                "info":"熊猫",
+                "info":"tinypng",
                 "url": "https://tinypng.com/"
             }, 
             {
@@ -229,6 +254,11 @@
                 "name": "tinywow",
                 "info":"图片视频等文件编辑",
                 "url": "https://tinywow.com/tools"
+            },
+            {
+                "name": "批量裁剪",
+                "info":"",
+                "url": "https://www.birme.net/"
             },
             {
                 "name": "在线文件格式转换",
