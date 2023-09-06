@@ -108,6 +108,11 @@
                 "name": "huggingface模型库",
                 "info":"AI生成图片",
                 "url": "https://huggingface.co/"
+            },
+            {
+                "name": "sd提示词",
+                "info":"",
+                "url": "/sd-tags/index.html"
             }
         ]
     },
