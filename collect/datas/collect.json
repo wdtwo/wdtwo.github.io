@@ -105,6 +105,11 @@
                 "url": "https://civitai.com/"
             },
             {
+                "name": "liblibai模型库",
+                "info":"AI生成图片",
+                "url": "https://www.liblibai.com/"
+            },
+            {
                 "name": "huggingface模型库",
                 "info":"AI生成图片",
                 "url": "https://huggingface.co/"
@@ -113,6 +118,56 @@
                 "name": "sd提示词",
                 "info":"",
                 "url": "/sd-tags/index.html"
+            },
+            {
+                "name": "sd提示词",
+                "info":"",
+                "url": "https://thereisnospon.github.io/NovelAiTag/"
+            },
+            {
+                "name": "标签超市",
+                "info":"",
+                "url": "https://tags.novelai.dev/"
+            },
+            {
+                "name": "在线生成AI图片",
+                "info":"playgroundai",
+                "url": "https://playgroundai.com/create"
+            },
+            {
+                "name": "在线生成AI图片",
+                "info":"deepai",
+                "url": "https://deepai.org/machine-learning-model/text2img"
+            },
+            {
+                "name": "在线生成AI图片",
+                "info":"dream",
+                "url": "https://dream.ai/create"
+            },
+            {
+                "name": "在线生成AI图片",
+                "info":"dreamstudio",
+                "url": "https://beta.dreamstudio.ai/generate"
+            },
+            {
+                "name": "在线生成AI图片",
+                "info":"lexica",
+                "url": "https://lexica.art/"
+            },
+            {
+                "name": "AI工具导航",
+                "info":"wogaosuni",
+                "url": "http://wogaosuni.cn/"
+            },
+            {
+                "name": "图片无损放大",
+                "info":"bigjpg",
+                "url": "https://bigjpg.com/"
+            },
+            {
+                "name": "视频人物更换模型",
+                "info":"wonderdynamics",
+                "url": "https://wonderdynamics.com/"
             }
         ]
     },
@@ -1139,6 +1194,41 @@
             {
                 "name": "pinterest",
                 "url": "https://www.pinterest.com/"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "pixiv",
+                "url": "https://www.pixiv.net/"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "donmai",
+                "url": "https://danbooru.donmai.us/"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "behoimi",
+                "url": "http://behoimi.org/"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "yande",
+                "url": "https://yande.re/post"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "konachan",
+                "url": "https://konachan.com/"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "aitags",
+                "url": "https://aitags.fun/"
+            },
+            {
+                "name": "漫画插画素材",
+                "info": "gelbooru",
+                "url": "https://gelbooru.com/"
             }
         ]
     },
