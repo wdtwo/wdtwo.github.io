@@ -297,10 +297,17 @@
             },
             {
                 "name": "golang中文文档",
+                "info" : "golang",
                 "url": "https://www.topgoer.cn/docs/golang/golang-1ccjbpfstsfi1"
             },
             {
+                "name": "golang中文网",
+                "info" : "golang",
+                "url": "https://studygolang.com/"
+            },
+            {
                 "name": "golang中文API",
+                "info" : "golang",
                 "url": "https://studygolang.com/pkgdoc"
             }
         ]
