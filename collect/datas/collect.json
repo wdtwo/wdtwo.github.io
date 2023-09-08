@@ -201,6 +201,11 @@
                 "url": "https://tool.lu/"
             },
             {
+                "name": "UU工具箱",
+                "info":"聚合工具",
+                "url": "https://uutool.cn/"
+            },
+            {
                 "name": "代码格式化",
                 "info":"html,css,js,json",
                 "url": "http://tool.oschina.net/codeformat/js"
