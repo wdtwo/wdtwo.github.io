@@ -60,19 +60,19 @@
                 "url": "https://bigjpg.com/"
             },
             {
-                "name": "RWKV-Runner",
-                "info":"大语言模型",
-                "url": "https://github.com/josStorer/RWKV-Runner/blob/master/README_ZH.md"
+                "name": "Miku轻量工具",
+                "info":"聚合工具",
+                "url": "https://tools.miku.ac/"
+            },
+            {
+                "name": "AI工具导航",
+                "info":"wogaosuni",
+                "url": "http://wogaosuni.cn/"
             },
             {
                 "name": "写作宝",
                 "info":"AI驱动的文字生产力工具",
                 "url": "https://www.aixiezuobao.com/?stzhljx20230607-344459386"
-            },
-            {
-                "name": "飞浆",
-                "info":"paddlepaddle",
-                "url": "https://www.paddlepaddle.org.cn/"
             },
             {
                 "name": "灵感中心",
@@ -155,11 +155,6 @@
                 "url": "https://lexica.art/"
             },
             {
-                "name": "AI工具导航",
-                "info":"wogaosuni",
-                "url": "http://wogaosuni.cn/"
-            },
-            {
                 "name": "图片无损放大",
                 "info":"bigjpg",
                 "url": "https://bigjpg.com/"
@@ -168,28 +163,27 @@
                 "name": "视频人物更换模型",
                 "info":"wonderdynamics",
                 "url": "https://wonderdynamics.com/"
-            }
-        ]
-    },
-    {
-        "category": "其他仓库",
-        "data": [
-            {
-                "name": "Miku轻量工具",
-                "info":"聚合工具",
-                "url": "https://tools.miku.ac/"
             },
             {
-                "name": "前端开发仓库",
-                "info":"其他仓库",
-                "url": "http://code.ciaoca.com/"
-            }
-           
+                "name": "RWKV-Runner",
+                "info":"大语言模型",
+                "url": "https://github.com/josStorer/RWKV-Runner/blob/master/README_ZH.md"
+            },
+            {
+                "name": "飞浆",
+                "info":"paddlepaddle",
+                "url": "https://www.paddlepaddle.org.cn/"
+            },
         ]
     },
     {
         "category": "开发工具",
         "data": [
+            {
+                "name": "前端开发仓库",
+                "info":"其他仓库",
+                "url": "http://code.ciaoca.com/"
+            },
             {
                 "name": "菜鸟在线调试工具",
                 "info":"聚合工具",
@@ -369,6 +363,10 @@
                 "name": "golang中文API",
                 "info" : "golang",
                 "url": "https://studygolang.com/pkgdoc"
+            },
+            {
+                "name": "go包管理库",
+                "url": "https://gorm.io/zh_CN/"
             }
         ]
     },
@@ -398,10 +396,6 @@
             {
                 "name": "静态前端资源库CDN",
                 "url": "https://cdn.baomitu.com/"
-            },
-            {
-                "name": "go包管理库",
-                "url": "https://gorm.io/zh_CN/"
             }
         ]
     },
