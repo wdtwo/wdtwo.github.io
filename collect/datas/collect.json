@@ -155,6 +155,16 @@
                 "url": "https://lexica.art/"
             },
             {
+                "name": "adobe在线AI作画",
+                "info":"discover",
+                "url": "https://photoshop.adobe.com/discover"
+            },
+            {
+                "name": "firefly在线AI作画",
+                "info":"firefly",
+                "url": "https://firefly.adobe.com/"
+            },
+            {
                 "name": "图片无损放大",
                 "info":"bigjpg",
                 "url": "https://bigjpg.com/"
@@ -315,6 +325,11 @@
                 "url": "https://tinywow.com/tools"
             },
             {
+                "name": "svg徽章制作",
+                "info":"shields",
+                "url": "https://shields.io/"
+            },
+            {
                 "name": "批量裁剪",
                 "info":"",
                 "url": "https://www.birme.net/"
@@ -363,6 +378,11 @@
                 "name": "golang中文API",
                 "info" : "golang",
                 "url": "https://studygolang.com/pkgdoc"
+            },
+            {
+                "name": "fyne中文API",
+                "info" : "fyne",
+                "url": "https://www.topgoer.cn/docs/fyne/fyne-1e2fi58566ilg"
             },
             {
                 "name": "go包管理库",
@@ -976,6 +996,14 @@
             {
                 "name" : "卡提诺",
                 "url"  : "https://ck101.tw/"
+            },
+            {
+                "name" : "黑果小兵",
+                "url"  : "https://blog.daliansky.net/"
+            },
+            {
+                "name" : "Adobe 2023软件下载",
+                "url"  : "https://www.ghxi.com/adobe2023.html"
             }
         ]
     },
@@ -1023,7 +1051,6 @@
                 "info" : "js图片识别文字",
                 "url"  : "https://tesseract.projectnaptha.com/"
             },
-            
             {
                 "name" : "v2ray流量统计",
                 "info" : "v2ray-data-stat",
@@ -1051,13 +1078,28 @@
             },
             {
                 "name" : "数字增长动画",
-                "info" : "数字增长动画",
+                "info" : "countUp.js",
                 "url"  : "https://github.com/inorganik/countUp.js"
             },
             {
                 "name" : "字蛛",
-                "info" : "字蛛",
+                "info" : "font-spider",
                 "url"  : "https://github.com/aui/font-spider"
+            },
+            {
+                "name" : "带弹幕的视频播放器",
+                "info" : "DPlayer",
+                "url"  : "https://github.com/DIYgod/DPlayer"
+            },
+            {
+                "name" : "golang图形GUI",
+                "info" : "fyne",
+                "url"  : "https://github.com/fyne-io/fyne"
+            },
+            {
+                "name" : "Golang轻量级TCP并发服务器框架",
+                "info" : "zinx",
+                "url"  : "https://github.com/aceld/zinx/tree/master"
             }
         ]
     },
@@ -1594,6 +1636,10 @@
     {
         "category": "小说",
         "data": [
+            {
+                "name" : "微信读书",
+                "url"  : "https://weread.qq.com/web/shelf"
+            },
             {
                 "name" : "皇帝之家",
                 "url"  : "https://www.huangdizhijia.com/index.html"
