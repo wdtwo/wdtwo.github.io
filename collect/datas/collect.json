@@ -461,6 +461,11 @@
                 "url"  : "https://whatismyipaddress.com/"
             },
             {
+                "name" : "ip查询api",
+                "info" : "ip归属地查询",
+                "url"  : "https://ip-api.com/"
+            },
+            {
                 "info" : "ip多地检测",
                 "name" : "ping.pe",
                 "url"  : "https://ping.pe/"
