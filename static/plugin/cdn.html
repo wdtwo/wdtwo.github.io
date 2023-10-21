@@ -189,7 +189,7 @@
 			
 			for(var i = 0; i < cdnip.length; i++){
 				node_data = node_data.replace(/(\"add\": ?\")(.*?)(\"\,)/,"$1"+cdnip[i]+"$3");
-				console.log(node_data);
+				// console.log(node_data);
 				console.log(`当前进度:${i}/${cdnip.length}`);
 				nodes.push(vmess_pre+btoa(node_data)+"\n")
 			}

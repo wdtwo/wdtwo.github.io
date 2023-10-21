@@ -153,7 +153,6 @@
 			共有 ${numberOfIPsBetween} 个IP
 			`
 			document.querySelector('#output').innerHTML = str
-			console.log(mima)
 		})
 
 		function calculateSubnetFirstAndLastIP(networkAddress, prefixLength) {
@@ -188,7 +187,8 @@
 		
 			// 确保IP地址有四个部分
 			if (ipParts.length !== 4) {
-			throw new Error("Invalid IP address format");
+				document.querySelector('#output').innerHTML = "ip地址网填写错误!"
+				throw new Error("Invalid IP address format");
 			}
 		
 			// 将每个部分转换为数值，并合并成一个32位的整数
