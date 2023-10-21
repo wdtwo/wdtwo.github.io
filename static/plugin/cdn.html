@@ -181,14 +181,15 @@
 		
 		if(sample_node.indexOf(vmess_pre) == 0){
 			node_data = atob(sample_node.slice(vmess_pre.length,sample_node.length))
-			var re=/\"add\": ?\"(.*?)\"/;
+			var re=/\"ps\": ?\"(.*?)\"/;
 			var node_host=node_data.match(re)[1];
-			node_data = node_data.replace(/(\"host\": ?\")(.*?)(\"\,)/,"$1"+node_host+"$3");
-			//console.log(JSON.parse( node_data));
+			console.log(node_data);
+			// node_data = node_data.replace(/(\"host\": ?\")(.*?)(\"\,)/,"$1"+node_host+"$3");
+			// console.log(JSON.parse(node_data));
 			
 			for(var i = 0; i < cdnip.length; i++){
 				node_data = node_data.replace(/(\"add\": ?\")(.*?)(\"\,)/,"$1"+cdnip[i]+"$3");
-				//console.log(node_data);
+				console.log(node_data);
 				console.log(`当前进度:${i}/${cdnip.length}`);
 				nodes.push(vmess_pre+btoa(node_data)+"\n")
 			}
