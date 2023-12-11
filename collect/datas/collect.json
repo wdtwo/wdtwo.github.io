@@ -1271,6 +1271,11 @@
                 "name": "漫画插画素材",
                 "info": "gelbooru",
                 "url": "https://gelbooru.com/"
+            },
+            {
+                "name": "国旗svg",
+                "info": "flagicons",
+                "url": "https://flagicons.lipis.dev/"
             }
         ]
     },
