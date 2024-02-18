@@ -494,15 +494,26 @@
                 "url"  : "https://vfarid.github.io/cf-ip-scanner/?max=30"
             },
             {
+                "name" : "服务商ip地址位置",
+                "info" : "netify.ai",
+                "url"  : "https://www.netify.ai/resources/networks"
+            },
+            {
                 "name" : "cloudfront",
                 "info" : "cdn节点",
                 "url"  : "https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips"
+            },
+            {
+                "name" : "cloudfront",
+                "info" : "亚马逊边缘网络ip位置",
+                "url"  : "https://www.netify.ai/resources/networks/amazon-cloudfront"
             },
             {
                 "name" : "cloudflare",
                 "info" : "cdn节点",
                 "url"  : "https://www.cloudflare.com/ips-v4"
             },
+            
             {
                 "name" : "gcore",
                 "info" : "cdn节点",
