@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/01/31/threejs原生学习.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <a href="/" class="header-title">
+        WDTWO Blog
+    </a>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/bookmark">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+    
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">threejs原生学习</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-01-31
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/bruno-simon/" rel="tag">Bruno Simon</a>,<a class="archive-item-tag-none-link" href="/tag/js/" rel="tag">js</a>,<a class="archive-item-tag-none-link" href="/tag/threejs/" rel="tag">threejs</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <h2 id="01环境配置"><a href="#01环境配置" class="headerlink" title="01环境配置"></a>01环境配置</h2><p>下载 <a target="_blank" rel="noopener" href="https://github.com/mrdoob/three.js">https://github.com/mrdoob/three.js</a><br>####运行环境安装</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">npm install live-server -g<br></code></pre></td></tr></table></figure>
+<p>es5引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">script src=<span class="hljs-string">&#x27;./src/three.js&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable constant_">THREE</span>.<span class="hljs-property">Scene</span>)<br></code></pre></td></tr></table></figure>
+<p>es6 module引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">script type=<span class="hljs-string">&#x27;module&#x27;</span><br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">THREE</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./src/three.module.js&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable constant_">THREE</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="02创建3D场景"><a href="#02创建3D场景" class="headerlink" title="02创建3D场景"></a>02创建3D场景</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">THREE</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./src/three.module.js&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable constant_">THREE</span>);<br><span class="hljs-comment">//创建一个3D场景</span><br><span class="hljs-keyword">const</span> scene = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Scene</span>()<br><span class="hljs-comment">//创建一个长方体</span><br><span class="hljs-keyword">const</span> geometry = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BoxGeometry</span>(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">100</span>)<br><span class="hljs-comment">//设置材质</span><br><span class="hljs-keyword">const</span> material = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">MeshBasicMaterial</span>(&#123;<br>    <span class="hljs-attr">color</span>:<span class="hljs-string">&#x27;ff9999&#x27;</span>,<br>    <span class="hljs-attr">transparent</span>:<span class="hljs-literal">true</span>,<span class="hljs-comment">//允许透明</span><br>    <span class="hljs-attr">opacity</span>:<span class="hljs-number">0.5</span><br>&#125;)<br><span class="hljs-comment">//创建一个网格模型对象 把创建的物体和材质绑定到网格模型</span><br><span class="hljs-keyword">const</span> mesh = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>(geometry,material)<br><span class="hljs-comment">//把网格模型添加到3D场景中</span><br>scene.<span class="hljs-title function_">add</span>(mesh)<br></code></pre></td></tr></table></figure>
+
+<h2 id="03渲染3D场景"><a href="#03渲染3D场景" class="headerlink" title="03渲染3D场景"></a>03渲染3D场景</h2><p>渲染器renderer控制相机camera对3D场景Scene进行拍照</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//创建一个透视相机</span><br><span class="hljs-keyword">let</span> width = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>,<br>height = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>;<br><span class="hljs-keyword">const</span> camera = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PerspectiveCamera</span>( <span class="hljs-number">45</span>, width / height, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span> );<br><span class="hljs-comment">//设置相机的位置</span><br>camera.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">200</span>,<span class="hljs-number">200</span>,<span class="hljs-number">200</span>)<br><span class="hljs-comment">//设置相机的拍摄方向</span><br>camera.<span class="hljs-title function_">lookAt</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br><br><span class="hljs-comment">//创建一个webgl渲染器</span><br><span class="hljs-keyword">const</span> render = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">WebGLRenderer</span>(&#123;<br>    <span class="hljs-attr">alpha</span>:<span class="hljs-literal">true</span> <span class="hljs-comment">//背景透明</span><br>&#125;)<br><span class="hljs-comment">//设置渲染的宽高</span><br>renderer.<span class="hljs-title function_">setPixelRatio</span>( <span class="hljs-variable language_">window</span>.<span class="hljs-property">devicePixelRatio</span> );<span class="hljs-comment">//像素比</span><br>renderer.<span class="hljs-title function_">setSize</span>(width,height);<span class="hljs-comment">//设置canvas宽高</span><br>renderer.<span class="hljs-property">outputEncoding</span> = <span class="hljs-variable constant_">THREE</span>.<span class="hljs-property">sRGBEncoding</span>;<span class="hljs-comment">//定义渲染器的输出编码 默认为THREE.LinearEncoding</span><br>renderer.<span class="hljs-property">shadowMap</span>.<span class="hljs-property">enabled</span> = <span class="hljs-literal">true</span>;<span class="hljs-comment">//阴影贴图</span><br><span class="hljs-comment">//执行渲染</span><br>render.<span class="hljs-title function_">render</span>(scene,camera)<br><span class="hljs-comment">//输出到页面</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(render.<span class="hljs-property">domElement</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="04添加光源"><a href="#04添加光源" class="headerlink" title="04添加光源"></a>04添加光源</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//添加一个环境光 </span><br><span class="hljs-keyword">const</span> ambient = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AmbientLight</span>(<span class="hljs-string">&#x27;ff99ff&#x27;</span>,<span class="hljs-number">0.3</span>)<br>scene.<span class="hljs-title function_">add</span>(ambient)<br><span class="hljs-comment">//添加一个平行光</span><br><span class="hljs-keyword">const</span> directional = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">DirectionalLight</span>(<span class="hljs-string">&#x27;ffffff&#x27;</span>,<span class="hljs-number">0.8</span>)<br>scene.<span class="hljs-title function_">add</span>(directional)<br><span class="hljs-comment">//添加一个半球光</span><br><span class="hljs-keyword">const</span> hemisphere = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">HemisphereLight</span>(<span class="hljs-string">&#x27;ffffff&#x27;</span>,<span class="hljs-number">0.8</span>)<br>scene.<span class="hljs-title function_">add</span>(hemisphere)<br><span class="hljs-comment">//添加一个点光源</span><br><span class="hljs-keyword">const</span> point = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PointLight</span>(<span class="hljs-string">&#x27;ffffff&#x27;</span>,<span class="hljs-number">0.9</span>)<br><span class="hljs-comment">//设置点光源位置</span><br>point.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">200</span>,<span class="hljs-number">150</span>,<span class="hljs-number">120</span>)<br>scene.<span class="hljs-title function_">add</span>(point)<br></code></pre></td></tr></table></figure>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 半球光</span><br><span class="hljs-keyword">const</span> hemiLight = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">HemisphereLight</span>( <span class="hljs-number">0xffffff</span>, <span class="hljs-number">0xffffff</span>, <span class="hljs-number">0.6</span> );<br>hemiLight.<span class="hljs-property">color</span>.<span class="hljs-title function_">setHSL</span>( <span class="hljs-number">0.6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.6</span> );<br>hemiLight.<span class="hljs-property">groundColor</span>.<span class="hljs-title function_">setHSL</span>( <span class="hljs-number">0.095</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.75</span> );<br>hemiLight.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>( <span class="hljs-number">0</span>, <span class="hljs-number">50</span>, <span class="hljs-number">0</span> );<br>scene.<span class="hljs-title function_">add</span>( hemiLight );<br><span class="hljs-comment">//光线辅助线</span><br><span class="hljs-keyword">const</span> hemiLightHelper = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">HemisphereLightHelper</span>( hemiLight, <span class="hljs-number">10</span> );<br>scene.<span class="hljs-title function_">add</span>( hemiLightHelper );<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//平行光</span><br><span class="hljs-keyword">const</span> dirLight = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">DirectionalLight</span>( <span class="hljs-number">0xffffff</span>, <span class="hljs-number">1</span> );<br>dirLight.<span class="hljs-property">color</span>.<span class="hljs-title function_">setHSL</span>( <span class="hljs-number">0.1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.95</span> );<br>dirLight.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>( - <span class="hljs-number">1</span>, <span class="hljs-number">1.75</span>, <span class="hljs-number">1</span> );<br>dirLight.<span class="hljs-property">position</span>.<span class="hljs-title function_">multiplyScalar</span>( <span class="hljs-number">30</span> );<br>scene.<span class="hljs-title function_">add</span>( dirLight );<br><span class="hljs-comment">//平行光辅助线</span><br><span class="hljs-keyword">const</span> dirLightHelper = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">DirectionalLightHelper</span>( dirLight, <span class="hljs-number">10</span> );<br>scene.<span class="hljs-title function_">add</span>( dirLightHelper );<br></code></pre></td></tr></table></figure>
+
+<h2 id="05相机轨道控制器-改变视角"><a href="#05相机轨道控制器-改变视角" class="headerlink" title="05相机轨道控制器(改变视角)"></a>05相机轨道控制器(改变视角)</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;importmap&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        &#123;</span><br><span class="language-javascript">            <span class="hljs-string">&quot;imports&quot;</span>:&#123;</span><br><span class="language-javascript">                <span class="hljs-string">&quot;three&quot;</span>:<span class="hljs-string">&quot;./src/three.module.js&quot;</span></span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"> <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">THREE</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;three&#x27;</span></span><br><span class="language-javascript"> <span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">OrbitControls</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./src/OrbitControls.js&#x27;</span></span><br><span class="language-javascript"> </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//相机轨道控制器 创建控制器          相机  绑定的事件元素</span><br><span class="hljs-keyword">const</span> controls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">OrbitControls</span>(camera,render.<span class="hljs-property">domElement</span>)<br>controls.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;change&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//每次改变值重新触发输出 类似逐帧</span><br>    render.<span class="hljs-title function_">render</span>(scene,camera)  <span class="hljs-comment">//3d场景  相机</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="063D坐标系等辅助方法"><a href="#063D坐标系等辅助方法" class="headerlink" title="063D坐标系等辅助方法"></a>063D坐标系等辅助方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//添加3D坐标系</span><br><span class="hljs-keyword">const</span> axes = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AxesHelper</span>(<span class="hljs-number">120</span>) <span class="hljs-comment">//坐标系尺寸</span><br>scene.<span class="hljs-title function_">add</span>(axes)<br><br><span class="hljs-comment">//创建一个网格模型对象 把创建的物体和材质绑定到网格模型</span><br><span class="hljs-keyword">const</span> mesh = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>(geometry,material)<br>mesh.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<span class="hljs-comment">//设置网格模型在坐标系中的位置</span><br>mesh.<span class="hljs-title function_">rotateY</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">4</span>)<span class="hljs-comment">//网格模型旋转45度</span><br><br><span class="hljs-comment">//点光源辅助观察 显示点光源位置</span><br><span class="hljs-keyword">const</span> pointHelper = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PointLightHelper</span>(point,<span class="hljs-number">10</span>)<br>scene.<span class="hljs-title function_">add</span>(pointHelper)<br></code></pre></td></tr></table></figure>
+
+<h2 id="07动画渲染循环"><a href="#07动画渲染循环" class="headerlink" title="07动画渲染循环"></a>07动画渲染循环</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//html5自带功能</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderFrame</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-title function_">requestAnimationFrame</span>(renderFrame)<br>    mesh.<span class="hljs-title function_">rotateY</span>(<span class="hljs-number">0.01</span>)<br>    render.<span class="hljs-title function_">render</span>(scene,camera)<br>&#125;<br><span class="hljs-title function_">renderFrame</span>()<br><span class="hljs-comment">//此处循环渲染以后 相机的change事件可以不写了</span><br><span class="hljs-comment">//controls.addEventListener(&#x27;change&#x27;,function()&#123;</span><br><span class="hljs-comment">//    render.render(scene,camera)</span><br><span class="hljs-comment">//&#125;)</span><br><span class="hljs-comment">//到此处即完成了一个小型初步渲染框架</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="08动画渲染循环"><a href="#08动画渲染循环" class="headerlink" title="08动画渲染循环"></a>08动画渲染循环</h2><h3 id="添加阵列"><a href="#添加阵列" class="headerlink" title="添加阵列"></a>添加阵列</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++) &#123;<br>        <span class="hljs-comment">//创建一个网格模型对象 把创建的物体和材质绑定到网格模型</span><br>        <span class="hljs-keyword">const</span> mesh = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>(geometry,material)<br>        mesh.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(i*<span class="hljs-number">150</span>,<span class="hljs-number">0</span>,j*<span class="hljs-number">150</span>)<br>        <span class="hljs-comment">//把网格模型添加到3D场景中</span><br>        scene.<span class="hljs-title function_">add</span>(mesh)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="改变视野位置1"><a href="#改变视野位置1" class="headerlink" title="改变视野位置1"></a>改变视野位置1</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//改变相机视差位置 1,10000</span><br><span class="hljs-keyword">const</span> camera = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PerspectiveCamera</span>( <span class="hljs-number">45</span>, width / height, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span> );<br><span class="hljs-comment">//设置相机的拍摄方向</span><br>camera.<span class="hljs-title function_">lookAt</span>(<span class="hljs-number">1000</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1000</span>)<br><span class="hljs-comment">//需要关闭相机轨道控制器 不然会被重置位置</span><br><span class="hljs-comment">//const controls = new OrbitControls(camera,render.domElement)</span><br></code></pre></td></tr></table></figure>
+<h3 id="改变视野位置1-1"><a href="#改变视野位置1-1" class="headerlink" title="改变视野位置1"></a>改变视野位置1</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//设置相机的位置</span><br>camera.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">1000</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">1000</span>)<br><span class="hljs-comment">//相机轨道控制器</span><br><span class="hljs-keyword">const</span> controls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">OrbitControls</span>(camera,render.<span class="hljs-property">domElement</span>)<br>controls.<span class="hljs-property">target</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">750</span>,<span class="hljs-number">0</span>,<span class="hljs-number">750</span>) <span class="hljs-comment">//内置方法会自动执行lookAt方法</span><br>controls.<span class="hljs-title function_">update</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="09vue引用"><a href="#09vue引用" class="headerlink" title="09vue引用"></a>09vue引用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//安装</span><br>npm install three@<span class="hljs-number">0.133</span><span class="hljs-number">.0</span> --save<br><span class="hljs-comment">//引用</span><br><span class="hljs-comment">//index.js</span><br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">THREE</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;three&#x27;</span><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">OrbitControls</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;three/examples/jsm/controls/OrbitControls.js&#x27;</span><br><span class="hljs-keyword">export</span> &#123;render&#125;<br><span class="hljs-comment">//页面引入</span><br><span class="hljs-keyword">import</span> &#123;render&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./three/index.js&#x27;</span><br><span class="hljs-comment">//html</span><br>&lt;div ref=<span class="hljs-string">&#x27;webgl&#x27;</span>&gt;&lt;/div&gt;<br><span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">webgl</span>.<span class="hljs-title function_">appendChild</span>(render.<span class="hljs-property">domElement</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="10vue与three交互"><a href="#10vue与three交互" class="headerlink" title="10vue与three交互"></a>10vue与three交互</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//index.js导出网格模型</span><br><span class="hljs-keyword">export</span> &#123;render,mesh&#125;<br><br><span class="hljs-comment">//page.vue</span><br><span class="hljs-keyword">import</span> &#123;mesh&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./three/index.js&#x27;</span><br><span class="hljs-attr">methods</span>:&#123;<br>    <span class="hljs-title function_">click</span>(<span class="hljs-params"></span>)&#123;<br>        mesh.<span class="hljs-property">material</span>.<span class="hljs-property">color</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">0xffff00</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="11添加2d标签"><a href="#11添加2d标签" class="headerlink" title="11添加2d标签"></a>11添加2d标签</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//tag.vue</span><br>&lt;div :ref=<span class="hljs-string">&#x27;index&#x27;</span> :id=<span class="hljs-string">&#x27;index&#x27;</span>&gt;标注&lt;/div&gt;<br><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">CSS2DObject</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;three/examples/jsm/renderers/CSS2DObject.js&#x27;</span><br><span class="hljs-keyword">import</span> &#123;scene&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./three/index.js&#x27;</span><br><br><span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> div = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span>]<br>    <span class="hljs-keyword">var</span> label = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CSS2DObject</span>(div)<br>    div.<span class="hljs-property">style</span>.<span class="hljs-property">pointerEvents</span> = <span class="hljs-string">&#x27;none&#x27;</span><span class="hljs-comment">//防止html标签遮挡三维场景</span><br>    label.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">z</span>)<br>    scene.<span class="hljs-title function_">add</span>(label)<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//CSS2DRenderer.js</span><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">CSS2DRenderder</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;three/examples/jsm/renderers/CSS2DRenderder&#x27;</span><br><br><span class="hljs-keyword">var</span> <span class="hljs-title class_">CSS2LabelRenderder</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CSS2DRenderder</span>()<br><span class="hljs-title class_">CSS2LabelRenderder</span>.<span class="hljs-title function_">setSize</span>(<span class="hljs-number">500</span>,<span class="hljs-number">500</span>)<br><span class="hljs-title class_">CSS2LabelRenderder</span>.<span class="hljs-property">domElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&#x27;absolute&#x27;</span><br><span class="hljs-title class_">CSS2LabelRenderder</span>.<span class="hljs-property">domElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">&#x27;0px&#x27;</span><br><span class="hljs-title class_">CSS2LabelRenderder</span>.<span class="hljs-property">domElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">&#x27;0px&#x27;</span><br><span class="hljs-title class_">CSS2LabelRenderder</span>.<span class="hljs-property">domElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">pointerEvents</span> = <span class="hljs-string">&#x27;none&#x27;</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(<span class="hljs-title class_">CSS2LabelRenderder</span>.<span class="hljs-property">domElement</span>)<br><span class="hljs-keyword">export</span> &#123;<span class="hljs-title class_">CSS2LabelRenderer</span>&#125;<br><span class="hljs-comment">//index.js</span><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">CSS2LabelRenderer</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;CSS2DRenderer.js&#x27;</span><br>render.<span class="hljs-title function_">render</span>(scene,camera)<br><span class="hljs-title class_">CSS2LabelRenderer</span>.<span class="hljs-title function_">render</span>(scene,camera)<br></code></pre></td></tr></table></figure>
+
+<h2 id="12显示帧率"><a href="#12显示帧率" class="headerlink" title="12显示帧率"></a>12显示帧率</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Stats</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./src/stats.module.js&#x27;</span><br><span class="hljs-keyword">const</span> stats = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stats</span>();<br><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(stats.<span class="hljs-property">dom</span>)<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderFrame</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-title function_">requestAnimationFrame</span>(renderFrame)<br>    stats.<span class="hljs-title function_">update</span>()<br>    renderer.<span class="hljs-title function_">render</span>(scene,camera)<br>&#125;<br><span class="hljs-title function_">renderFrame</span>()<br></code></pre></td></tr></table></figure>
+
+<h2 id="13球体贴图"><a href="#13球体贴图" class="headerlink" title="13球体贴图"></a>13球体贴图</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> mesh = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">initContent</span>(<span class="hljs-params"></span>) &#123;<br><span class="hljs-comment">//读取图片</span><br>    <span class="hljs-keyword">let</span> texture = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">TextureLoader</span>().<span class="hljs-title function_">load</span>(<span class="hljs-string">&#x27;./smworld.png&#x27;</span>);<br>    创建球体<br>    <span class="hljs-keyword">const</span> geometry = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">SphereGeometry</span>( <span class="hljs-number">15</span>, <span class="hljs-number">32</span>, <span class="hljs-number">16</span> );<br>    <span class="hljs-comment">//设置图片为材质</span><br>    <span class="hljs-keyword">let</span> sphereMaterial = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">MeshBasicMaterial</span>(&#123;<span class="hljs-attr">map</span>: texture&#125;);<br>    <span class="hljs-comment">//创建网格</span><br>    mesh = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>( geometry, sphereMaterial );<br>    scene.<span class="hljs-title function_">add</span>( mesh );<br>&#125;<br><span class="hljs-title function_">initContent</span>()<br><span class="hljs-comment">//添加旋转动画</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderFrame</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-title function_">requestAnimationFrame</span>(renderFrame)<br>    <span class="hljs-keyword">if</span>(mesh)&#123;<br>        mesh.<span class="hljs-title function_">rotateY</span>(<span class="hljs-number">0.003</span>)<br>    &#125;<br>    stats.<span class="hljs-title function_">update</span>()<br>    renderer.<span class="hljs-title function_">render</span>(scene,camera)<br>&#125;<br><span class="hljs-title function_">renderFrame</span>()<br></code></pre></td></tr></table></figure>
+
+<h2 id="14画线"><a href="#14画线" class="headerlink" title="14画线"></a>14画线</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//画线</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">drawLine</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//创建实线</span><br>    <span class="hljs-keyword">const</span> material = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">LineBasicMaterial</span>( &#123; <span class="hljs-attr">color</span>: <span class="hljs-number">0x0000ff</span> &#125; );<br><br>    <span class="hljs-comment">//直线点参数 ↓↓↓↓↓</span><br>    <span class="hljs-keyword">var</span> points = [];<br>        points.<span class="hljs-title function_">push</span>( <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>( -<span class="hljs-number">50</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ) );<br>        points.<span class="hljs-title function_">push</span>( <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>( <span class="hljs-number">0</span>, <span class="hljs-number">50</span>, <span class="hljs-number">0</span> ) );<br>        points.<span class="hljs-title function_">push</span>( <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>( <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ) );<br>    <span class="hljs-comment">//直线点参数 ↑↑↑↑↑</span><br><br>    <span class="hljs-comment">//曲线点参数 ↓↓↓↓↓</span><br>    <span class="hljs-comment">// 三维样条曲线 Catmull-Rom算法</span><br>    <span class="hljs-keyword">var</span> curve = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">CatmullRomCurve3</span>([<br>        <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">50</span>, <span class="hljs-number">20</span>, <span class="hljs-number">90</span>),<br>        <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">100</span>, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>),<br>        <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br>    ]);<br>    <span class="hljs-comment">//曲线点参数 ↑↑↑↑↑</span><br><br>    <span class="hljs-comment">//三点贝塞尔曲线 p1起点p3终点p2控制点 ↓↓↓↓↓</span><br>    <span class="hljs-keyword">var</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(-<span class="hljs-number">80</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">20</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">80</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> curve = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">QuadraticBezierCurve3</span>(p1, p2, p3);<br>    <span class="hljs-comment">//三点贝塞尔曲线 ↑↑↑↑↑</span><br><br>    <span class="hljs-comment">//四点贝塞尔曲线 p1起点p4终点p2p3控制点 ↓↓↓↓↓</span><br>    <span class="hljs-keyword">var</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(-<span class="hljs-number">80</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(-<span class="hljs-number">40</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">40</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> p4 = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(<span class="hljs-number">80</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">var</span> curve = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">CubicBezierCurve3</span>(p1, p2, p3, p4);<br>    <span class="hljs-comment">//四点贝塞尔曲线 ↑↑↑↑↑</span><br><br>    <span class="hljs-comment">//getPoints是基类Curve的方法，返回一个vector3对象作为元素组成的数组</span><br>    <span class="hljs-keyword">var</span> points = curve.<span class="hljs-title function_">getPoints</span>(<span class="hljs-number">100</span>); <span class="hljs-comment">//分段数100，返回101个顶点 分段数越多越平滑 越少越尖锐</span><br>    <span class="hljs-comment">//显示线段</span><br>    <span class="hljs-keyword">const</span> geometry = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferGeometry</span>().<span class="hljs-title function_">setFromPoints</span>( points );<br>    <span class="hljs-keyword">const</span> line = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Line</span>( geometry, material );<br>    scene.<span class="hljs-title function_">add</span>(line)<br>&#125;<br><span class="hljs-title function_">drawLine</span>()<br></code></pre></td></tr></table></figure>
+
+<h2 id="15模型添加动画"><a href="#15模型添加动画" class="headerlink" title="15模型添加动画"></a>15模型添加动画</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//引入模型</span><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">GLTFLoader</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./src/GLTFLoader.js&#x27;</span><br><br><span class="hljs-keyword">const</span> loader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GLTFLoader</span>();<br><span class="hljs-keyword">let</span> mixers;<br>loader.<span class="hljs-title function_">load</span>( <span class="hljs-string">&#x27;./models/Parrot.glb&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"> gltf </span>) &#123;<br>    mesh = gltf.<span class="hljs-property">scene</span><br>    mesh.<span class="hljs-property">scale</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">0.1</span>,<span class="hljs-number">0.1</span>,<span class="hljs-number">0.1</span>)<br>    mesh.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br>    scene.<span class="hljs-title function_">add</span>( gltf.<span class="hljs-property">scene</span> );<br>    <br>    <br>    <span class="hljs-comment">//动画混合器</span><br>    <span class="hljs-keyword">const</span> mixer = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AnimationMixer</span>( mesh );<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(gltf);<br>    mixer.<span class="hljs-title function_">clipAction</span>( gltf.<span class="hljs-property">animations</span>[ <span class="hljs-number">0</span> ] ).<span class="hljs-title function_">setDuration</span>( <span class="hljs-number">1</span> ).<span class="hljs-title function_">play</span>();<br>    mixers = mixer <span class="hljs-comment">//把动画对象暴露到全局</span><br>&#125; );<br><span class="hljs-comment">//在渲染函数中获取当前时间</span><br><span class="hljs-keyword">const</span> clock = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Clock</span>();<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">render</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">if</span>(mixers)&#123;<br>        <span class="hljs-keyword">const</span> delta = clock.<span class="hljs-title function_">getDelta</span>();<br>        mixers.<span class="hljs-title function_">update</span>( delta );<br>    &#125;<br>    <span class="hljs-title function_">requestAnimationFrame</span>(render);<br>    renderer.<span class="hljs-title function_">render</span>(scene, camera);<br>&#125;<br><span class="hljs-title function_">requestAnimationFrame</span>(render);<br></code></pre></td></tr></table></figure>
+
+<h2 id="16天空模型"><a href="#16天空模型" class="headerlink" title="16天空模型"></a>16天空模型</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//地面模型</span><br><span class="hljs-comment">// 几何体</span><br><span class="hljs-keyword">const</span> groundGeo = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PlaneGeometry</span>( <span class="hljs-number">10000</span>, <span class="hljs-number">10000</span> );<br><span class="hljs-keyword">const</span> groundMat = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">MeshLambertMaterial</span>( &#123; <span class="hljs-attr">color</span>: <span class="hljs-number">0xffffff</span> &#125; );<span class="hljs-comment">//材质</span><br>groundMat.<span class="hljs-property">color</span>.<span class="hljs-title function_">setHSL</span>( <span class="hljs-number">0.095</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.75</span> );<br><span class="hljs-comment">//创建网格模型</span><br><span class="hljs-keyword">const</span> ground = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>( groundGeo, groundMat );<br>ground.<span class="hljs-property">position</span>.<span class="hljs-property">y</span> = - <span class="hljs-number">33</span>;<br>ground.<span class="hljs-property">rotation</span>.<span class="hljs-property">x</span> = - <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> / <span class="hljs-number">2</span>;<br>ground.<span class="hljs-property">receiveShadow</span> = <span class="hljs-literal">true</span>;<span class="hljs-comment">//网格模型接收阴影</span><br>scene.<span class="hljs-title function_">add</span>( ground );<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 天空模型</span><br><span class="hljs-keyword">const</span> vertexShader = <span class="hljs-string">`</span><br><span class="hljs-string">varying vec3 vWorldPosition;</span><br><span class="hljs-string">void main() &#123;</span><br><span class="hljs-string">    vec4 worldPosition = modelMatrix * vec4( position, 1.0 );</span><br><span class="hljs-string">    vWorldPosition = worldPosition.xyz;</span><br><span class="hljs-string">    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">`</span>;<br><span class="hljs-keyword">const</span> fragmentShader = <span class="hljs-string">`</span><br><span class="hljs-string">uniform vec3 topColor;</span><br><span class="hljs-string">uniform vec3 bottomColor;</span><br><span class="hljs-string">uniform float offset;</span><br><span class="hljs-string">uniform float exponent;</span><br><span class="hljs-string">varying vec3 vWorldPosition;</span><br><span class="hljs-string">void main() &#123;</span><br><span class="hljs-string">    float h = normalize( vWorldPosition + offset ).y;</span><br><span class="hljs-string">    gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h , 0.0), exponent ), 0.0 ) ), 1.0 );</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">`</span>;<br><span class="hljs-keyword">const</span> uniforms = &#123;<br>    <span class="hljs-string">&#x27;topColor&#x27;</span>: &#123; <span class="hljs-attr">value</span>: <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Color</span>( <span class="hljs-number">0x0077ff</span> ) &#125;,<br>    <span class="hljs-string">&#x27;bottomColor&#x27;</span>: &#123; <span class="hljs-attr">value</span>: <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Color</span>( <span class="hljs-number">0xffffff</span> ) &#125;,<br>    <span class="hljs-string">&#x27;offset&#x27;</span>: &#123; <span class="hljs-attr">value</span>: <span class="hljs-number">33</span> &#125;,<br>    <span class="hljs-string">&#x27;exponent&#x27;</span>: &#123; <span class="hljs-attr">value</span>: <span class="hljs-number">0.5</span> &#125;<br>&#125;;<br>uniforms[ <span class="hljs-string">&#x27;topColor&#x27;</span> ].<span class="hljs-property">value</span>.<span class="hljs-title function_">copy</span>( hemiLight.<span class="hljs-property">color</span> );<br>scene.<span class="hljs-property">fog</span>.<span class="hljs-property">color</span>.<span class="hljs-title function_">copy</span>( uniforms[ <span class="hljs-string">&#x27;bottomColor&#x27;</span> ].<span class="hljs-property">value</span> );<br><span class="hljs-keyword">const</span> skyGeo = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">SphereGeometry</span>( <span class="hljs-number">4000</span>, <span class="hljs-number">32</span>, <span class="hljs-number">15</span> );<br><span class="hljs-keyword">const</span> skyMat = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">ShaderMaterial</span>( &#123;<br>    <span class="hljs-attr">uniforms</span>: uniforms,<br>    <span class="hljs-attr">vertexShader</span>: vertexShader,<br>    <span class="hljs-attr">fragmentShader</span>: fragmentShader,<br>    <span class="hljs-attr">side</span>: <span class="hljs-variable constant_">THREE</span>.<span class="hljs-property">BackSide</span><br>&#125; );<br><span class="hljs-keyword">const</span> sky = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>( skyGeo, skyMat );<br>scene.<span class="hljs-title function_">add</span>( sky );<br></code></pre></td></tr></table></figure>
+
+<h2 id="17添加音频"><a href="#17添加音频" class="headerlink" title="17添加音频"></a>17添加音频</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//添加音频</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">addAudio</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">const</span> listener = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AudioListener</span>()<br>    camera.<span class="hljs-title function_">add</span>(listener)<br>    <span class="hljs-keyword">const</span> sound = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Audio</span>(listener)<br>    <span class="hljs-keyword">const</span> audioLoader = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AudioLoader</span>()<br>    audioLoader.<span class="hljs-title function_">load</span>(<span class="hljs-string">&#x27;./media/多远都要在一起.m4a&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">buffer</span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(buffer);<br>        sound.<span class="hljs-title function_">setBuffer</span>(buffer)<br>        sound.<span class="hljs-title function_">setLoop</span>(<span class="hljs-literal">true</span>)<br>        sound.<span class="hljs-title function_">setVolume</span>(<span class="hljs-number">.5</span>)<br>        sound.<span class="hljs-title function_">play</span>()<br>    &#125;)<br>&#125;<br><span class="hljs-title function_">addAudio</span>()<br></code></pre></td></tr></table></figure>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2022/08/11/css%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/node%E5%BC%80%E5%90%AF%E4%B8%80%E4%B8%AAhttp%E6%9C%8D%E5%8A%A1.html">node开启一个http服务</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/07/golang-%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81.html">golang自动格式化代码</a>
+                <p>2023-09-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/04/vue3-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">vue3学习笔记</a>
+                <p>2023-04-04</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/15/golang-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF.html">golang-面向对象-继承</a>
+                <p>2023-09-15</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2022/08/11/css%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/node%E5%BC%80%E5%90%AF%E4%B8%80%E4%B8%AAhttp%E6%9C%8D%E5%8A%A1.html">node开启一个http服务</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/07/golang-%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81.html">golang自动格式化代码</a>
+                <p>2023-09-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/04/vue3-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">vue3学习笔记</a>
+                <p>2023-04-04</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/15/golang-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF.html">golang-面向对象-继承</a>
+                <p>2023-09-15</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(6)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/vue/">vue(39)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/bruno-simon/">Bruno Simon(3)</a>
+        
+            <a href="/tag/threejs/">threejs(3)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },1500)
+        },false)
+        // 返回顶部
+        document.getElementById('gotopage').addEventListener('click',function() {
+            document.querySelector('.main').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        },false)
+        document.querySelector('.main').addEventListener('scroll',function() {
+            if(document.querySelector('.main').scrollTop > 300) {
+                document.getElementById('gotopage').classList.add('show')
+            }else{
+                document.getElementById('gotopage').classList.remove('show')
+            }
+        })
+    </script>
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>
