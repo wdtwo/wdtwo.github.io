@@ -55,7 +55,6 @@
         <i class="fa fa-sun"></i>
         <i class="fa fa-moon"></i>
     </div>
-    
 </header>
 
 <script>
@@ -77,15 +76,30 @@
     })
 </script>
     <div class="main">
-        
+        <link rel="stylesheet" href="/assets/css/index.css">
 <div class="index-page">
-    <div class="index-page-title">
+    <!-- <div class="index-page-title">
         <h1>Welcome to theme1</h1>
-    </div>
+        
+    </div> -->
+    <div id="canvas"></div>
 </div>
 
+<!-- 引用threejs -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.128/build/three.min.js"></script> -->
+<script type="importmap">
+    {
+        "imports": {
+            "three": "/assets/threejs/three.webgpu.min.js",
+            "three/webgpu": "/assets/threejs/three.webgpu.min.js",
+            "three/tsl": "/assets/threejs/three.tsl.min.js",
+            "three/addons/": "/assets/threejs/jsm/"
+        }
+    }
+</script>
+<script type="module" src="/assets/js/index.js"></script>
 <script>
-    
+
     // var color = [
     //     '#d0036c',
     //     '#cd423b',
@@ -288,7 +302,7 @@
         addEvent()
     </script>
     <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script>
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
     <!-- End Cloudflare Web Analytics -->
     <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
     <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
