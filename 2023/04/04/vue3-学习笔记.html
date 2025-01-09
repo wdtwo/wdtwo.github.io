@@ -384,6 +384,20 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs `html">&lt;template&gt;<br>    &lt;suspense&gt;<br>        &lt;!-- 加载完成后显示的内容 --&gt;<br>        &lt;template #default&gt;<br>            &lt;h1&gt;suspense&lt;/h1&gt;<br>            &lt;button @click=&quot;show = !show&quot;&gt;切换&lt;/button&gt;<br>        &lt;template&gt;<br>        &lt;!-- 等待加载时候显示的内容 --&gt;<br>        &lt;template #fallback&gt;<br>            &lt;h1&gt;加载中...&lt;/h1&gt;<br>        &lt;template&gt;<br>    &lt;/suspense&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
 <p><code>子组件</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 连续解构赋值 </span><br><span class="hljs-keyword">const</span> &#123;<span class="hljs-attr">result</span>:&#123;content&#125;&#125; = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;https://www.runoob.com/try/demo_ajax_json.php&#x27;</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(content)<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用全局构建版本-cdn引用"><a href="#使用全局构建版本-cdn引用" class="headerlink" title="使用全局构建版本 cdn引用"></a>使用全局构建版本 cdn引用</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">const</span> &#123; createApp &#125; = <span class="hljs-title class_">Vue</span></span><br><span class="language-javascript">  <span class="hljs-title function_">createApp</span>(&#123;</span><br><span class="language-javascript">    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello Vue!&#x27;</span></span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">  &#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用ES模块构建版本"><a href="#使用ES模块构建版本" class="headerlink" title="使用ES模块构建版本"></a>使用ES模块构建版本</h3><p><strong>注意我们使用了 <code>&lt;script type=&quot;module&quot;&gt;</code>，且导入的 CDN URL 指向的是 Vue 的 ES 模块构建版本</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#x27;</span></span><br><span class="language-javascript">  <span class="hljs-title function_">createApp</span>(&#123;</span><br><span class="language-javascript">    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello Vue!&#x27;</span></span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">  &#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="导入映射表"><a href="#导入映射表" class="headerlink" title="导入映射表"></a>导入映射表</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;importmap&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  &#123;</span><br><span class="language-javascript">    <span class="hljs-string">&quot;imports&quot;</span>: &#123;</span><br><span class="language-javascript">      <span class="hljs-string">&quot;vue&quot;</span>: <span class="hljs-string">&quot;https://unpkg.com/vue@3/dist/vue.esm-browser.js&quot;</span></span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span><br><span class="language-javascript">  <span class="hljs-title function_">createApp</span>(&#123;</span><br><span class="language-javascript">    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello Vue!&#x27;</span></span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">  &#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="拆分模块"><a href="#拆分模块" class="headerlink" title="拆分模块"></a>拆分模块</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span><br><span class="language-javascript">  <span class="hljs-keyword">import</span> <span class="hljs-title class_">MyComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./my-component.js&#x27;</span></span><br><span class="language-javascript">  <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">MyComponent</span>).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// my-component.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> &#125;<br>  &#125;,<br>  <span class="hljs-attr">template</span>: <span class="hljs-string">`&lt;div&gt;count is &#123;&#123; count &#125;&#125;&lt;/div&gt;`</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="应用配置"><a href="#应用配置" class="headerlink" title="应用配置"></a>应用配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-property">config</span>.<span class="hljs-property">errorHandler</span> = <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">/* 处理错误 */</span><br>&#125;<br><span class="hljs-comment">//注册一个组件</span><br>app.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;TodoDeleteButton&#x27;</span>, <span class="hljs-title class_">TodoDeleteButton</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
         </div>
     </article>
     <div class="w300 m-l-15 fixed-item-right">
@@ -392,56 +406,56 @@
     <ul>
         
             <li>
-                <a href="/2024/01/04/js-%E7%A6%81%E6%AD%A2%E5%A4%8D%E5%88%B6.html">js-禁止复制</a>
-                <p>2024-01-04</p>
+                <a href="/2023/09/17/golang-%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
+                <p>2023-09-17</p>
             </li>
         
             <li>
-                <a href="/2023/05/16/node-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BDts%E6%96%87%E4%BB%B6.html">node多线程下载ts文件</a>
-                <p>2023-05-16</p>
+                <a href="/2022/08/11/css-%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2024/08/01/astro%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95.html">astro模板语法</a>
-                <p>2024-08-01</p>
+                <a href="/2023/05/12/%E6%B1%89%E5%AD%97%E7%AC%94%E7%94%BB%E5%8A%A8%E7%94%BBsvg.html">汉字笔画动画svg</a>
+                <p>2023-05-12</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
-                <p>2023-05-15</p>
+                <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6.html">移动端touch事件</a>
+                <p>2023-02-14</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/npm%E6%94%B9%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html">npm 改淘宝镜像</a>
-                <p>2023-05-15</p>
+                <a href="/2023/06/22/node-%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96ts%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">node爬虫抓取ts视频文件多线程</a>
+                <p>2023-06-22</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/01/04/js-%E7%A6%81%E6%AD%A2%E5%A4%8D%E5%88%B6.html">js-禁止复制</a>
-                <p>2024-01-04</p>
+                <a href="/2023/09/17/golang-%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
+                <p>2023-09-17</p>
             </li>
         
             <li>
-                <a href="/2023/05/16/node-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BDts%E6%96%87%E4%BB%B6.html">node多线程下载ts文件</a>
-                <p>2023-05-16</p>
+                <a href="/2022/08/11/css-%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2024/08/01/astro%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95.html">astro模板语法</a>
-                <p>2024-08-01</p>
+                <a href="/2023/05/12/%E6%B1%89%E5%AD%97%E7%AC%94%E7%94%BB%E5%8A%A8%E7%94%BBsvg.html">汉字笔画动画svg</a>
+                <p>2023-05-12</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
-                <p>2023-05-15</p>
+                <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6.html">移动端touch事件</a>
+                <p>2023-02-14</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/npm%E6%94%B9%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html">npm 改淘宝镜像</a>
-                <p>2023-05-15</p>
+                <a href="/2023/06/22/node-%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96ts%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">node爬虫抓取ts视频文件多线程</a>
+                <p>2023-06-22</p>
             </li>
         
     </ul> -->
@@ -451,9 +465,11 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/ai/">AI(7)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(7)</a>
         
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
         
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
@@ -503,7 +519,7 @@
         
             <a href="/tag/vps/">vps(9)</a>
         
-            <a href="/tag/html/">html(6)</a>
+            <a href="/tag/html/">html(7)</a>
         
             <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
         
@@ -531,17 +547,17 @@
         
             <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
-            <a href="/tag/markdown/">markdown(1)</a>
-        
             <a href="/tag/sql/">sql(1)</a>
         
-            <a href="/tag/nginx/">nginx(2)</a>
+            <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/vue3/">vue3(1)</a>
+            <a href="/tag/nginx/">nginx(2)</a>
         
             <a href="/tag/express/">express(2)</a>
         
             <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
         
             <a href="/tag/npm/">npm(2)</a>
         
@@ -599,8 +615,6 @@
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
-        
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
         
             <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
@@ -621,9 +635,9 @@
         
             <a href="/tag/indexdb/">indexDB(1)</a>
         
-            <a href="/tag/json/">json(1)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
         
             <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
         
@@ -768,20 +782,6 @@ document.addEventListener('DOMContentLoaded', addCopyButtons);
                 document.querySelector('.loading').style.display = 'none';
             },800)
         },false)
-        // // 返回顶部
-        // document.getElementById('gotopage').addEventListener('click',function() {
-        //     document.querySelector('.main').scrollTo({
-        //         top: 0,
-        //         behavior: 'smooth'
-        //     });
-        // },false)
-        // document.querySelector('.main').addEventListener('scroll',function() {
-        //     if(document.querySelector('.main').scrollTop > 300) {
-        //         document.getElementById('gotopage').classList.add('show')
-        //     }else{
-        //         document.getElementById('gotopage').classList.remove('show')
-        //     }
-        // })
         
         /* 看板娘 */
         L2Dwidget.init({
@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', addCopyButtons);
                 "width"	   : 250,
                 "height"   : 250,
                 "hOffset"  : -70,
-                "vOffset"  : 50
+                "vOffset"  : 60
             },
             "dialog"	: {
                 "enable" : true

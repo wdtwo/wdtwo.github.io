@@ -117,6 +117,13 @@
 <li>按钮可以控制权限显示</li>
 </ul>
 <p>创建好菜单后,在<code>角色管理</code>-&gt;<code>角色编辑</code>中配置菜单权限.</p>
+<h2 id="动态路由地址"><a href="#动态路由地址" class="headerlink" title="动态路由地址"></a>动态路由地址</h2><p>如果想创建一个页面,这个页面不在菜单中,是通过其他页面点击进入的,并且传递参数,则需要添加动态路由地址.<br>在router&#x2F;index.js中配置动态路由地址<br>例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// /move/dataInput-detail/detail/1?id=1</span><br>&#123;<br>  <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/move/dataInput-detail&#x27;</span>, <span class="hljs-comment">// 此处父层地址为move/dataInput(在后台菜单管理中配置会自动生成) 不能配置相同的路由地址</span><br>  <span class="hljs-attr">component</span>: <span class="hljs-title class_">Layout</span>,<span class="hljs-comment">// 固定 不要动</span><br>  <span class="hljs-attr">hidden</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 侧边栏是否显示 已测试没有效果</span><br>  <span class="hljs-attr">permissions</span>: [<span class="hljs-string">&#x27;move:dataInput:edit&#x27;</span>], <span class="hljs-comment">// 不配置权限会报错 404 格式:(模块:功能:操作)</span><br>  <span class="hljs-attr">children</span>: [<br>    &#123;<br>      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;detail/:id(\\d+)&#x27;</span>,<span class="hljs-comment">// detail为url中的一个参数 可以修改也可以不填写(:id(\\d+))</span><br>      <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@/views/move/dataInput/detail&#x27;</span>), <span class="hljs-comment">// 组件路径</span><br>      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;DataInputDetail&#x27;</span>, <span class="hljs-comment">// 组件名称</span><br>      <span class="hljs-attr">meta</span>: &#123; <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数据录入详情&#x27;</span>, <span class="hljs-attr">activeMenu</span>: <span class="hljs-string">&#x27;/move/dataInput&#x27;</span> &#125; <span class="hljs-comment">// 组件标题, 当前组件显示的时候左侧菜单应该默认选中哪个菜单项</span><br>    &#125;<br>  ]<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+
+
+
+
 
         </div>
     </article>
@@ -126,56 +133,56 @@
     <ul>
         
             <li>
-                <a href="/2023/10/10/golang-%E6%89%B9%E9%87%8Fpingip%E5%9C%B0%E5%9D%80%E6%93%8D%E4%BD%9C.html">golang-批量pingip地址操作</a>
-                <p>2023-10-10</p>
+                <a href="/2023/05/15/npm%E6%94%B9%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html">npm 改淘宝镜像</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/08/25/js%E7%94%9F%E6%88%90uuid.html">js生成uuid</a>
-                <p>2023-08-25</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/js%E8%87%AA%E5%8A%A8%E5%A4%8D%E5%88%B6.html">js自动复制</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
-            </li>
-        
-            <li>
-                <a href="/2022/08/11/console.html">chrome 控制台</a>
+                <a href="/2022/08/11/css%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
                 <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/golang-%E4%BD%BF%E7%94%A8ping%E6%93%8D%E4%BD%9C%E8%BF%94%E5%9B%9E%E5%BB%B6%E8%BF%9F%E7%9A%84%E6%AF%AB%E7%A7%92.html">golang使用ping操作返回延迟的毫秒</a>
+                <p>2023-10-19</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/19/%E5%85%B6%E4%BB%96-beyond%E6%BF%80%E6%B4%BB%E7%A0%81.html">beyond激活码</a>
+                <p>2023-05-19</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/%E5%B0%8F%E7%9A%AE%E9%9D%A2%E6%9D%BFnginx%E9%85%8D%E7%BD%AE.html">小皮面板nginx配置</a>
+                <p>2023-06-07</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/10/10/golang-%E6%89%B9%E9%87%8Fpingip%E5%9C%B0%E5%9D%80%E6%93%8D%E4%BD%9C.html">golang-批量pingip地址操作</a>
-                <p>2023-10-10</p>
+                <a href="/2023/05/15/npm%E6%94%B9%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html">npm 改淘宝镜像</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/08/25/js%E7%94%9F%E6%88%90uuid.html">js生成uuid</a>
-                <p>2023-08-25</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/js%E8%87%AA%E5%8A%A8%E5%A4%8D%E5%88%B6.html">js自动复制</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
-            </li>
-        
-            <li>
-                <a href="/2022/08/11/console.html">chrome 控制台</a>
+                <a href="/2022/08/11/css%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
                 <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/golang-%E4%BD%BF%E7%94%A8ping%E6%93%8D%E4%BD%9C%E8%BF%94%E5%9B%9E%E5%BB%B6%E8%BF%9F%E7%9A%84%E6%AF%AB%E7%A7%92.html">golang使用ping操作返回延迟的毫秒</a>
+                <p>2023-10-19</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/19/%E5%85%B6%E4%BB%96-beyond%E6%BF%80%E6%B4%BB%E7%A0%81.html">beyond激活码</a>
+                <p>2023-05-19</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/%E5%B0%8F%E7%9A%AE%E9%9D%A2%E6%9D%BFnginx%E9%85%8D%E7%BD%AE.html">小皮面板nginx配置</a>
+                <p>2023-06-07</p>
             </li>
         
     </ul> -->
@@ -185,9 +192,11 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/ai/">AI(7)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(7)</a>
         
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
         
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
@@ -237,7 +246,7 @@
         
             <a href="/tag/vps/">vps(9)</a>
         
-            <a href="/tag/html/">html(6)</a>
+            <a href="/tag/html/">html(7)</a>
         
             <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
         
@@ -265,17 +274,17 @@
         
             <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
-            <a href="/tag/markdown/">markdown(1)</a>
-        
             <a href="/tag/sql/">sql(1)</a>
         
-            <a href="/tag/nginx/">nginx(2)</a>
+            <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/vue3/">vue3(1)</a>
+            <a href="/tag/nginx/">nginx(2)</a>
         
             <a href="/tag/express/">express(2)</a>
         
             <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
         
             <a href="/tag/npm/">npm(2)</a>
         
@@ -333,8 +342,6 @@
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
-        
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
         
             <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
@@ -355,9 +362,9 @@
         
             <a href="/tag/indexdb/">indexDB(1)</a>
         
-            <a href="/tag/json/">json(1)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
         
             <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
         
@@ -502,20 +509,6 @@ document.addEventListener('DOMContentLoaded', addCopyButtons);
                 document.querySelector('.loading').style.display = 'none';
             },800)
         },false)
-        // // 返回顶部
-        // document.getElementById('gotopage').addEventListener('click',function() {
-        //     document.querySelector('.main').scrollTo({
-        //         top: 0,
-        //         behavior: 'smooth'
-        //     });
-        // },false)
-        // document.querySelector('.main').addEventListener('scroll',function() {
-        //     if(document.querySelector('.main').scrollTop > 300) {
-        //         document.getElementById('gotopage').classList.add('show')
-        //     }else{
-        //         document.getElementById('gotopage').classList.remove('show')
-        //     }
-        // })
         
         /* 看板娘 */
         L2Dwidget.init({
@@ -532,7 +525,7 @@ document.addEventListener('DOMContentLoaded', addCopyButtons);
                 "width"	   : 250,
                 "height"   : 250,
                 "hOffset"  : -70,
-                "vOffset"  : 50
+                "vOffset"  : 60
             },
             "dialog"	: {
                 "enable" : true
