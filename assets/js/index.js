@@ -70,13 +70,13 @@ function animate(){
 animate()
 
 // 全屏渲染 改变窗口大小时重新设置相机
-window.onresize = function(){
-    pos.width = window.innerWidth
-    pos.height = window.innerHeight
+window.addEventListener('resize', () => {
+    pos.width = window.innerWidth -20
+    pos.height = window.innerHeight -135
     camera.aspect = pos.width / pos.height // 设置相机纵横比
     camera.updateProjectionMatrix() // 更新相机矩阵
     renderer.setSize(pos.width, pos.height) // 设置渲染器尺寸
     renderer.setPixelRatio(window.devicePixelRatio) // 设置像素比
     renderer.outputEncoding = Three.sRGBEncoding; //定义渲染器的输出编码 默认为THREE.LinearEncoding
     renderer.shadowMap.enabled = true;//阴影贴图
-}
+})

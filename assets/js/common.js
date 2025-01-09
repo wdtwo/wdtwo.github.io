@@ -28,9 +28,9 @@ document.querySelector('.fa-moon').addEventListener('click', function() {
 });
 
 // 判断是否为移动端
-window.onresize = function() {
+window.addEventListener('resize', () => {
     judgeMobile()
-}
+})
 judgeMobile()
 function judgeMobile() {
     if(window.innerWidth > 850) {

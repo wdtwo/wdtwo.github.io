@@ -5,7 +5,7 @@ article, aside, audio, bdi, canvas, command, datalist, details, dialog, embed, f
 html,input,button,select,textarea{font-size: 14px/1.5em;color:#232323;font-family: "microsoft yahei", '微软雅黑', '黑体','宋体', serif, Tahoma, Helvetica, Arial, sans-serif;outline: none;}
 address,cite,dfn,em,var,i,b,u{font-style:normal;}
 input,button,select,textarea{border-radius: 0;}
-a,a:active,a:link,a:visited,a:focus,a:hover{text-decoration: none;color:inherit;*color:#999;}
+a,a:active,a:link,a:visited,a:focus,a:hover{text-decoration: none;color:inherit;}
 img,a img{border: 0 none;display: block;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none;-ms-user-select: none;user-select: none;}
 hr{border:none;border-bottom:1px solid #666;margin:5px 0;}
 ul,ol,dl,li{list-style: none;}
@@ -1596,6 +1596,9 @@ body.mobile .mobile-menu {
 }
 
 @media screen and (max-width: 550px) {
+    .header-title {
+        font-size: 20px;
+    }
     .archive-item-cover {
         display: none;
     }
