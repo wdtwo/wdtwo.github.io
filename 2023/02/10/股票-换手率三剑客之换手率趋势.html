@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/02/10/股票-换手率三剑客之换手率趋势.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">换手率三剑客之换手率趋势</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-02-10
+            </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <p><a target="_blank" rel="noopener" href="https://cn.tradingview.com/chart/600510/JGFmrguh/">原文地址</a></p>
+<p><img src="/src/%E6%8D%A2%E6%89%8B%E7%8E%87%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8B%E6%8D%A2%E6%89%8B%E7%8E%87%E8%B6%8B%E5%8A%BF/1.png" alt="2"></p>
+<span id="more"></span>
+
+<p>市场决定给你多少利润，你能决定亏多少！—- 琳达·布拉福德·瑞斯克</p>
+<p>最近集中时间总结优化了手上三个换手率的工具：换手率趋势，换手率振荡器，换手率供需；提前说明下，这三个指标只适合A股市场的股票，在TradingView用于别的标的可能会报错。 计划分三篇文章分别介绍一下它们的用法。对于不熟悉这个指标的朋友，我在这第一篇文中简单介绍下换手和换手率的概念。</p>
+<p>换手，是指股票由甲方手中转移到乙方手中的交易。换手率：是指一定时间内的成交量与该股流通股总数的比率，是反映股票流通性强弱的指标之一。这里需要注意的是必须是除以流通盘，因为流通盘是真实可以流通的，是散户和主力可以买卖的筹码，所以裁决被较强的代表性。换手率（HSL）用于市场研判可帮助交易者跟踪个股的活跃程度，一般情况下，某只股票换手率越高，代表着该股的股性越活跃；反之则股性越呆滞，市场追捧者越少：当日换手率低于1%时，称为绝对地量。1%-3%称为地量或低迷，3%-5%称为稍稍活跃，5%-8%称为带量，8%-10%成放量，10%-25%为巨量，25%以上为成交异常。</p>
+<ol>
+<li>地量或低迷说明交易相对不活跃；股价一般会维持原有的运行趋势，多为盘整或下跌，高度控盘的股票除外；</li>
+<li>稍稍活跃和带量说明交易活跃；</li>
+<li>放量、巨量和成交异常说明交易热烈；若发生在低位，很有可能是主力进货；若发生在高位，很可能是主力出货。</li>
+</ol>
+<p>其中还要引申一个真实换手率的概念：在一个股票里面，控股股东持有的个股是不会轻易买卖的，我们认为这些筹码基本上不动，另外战略投资者持有的个股也不会轻易买卖，除非有较大的获利，所以这部分筹码也认为不动。所以真实流通盘就是软件上显示的流通筹码减去控股股东和战略投资者持有的股票。这样才能较为真实的反应出换手率和买卖意愿。所以，无论换手率还是真实换手率都是需要根据其绝对值进行判断。</p>
+<p>另外，单独看换手率不够全面，通常需要结合K线理解市场意义， 两者是相辅相成的关系。换手率的缩小或放大对于识别K线图具有重大意义。如果不看换手率，则无法区分主力的强弱和是否真的建仓于某只股票，如果不看某段时间内的换手率则不能看出主力涉入某只股票的程度如何，也就无法有效地跟随市场主力去赚钱。将换手率与股价走势相结合，可以对未来股价做出比较准确的预测和判断。换手率在较长时间内和一定价位内较高，说明资金进出量大，主力资金充足，这样个股才具备可操作性，但如果在极短时间内，如一两天内换手率突然放大，其后便突然平静，这样的情况往往是市场主力在出尽大部分筹码后，为了将手中剩余的极少数筹码全部出掉，故意利用这极少部分筹码来对倒从而制造成交量活跃的假象，让缺乏经验的交易者来跟风，从而使主力顺利出脱剩余筹码，这之后将是一浪接一浪的暴跌。</p>
+<p>高换手率即可表明有资金流入，也可能为资金流出，所以说，换手率在研判股市时有重要的意义，只有从长期的K线图中才能看出市场主力的进出过程，当能看出市场资金的流入、流出过程时，就可以识别股价的相对高低。在主力进场时换手率高、股价低，表明有资金流入；在主力出货时换手率高、股价高，则有资金流出。</p>
+<p>换手率趋势是三个指标中最简单的一个，包括两部分，不同颜色标注的换手率柱子和换手率的快慢均线，默认参数是5和10。这个参数主要是用于日线行情的，也可以在设置当中自行配置比较认为比较合理的其它值。换手率快线（红色）和慢线（绿色）的金叉和死叉表明换手率的趋势，但是注意这不是价格，不要想当然的用金叉死叉作为买卖点，因为换手率高低有着丰富的市场含义，并不具有价格指向，还需要配合K线价格进行判断。</p>
+<p>对于换手率柱子来说，每个柱子上都有一个百分比，这就是当日的换手率值，精确到小数点后一位。柱子的颜色是我一贯使用的颜色标识，以提供除了换手率绝对值之外，柱子组合间的的关系说明。彩色换手率柱子有6种颜色和5种含义。因为，其中青色&#x2F;祖母绿颜色为NA，也就是没有特殊含义。</p>
+<ol>
+<li>买换手潮 - 大量换手，大价格范围（最高价到最低价范围），阳线（红色），典型K线形态为大阳线带大量；</li>
+<li>卖换手潮 - 大量换手，大价格范围最高价到最低价范围），阴线（白色）， 典型K线形态为大阴线带大量；</li>
+<li>巨量拉锯 - 大量换手，小价格范围（绿色）， 星线，小阴小阳，带大量， 开盘和收盘价比较靠近， 典型K线形态是巨量十字星；</li>
+<li>地量 - 地量或换手低迷（黄色） ， 萎缩量， 典型K线为缩量小阳小阴线；</li>
+<li>买卖换手潮加巨量换手拉锯 - 同时满足以上2条件（洋红色）。 最高价和最低价范围大，开收盘价格范围小，大量换手，也就是带长上影或长下影的大量，典型K线为大实体带上下影线的带量阴阳线，但是以阳线居多。</li>
+<li>没有这些特殊的换手率信号时，柱子颜色为青色或者称之为祖母绿色。</li>
+</ol>
+<p>买换手潮：买换手能达到高潮<br>买换手潮通常出现在：</p>
+<ul>
+<li>上升趋势的开始（主力激进建仓抢筹码）；</li>
+<li>趋势结束（主力拉高出货，散户接货），以及；</li>
+<li>在下跌趋势期间回调（主力回拉出货，空头补货，多头寻底）。</li>
+</ul>
+<p>上升趋势的开始几乎总是由买换手潮的出现为标志。这表明主力急于建仓抢筹码，增量资金大量进入市场并迅速抬高价格。一个有效的突破应该是更多多头力量导致阳线，但偶尔也会在买换手潮后面的K线测试买换手潮对应K线的最低价格是否可以支撑住。如果没有支撑住，就是空方越位，可以考虑止损出局。</p>
+<p>处于市场顶部的买换手潮（红）特征还在于其通常与巨量拉锯（绿，多空争夺）或地量（黄，买方力尽）并存。趋势的变化通常需要一段时间才能发展，因此不要过早被哄骗出局- 等待市场变得疲惫不堪（背驰）后再采取行动。一个值得关注的有用信号是地量（黄） - 地量表明最终没有需求，因此市场可能会停止前进。</p>
+<p>在下降趋势期间，反弹通常以买换手潮为特征。（主力不想低价出货，拉高出货，造成趋势扭转的假象， 或者显示空头回补筹码，或交易者过快地构建底部） 一旦买换手潮出现后成交量继续下降，下跌趋势可能会继续延续。当买换手潮对应的K线的最低价被跌破时（空方越位），则可以确认下降趋势会延续，误入者需要止损出局。</p>
+<p>卖换手潮：卖换手率达到高潮<br>市场行为高度对偶。有买自然有卖。卖换手潮基本上与买换手潮属性相反。BKVO通过将卖出量（在出价处交易）乘以价格范围，然后在最后8个换手率柱中寻找最高值（默认设置）来识别出卖换手潮。卖换手潮表示大量供应导致价格下跌。默认设置是将换手率柱颜色设置为白色。</p>
+<p>卖换手潮通常出现在：</p>
+<ul>
+<li>下降趋势的开始（主力大量出货）；</li>
+<li>下降趋势的结束（空头陷阱）；</li>
+<li>上升趋势期间的回调（洗盘，震仓，多头补货）。</li>
+</ul>
+<p>下降趋势的开始几乎总是由卖换手潮开始的。这表明主力急于出货，筹码大量进入市场并迅速推低价格。有效的向下突破应该具有更多的价格向下突破（换手率先于价格），但偶尔也会测试卖换手潮对应K线的最高价格。如果后面的K线价格和换手率突破买换手潮的最高值，则实现了阳克阴，可以进场建仓。</p>
+<p>卖换手潮（白）在市场底部的特征在于其与换手潮拉锯（绿，多空争夺）或地量（黄，卖方力尽）并存。趋势的变化通常需要一段时间才能发展，因此不要过早地被哄骗入场 - 等待市场变得疲惫不堪，空方力道彻底瓦解后再入场。一个值得关注的有用信号是地量（黄） - 这表明最终没有供应，市场可能会停止下跌。<br>在上升趋势期间，回调通常以卖换手潮（白）为特征。这些显示获利回吐或交易者快速寻顶的愿望。一旦卖换手潮下降，上涨趋势可能会恢复并延续原来上涨趋势。当卖换手潮的量柱和K线价格被双覆盖后，即阳克阴，就可以确认上升趋势的延续。</p>
+<p>巨量拉锯<br>巨量拉锯通常见于：</p>
+<ul>
+<li>上涨趋势结束；</li>
+<li>下降趋势的结束；</li>
+<li>获利回吐拉升中期趋势。</li>
+</ul>
+<p>当巨量拉锯成交量较高时，表明需求正在通过新的筹码供应来满足市场需求或供应正在通过新的底部筹码需求来满足 - 实际上，随着新的供应或需求进入市场，因为，价格无法提前，K线的最高价到最低价的范围会很小，所以只有换手率能观察到市场的变化。巨量拉锯视为’刹车’。这就像是踩刹车 - 通常，汽车将在此后不久停车（1-2%点），然后转身。然而，在其他时候，动量是如此之大，所有你得到的只是暂停，然后市场继续朝着同一个方向前进！这就是市场趋势发展判断的难点所在！</p>
+<p>值得注意的是，偶尔买卖换手潮和巨量拉锯会重合，此时换手率柱的颜色为阳红色（买卖换手潮加巨量拉锯），其市场含义也更为复杂，或者说含糊不清。</p>
+<p>地量换手<br>地量换手通常见于：</p>
+<ul>
+<li>上涨趋势结束；</li>
+<li>下降趋势的结束；</li>
+<li>中期趋势回调。</li>
+</ul>
+<p>地量换手（黄）是我最喜欢的换手率指示信号。它们展示了散户在K线图上所做的事情。当市场测试顶部或底部时，它们也非常有用，是可以确认趋势方向变化的指标。<br>彩色换手率柱是青猫量化知识体系里面重要一环，在已有和将来更多发布指标里面都是有效的辅助。因为它们可以显示在不同市场阶段需要注意的换手率指标：</p>
+<ul>
+<li>市场顶部的特点是买换手潮（红），巨量拉锯（绿）和 缩阳量（黄，也称测试）。</li>
+<li>市场底部的特点是卖换手潮（白），巨量拉锯（绿）和 缩阴量（黄，也称测试）。</li>
+<li>向上或向下趋势的回调与市场顶部或触底模式类似，但持续时间较短且换手率柱颜色更简单。请记住，这种使用换手率识别转折点的方法在与非相关指标（如鲸鱼出海和缠论）结合使用时更加强大。</li>
+</ul>
+<p>注：此指标只适合用于股票标的，并不能应用于其它市场，否则会出现计算错误。</p>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/09/13/golang-%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87.html">golang-数组和切片</a>
+                <p>2023-09-13</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/python-urllib3.html">urllib3简单实用教程</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/26/jquery%E5%BC%B9%E5%87%BA%E5%B1%82%E9%94%81%E5%AE%9A%E8%83%8C%E6%99%AF%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE.html">jquery弹出层锁定背景当前位置</a>
+                <p>2023-05-26</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/FFMPEG%20%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.html">FFMPEG 视频操作</a>
+                <p>2023-05-15</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/09/13/golang-%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87.html">golang-数组和切片</a>
+                <p>2023-09-13</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/python-urllib3.html">urllib3简单实用教程</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/26/jquery%E5%BC%B9%E5%87%BA%E5%B1%82%E9%94%81%E5%AE%9A%E8%83%8C%E6%99%AF%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE.html">jquery弹出层锁定背景当前位置</a>
+                <p>2023-05-26</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/FFMPEG%20%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.html">FFMPEG 视频操作</a>
+                <p>2023-05-15</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(124)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+        
+            <a href="/tag/hexo/">Hexo(4)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
+        
+            <a href="/tag/linux/">linux(17)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(6)</a>
+        
+            <a href="/tag/node/">node(37)</a>
+        
+            <a href="/tag/dns/">dns(8)</a>
+        
+            <a href="/tag/css/">css(14)</a>
+        
+            <a href="/tag/go/">go(57)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(1)</a>
+        
+            <a href="/tag/vps/">vps(8)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
+        
+            <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/jquery/">jquery(3)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/websocket/">websocket(3)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(8)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(4)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/npm/">npm(1)</a>
+        
+            <a href="/tag/php/">php(9)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(10)</a>
+        
+            <a href="/tag/react/">react(3)</a>
+        
+            <a href="/tag/svg/">svg(1)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/typescript/">typescript(2)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(5)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 60
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

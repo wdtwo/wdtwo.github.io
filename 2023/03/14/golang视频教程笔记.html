@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/03/14/golang视频教程笔记.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">golang视频教程笔记</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-03-14
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/go/" rel="tag">go</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <p>学习笔记<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Pg41187AS">视频地址</a></p>
+<span id="more"></span>
+
+
+<h2 id="执行编译"><a href="#执行编译" class="headerlink" title="执行编译"></a>执行编译</h2><h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">go</span> run main.<span class="hljs-keyword">go</span><br><br></code></pre></td></tr></table></figure>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-comment">//直接编译</span><br><span class="hljs-keyword">go</span> build <br><span class="hljs-comment">//编译指定文件</span><br><span class="hljs-keyword">go</span> build test.<span class="hljs-keyword">go</span><br><span class="hljs-comment">//指定文件编译并命名</span><br><span class="hljs-keyword">go</span> build -o hello.exe test.<span class="hljs-keyword">go</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="通过命令行格式化代码"><a href="#通过命令行格式化代码" class="headerlink" title="通过命令行格式化代码"></a>通过命令行格式化代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># 效果展示</span><br>gofmt test.go<br><span class="hljs-comment"># 写入源文件</span><br>gofmt -w test.go<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><a target="_blank" rel="noopener" href="https://go.dev/">官方文档</a><br><a target="_blank" rel="noopener" href="https://studygolang.com/pkgdoc">中文文档</a></p>
+<p>源码可以在sdk安装目录下的src文件夹下查看</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p><img src="/src/golang/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="数据类型"></p>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> s1 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;学习Golang&quot;</span><br></code></pre></td></tr></table></figure>
+<p>字符串是不可改变的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> s1 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;abc&quot;</span><br>s1[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;t&quot;</span><span class="hljs-comment">//-&gt;会报错</span><br></code></pre></td></tr></table></figure>
+<p>没有特殊符号用<code>&quot;&quot;</code><br>如果有特殊符号用&#96;&#96;代码块</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> a <span class="hljs-type">int8</span> = <span class="hljs-number">10</span><br><span class="hljs-built_in">println</span>(a)<br><span class="hljs-comment">//小转大没问题</span><br><span class="hljs-keyword">var</span> b <span class="hljs-type">int64</span> = <span class="hljs-number">12138</span><br><span class="hljs-built_in">println</span>(b)<br><span class="hljs-comment">//大转小会导致精度丢失</span><br>c := <span class="hljs-type">int8</span>(b)<br><span class="hljs-built_in">println</span>(c)<br><br></code></pre></td></tr></table></figure>
+<h4 id="基本数据类型转换为string类型"><a href="#基本数据类型转换为string类型" class="headerlink" title="基本数据类型转换为string类型"></a>基本数据类型转换为string类型</h4><ol>
+<li><code>fmt.Sprintf(&quot;%参数&quot;,表达式)</code></li>
+<li>使用<code>strconv</code>包的函数<br><strong>推荐使用第一种</strong></li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> n1 <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br><span class="hljs-keyword">var</span> s1 <span class="hljs-type">string</span> = fmt.Sprintf(<span class="hljs-string">&quot;%d&quot;</span>, n1)<br>fmt.Printf(<span class="hljs-string">&quot;s1对应的类型是: %T , s1 = %v&quot;</span>, s1, s1) <span class="hljs-comment">// 10</span><br><br><span class="hljs-keyword">var</span> n2 <span class="hljs-type">float32</span> = <span class="hljs-number">3.21</span><br><span class="hljs-keyword">var</span> s2 <span class="hljs-type">string</span> = fmt.Sprintf(<span class="hljs-string">&quot;%f&quot;</span>, n2)<br>fmt.Printf(<span class="hljs-string">&quot;s2对应的类型是: %T , s2 = %q \n&quot;</span>, s2, s2) <span class="hljs-comment">//&quot;3.210000&quot;</span><br><br><span class="hljs-keyword">var</span> n3 <span class="hljs-type">bool</span> = <span class="hljs-literal">false</span><br><span class="hljs-keyword">var</span> s3 <span class="hljs-type">string</span> = fmt.Sprintf(<span class="hljs-string">&quot;%t&quot;</span>, n3)<br>fmt.Printf(<span class="hljs-string">&quot;s3对应的类型是: %T , s3 = %q \n&quot;</span>, s3, s3) <span class="hljs-comment">//&quot;false&quot;</span><br><br><span class="hljs-keyword">var</span> n4 <span class="hljs-type">byte</span> = <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-comment">//Unicode类型需要用单引号</span><br><span class="hljs-keyword">var</span> s4 <span class="hljs-type">string</span> = fmt.Sprintf(<span class="hljs-string">&quot;%c&quot;</span>, n4)<br>fmt.Printf(<span class="hljs-string">&quot;s4对应的类型是: %T , s4 = %q \n&quot;</span>, s4, s4) <span class="hljs-comment">//&quot;a&quot;</span><br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> n1 <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br><span class="hljs-keyword">var</span> s1 <span class="hljs-type">string</span> = strconv.FormatInt(<span class="hljs-type">int64</span>(n1), <span class="hljs-number">10</span>) <span class="hljs-comment">//int64类型 , 进制数</span><br>fmt.Printf(<span class="hljs-string">&quot;s1对应的类型是: %T , s1 = %v \n&quot;</span>, s1, s1)  <span class="hljs-comment">// 10</span><br><br><span class="hljs-keyword">var</span> n2 <span class="hljs-type">float64</span> = <span class="hljs-number">3.21</span><br><span class="hljs-keyword">var</span> s2 <span class="hljs-type">string</span> = strconv.FormatFloat(n2, <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-number">9</span>, <span class="hljs-number">64</span>) <span class="hljs-comment">//小数参数,十进制,小数点后保留9位,小数是float64类型</span><br>fmt.Printf(<span class="hljs-string">&quot;s2对应的类型是: %T , s2 = %v \n&quot;</span>, s2, s2)     <span class="hljs-comment">// 10</span><br><br><span class="hljs-keyword">var</span> n3 <span class="hljs-type">bool</span> = <span class="hljs-literal">false</span><br><span class="hljs-keyword">var</span> s3 <span class="hljs-type">string</span> = strconv.FormatBool(n3)<br>fmt.Printf(<span class="hljs-string">&quot;s3对应的类型是: %T , s3 = %q \n&quot;</span>, s3, s3) <span class="hljs-comment">//&quot;false&quot;</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="string类型转换成基本数据类型"><a href="#string类型转换成基本数据类型" class="headerlink" title="string类型转换成基本数据类型"></a>string类型转换成基本数据类型</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> s1 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;true&quot;</span><br><span class="hljs-keyword">var</span> b <span class="hljs-type">bool</span><br>b, _ = strconv.ParseBool(s1)<br>fmt.Printf(<span class="hljs-string">&quot;b的类型是: %T , b = %v \n&quot;</span>, b, b)<br><br><span class="hljs-keyword">var</span> s2 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;19&quot;</span><br><span class="hljs-keyword">var</span> num1 <span class="hljs-type">int64</span><br>num1, _ = strconv.ParseInt(s2, <span class="hljs-number">10</span>, <span class="hljs-number">64</span>) <span class="hljs-comment">//数值,十进制,int64</span><br>fmt.Printf(<span class="hljs-string">&quot;num1的类型是: %T , b = %v \n&quot;</span>, num1, num1)<br><span class="hljs-keyword">var</span> s3 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;3.21&quot;</span><br><span class="hljs-keyword">var</span> f1 <span class="hljs-type">float64</span><br>f1, _ = strconv.ParseFloat(s3, <span class="hljs-number">64</span>) <span class="hljs-comment">//数值,float64</span><br>fmt.Printf(<span class="hljs-string">&quot;f1的类型是: %T , b = %v \n&quot;</span>, f1, f1)<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="指針"><a href="#指針" class="headerlink" title="指針"></a>指針</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> age <span class="hljs-type">int</span> = <span class="hljs-number">18</span><br><br><span class="hljs-comment">// &amp;age 獲取到的是內存指向的地址</span><br><span class="hljs-comment">// b是指針變量的名稱</span><br><span class="hljs-comment">// *int是指針類型 可以理解為指向int類型的指針</span><br><span class="hljs-comment">// 想要獲取指針指向地址的值使用*b</span><br><span class="hljs-keyword">var</span> b *<span class="hljs-type">int</span> = &amp;age<br><span class="hljs-built_in">println</span>(age, b, *b)<br><br></code></pre></td></tr></table></figure>
+<p><strong>指針就是內存地址</strong></p>
+<ol>
+<li>&amp;獲取內存地址</li>
+<li>*根據內存地址取值</li>
+</ol>
+<h4 id="指针注意事项"><a href="#指针注意事项" class="headerlink" title="指针注意事项"></a>指针注意事项</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> num <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br>fmt.Println(num) <span class="hljs-comment">//10</span><br><span class="hljs-comment">// *int要和num的类型相同 如果是其他类型会报错 例如*float32</span><br><span class="hljs-keyword">var</span> b *<span class="hljs-type">int</span> = &amp;num <span class="hljs-comment">//指针变量一定是地址值,不加&amp;会报错</span><br>*b = <span class="hljs-number">20</span> <span class="hljs-comment">//通过指针改变内存里的值</span><br>fmt.Println(num) <span class="hljs-comment">//20</span><br><br><span class="hljs-comment">//每个基本类型都有对应的指针类型</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>标识符就是变量名</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> age <span class="hljs-type">int</span> = <span class="hljs-number">10</span><span class="hljs-comment">//age就算标识符</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>   <span class="hljs-keyword">var</span> count <span class="hljs-type">int</span> = <span class="hljs-number">20</span><br><span class="hljs-keyword">if</span> count &lt; <span class="hljs-number">30</span> &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;数量小于三十&quot;</span>)<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>       fmt.Printf(<span class="hljs-string">&quot;数量大于三十&quot;</span>)<br>   &#125;<br><br>   <span class="hljs-keyword">if</span> count := <span class="hljs-number">20</span>; count &lt; <span class="hljs-number">30</span> &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;小于三十&quot;</span>)<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> count == <span class="hljs-number">30</span> &#123;<br>       fmt.Printf(<span class="hljs-string">&quot;数量等于三十&quot;</span>)<br>   &#125;<span class="hljs-keyword">else</span>&#123;<br>       fmt.Printf(<span class="hljs-string">&quot;数量大于三十&quot;</span>)<br>   &#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<p>case里不用break<br>default不是必须的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>   <span class="hljs-keyword">var</span> score <span class="hljs-type">int</span> = <span class="hljs-number">87</span><br><span class="hljs-keyword">switch</span> score / <span class="hljs-number">10</span> &#123;<br><span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<br>    fmt.Println(<span class="hljs-string">&quot;等级为A级&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:<br>    fmt.Println(<span class="hljs-string">&quot;等级为B级&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<br>    fmt.Println(<span class="hljs-string">&quot;等级为C级&quot;</span>)<br><span class="hljs-keyword">case</span> <span class="hljs-number">7</span>,<span class="hljs-number">6</span>,<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>:<span class="hljs-comment">//可并列使用多个值</span><br>    fmt.Println(<span class="hljs-string">&quot;等级为D级&quot;</span>)<br><span class="hljs-keyword">default</span>:<br>    fmt.Println(<span class="hljs-string">&quot;不合格&quot;</span>)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>switch可以不带表达式当if使用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">switch</span>&#123;<br>    <span class="hljs-keyword">case</span> a == <span class="hljs-number">1</span>:<br>        fmt.Println(<span class="hljs-string">&quot;A&quot;</span>)<br>    <span class="hljs-keyword">case</span> a == <span class="hljs-number">2</span>:<br>        fmt.Println(<span class="hljs-string">&quot;B&quot;</span>)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>不推荐</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">switch</span> a := <span class="hljs-number">1</span>; &#123;<br>    <span class="hljs-keyword">case</span> a == <span class="hljs-number">1</span>:<br>        fmt.Println(<span class="hljs-string">&quot;A&quot;</span>)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>switch穿透,利用<code>fallthrough</code>关键字,如果在case语句后增加<code>fallthrough</code>,则会继续执行下一个case,也叫switch穿透<br>只穿透一层</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> score <span class="hljs-type">int</span> = <span class="hljs-number">99</span><br>    <span class="hljs-keyword">switch</span> score / <span class="hljs-number">10</span> &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<br>        fmt.Println(<span class="hljs-string">&quot;等级为A级&quot;</span>)<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:<br>        fmt.Println(<span class="hljs-string">&quot;等级为B级&quot;</span>)<br>        <span class="hljs-keyword">fallthrough</span><br>    <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<br>        fmt.Println(<span class="hljs-string">&quot;等级为C级&quot;</span>)<br>    <span class="hljs-keyword">default</span>:<br>        fmt.Println(<span class="hljs-string">&quot;不合格&quot;</span>)<br>    &#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>for循环</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>   <span class="hljs-keyword">var</span> sum <span class="hljs-type">int</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++ &#123;<br>    sum += i<br>&#125;<br>fmt.Println(<span class="hljs-string">&quot;sum的值:&quot;</span>, sum)<br><br><span class="hljs-comment">//不可切片汉字 因为汉字占三个字节</span><br><span class="hljs-keyword">var</span> str <span class="hljs-type">string</span> = <span class="hljs-string">&quot;hello world&quot;</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(str); i++ &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;%c \n&quot;</span>, str[i])<br>&#125;<br><span class="hljs-comment">//可以切片汉字</span><br><span class="hljs-keyword">var</span> str2 <span class="hljs-type">string</span> = <span class="hljs-string">&quot;hello world 你好&quot;</span><br><span class="hljs-keyword">for</span> i, value := <span class="hljs-keyword">range</span> str2 &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;索引:%d,值:%c \n&quot;</span>, i, value)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><ul>
+<li>break</li>
+<li>continue</li>
+<li>goto</li>
+<li>defer</li>
+</ul>
+<h4 id="break"><a href="#break" class="headerlink" title="break"></a>break</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ &#123;<br>    <span class="hljs-keyword">if</span> i == <span class="hljs-number">5</span> &#123;<br>        <span class="hljs-keyword">break</span><br>    &#125;<br>    <span class="hljs-built_in">println</span>(i)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++ &#123;<br>    <span class="hljs-keyword">for</span> j := <span class="hljs-number">2</span>; j &lt; <span class="hljs-number">5</span>; j++ &#123;<br>        <span class="hljs-keyword">if</span> i == <span class="hljs-number">2</span> &amp;&amp; j == <span class="hljs-number">2</span> &#123;<br>            <span class="hljs-keyword">continue</span><br>        &#125;<br>        <span class="hljs-built_in">println</span>(i, j)<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//可以跳过两层循环</span><br>lable:<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++ &#123;<br>    <span class="hljs-keyword">for</span> j := <span class="hljs-number">2</span>; j &lt; <span class="hljs-number">5</span>; j++ &#123;<br>        <span class="hljs-keyword">if</span> i == <span class="hljs-number">2</span> &amp;&amp; j == <span class="hljs-number">2</span> &#123;<br>            <span class="hljs-keyword">continue</span> lable<br>        &#125;<br>        <span class="hljs-built_in">println</span>(i, j)<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="goto"><a href="#goto" class="headerlink" title="goto"></a>goto</h4><p>可以无条件的跳转到程序的指定行<br>一般与条件判断配合<br>一般不建议使用,以免造成流程混乱</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;1111111&quot;</span>)<br><span class="hljs-keyword">goto</span> table<br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;2222222&quot;</span>) <span class="hljs-comment">//跳过2</span><br>table:<br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;3333333&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><ul>
+<li>为了在函数执行完以后及时释放资源</li>
+<li>在go中,程序遇到defer关键字,不会立即执行defer后的代码,而是将defer后的语句压入一个栈中,然后继续执行函数后的语句</li>
+<li>相关的值同时拷贝入栈中,不会随函数后面的变化而变化</li>
+<li>等函数执行完毕后执行defer后的代码</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-built_in">println</span>(add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<span class="hljs-comment">//4</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">defer</span> <span class="hljs-built_in">println</span>(a) <span class="hljs-comment">//3</span><br>    <span class="hljs-keyword">defer</span> <span class="hljs-built_in">println</span>(b)<span class="hljs-comment">//2</span><br>    sum := a + b<br>    <span class="hljs-built_in">println</span>(sum) <span class="hljs-comment">//1</span><br>    <span class="hljs-keyword">return</span> sum<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong>函数和函数是并列关系  所以不能写在main中</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> 函数名 参数 返回值类型</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(num1 <span class="hljs-type">int</span>, num2 <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">return</span> num1 + num2<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="传入可变数量的参数"><a href="#传入可变数量的参数" class="headerlink" title="传入可变数量的参数"></a>传入可变数量的参数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    test()<br>    test(<span class="hljs-number">1</span>)<br>    test(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span> <span class="hljs-params">(args...<span class="hljs-type">int</span>)</span></span>&#123;<br>    <span class="hljs-comment">//函数内部使用可以当做数组来使用</span><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>;i &lt; <span class="hljs-built_in">len</span>(args);i++&#123;<br>        fmt.Println(args[i])<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在函数内改变函数外的值</li>
+<li>需要传入指针</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> num <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br>    test(&amp;num) <span class="hljs-comment">//传入num的内存地址</span><br>    fmt.Println(num) <span class="hljs-comment">//-&gt;30</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(num *<span class="hljs-type">int</span>)</span></span> &#123;<br>    <span class="hljs-comment">//对地址对应的变量进行改变数值:</span><br>    *num = <span class="hljs-number">30</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="函数是一个变量-可以被赋值"><a href="#函数是一个变量-可以被赋值" class="headerlink" title="函数是一个变量 可以被赋值"></a>函数是一个变量 可以被赋值</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>a := test<br><br>a(<span class="hljs-number">10</span>)<span class="hljs-comment">//等同于test(10)</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="可以作为形参传给另一个函数"><a href="#可以作为形参传给另一个函数" class="headerlink" title="可以作为形参传给另一个函数"></a>可以作为形参传给另一个函数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test02</span> <span class="hljs-params">(num1 <span class="hljs-type">int</span>, testFunc <span class="hljs-keyword">func</span>(<span class="hljs-type">int</span>)</span></span>)&#123;<br>    testFunc(<span class="hljs-number">123</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    test02(<span class="hljs-number">10</span>,test)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="自定义数据类型-相当于起别名"><a href="#自定义数据类型-相当于起别名" class="headerlink" title="自定义数据类型: 相当于起别名"></a>自定义数据类型: 相当于起别名</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">type</span> myInt <span class="hljs-type">int</span><br><br><span class="hljs-keyword">var</span> a myInt = <span class="hljs-number">1</span><br><span class="hljs-keyword">var</span> b <span class="hljs-type">int</span> = <span class="hljs-number">1</span><br><br>b = a <span class="hljs-comment">//会报错</span><br>b = <span class="hljs-type">int</span>(a)<span class="hljs-comment">//可以用</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="函数别名"><a href="#函数别名" class="headerlink" title="函数别名"></a>函数别名</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//函数传形参可以直接当类型用</span><br><span class="hljs-keyword">type</span> myFunc <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="返回值命名"><a href="#返回值命名" class="headerlink" title="返回值命名"></a>返回值命名</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(num1 <span class="hljs-type">int</span>,numb <span class="hljs-type">int</span>)</span></span>(<span class="hljs-type">int</span>,<span class="hljs-type">int</span>)&#123;<br>    sum := num1 + num2<br>    sub := num1 - num2<br>    <span class="hljs-keyword">return</span> sum,sub<br>&#125;<br><span class="hljs-comment">//定义返回值 返回值命名 顺序不用对应</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(num1 <span class="hljs-type">int</span>,numb <span class="hljs-type">int</span>)</span></span>(sum <span class="hljs-type">int</span>,sub <span class="hljs-type">int</span>)&#123;<br>    sum := num1 + num2<br>    sub := num1 - num2<br>    <span class="hljs-keyword">return</span> <br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="init函数"><a href="#init函数" class="headerlink" title="init函数"></a>init函数</h4><ul>
+<li>优于main函数执行</li>
+<li>执行顺序:全局变量 -&gt; init函数 -&gt; main函数</li>
+<li>多用于全局变量的初始化</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> num <span class="hljs-type">int</span> = test()<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> <span class="hljs-type">int</span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;test&quot;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">10</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;init函数&quot;</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main函数&quot;</span>)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>定义的同时再调用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">result := <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">return</span> a + b<br>&#125;(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>)<br><span class="hljs-built_in">println</span>(result)<br></code></pre></td></tr></table></figure>
+<p>匿名函数指定变量<br><strong>设置全局变量接受就会变成全局函数</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>func1 := <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>        <span class="hljs-keyword">return</span> a - b<br>    &#125;<br>    <span class="hljs-keyword">var</span> a <span class="hljs-type">int</span> = func1(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)<br>    fmt.Println(a)<br><br></code></pre></td></tr></table></figure>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包就是一个函数和其相关的引用环境组合的一个整体<br>返回的是一个匿名函数,会一直存在变量中等待调用<br>匿名函数+引用的变量&#x2F;参数 &#x3D; 闭包</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getSum</span><span class="hljs-params">()</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">var</span> sum <span class="hljs-type">int</span> = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(n <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>        sum = sum + n<br>        <span class="hljs-keyword">return</span> sum<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    a := getSum()<br>    <span class="hljs-built_in">println</span>(a(<span class="hljs-number">1</span>)) <span class="hljs-comment">//1</span><br>    <span class="hljs-built_in">println</span>(a(<span class="hljs-number">2</span>)) <span class="hljs-comment">//2</span><br>    <span class="hljs-built_in">println</span>(a(<span class="hljs-number">3</span>)) <span class="hljs-comment">//6</span><br>    <span class="hljs-built_in">println</span>(a(<span class="hljs-number">4</span>)) <span class="hljs-comment">//10</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h2><p>所有的内置函数都放在文档的builtin中</p>
+<h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-comment">//字符串长度</span><br><span class="hljs-built_in">len</span>(<span class="hljs-string">&quot;golang&quot;</span>) <span class="hljs-comment">//6</span><br><span class="hljs-comment">//new分配内存,new函数的实参是一个类型而不是具体数值,new函数返回值是对应类型的指针 num: *int</span><br>num := <span class="hljs-built_in">new</span>(<span class="hljs-type">int</span>)<br>fmt.Printf(<span class="hljs-string">&quot;类型: %T 值:%v 地址:%v 指针指向的值:%v&quot;</span>, num, num, &amp;num, *num)<br><span class="hljs-comment">//make函数来分配内存,主要用来分配引用类型(指针,slice切片,map,管道chan,interface等)</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="字符串相关的函数"><a href="#字符串相关的函数" class="headerlink" title="字符串相关的函数"></a>字符串相关的函数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 字符串占的字节长度 一个中文三个字节</span><br><span class="hljs-keyword">var</span> str <span class="hljs-type">string</span> = <span class="hljs-string">&quot;golang你好&quot;</span><br><span class="hljs-built_in">println</span>(<span class="hljs-built_in">len</span>(str)) <span class="hljs-comment">//12</span><br><span class="hljs-comment">//对字符串遍历</span><br><span class="hljs-comment">//1.</span><br><span class="hljs-keyword">for</span> i, value := <span class="hljs-keyword">range</span> str &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;索引为:%d,值为%c \n&quot;</span>, i, value)<br>&#125;<br><span class="hljs-comment">//2.利用切片进行遍历</span><br>r := []<span class="hljs-type">rune</span>(str)<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(r); i++ &#123;<br>    fmt.Printf(<span class="hljs-string">&quot;%c \n&quot;</span>, r[i])<br>&#125;<br><span class="hljs-comment">//字符串转整数</span><br>num1, _ := strconv.Atoi(<span class="hljs-string">&quot;123123&quot;</span>)<br><span class="hljs-built_in">println</span>(num1)<br><span class="hljs-comment">//整数转字符串</span><br>str1 := strconv.Itoa(<span class="hljs-number">123</span>)<br><span class="hljs-built_in">println</span>(str1)<br><br><span class="hljs-comment">//查找一个字符串是否在另一个字符串中</span><br><span class="hljs-keyword">var</span> str <span class="hljs-type">string</span> = <span class="hljs-string">&quot;golang你好&quot;</span><br><span class="hljs-built_in">println</span>(<span class="hljs-built_in">len</span>(str))<br>bigStr := <span class="hljs-string">&quot;agsg golang你好 edghldhj&quot;</span><br><span class="hljs-built_in">println</span>(bigStr)<br><span class="hljs-built_in">println</span>(strings.Contains(bigStr, str)) <span class="hljs-comment">//找到返回true 没找到返回false</span><br><span class="hljs-comment">//统计字符串中找到几个相同字符串</span><br><span class="hljs-built_in">println</span>(strings.Count(bigStr, str)) <span class="hljs-comment">//没找到返回0</span><br><span class="hljs-comment">//不区分大小写字符串比较</span><br><span class="hljs-built_in">println</span>(strings.EqualFold(<span class="hljs-string">&quot;go&quot;</span>, <span class="hljs-string">&quot;GO&quot;</span>))<br><span class="hljs-comment">//返回查找的字符串第一次出现的位置</span><br><span class="hljs-built_in">println</span>(strings.Index(bigStr, str))<span class="hljs-comment">//如果没有返回-1</span><br><span class="hljs-comment">//字符串替换 被替换的字符串 替换的部分 替换的字符 替换几次 如果全部替换为-1</span><br><span class="hljs-built_in">println</span>(strings.Replace(bigStr, str, <span class="hljs-string">&quot;999&quot;</span>, <span class="hljs-number">1</span>))<br><span class="hljs-comment">//字符串分割成数组</span><br>arr := strings.Split(<span class="hljs-string">&quot;go-python-java&quot;</span>, <span class="hljs-string">&quot;-&quot;</span>)<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ &#123;<br>    <span class="hljs-built_in">println</span>(arr[i])<br>&#125;<br><span class="hljs-comment">//首字母大小写转换</span><br><span class="hljs-built_in">println</span>(strings.ToUpper(<span class="hljs-string">&quot;go&quot;</span>))<br><span class="hljs-built_in">println</span>(strings.ToLower(<span class="hljs-string">&quot;GO&quot;</span>))<br><span class="hljs-comment">//首尾去空格</span><br><span class="hljs-built_in">println</span>(strings.TrimSpace(<span class="hljs-string">&quot;  dfghdh  dhdfh  &quot;</span>))<br><span class="hljs-comment">//去掉首尾指定字符</span><br><span class="hljs-built_in">println</span>(strings.Trim(<span class="hljs-string">&quot;__dfghfgh__&quot;</span>, <span class="hljs-string">&quot;_&quot;</span>))<br><span class="hljs-comment">//判断字符串是否以指定字符开头</span><br><span class="hljs-built_in">println</span>(strings.HasPrefix(<span class="hljs-string">&quot;http://www.baidu.com&quot;</span>, <span class="hljs-string">&quot;http&quot;</span>))<br><span class="hljs-comment">//是否以某个字符串结尾</span><br><span class="hljs-built_in">println</span>(strings.HasSuffix(<span class="hljs-string">&quot;abc.png&quot;</span>, <span class="hljs-string">&quot;png&quot;</span>))<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>now := time.Now()<br><span class="hljs-comment">//now是一个结构体 struct</span><br>fmt.Printf(<span class="hljs-string">&quot;%v ,对应的类型为%T&quot;</span>, now, now)<br><span class="hljs-comment">//2023-03-22 15:11:05.7441991 +0800 CST m=+0.004834101 ,对应的类型为time.Time</span><br><br>fmt.Printf(<span class="hljs-string">&quot;年 : %v \n&quot;</span>, now.Year())<br>fmt.Printf(<span class="hljs-string">&quot;月 : %v \n&quot;</span>, <span class="hljs-type">int</span>(now.Month()))<br>fmt.Printf(<span class="hljs-string">&quot;日 : %v \n&quot;</span>, now.Day())<br>fmt.Printf(<span class="hljs-string">&quot;时 : %v \n&quot;</span>, now.Hour())<br>fmt.Printf(<span class="hljs-string">&quot;分 : %v \n&quot;</span>, now.Minute())<br>fmt.Printf(<span class="hljs-string">&quot;秒 : %v \n&quot;</span>, now.Second())<br>fmt.Printf(<span class="hljs-string">&quot;时间戳: %v \n&quot;</span>, now.Unix())<span class="hljs-comment">//秒</span><br><br><span class="hljs-comment">//格式化时间</span><br>str := fmt.Sprintf(<span class="hljs-string">&quot;当前年月日: %d-%d-%d 时分秒: %d:%d:%d&quot;</span>, now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second())<br><span class="hljs-built_in">println</span>(str)<br><br><span class="hljs-comment">//指定格式     固定写法 golang的诞生时间</span><br>str2 := now.Format(<span class="hljs-string">&quot;2006/01/02 15:04:05&quot;</span>)<br><span class="hljs-built_in">println</span>(str2)<br><br><span class="hljs-comment">//时间戳转字符串</span><br>timeUnix := now.Unix() <span class="hljs-comment">//当前时间戳</span><br>formatTimeStr := time.Unix(timeUnix, <span class="hljs-number">0</span>).Format(<span class="hljs-string">&quot;2006-01-02 15:04:05&quot;</span>)<br><span class="hljs-built_in">println</span>(formatTimeStr)<br><span class="hljs-comment">//字符串转时间戳</span><br>formatTimeStr := <span class="hljs-string">&quot;2023-03-22 15:47:55&quot;</span><br>formatTime, _ := time.Parse(<span class="hljs-string">&quot;2006-01-02 15:04:05&quot;</span>, formatTimeStr)<br>fmt.Println(formatTime)<br><span class="hljs-comment">//判断一个时间是否在另外一个时间之前</span><br>timeA.Before(timeB)<span class="hljs-comment">//A在B之前</span><br>timeA.After(timeB) <span class="hljs-comment">//A在B之后</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="包的引用"><a href="#包的引用" class="headerlink" title="包的引用"></a>包的引用</h2><ol>
+<li>package进行包的声明,建议:包的声明这个包和坐在的文件夹同名</li>
+<li>main包是程序的入口包,一般main函数会放在这个包下</li>
+<li>打包语法:<ul>
+<li>package 包名</li>
+</ul>
+</li>
+<li>引入包的语法:import “包的路径” 包名是从$GOPATH&#x2F;src&#x2F;后开始计算的,使用&#x2F;进行路径分隔</li>
+<li>如果有多个包,建议一次性导入,格式如下:</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> (<br>    <span class="hljs-string">&quot;fmt&quot;</span><br>    <span class="hljs-string">&quot;gocode/demo&quot;</span><br>)<br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>在函数调用的时候前面要定位到所在的包</li>
+<li>首字母大写</li>
+<li>一个目录下不能有重复的函数</li>
+<li>包名和文件夹的名字,可以不一样</li>
+<li>一个目录下的同级文件归属一个包</li>
+<li>包在程序层面是代码块 源文件层面是一个文件夹<br>引用路径是文件夹路径<br>调用方法前面是包名后面是函数</li>
+</ol>
+<h4 id="1-11版本后使用go-mod"><a href="#1-11版本后使用go-mod" class="headerlink" title="1.11版本后使用go.mod"></a>1.11版本后使用go.mod</h4><p>先新建文件夹test<br>然后配置 进入文件夹执行命令</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">go</span> mod init test<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h2><p>发现错误以后程序会停止运行<br>利用错误处理以后不影响后续执行</p>
+<h4 id="defer-recover机制"><a href="#defer-recover机制" class="headerlink" title="defer + recover机制"></a>defer + recover机制</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    test()<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;执行结束!!!&quot;</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>        err := <span class="hljs-built_in">recover</span>()<br>        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>            <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;错误已经捕获&quot;</span>)<br>            <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;err是:&quot;</span>, err)<br>        &#125;<br>    &#125;()<br>    num1 := <span class="hljs-number">10</span><br>    num2 := <span class="hljs-number">0</span><br>    result := num1 / num2<br>    <span class="hljs-built_in">println</span>(result)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    err := test()<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        fmt.Printf(<span class="hljs-string">&quot;自定义错误,%v \n&quot;</span>, err)<br>    &#125;<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> (err <span class="hljs-type">error</span>) &#123;<br>    num1 := <span class="hljs-number">1</span><br>    num2 := <span class="hljs-number">2</span><br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;test&quot;</span>)<br>    <span class="hljs-keyword">if</span> num1 &lt; num2 &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;这里是一个错误!&quot;</span>)<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="出现错误就停止程序"><a href="#出现错误就停止程序" class="headerlink" title="出现错误就停止程序"></a>出现错误就停止程序</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    err := test()<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        fmt.Printf(<span class="hljs-string">&quot;自定义错误,%v \n&quot;</span>, err)<br>        <span class="hljs-built_in">panic</span>(err) <span class="hljs-comment">//到此处就会停止程序</span><br>    &#125;<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="获取用户终端输入"><a href="#获取用户终端输入" class="headerlink" title="获取用户终端输入"></a>获取用户终端输入</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> age <span class="hljs-type">int</span><br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;请输入年龄&quot;</span>)<br>fmt.Scanln(&amp;age)<br><span class="hljs-keyword">var</span> name <span class="hljs-type">string</span><br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;请输入姓名&quot;</span>)<br>fmt.Scanln(&amp;name)<br><span class="hljs-keyword">var</span> score <span class="hljs-type">float32</span><br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;请输入成绩&quot;</span>)<br>fmt.Scanln(&amp;score)<br><span class="hljs-keyword">var</span> isVIP <span class="hljs-type">bool</span><br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;请输入是否为VIP&quot;</span>)<br>fmt.Scanln(&amp;isVIP)<br>fmt.Printf(<span class="hljs-string">&quot;年龄:%v,姓名:%v,成绩:%v,是否VIP:%v&quot;</span>, age, name, score, isVIP)<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> (<br>    age   <span class="hljs-type">int</span><br>    name  <span class="hljs-type">string</span><br>    score <span class="hljs-type">float32</span><br>    isVIP <span class="hljs-type">bool</span><br>)<br><span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;请录入学生年龄 姓名 成绩 是否VIP&quot;</span>)<br>fmt.Scanf(<span class="hljs-string">&quot;%d %s %f %t&quot;</span>, &amp;age, &amp;name, &amp;score, &amp;isVIP)<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h4 id="定义一个数组并赋值"><a href="#定义一个数组并赋值" class="headerlink" title="定义一个数组并赋值"></a>定义一个数组并赋值</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> arr [<span class="hljs-number">5</span>]<span class="hljs-type">int</span><br>arr[<span class="hljs-number">0</span>] = <span class="hljs-number">11</span><br>arr[<span class="hljs-number">1</span>] = <span class="hljs-number">22</span><br>arr[<span class="hljs-number">2</span>] = <span class="hljs-number">33</span><br>arr[<span class="hljs-number">3</span>] = <span class="hljs-number">44</span><br>arr[<span class="hljs-number">4</span>] = <span class="hljs-number">55</span><br>sum := <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ &#123;<br>    sum += arr[i]<br>&#125;<br>fmt.Printf(<span class="hljs-string">&quot;总数为:%v,平均数为:%v \n&quot;</span>, sum, sum/<span class="hljs-built_in">len</span>(arr))<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="数组循环"><a href="#数组循环" class="headerlink" title="数组循环"></a>数组循环</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>sum := <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ &#123;<br>    sum += arr[i]<br>&#125;<br>fmt.Printf(<span class="hljs-string">&quot;总数为:%v,平均数为:%v \n&quot;</span>, sum, sum/<span class="hljs-built_in">len</span>(arr))<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ &#123;<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;请输入学生成绩&quot;</span>)<br>    fmt.Scanln(&amp;arr[i])<br>&#125;<br><span class="hljs-keyword">for</span> key, val := <span class="hljs-keyword">range</span> arr &#123;<br>    <span class="hljs-built_in">println</span>(key, val)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="数组的四种初始化方式"><a href="#数组的四种初始化方式" class="headerlink" title="数组的四种初始化方式"></a>数组的四种初始化方式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-comment">// 1</span><br><span class="hljs-keyword">var</span> arr1 [<span class="hljs-number">3</span>]<span class="hljs-type">int</span> = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>&#125;<br>fmt.Println(arr1)<br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>&#125;<br>fmt.Println(arr2)<br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">var</span> arr3 = [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>fmt.Println(arr3)<br><span class="hljs-comment">// 4</span><br><span class="hljs-keyword">var</span> arr4 = [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">2</span>: <span class="hljs-number">22</span>, <span class="hljs-number">1</span>: <span class="hljs-number">11</span>, <span class="hljs-number">0</span>: <span class="hljs-number">10</span>, <span class="hljs-number">3</span>: <span class="hljs-number">33</span>&#125;<br>fmt.Println(arr4)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="数组的注意事项"><a href="#数组的注意事项" class="headerlink" title="数组的注意事项"></a>数组的注意事项</h4><p>数组的长度是类型的一部分</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>fmt.Printf(<span class="hljs-string">&quot;数组的类型是 %T&quot;</span>, arr1)<br><span class="hljs-comment">//[3]int</span><br><br></code></pre></td></tr></table></figure>
+
+<p>数组属值类型,在默认情况下是值传递,因此会进行值拷贝</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>&#125;<br>    test(arr)<br>    fmt.Println(arr)<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(arr [3]<span class="hljs-type">int</span>)</span></span> &#123;<br>    arr[<span class="hljs-number">0</span>] = <span class="hljs-number">7</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>如果想在其他函数中,修改原来的数组,需要使用引用传递(指针方式)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>&#125;<br>    test(&amp;arr)<br>    fmt.Println(arr)<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(arr *[3]<span class="hljs-type">int</span>)</span></span> &#123;<br>    (*arr)[<span class="hljs-number">0</span>] = <span class="hljs-number">7</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h4><p>二维数组其实也是一维数组</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]<span class="hljs-type">int16</span>&#123;&#125;<br><span class="hljs-comment">//var arr = [2][3]int16&#123;&#123;&#125;,&#123;&#125;&#125;</span><br><span class="hljs-comment">//var arr = [2][3]int16&#123;&#123;1,2,3&#125;,&#123;4,5,6&#125;&#125;</span><br>fmt.Println(arr)<br><span class="hljs-comment">//赋值</span><br>arr[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">47</span><br>arr[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">82</span><br>arr[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">25</span><br>fmt.Println(arr)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="二维数组的遍历"><a href="#二维数组的遍历" class="headerlink" title="二维数组的遍历"></a>二维数组的遍历</h4><p>不常用 常用切片</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]<span class="hljs-type">int16</span>&#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;, &#123;<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;&#125;<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ &#123;<br>    <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(arr[i]); j++ &#123;<br>        fmt.Println(arr[i][j])<br>    &#125;<br>&#125;<br><span class="hljs-keyword">for</span> i, v := <span class="hljs-keyword">range</span> arr &#123;<br>    <span class="hljs-keyword">for</span> j, w := <span class="hljs-keyword">range</span> arr[i] &#123;<br>        fmt.Println(i, v, j, w)<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><ul>
+<li>切片(slice)是golang中一种特有的数据类型</li>
+<li>数组有特定的用处,但是却又一些呆板(数组长度固定不可变),所以在go中并不常见.切片是一种建立在数组类型上的抽象,它构建在数组之上并且提供更强大的能力和便捷.</li>
+<li>切片是对数组一个连续片段的引用,所以切片是一个引用类型.这个片段可以是整个数组,或者是由起始和终止索引标识的一些项的子集.需要注意的是,终止索引标识的项不包括在切片内.切片提供里一个相关数组的动态窗口.</li>
+</ul>
+<h4 id="两种写法"><a href="#两种写法" class="headerlink" title="两种写法"></a>两种写法</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;&#125;<br><span class="hljs-comment">//1</span><br><span class="hljs-keyword">var</span> slice []<span class="hljs-type">int</span> = arr[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br><span class="hljs-built_in">println</span>(slice)<br><span class="hljs-comment">//2</span><br>slice2 := arr[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br><span class="hljs-built_in">println</span>(slice2)<br><br><span class="hljs-comment">//获取切片元素的长度</span><br>fmt.Println(<span class="hljs-built_in">len</span>(slice2))<br><span class="hljs-comment">//获取切片元素的容量</span><br>fmt.Println(<span class="hljs-built_in">cap</span>(slice2))<br></code></pre></td></tr></table></figure>
+
+<h4 id="切片的内存分析"><a href="#切片的内存分析" class="headerlink" title="切片的内存分析"></a>切片的内存分析</h4><p>三个一段的数组结构:</p>
+<ul>
+<li>指向底层数组的指针</li>
+<li>切片的长度</li>
+<li>切片的容量</li>
+</ul>
+<p>改变切片内的值会改变数组的值,他们指向的是同一个内存地址</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>slice[<span class="hljs-number">0</span>] = <span class="hljs-number">10</span><br>fmt.Println(slice)<span class="hljs-comment">//[10]</span><br>fmt.Println(arr)<span class="hljs-comment">//[0,10,0]</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="切片的定义"><a href="#切片的定义" class="headerlink" title="切片的定义"></a>切片的定义</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//1</span><br><span class="hljs-keyword">var</span> slice []<span class="hljs-type">int</span> = arr[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br><span class="hljs-built_in">println</span>(slice)<br><span class="hljs-comment">//2</span><br>slice2 := arr[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br><span class="hljs-built_in">println</span>(slice2)<br></code></pre></td></tr></table></figure>
+<p>通过make内置函数来创建的切片<br>make底层创建一个数组,对外不可见,所以不可以直接操作这个数组,要通过slice去间接的访问各个元素,不可以直接对数组进行维护.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//make定义切片</span><br>slice3 := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">4</span>, <span class="hljs-number">20</span>)<br>fmt.Println(slice3)<br></code></pre></td></tr></table></figure>
+<p>定义一个切片,直接就指向具体数组,使用原理类似make的方式.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><br>slice4 := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>fmt.Println(<span class="hljs-built_in">len</span>(slice4))<br>fmt.Println(<span class="hljs-built_in">cap</span>(slice4))<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="切片的遍历"><a href="#切片的遍历" class="headerlink" title="切片的遍历"></a>切片的遍历</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go">slice := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br><br>fmt.Println(slice)<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(slice); i++ &#123;<br>    fmt.Println(slice[i])<br>&#125;<br><span class="hljs-keyword">for</span> i, v := <span class="hljs-keyword">range</span> slice &#123;<br>    fmt.Println(i, v)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="切片的追加-动态增长"><a href="#切片的追加-动态增长" class="headerlink" title="切片的追加 动态增长"></a>切片的追加 动态增长</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go">intarr := [<span class="hljs-number">6</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;<br>slice := intarr[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>]<br>fmt.Println(slice)<br>slice2 := <span class="hljs-built_in">append</span>(slice, <span class="hljs-number">12</span>, <span class="hljs-number">34</span>)<br>fmt.Println(slice2)<br></code></pre></td></tr></table></figure>
+<h4 id="两个切片合并-动态增长"><a href="#两个切片合并-动态增长" class="headerlink" title="两个切片合并 动态增长"></a>两个切片合并 动态增长</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go">slice3 := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>slice4 := <span class="hljs-built_in">append</span>(slice2, slice3...)<br>fmt.Println(slice4)<br></code></pre></td></tr></table></figure>
+<h4 id="切片的复制"><a href="#切片的复制" class="headerlink" title="切片的复制"></a>切片的复制</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> a []<span class="hljs-type">int</span> = []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>fmt.Println(a)<br><span class="hljs-keyword">var</span> b []<span class="hljs-type">int</span> = <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">10</span>)<br><span class="hljs-built_in">copy</span>(b, a)<br>fmt.Println(b)<br></code></pre></td></tr></table></figure>
+
+<h4 id="数组和切片初始化方式的总结"><a href="#数组和切片初始化方式的总结" class="headerlink" title="数组和切片初始化方式的总结"></a>数组和切片初始化方式的总结</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//数组的初始化方式</span><br><span class="hljs-keyword">var</span> arr1 [<span class="hljs-number">3</span>]<span class="hljs-type">int</span> = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>arr5 := [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br><span class="hljs-keyword">var</span> arr3 = [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br><span class="hljs-keyword">var</span> arr4 = [...]<span class="hljs-type">int</span>&#123;<span class="hljs-number">2</span>: <span class="hljs-number">1</span>, <span class="hljs-number">1</span>: <span class="hljs-number">2</span>, <span class="hljs-number">3</span>: <span class="hljs-number">3</span>&#125;<br>fmt.Println(arr1, arr2, arr3, arr4, arr5)<br>fmt.Println(<span class="hljs-string">&quot;---------------------&quot;</span>)<br><br><span class="hljs-comment">//切片的初始化方式</span><br><span class="hljs-keyword">var</span> slice1 []<span class="hljs-type">int</span> = arr1[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br>slice2 := arr1[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]<br>slice3 := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">10</span>)<br>slice4 := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>fmt.Println(slice1, slice2, slice3, slice4)<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="映射-map"><a href="#映射-map" class="headerlink" title="映射(map)"></a>映射(map)</h2><p>go语言中内置的一种类型,它将键值对相关联,类似于其他语言的集合.</p>
+<p>基本语法:var 变量名 map[keytype]valuetype</p>
+<ul>
+<li>key,value的类型可以是bool数字string指针channel还可以只包含前面几个类型的接口结构体数组</li>
+<li>key通常为int和string类型,value通常为数字(整数,浮点数)string map结构体</li>
+<li>key:slice map function 不可以</li>
+</ul>
+<p>map的特点:</p>
+<ul>
+<li>map集合在使用前一定要make</li>
+<li>map的key-value是无序的</li>
+<li>key是不可以重复的,重复后面的会替换前面</li>
+</ul>
+<h4 id="三种创建方式"><a href="#三种创建方式" class="headerlink" title="三种创建方式"></a>三种创建方式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//方式1</span><br><span class="hljs-comment">//定义map变量</span><br><span class="hljs-keyword">var</span> a <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span><br><span class="hljs-comment">//初始化的map不占用内存空间,必须用make开辟内存空间</span><br>a = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>, <span class="hljs-number">10</span>)<br>a[<span class="hljs-number">11</span>] = <span class="hljs-string">&quot;张三&quot;</span><br>a[<span class="hljs-number">22</span>] = <span class="hljs-string">&quot;李四&quot;</span><br>a[<span class="hljs-number">33</span>] = <span class="hljs-string">&quot;王五&quot;</span><br><span class="hljs-comment">//a[11] = &quot;朱刘&quot; //键重复后面的值会替换掉前面的值</span><br>fmt.Println(a)<br><br><span class="hljs-comment">//方式2</span><br>b := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>(<span class="hljs-type">int</span>)<span class="hljs-type">string</span>)<span class="hljs-comment">//,10长度不放也可以</span><br><span class="hljs-comment">//方式3</span><br>c := <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>&#123;<br>    <span class="hljs-number">11</span>: <span class="hljs-string">&quot;张三&quot;</span>,<br>    <span class="hljs-number">22</span>: <span class="hljs-string">&quot;李四&quot;</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="map的操作"><a href="#map的操作" class="headerlink" title="map的操作"></a>map的操作</h4><p>增删改查</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//增</span><br>a := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>)<br>c := <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>&#123;<br>    <span class="hljs-number">11</span>: <span class="hljs-string">&quot;张三&quot;</span>,<br>    <span class="hljs-number">22</span>: <span class="hljs-string">&quot;李四&quot;</span>,<br>&#125;<br>c[<span class="hljs-number">33</span>] = <span class="hljs-string">&quot;王五&quot;</span><span class="hljs-comment">//增</span><br><span class="hljs-built_in">delete</span>(c, <span class="hljs-number">11</span>)<span class="hljs-comment">//删</span><br>c[<span class="hljs-number">22</span>] = <span class="hljs-string">&quot;张三&quot;</span><span class="hljs-comment">//改</span><br><br>value,flag := b[<span class="hljs-number">22</span>] <span class="hljs-comment">//查 </span><br>fmt.Println(value,flag) <span class="hljs-comment">//找到了flag返回true,没找到返回false</span><br><span class="hljs-comment">//获取长度</span><br><span class="hljs-built_in">len</span>(c)<br><span class="hljs-comment">//遍历 只支持for range</span><br><span class="hljs-keyword">for</span> i, v := <span class="hljs-keyword">range</span> c &#123;<br>    <span class="hljs-built_in">println</span>(i, v)<br>&#125;<br><span class="hljs-comment">//二维</span><br>d := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>)<br>d[<span class="hljs-string">&quot;c1&quot;</span>] = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>, <span class="hljs-number">3</span>)<br>d[<span class="hljs-string">&quot;c1&quot;</span>][<span class="hljs-number">11</span>] = <span class="hljs-string">&quot;张三&quot;</span><br>d[<span class="hljs-string">&quot;c1&quot;</span>][<span class="hljs-number">22</span>] = <span class="hljs-string">&quot;张李四&quot;</span><br>d[<span class="hljs-string">&quot;c1&quot;</span>][<span class="hljs-number">33</span>] = <span class="hljs-string">&quot;王五&quot;</span><br>d[<span class="hljs-string">&quot;c2&quot;</span>] = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">string</span>, <span class="hljs-number">3</span>)<br>d[<span class="hljs-string">&quot;c2&quot;</span>][<span class="hljs-number">44</span>] = <span class="hljs-string">&quot;张1&quot;</span><br>d[<span class="hljs-string">&quot;c2&quot;</span>][<span class="hljs-number">55</span>] = <span class="hljs-string">&quot;张李2&quot;</span><br>d[<span class="hljs-string">&quot;c2&quot;</span>][<span class="hljs-number">66</span>] = <span class="hljs-string">&quot;王3&quot;</span><br><span class="hljs-keyword">for</span> i1, v1 := <span class="hljs-keyword">range</span> d &#123;<br>    <span class="hljs-keyword">for</span> i2, v2 := <span class="hljs-keyword">range</span> v1 &#123;<br>        <span class="hljs-built_in">println</span>(i1, v1, i2, v2)<br>    &#125;<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;---------&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>清空操作</p>
+<ul>
+<li>可以遍历key逐个删除</li>
+<li>或者map &#x3D; make() make一个新的,让原来的变成垃圾,被gc回收</li>
+</ul>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h4 id="面向对象的创建"><a href="#面向对象的创建" class="headerlink" title="面向对象的创建"></a>面向对象的创建</h4><p>通过结构体来实现面向对象(OOP)<br>在golang中没有class<br>struct</p>
+<p>方式一:直接创建</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> t1 Teacher<br>    fmt.Println(t1)<br>&#125;<br><span class="hljs-comment">// 定义一个老师的结构体 属性放在其中进行管理</span><br><span class="hljs-keyword">type</span> Teacher <span class="hljs-keyword">struct</span> &#123;<br>    <span class="hljs-comment">//变量名大写外部才能访问</span><br>    Name <span class="hljs-type">string</span><br>    Age  <span class="hljs-type">int</span><br>    Sex  <span class="hljs-type">string</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>方式二:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> t Teacher = Teacher&#123;&#125;<br>    t.Name = <span class="hljs-string">&quot;张三&quot;</span><br>    fmt.Println(t)<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br><span class="hljs-comment">//或者</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> t Teacher = Teacher&#123;<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">31</span>, <span class="hljs-string">&quot;男&quot;</span>&#125;<br>    fmt.Println(t)<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>方式三:返回的是结构体指针:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-comment">//创建结构体实例</span><br>    <span class="hljs-keyword">var</span> t *Teacher = <span class="hljs-built_in">new</span>(Teacher)<br>    <span class="hljs-comment">//t是指针,t其实指向的就是内存地址</span><br>    (*t).Name = <span class="hljs-string">&quot;张三&quot;</span><br>    <span class="hljs-comment">//程序底层自动转换为(*t).Age = 30</span><br>    t.Age = <span class="hljs-number">33</span><br>    fmt.Println(*t)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>方式四</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//创建结构体实例</span><br><span class="hljs-keyword">var</span> t *Teacher = &amp;Teacher&#123;&#125;<br><span class="hljs-comment">//t是指针,t其实指向的就是内存地址</span><br>(*t).Name = <span class="hljs-string">&quot;张三&quot;</span><br><span class="hljs-comment">//程序底层自动转换为(*t).Age = 30</span><br>t.Age = <span class="hljs-number">33</span><br>fmt.Println(*t)<br><span class="hljs-comment">//或者</span><br><span class="hljs-keyword">var</span> t *Teacher = &amp;Teacher&#123;<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-number">33</span>,<span class="hljs-string">&quot;abc&quot;</span>&#125;<br>fmt.Println(*t)<br></code></pre></td></tr></table></figure>
+
+<h4 id="结构体的转换"><a href="#结构体的转换" class="headerlink" title="结构体的转换"></a>结构体的转换</h4><p>结构体的转换必须有相同的部分</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Teacher <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>&#125;<br><span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>&#125;<br><span class="hljs-comment">//1</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> s Teacher<br>    <span class="hljs-keyword">var</span> p Person<br>    s = Teacher(p)<br>    fmt.Println(s, p)<br>&#125;<br><span class="hljs-comment">//2</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> tea = Teacher&#123;<span class="hljs-string">&quot;张三&quot;</span>&#125;<br>    <span class="hljs-keyword">var</span> per = Person&#123;<span class="hljs-string">&quot;李四&quot;</span>&#125;<br>    fmt.Println(tea, per)<br>    tea = Teacher(per) <span class="hljs-comment">//转换</span><br>    fmt.Println(tea)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>即是同一个结构体引出的别名也需要转换类型才能使用否则会报错</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Teacher <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>&#125;<br><span class="hljs-keyword">type</span> Tea Teacher<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> s Teacher<br>    <span class="hljs-keyword">var</span> p Tea<br>    s = Teacher(p)<br>    fmt.Println(s, p)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="面向对象-结构体方法的使用"><a href="#面向对象-结构体方法的使用" class="headerlink" title="面向对象 结构体方法的使用"></a>面向对象 结构体方法的使用</h4><p>方法是作用在指定的数据类型上,和指定的数据类型绑定,因此自定义方法也可以有方法,而不仅仅是struct.例如:<code>type integer int</code>.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 创建一个结构体</span><br><span class="hljs-keyword">type</span> A <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-comment">// 声明这个方法是 A结构体的方法 此处在方法名前面加一个括号绑定到结构体</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a A)</span></span> test() &#123;<br>    fmt.Println(<span class="hljs-string">&quot;A结构体的方法&quot;</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-comment">//需要先实例化结构体</span><br>    <span class="hljs-keyword">var</span> t A<br>    <span class="hljs-comment">//需要调用实例化后的方法</span><br>    t.test()<br>    fmt.Println(<span class="hljs-string">&quot;程序执行结束&quot;</span>)<br>&#125;<br><span class="hljs-comment">//设置参数 方法内外隔离 不会产生影响</span><br><span class="hljs-keyword">type</span> A <span class="hljs-keyword">struct</span> &#123;<br>    Age <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a A)</span></span> test() &#123;<br>    a.Age = <span class="hljs-number">30</span><br>    fmt.Println(a.Age) <span class="hljs-comment">//30</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> a A<br>    a.Age = <span class="hljs-number">100</span><br>    a.test()<br>    fmt.Println(a.Age) <span class="hljs-comment">//100</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>外部改变方法内的数值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//1</span><br><span class="hljs-keyword">type</span> A <span class="hljs-keyword">struct</span> &#123;<br>    Age <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a *A)</span></span> test() &#123;<br>    (*a).Age = <span class="hljs-number">30</span> <span class="hljs-comment">//也可以a.Age = 30</span><br>    fmt.Println(*a)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> a A<br>    a.Age = <span class="hljs-number">100</span><br>    (&amp;a).test() <span class="hljs-comment">//也可以a.test()</span><br>    fmt.Println(a)<br>&#125;<br><br><span class="hljs-comment">//2</span><br><span class="hljs-keyword">type</span> A <span class="hljs-type">int</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a *A)</span></span> test() &#123;<br>    *a = <span class="hljs-number">30</span><br>    fmt.Println(*a) <span class="hljs-comment">//30</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> a A = <span class="hljs-number">30</span><br>    a = <span class="hljs-number">100</span><br>    a.test()<br>    fmt.Println(a) <span class="hljs-comment">//30</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果一个类型实现了String()方法,那么fmt.Println默认会调用这个变量的String()进行输出<br>以后定义结构体的话,常定义String()作为输出结构体信息的方法,在fmt.Println会自动调用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>    Age  <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Student)</span></span> String() <span class="hljs-type">string</span> &#123;<br>    str := fmt.Sprintf(<span class="hljs-string">&quot;Name = %v , Age = %v&quot;</span>, s.Name, s.Age)<br>    <span class="hljs-keyword">return</span> str<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    stu := Student&#123;<br>        Name: <span class="hljs-string">&quot;丽丽&quot;</span>,<br>        Age:  <span class="hljs-number">12</span>,<br>    &#125;<br>    fmt.Println(&amp;stu)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="方法和函数的区别"><a href="#方法和函数的区别" class="headerlink" title="方法和函数的区别"></a>方法和函数的区别</h4><ol>
+<li>绑定指定类型:<ul>
+<li>方法:需要绑定指定数据类型</li>
+<li>函数:不需要绑定数据类型</li>
+</ul>
+</li>
+<li>调用方式不一样:<ul>
+<li>函数:函数名(实参列表)</li>
+<li>方法:变量.方法名(实参列表)</li>
+</ul>
+</li>
+<li>对于函数来说,参数类型对应是什么就要传入什么</li>
+<li>对于方法来说,接收者为值类型,可以传入指针类型,接受者为指针类型,可以传入值类型.</li>
+</ol>
+<p>定义函数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test1</span><span class="hljs-params">(s Student)</span></span> &#123;<br>    fmt.Println(s.Name)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test2</span><span class="hljs-params">(s *Student)</span></span> &#123;<br>    fmt.Println((*s).Name)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> s Student = Student&#123;<span class="hljs-string">&quot;小张&quot;</span>&#125;<br>    test1(s)<br>    test2(&amp;s)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>定义方法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s Student)</span></span> test1() &#123;<br>    fmt.Println(s.Name)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Student)</span></span> test2() &#123;<br>    fmt.Println((*s).Name)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> s Student = Student&#123;<span class="hljs-string">&quot;小张&quot;</span>&#125;<br>    s.test1()<br>    (&amp;s).test1() <span class="hljs-comment">//虽然用指针类型传递,但是传递还是按照值类型传递</span><br>    (&amp;s).test2()<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/02/17/StableDiffusion-%E6%A8%A1%E5%9E%8B%E5%8C%85%E8%AF%B4%E6%98%8E.html">StableDiffusion-模型包说明</a>
+                <p>2023-02-17</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E7%B3%96%E5%B0%BF%E7%97%85.html">中医秘方-治糖尿病</a>
+                <p>2023-02-21</p>
+            </li>
+        
+            <li>
+                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E9%98%B4%E7%AC%A6%E7%BB%8F.html">阴符经</a>
+                <p>2024-01-11</p>
+            </li>
+        
+            <li>
+                <a href="/2024/05/16/vue2-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6.html">vue制作一个插件</a>
+                <p>2024-05-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/12/14/react-hooks%E7%9F%A5%E8%AF%86%E7%82%B9.html">react-hooks知识点</a>
+                <p>2023-12-14</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/02/17/StableDiffusion-%E6%A8%A1%E5%9E%8B%E5%8C%85%E8%AF%B4%E6%98%8E.html">StableDiffusion-模型包说明</a>
+                <p>2023-02-17</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E7%B3%96%E5%B0%BF%E7%97%85.html">中医秘方-治糖尿病</a>
+                <p>2023-02-21</p>
+            </li>
+        
+            <li>
+                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E9%98%B4%E7%AC%A6%E7%BB%8F.html">阴符经</a>
+                <p>2024-01-11</p>
+            </li>
+        
+            <li>
+                <a href="/2024/05/16/vue2-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6.html">vue制作一个插件</a>
+                <p>2024-05-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/12/14/react-hooks%E7%9F%A5%E8%AF%86%E7%82%B9.html">react-hooks知识点</a>
+                <p>2023-12-14</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(124)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+        
+            <a href="/tag/hexo/">Hexo(4)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
+        
+            <a href="/tag/linux/">linux(17)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(6)</a>
+        
+            <a href="/tag/node/">node(37)</a>
+        
+            <a href="/tag/dns/">dns(8)</a>
+        
+            <a href="/tag/css/">css(14)</a>
+        
+            <a href="/tag/go/">go(57)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(1)</a>
+        
+            <a href="/tag/vps/">vps(8)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
+        
+            <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/jquery/">jquery(3)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/websocket/">websocket(3)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(8)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(4)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/npm/">npm(1)</a>
+        
+            <a href="/tag/php/">php(9)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(10)</a>
+        
+            <a href="/tag/react/">react(3)</a>
+        
+            <a href="/tag/svg/">svg(1)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/typescript/">typescript(2)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(5)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 60
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

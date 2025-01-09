@@ -82,7 +82,7 @@
 <div class="post-box flex flex-item-start">
     <article class="post">
     
-        <h1 class="post-title t-c">ajax</h1>
+        <h1 class="post-title t-c">ajax配置</h1>
         <div class="post-meta t-c flex">
             <!-- 作者 -->
             <div>
@@ -108,17 +108,22 @@
         </div>
         <hr class="line">
         <div class="post-content">
-            <p>ajax</p>
+            <ul>
+<li>jsonp</li>
+<li>jsonp post</li>
+<li>ajax.js</li>
+</ul>
 <span id="more"></span>
-<h3 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$.<span class="hljs-title function_">ajax</span>(&#123;<br>    <span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://localhost:7070/jsonp?callback=?&#x27;</span>,<br>    <span class="hljs-attr">success</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)&#123;<br>        conslog.<span class="hljs-title function_">log</span>(data);<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$.<span class="hljs-title function_">ajax</span>(&#123;<br>    <span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://localhost:7070/jsonp?callback=?&#x27;</span>,<br>    <span class="hljs-attr">success</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)&#123;<br>        conslog.<span class="hljs-title function_">log</span>(data);<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Origin: *&#x27;</span>);<br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Methods: POST&#x27;</span>);<br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Access-Control-Max-Age: 1000&#x27;</span>);<br><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_POST</span>)&#123;<br>  <span class="hljs-variable">$arr</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;name&#x27;</span>=&gt;<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;name&#x27;</span>], <span class="hljs-string">&#x27;age&#x27;</span>=&gt;<span class="hljs-number">23</span>);<br>  <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>(<span class="hljs-variable">$arr</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="jsonp-post"><a href="#jsonp-post" class="headerlink" title="jsonp post"></a>jsonp post</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;button&#x27;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;click&#x27;</span>)<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;http://localhost:8830/index.php&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">crossDomain</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;json&quot;</span>, <br>        <span class="hljs-attr">data</span>:&#123;<br>            <span class="hljs-string">&#x27;name&#x27;</span> : <span class="hljs-string">&#x27;abc&#x27;</span><br>        &#125;,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>        &#125;<br>    &#125;);<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h2 id="jsonp-post"><a href="#jsonp-post" class="headerlink" title="jsonp post"></a>jsonp post</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&#x27;button&#x27;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;click&#x27;</span>)<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;http://localhost:8830/index.php&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">crossDomain</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;json&quot;</span>, <br>        <span class="hljs-attr">data</span>:&#123;<br>            <span class="hljs-string">&#x27;name&#x27;</span> : <span class="hljs-string">&#x27;abc&#x27;</span><br>        &#125;,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>        &#125;<br>    &#125;);<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h3 id="服务端配置-1"><a href="#服务端配置-1" class="headerlink" title="服务端配置"></a>服务端配置</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Origin: *&#x27;</span>);<br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Methods: POST&#x27;</span>);<br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Access-Control-Max-Age: 1000&#x27;</span>);<br><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_POST</span>)&#123;<br>  <span class="hljs-variable">$arr</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;name&#x27;</span>=&gt;<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;name&#x27;</span>], <span class="hljs-string">&#x27;age&#x27;</span>=&gt;<span class="hljs-number">23</span>);<br>  <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>(<span class="hljs-variable">$arr</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="ajax-js"><a href="#ajax-js" class="headerlink" title="ajax.js"></a>ajax.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">AJAX</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-comment">//做网络请求的时候,参数以&quot;对象&quot;的形式传递进来</span><br>    <span class="hljs-comment">//规定: obj 里面包含属性: </span><br>    <span class="hljs-comment">//1.url </span><br>    <span class="hljs-comment">//2.type -- get 还是 post</span><br>    <span class="hljs-comment">//3.data -- 前端给后端传递的参数(前端传递的时候,以&quot;对象&quot;的形式)</span><br>    <span class="hljs-comment">//4.回调函数 -- success</span><br>    <span class="hljs-comment">//5.回调函数 -- error</span><br>    <span class="hljs-keyword">var</span> ajaxObj = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">XMLHttpRequest</span>) &#123;<br>        ajaxObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        ajaxObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveObject</span>(<span class="hljs-string">&quot;Microsoft.XMLHTTP&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">//检测状态的变化</span><br>    ajaxObj.<span class="hljs-property">onreadystatechange</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">if</span>(ajaxObj.<span class="hljs-property">readyState</span> == <span class="hljs-number">4</span>) &#123;<br>            <span class="hljs-keyword">if</span>(ajaxObj.<span class="hljs-property">status</span> &gt;= <span class="hljs-number">200</span> &amp;&amp; ajaxObj.<span class="hljs-property">status</span> &lt; <span class="hljs-number">300</span> || ajaxObj.<span class="hljs-property">status</span> == <span class="hljs-number">304</span>) &#123;<br>                <span class="hljs-keyword">if</span>(obj.<span class="hljs-property">success</span>) &#123;<br>                    obj.<span class="hljs-title function_">success</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(ajaxObj.<span class="hljs-property">responseText</span>));<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;您忘记了 success 函数&quot;</span>);<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span>(obj.<span class="hljs-property">error</span>) &#123;<br>                    obj.<span class="hljs-title function_">error</span>(ajaxObj.<span class="hljs-property">status</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;您忘记了 error 函数&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// type 转化为小写</span><br>    <span class="hljs-keyword">var</span> type = obj.<span class="hljs-property">type</span> || <span class="hljs-string">&quot;get&quot;</span>;<br>    type = type.<span class="hljs-title function_">toLowerCase</span>();<br>    <span class="hljs-comment">//判断是否传递了参数</span><br>    <span class="hljs-keyword">var</span> params = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">if</span>(obj.<span class="hljs-property">data</span>) &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> obj.<span class="hljs-property">data</span>) &#123;<br>            params += (key + <span class="hljs-string">&quot;=&quot;</span> + obj.<span class="hljs-property">data</span>[key] + <span class="hljs-string">&quot;&amp;&quot;</span>);<br>        &#125;<br>        params = params.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, params.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span>(type == <span class="hljs-string">&quot;get&quot;</span>) &#123;<br>        ajaxObj.<span class="hljs-title function_">open</span>(type, obj.<span class="hljs-property">url</span> + <span class="hljs-string">&quot;?&quot;</span> + params, <span class="hljs-literal">true</span>);<br>        ajaxObj.<span class="hljs-title function_">send</span>(<span class="hljs-literal">null</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        ajaxObj.<span class="hljs-title function_">open</span>(type, obj.<span class="hljs-property">url</span>, <span class="hljs-literal">true</span>);<br>        ajaxObj.<span class="hljs-title function_">setRequestHeader</span>(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>);<br>        ajaxObj.<span class="hljs-title function_">send</span>(params);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;#btn&#x27;</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">AJAX</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/2.php&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;get&quot;</span>,<br>        <span class="hljs-attr">data</span>: &#123;<br>            <span class="hljs-attr">userName</span>: <span class="hljs-string">&quot;admin&quot;</span>,<br>            <span class="hljs-attr">userPwd</span>: <span class="hljs-string">&quot;23123&quot;</span><br>        &#125;,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>        &#125;,<br>        <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>        &#125;<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<h2 id="请求类型配置"><a href="#请求类型配置" class="headerlink" title="请求类型配置"></a>请求类型配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">$.<span class="hljs-title function_">ajax</span>(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>    <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;POST&#x27;</span>,<span class="hljs-comment">//配置请求类型</span><br>    <span class="hljs-attr">dataType</span>:<span class="hljs-string">&#x27;json&#x27;</span>,<span class="hljs-comment">//配置数据类型</span><br>    <span class="hljs-attr">contentType</span>: <span class="hljs-string">&quot;application/json&quot;</span>, <span class="hljs-comment">//配置传输类型</span><br>    <span class="hljs-attr">data</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(params),<span class="hljs-comment">//格式化一下会把数据转换成json格式 如果不转换会是表单格式</span><br>    <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) &#123;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>;<br><br><span class="hljs-keyword">let</span> baseURL = <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-comment">// vue2 npm</span><br><span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> == <span class="hljs-string">&#x27;development&#x27;</span>) &#123;<br>    baseURL = <span class="hljs-string">&#x27;http://crm1.com&#x27;</span>;<br>&#125;<br><span class="hljs-comment">// vue3 vite</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">env</span>.<span class="hljs-property">MODE</span> == <span class="hljs-string">&#x27;development&#x27;</span>) &#123;<br>    baseURL = <span class="hljs-string">&#x27;/api&#x27;</span>; <span class="hljs-comment">// 测试url</span><br>&#125;<br><br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">baseURL</span> = baseURL<br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">headers</span>.<span class="hljs-property">post</span>[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;application/x-www-form-urlencoded;charset=UTF-8&#x27;</span><br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">timeout</span> = <span class="hljs-number">1000000000</span><br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">withCredentials</span> = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 允许携带cookie</span><br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">headers</span>.<span class="hljs-property">common</span>[<span class="hljs-string">&#x27;Authorization&#x27;</span>] = <span class="hljs-string">&#x27;Bearer &lt;KEY&gt;&#x27;</span> <span class="hljs-comment">// 请求头携带token</span><br></code></pre></td></tr></table></figure>
         </div>
     </article>
@@ -128,56 +133,56 @@
     <ul>
         
             <li>
-                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
-                <p>2024-09-10</p>
+                <a href="/2023/05/30/js-dayjs%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">dayjs的使用方法</a>
+                <p>2023-05-30</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/python-m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86.html">m3u8格式ts文件解密</a>
-                <p>2023-02-14</p>
+                <a href="/2022/08/11/js-%E5%AD%97%E4%BD%93%E5%8E%8B%E7%BC%A9.html">字体压缩</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2024/03/11/vue2-%E8%AE%BE%E7%BD%AE%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86.html">vue设置开发请求代理</a>
-                <p>2024-03-11</p>
+                <a href="/2023/02/10/%E5%90%8C%E8%8A%B1%E9%A1%BA%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E.html">同花顺状态说明</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86.html">m3u8格式ts文件解密</a>
-                <p>2023-02-14</p>
+                <a href="/2023/07/29/%E5%85%B6%E4%BB%96-apple%E7%BE%8E%E5%8C%BA%E8%B4%A6%E5%8F%B7.html">apple美区账号</a>
+                <p>2023-07-29</p>
             </li>
         
             <li>
-                <a href="/2024/03/07/%E8%8B%8F%E9%BB%8E%E4%B8%96%E6%8A%95%E6%9C%BA%E5%AE%9A%E5%BE%8B.html">苏黎世投机定律</a>
-                <p>2024-03-07</p>
+                <a href="/2023/06/21/koa2%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.html">koa2跨域配置</a>
+                <p>2023-06-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
-                <p>2024-09-10</p>
+                <a href="/2023/05/30/js-dayjs%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">dayjs的使用方法</a>
+                <p>2023-05-30</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/python-m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86.html">m3u8格式ts文件解密</a>
-                <p>2023-02-14</p>
+                <a href="/2022/08/11/js-%E5%AD%97%E4%BD%93%E5%8E%8B%E7%BC%A9.html">字体压缩</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2024/03/11/vue2-%E8%AE%BE%E7%BD%AE%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86.html">vue设置开发请求代理</a>
-                <p>2024-03-11</p>
+                <a href="/2023/02/10/%E5%90%8C%E8%8A%B1%E9%A1%BA%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E.html">同花顺状态说明</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86.html">m3u8格式ts文件解密</a>
-                <p>2023-02-14</p>
+                <a href="/2023/07/29/%E5%85%B6%E4%BB%96-apple%E7%BE%8E%E5%8C%BA%E8%B4%A6%E5%8F%B7.html">apple美区账号</a>
+                <p>2023-07-29</p>
             </li>
         
             <li>
-                <a href="/2024/03/07/%E8%8B%8F%E9%BB%8E%E4%B8%96%E6%8A%95%E6%9C%BA%E5%AE%9A%E5%BE%8B.html">苏黎世投机定律</a>
-                <p>2024-03-07</p>
+                <a href="/2023/06/21/koa2%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.html">koa2跨域配置</a>
+                <p>2023-06-21</p>
             </li>
         
     </ul> -->
@@ -187,7 +192,7 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(7)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
@@ -195,21 +200,23 @@
         
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(184)</a>
+            <a href="/tag/js/">js(124)</a>
         
-            <a href="/tag/hexo/">Hexo(5)</a>
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
-            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+            <a href="/tag/hexo/">Hexo(4)</a>
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
-            <a href="/tag/linux/">linux(24)</a>
+            <a href="/tag/linux/">linux(17)</a>
         
             <a href="/tag/ajax/">ajax(1)</a>
         
@@ -217,17 +224,15 @@
         
             <a href="/tag/axios/">axios(2)</a>
         
-            <a href="/tag/bat/">bat(9)</a>
+            <a href="/tag/bat/">bat(6)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+            <a href="/tag/node/">node(37)</a>
         
-            <a href="/tag/node/">node(59)</a>
+            <a href="/tag/dns/">dns(8)</a>
         
-            <a href="/tag/css/">css(19)</a>
+            <a href="/tag/css/">css(14)</a>
         
-            <a href="/tag/dns/">dns(7)</a>
-        
-            <a href="/tag/go/">go(59)</a>
+            <a href="/tag/go/">go(57)</a>
         
             <a href="/tag/docker/">docker(1)</a>
         
@@ -237,35 +242,29 @@
         
             <a href="/tag/electron/">electron(1)</a>
         
-            <a href="/tag/git/">git(2)</a>
+            <a href="/tag/git/">git(1)</a>
         
-            <a href="/tag/vps/">vps(9)</a>
+            <a href="/tag/vps/">vps(8)</a>
         
-            <a href="/tag/html/">html(7)</a>
+            <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
-            <a href="/tag/vue/">vue(39)</a>
+            <a href="/tag/vue/">vue(26)</a>
         
-            <a href="/tag/jquery/">jquery(7)</a>
+            <a href="/tag/jquery/">jquery(3)</a>
         
             <a href="/tag/video/">video(2)</a>
         
-            <a href="/tag/typescript/">typescript(4)</a>
-        
-            <a href="/tag/websocket/">websocket(5)</a>
-        
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
-        
-            <a href="/tag/php/">php(14)</a>
+            <a href="/tag/websocket/">websocket(3)</a>
         
             <a href="/tag/ios/">ios(2)</a>
         
-            <a href="/tag/koa2/">koa2(14)</a>
+            <a href="/tag/koa2/">koa2(8)</a>
         
             <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
         
-            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
             <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
@@ -273,7 +272,7 @@
         
             <a href="/tag/sql/">sql(1)</a>
         
-            <a href="/tag/nginx/">nginx(2)</a>
+            <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
         
@@ -281,39 +280,33 @@
         
             <a href="/tag/mysql/">mysql(2)</a>
         
-            <a href="/tag/npm/">npm(2)</a>
-        
             <a href="/tag/ocr/">ocr(1)</a>
         
-            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
-        
-            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
-        
-            <a href="/tag/cmd/">cmd(1)</a>
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
         
             <a href="/tag/nuxt/">nuxt(3)</a>
         
-            <a href="/tag/ai/">ai(1)</a>
+            <a href="/tag/npm/">npm(1)</a>
         
-            <a href="/tag/ps/">PS(2)</a>
+            <a href="/tag/php/">php(9)</a>
         
             <a href="/tag/pm2/">pm2(1)</a>
         
-            <a href="/tag/python/">python(17)</a>
+            <a href="/tag/python/">python(10)</a>
         
-            <a href="/tag/react/">react(4)</a>
+            <a href="/tag/react/">react(3)</a>
         
-            <a href="/tag/svg/">svg(2)</a>
+            <a href="/tag/svg/">svg(1)</a>
         
             <a href="/tag/threejs/">threejs(2)</a>
         
             <a href="/tag/tvbox/">tvbox(1)</a>
         
+            <a href="/tag/typescript/">typescript(2)</a>
+        
             <a href="/tag/unity/">unity(1)</a>
         
             <a href="/tag/demo/">Demo(1)</a>
-        
-            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
         
             <a href="/tag/vscode/">vscode(1)</a>
         
@@ -325,29 +318,31 @@
         
             <a href="/tag/webpack/">webpack(2)</a>
         
-            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(5)</a>
         
-            <a href="/tag/emoji/">emoji(4)</a>
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
         
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
-            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
         
-            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
-        
-            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
-        
-            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
             <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -357,15 +352,15 @@
         
             <a href="/tag/indexdb/">indexDB(1)</a>
         
-            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
-        
             <a href="/tag/json/">json(1)</a>
         
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
             <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
-        
-            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
-        
-            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
         
     </div>
 </div>
