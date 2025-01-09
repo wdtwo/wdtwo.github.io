@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/05/12/国学-汉字笔画动画svg.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">汉字笔画动画svg</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-05-12
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/%E5%9B%BD%E5%AD%A6/" rel="tag">国学</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <p><a target="_blank" rel="noopener" href="https://hanziwriter.org/cn">原文包地址</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>练字格子<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">        <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="language-css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>动画<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;character-target-div&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;character-target2-div&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;target&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;animate-button&quot;</span>&gt;</span>动画<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;animate-button2&quot;</span>&gt;</span>连续动画<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>按笔画填写<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ceshi&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/hanzi-writer@3.0/dist/hanzi-writer.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> writer = <span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;character-target-div&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">//基本配置</span></span><br><span class="language-javascript">        <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">padding</span>: <span class="hljs-number">5</span>,</span><br><span class="language-javascript">        <span class="hljs-comment">//填充颜色</span></span><br><span class="language-javascript">        <span class="hljs-attr">strokeColor</span>: <span class="hljs-string">&#x27;#EE00FF&#x27;</span>, <span class="hljs-comment">// pink</span></span><br><span class="language-javascript">        <span class="hljs-comment">//偏旁部首颜色</span></span><br><span class="language-javascript">        <span class="hljs-attr">radicalColor</span>: <span class="hljs-string">&#x27;#168F16&#x27;</span>, <span class="hljs-comment">// green</span></span><br><span class="language-javascript">        <span class="hljs-comment">//是否显示底色</span></span><br><span class="language-javascript">        <span class="hljs-attr">showOutline</span>: <span class="hljs-literal">true</span>,</span><br><span class="language-javascript">        <span class="hljs-comment">//笔画填写速度</span></span><br><span class="language-javascript">        <span class="hljs-attr">strokeAnimationSpeed</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">// 5x normal speed</span></span><br><span class="language-javascript">        <span class="hljs-comment">//每个笔画中间的间隔时间</span></span><br><span class="language-javascript">        <span class="hljs-attr">delayBetweenStrokes</span>: <span class="hljs-number">10</span>, <span class="hljs-comment">// milliseconds</span></span><br><span class="language-javascript">        <span class="hljs-comment">//无限循环每次的间隔</span></span><br><span class="language-javascript">        <span class="hljs-comment">//delayBetweenLoops: 3000</span></span><br><span class="language-javascript">        <span class="hljs-attr">showCharacter</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;animate-button&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">//激活动画</span></span><br><span class="language-javascript">        <span class="hljs-comment">//writer.animateCharacter();</span></span><br><span class="language-javascript">        <span class="hljs-comment">//激活无限循环动画</span></span><br><span class="language-javascript">        writer.<span class="hljs-title function_">loopCharacterAnimation</span>();</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> char2 = <span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;character-target2-div&#x27;</span>, <span class="hljs-string">&#x27;爽&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">height</span>: <span class="hljs-number">100</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">padding</span>: <span class="hljs-number">5</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">showCharacter</span>: <span class="hljs-literal">false</span></span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">    <span class="hljs-comment">//连续动画</span></span><br><span class="language-javascript">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">chainAnimations</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">        writer.<span class="hljs-title function_">hideCharacter</span>();</span><br><span class="language-javascript">        char2.<span class="hljs-title function_">hideCharacter</span>();</span><br><span class="language-javascript">        <span class="hljs-comment">//回调函数</span></span><br><span class="language-javascript">        writer.<span class="hljs-title function_">animateCharacter</span>(&#123;</span><br><span class="language-javascript">            <span class="hljs-attr">onComplete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                    char2.<span class="hljs-title function_">animateCharacter</span>();</span><br><span class="language-javascript">                &#125;, <span class="hljs-number">1000</span>);</span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        &#125;);</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;animate-button2&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, chainAnimations);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">//测试</span></span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> ceshi = <span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;ceshi&#x27;</span>, <span class="hljs-string">&#x27;测&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">width</span>: <span class="hljs-number">150</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">height</span>: <span class="hljs-number">150</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">showCharacter</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">padding</span>: <span class="hljs-number">5</span>,</span><br><span class="language-javascript">        <span class="hljs-comment">//是否显示底色</span></span><br><span class="language-javascript">        <span class="hljs-attr">showOutline</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-comment">//错几次开始有提示 false禁用</span></span><br><span class="language-javascript">        <span class="hljs-attr">showHintAfterMisses</span>: <span class="hljs-number">3</span>,</span><br><span class="language-javascript">        <span class="hljs-comment">//完成后闪烁</span></span><br><span class="language-javascript">        <span class="hljs-attr">highlightOnComplete</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">    ceshi.<span class="hljs-title function_">quiz</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-comment">//完成百分比调用</span></span><br><span class="language-javascript">        <span class="hljs-attr">onMistake</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">strokeData</span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(strokeData);</span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">        <span class="hljs-attr">onCorrectStroke</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">strokeData</span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(strokeData);</span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">        <span class="hljs-attr">onComplete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">summaryData</span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(summaryData);</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//其他方法</span><br><span class="hljs-comment">//除了动画和测验的核心功能，还提供了其他方法来控制汉字的渲染。</span><br>writer.<span class="hljs-title function_">setCharacter</span>(newCharacter) <span class="hljs-comment">//加载一个新的汉字并渲染.</span><br>writer.<span class="hljs-title function_">showCharacter</span>() <span class="hljs-comment">//显示当前隐藏的汉字。</span><br>writer.<span class="hljs-title function_">hideCharacter</span>() <span class="hljs-comment">//隐藏当前显示的汉字。</span><br>writer.<span class="hljs-title function_">showOutline</span>() <span class="hljs-comment">//显示当前隐藏汉字的轮廓。</span><br>writer.<span class="hljs-title function_">hideOutline</span>() <span class="hljs-comment">//隐藏当前汉字显示的轮廓。</span><br>writer.<span class="hljs-title function_">updateColor</span>(colorName, newValue) <span class="hljs-comment">//更改任何颜色选项的值。 例如: writer.updateColor(&#x27;strokeColor&#x27;, &#x27;#AA12CD&#x27;)</span><br>writer.<span class="hljs-title function_">cancelQuiz</span>() <span class="hljs-comment">//立即取消当前运行的测验</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><h4 id="加载汉字数据"><a href="#加载汉字数据" class="headerlink" title="加载汉字数据"></a>加载汉字数据</h4><p><a target="_blank" rel="noopener" href="https://github.com/chanind/hanzi-writer-data/tree/master/data">笔画动画加载库</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> writer = <span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;target&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, &#123;<br>  <span class="hljs-attr">charDataLoader</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">char, onComplete</span>) &#123;<br>    $.<span class="hljs-title function_">getJSON</span>(<span class="hljs-string">&quot;/my/server/&quot;</span> + char + <span class="hljs-string">&quot;.json&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">charData</span>) &#123;<br>      <span class="hljs-title function_">onComplete</span>(charData);<br>    &#125;);<br>  &#125;<br>&#125;);<br>        <br></code></pre></td></tr></table></figure>
+
+<p>原生汉字转svg</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">loadCharacterData</span>(<span class="hljs-string">&#x27;六&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">charData</span>) &#123;<br>  <span class="hljs-keyword">var</span> target = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;target&#x27;</span>);<br>  <span class="hljs-keyword">var</span> svg = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElementNS</span>(<span class="hljs-string">&#x27;http://www.w3.org/2000/svg&#x27;</span>, <span class="hljs-string">&#x27;svg&#x27;</span>);<br>  svg.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&#x27;150px&#x27;</span>;<br>  svg.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">&#x27;150px&#x27;</span>;<br>  target.<span class="hljs-title function_">appendChild</span>(svg);<br>  <span class="hljs-keyword">var</span> group = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElementNS</span>(<span class="hljs-string">&#x27;http://www.w3.org/2000/svg&#x27;</span>, <span class="hljs-string">&#x27;g&#x27;</span>);<br><br>  <span class="hljs-comment">// set the transform property on the g element so the character renders at 150x150</span><br>  <span class="hljs-keyword">var</span> transformData = <span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">getScalingTransform</span>(<span class="hljs-number">150</span>, <span class="hljs-number">150</span>);<br>  group.<span class="hljs-title function_">setAttributeNS</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;transform&#x27;</span>, transformData.<span class="hljs-property">transform</span>);<br>  svg.<span class="hljs-title function_">appendChild</span>(group);<br><br>  charData.<span class="hljs-property">strokes</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">strokePath</span>) &#123;<br>    <span class="hljs-keyword">var</span> path = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElementNS</span>(<span class="hljs-string">&#x27;http://www.w3.org/2000/svg&#x27;</span>, <span class="hljs-string">&#x27;path&#x27;</span>);<br>    path.<span class="hljs-title function_">setAttributeNS</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;d&#x27;</span>, strokePath);<br>    <span class="hljs-comment">// style the character paths</span><br>    path.<span class="hljs-property">style</span>.<span class="hljs-property">fill</span> = <span class="hljs-string">&#x27;#555&#x27;</span>;<br>    group.<span class="hljs-title function_">appendChild</span>(path);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>把字按照笔画顺序分解成步骤</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderFanningStrokes</span>(<span class="hljs-params">target, strokes</span>) &#123;<br>  <span class="hljs-keyword">var</span> svg = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElementNS</span>(<span class="hljs-string">&#x27;http://www.w3.org/2000/svg&#x27;</span>, <span class="hljs-string">&#x27;svg&#x27;</span>);<br>  svg.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&#x27;75px&#x27;</span>;<br>  svg.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">&#x27;75px&#x27;</span>;<br>  svg.<span class="hljs-property">style</span>.<span class="hljs-property">border</span> = <span class="hljs-string">&#x27;1px solid #EEE&#x27;</span><br>  svg.<span class="hljs-property">style</span>.<span class="hljs-property">marginRight</span> = <span class="hljs-string">&#x27;3px&#x27;</span><br>  target.<span class="hljs-title function_">appendChild</span>(svg);<br>  <span class="hljs-keyword">var</span> group = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElementNS</span>(<span class="hljs-string">&#x27;http://www.w3.org/2000/svg&#x27;</span>, <span class="hljs-string">&#x27;g&#x27;</span>);<br><br>  <span class="hljs-comment">// set the transform property on the g element so the character renders at 75x75</span><br>  <span class="hljs-keyword">var</span> transformData = <span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">getScalingTransform</span>(<span class="hljs-number">75</span>, <span class="hljs-number">75</span>);<br>  group.<span class="hljs-title function_">setAttributeNS</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;transform&#x27;</span>, transformData.<span class="hljs-property">transform</span>);<br>  svg.<span class="hljs-title function_">appendChild</span>(group);<br><br>  strokes.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">strokePath</span>) &#123;<br>    <span class="hljs-keyword">var</span> path = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElementNS</span>(<span class="hljs-string">&#x27;http://www.w3.org/2000/svg&#x27;</span>, <span class="hljs-string">&#x27;path&#x27;</span>);<br>    path.<span class="hljs-title function_">setAttributeNS</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;d&#x27;</span>, strokePath);<br>    <span class="hljs-comment">// style the character paths</span><br>    path.<span class="hljs-property">style</span>.<span class="hljs-property">fill</span> = <span class="hljs-string">&#x27;#555&#x27;</span>;<br>    group.<span class="hljs-title function_">appendChild</span>(path);<br>  &#125;);<br>&#125;<br><br><span class="hljs-title class_">HanziWriter</span>.<span class="hljs-title function_">loadCharacterData</span>(<span class="hljs-string">&#x27;是&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">charData</span>) &#123;<br>  <span class="hljs-keyword">var</span> target = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;target&#x27;</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; charData.<span class="hljs-property">strokes</span>.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> strokesPortion = charData.<span class="hljs-property">strokes</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);<br>    <span class="hljs-title function_">renderFanningStrokes</span>(target, strokesPortion);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
+            </li>
+        
+            <li>
+                <a href="/2020/01/01/video.html">Include Video in the Posts</a>
+                <p>2020-01-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/01/09/%E4%B8%AD%E5%8C%BB-%E5%BC%A0%E8%87%B3%E9%A1%BA-%E6%B5%8E%E4%B8%96%E8%89%AF%E6%96%B9-%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97.html">中医-张至顺-济世良方-剂量换算</a>
+                <p>2023-01-09</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/17/vps-%E4%BB%A3%E7%A0%81%E5%AE%B9%E5%99%A8.html">代码容器</a>
+                <p>2023-05-17</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6%E5%85%BC%E5%AE%B9%E7%89%88%E6%9C%AC.html">鼠标滚轮事件兼容版本</a>
+                <p>2022-08-11</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
+            </li>
+        
+            <li>
+                <a href="/2020/01/01/video.html">Include Video in the Posts</a>
+                <p>2020-01-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/01/09/%E4%B8%AD%E5%8C%BB-%E5%BC%A0%E8%87%B3%E9%A1%BA-%E6%B5%8E%E4%B8%96%E8%89%AF%E6%96%B9-%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97.html">中医-张至顺-济世良方-剂量换算</a>
+                <p>2023-01-09</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/17/vps-%E4%BB%A3%E7%A0%81%E5%AE%B9%E5%99%A8.html">代码容器</a>
+                <p>2023-05-17</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6%E5%85%BC%E5%AE%B9%E7%89%88%E6%9C%AC.html">鼠标滚轮事件兼容版本</a>
+                <p>2022-08-11</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(5)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/vue/">vue(40)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

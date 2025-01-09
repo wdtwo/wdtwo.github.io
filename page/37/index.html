@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: <br>
+            页面路径: page/37/index.html<br>
+            是否为文章页: false<br>
+            是否为首页: true
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <link rel="stylesheet" href="/assets/css/index.css">
+<div class="index-page">
+    <!-- <div class="index-page-title">
+        <h1>Welcome to theme1</h1>
+        
+    </div> -->
+    <div id="canvas"></div>
+</div>
+
+<!-- 引用threejs -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.128/build/three.min.js"></script> -->
+<script type="importmap">
+    {
+        "imports": {
+            "three": "/assets/threejs/three.webgpu.min.js",
+            "three/webgpu": "/assets/threejs/three.webgpu.min.js",
+            "three/tsl": "/assets/threejs/three.tsl.min.js",
+            "three/addons/": "/assets/threejs/jsm/"
+        }
+    }
+</script>
+<script type="module" src="/assets/js/index.js"></script>
+<script>
+
+    // var color = [
+    //     '#d0036c',
+    //     '#cd423b',
+    //     '#dc5566',
+    //     '#06c901',
+    //     '#5f75af',
+    //     '#f3c7c8',
+    //     '#f87676',
+    //     '#f7d470',
+    //     '#a2d15f',
+    //     '#1a7e5a',
+    //     '#0b8bca',
+    //     '#f76069',
+    //     '#cf0400',
+    //     '#368ff5',
+    //     '#f46899',
+    //     // '#265358',
+    //     // '#58525c',
+    //     ];
+    // document.querySelectorAll('body')[0].addEventListener('click',function(e){
+    //     var _self   = this;
+    //     var ul      = document.createElement('ul');
+    //     var li_arr  = [],
+    //         css_arr = [];
+    //     var geshu   = 15,
+    //         bianjie = 80;
+    //     for(var i = 0;i < geshu;i++){
+    //         var w = randomColor(8,18);
+    //         css_arr[i] = `
+    //             background      : ${color[i]};
+    //             width           : ${w}px;
+    //             height          : ${w}px;
+    //             border-radius   : 100px;
+    //             position	    : fixed;
+    //             left		    : ${e.clientX - w/2}px;
+    //             top			    : ${e.clientY - w/2}px;
+    //             z-index			: 999999;
+    //             list-style-type : none;
+    //             list-style	    : none;
+    //             transition		: all ease .5s;
+    //         `;
+    //         li_arr[i] = document.createElement('li')
+    //         li_arr[i].setAttribute('style',css_arr[i])
+    //         ul.appendChild(li_arr[i])
+    //     }
+    //     _self.appendChild(ul)
+    //     setTimeout(function(){
+    //         for(var i = 0;i < geshu;i++){
+    //             var x = randomColor(-bianjie,bianjie);
+    //             var y = randomColor(-bianjie,bianjie);
+    //             css_arr[i] += `
+    //                 transform : translate(${x}px,${y}px);
+    //             `;
+    //             li_arr[i].setAttribute('style',css_arr[i])
+    //         }
+    //     },1)
+    //     setTimeout(function(){
+    //         _self.removeChild(ul)
+    //     },510)
+    // },false)
+    // function randomColor(min,max){
+    //     return Math.floor(Math.random() * (max - min)) + min
+    // }
+</script>
+
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

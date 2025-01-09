@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2024/12/06/nuxt配置.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">文档</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2024-12-06
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/nuxt/" rel="tag">nuxt</a>,<a class="archive-item-tag-none-link" href="/tag/vue/" rel="tag">vue</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npx nuxi@latest init demo1<br><span class="hljs-built_in">cd</span> demo1<br>npm run dev<br></code></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>runtimeConfig 和 app.config 都用于将变量公开到应用程序的其余部分。要确定应该使用哪一个，以下是一些指导原则:</p>
+<ul>
+<li>runtimeConfig：需要使用环境变量在构建后指定的私有或公共令牌。</li>
+<li>app.config：在构建时确定的公共令牌，网站配置（例如主题变体、标题和任何非敏感的项目配置）。</li>
+</ul>
+<h3 id="环境配置-nuxt-config-js"><a href="#环境配置-nuxt-config-js" class="headerlink" title="环境配置 nuxt.config.js"></a>环境配置 nuxt.config.js</h3><p><code>nuxt.config.ts</code> 文件位于 Nuxt 项目的根目录，可以覆盖或扩展应用程序的行为。</p>
+<p>一个最小的配置文件导出包含配置对象的 <code>defineNuxtConfig</code> 函数。 <code>defineNuxtConfig</code> 助手在全局范围内可用，无需导入。</p>
+<p><a target="_blank" rel="noopener" href="https://nuxtjs.org.cn/docs/guide/directory-structure/nuxt-config">配置文件</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">compatibilityDate</span>: <span class="hljs-string">&#x27;2024-11-01&#x27;</span>, <span class="hljs-comment">// 兼容性日期</span><br>  <span class="hljs-attr">devtools</span>: &#123; <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span> &#125;, <span class="hljs-comment">// 启用浏览器开发工具</span><br><br>  <span class="hljs-comment">// runtimeConfig API 将环境变量等值暴露给应用程序的其余部分。默认情况下，这些键仅在服务器端可用。</span><br>  runtimeConfig : &#123;<br>        <span class="hljs-comment">// 仅在服务器端可用的私钥</span><br>        apiSecret : <span class="hljs-string">&#x27;123&#x27;</span>,<br>        <span class="hljs-comment">// 公共密钥也在客户端公开</span><br>        public : &#123;<br>            apiBase : <span class="hljs-string">&#x27;/api&#x27;</span><br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="使用runtimeConfig"><a href="#使用runtimeConfig" class="headerlink" title="使用runtimeConfig"></a>使用runtimeConfig</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> runtimeConfig = <span class="hljs-title function_">useRuntimeConfig</span>()</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="应用配置-app-config-ts"><a href="#应用配置-app-config-ts" class="headerlink" title="应用配置 app.config.ts"></a>应用配置 app.config.ts</h2><p><code>app.config.ts</code> 文件位于源目录（默认情况下为项目的根目录），用于公开可以在构建时确定的公共变量。与 <code>runtimeConfig</code> 选项相反，这些选项不能使用环境变量覆盖。<br>一个最小的配置文件导出包含配置对象的 <code>defineAppConfig</code> 函数。 <code>defineAppConfig</code> 助手在全局范围内可用，无需导入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineAppConfig</span>(&#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Hello Nuxt&#x27;</span>,<br>    <span class="hljs-attr">theme</span>: &#123;<br>        <span class="hljs-attr">dark</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">colors</span>: &#123;<br>            <span class="hljs-attr">primary</span>: <span class="hljs-string">&#x27;#ff0000&#x27;</span><br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="使用appConfig"><a href="#使用appConfig" class="headerlink" title="使用appConfig"></a>使用appConfig</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> appConfig = <span class="hljs-title function_">useAppConfig</span>()</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="app-vue"><a href="#app-vue" class="headerlink" title="app.vue"></a>app.vue</h3><p><code>app.vue</code> 是应用程序的根组件，可以用于覆盖 Nuxt 默认的 HTML 结构。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLayout</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLayout</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p><code>layouts/default.vue</code> 是默认的布局文件，所有页面都会加载这个布局。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><p><code>pages/*.vue</code> 文件是 Nuxt 的页面组件，会根据路由自动生成对应的 HTML 文件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about/index&quot;</span>&gt;</span>About Index<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about/index.html&quot;</span>&gt;</span>About Index<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about/index.html?id=1&quot;</span>&gt;</span>About Index<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p><code>components/*.vue</code> 文件是 Nuxt 的组件，可以在页面和布局中直接使用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>components<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>调用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">AppAlert</span>&gt;</span><br>    1111111111111<br><span class="hljs-tag">&lt;/<span class="hljs-name">AppAlert</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="扩展HTML模板"><a href="#扩展HTML模板" class="headerlink" title="扩展HTML模板"></a>扩展HTML模板</h3><p><code>server/plugins/extend-html.ts</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNitroPlugin</span>(<span class="hljs-function">(<span class="hljs-params">nitroApp</span>) =&gt;</span> &#123;<br>    nitroApp.<span class="hljs-property">hooks</span>.<span class="hljs-title function_">hook</span>(<span class="hljs-string">&#x27;render:html&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">html, &#123; event &#125;</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// This will be an object representation of the html template.</span><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(html)<br>        html.<span class="hljs-property">head</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">`&lt;meta name=&quot;description&quot; content=&quot;My custom description&quot; /&gt;`</span>)<br>    &#125;)<br>    <span class="hljs-comment">// You can also intercept the response here.</span><br>    nitroApp.<span class="hljs-property">hooks</span>.<span class="hljs-title function_">hook</span>(<span class="hljs-string">&#x27;render:response&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">response, &#123; event&#125;</span>) =&gt;</span> &#123; <br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(response) <br>    &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><h3 id="公共资源"><a href="#公共资源" class="headerlink" title="公共资源"></a>公共资源</h3><p><code>public/</code> 目录的内容按原样在服务器根目录下提供服务。<br>引用public不需要使用public前缀</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/logo.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Nuxt logo&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>assets/</code> 目录按照惯例包含您希望构建工具（Vite 或 webpack）处理的每个资源。<br>您可以使用 ~&#x2F;assets&#x2F; 路径引用位于 assets&#x2F; 目录中的文件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;~/assets/logo.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Nuxt logo&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="全局样式导入"><a href="#全局样式导入" class="headerlink" title="全局样式导入"></a>全局样式导入</h3><p>要全局地在 Nuxt 组件样式中插入语句，您可以使用 Vite 选项在您的 nuxt.config 文件中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">vite</span>: &#123;<br>        <span class="hljs-attr">css</span>: &#123;<br>            <span class="hljs-attr">preprocessorOptions</span>: &#123;<br>                <span class="hljs-attr">scss</span>: &#123;<br>                    <span class="hljs-attr">additionalData</span>: <span class="hljs-string">&#x27;@use &quot;~/assets/_colors.scss&quot; as *;&#x27;</span><br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="样式表"><a href="#样式表" class="headerlink" title="样式表"></a>样式表</h2><h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><h4 id="本地样式表"><a href="#本地样式表" class="headerlink" title="本地样式表"></a>本地样式表</h4><p>如果您正在编写本地样式表，放置它们的自然位置是 <code>assets/</code> 目录。</p>
+<h4 id="组件中引用"><a href="#组件中引用" class="headerlink" title="组件中引用"></a>组件中引用</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// Use a static import for server-side compatibility</span></span><br><span class="language-javascript">    <span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;~/assets/css/first.css&#x27;</span></span><br><span class="language-javascript">    <span class="hljs-comment">// Caution: Dynamic imports are not server-side compatible</span></span><br><span class="language-javascript">    <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;~/assets/css/first.css&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-keyword">@import</span> url(<span class="hljs-string">&quot;~/assets/css/second.css&quot;</span>);</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="全局样式表-nuxt-config-js"><a href="#全局样式表-nuxt-config-js" class="headerlink" title="全局样式表 nuxt.config.js"></a>全局样式表 nuxt.config.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">css</span>: [<span class="hljs-string">&#x27;~/assets/css/main.css&#x27;</span>]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="使用字体"><a href="#使用字体" class="headerlink" title="使用字体"></a>使用字体</h3><p>将您的本地字体文件放在 <code>~/public/</code> 目录中，例如在 <code>~/public/fonts</code> 中。然后您可以使用 <code>url()</code> 在样式表中引用它们。<br><code>assets/css/main.css</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@font-face</span> &#123;<br>  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;FarAwayGalaxy&#x27;</span>;<br>  <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;/fonts/FarAwayGalaxy.woff&#x27;</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">&#x27;woff&#x27;</span>);<br>  <span class="hljs-attribute">font-weight</span>: normal;<br>  <span class="hljs-attribute">font-style</span>: normal;<br>  <span class="hljs-attribute">font-display</span>: swap;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="通过npm安装的样式表"><a href="#通过npm安装的样式表" class="headerlink" title="通过npm安装的样式表"></a>通过npm安装的样式表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install animate.css<br></code></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;animate.css&#x27;</span></span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-keyword">@import</span> url(<span class="hljs-string">&quot;animate.css&quot;</span>);</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="全局样式表-nuxt-config-js-1"><a href="#全局样式表-nuxt-config-js-1" class="headerlink" title="全局样式表 nuxt.config.js"></a>全局样式表 nuxt.config.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">css</span>: [<span class="hljs-string">&#x27;animate.css&#x27;</span>]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">app</span>: &#123;<br>        <span class="hljs-attr">head</span>: &#123;<br>        <span class="hljs-attr">link</span>: [&#123; <br>            <span class="hljs-attr">rel</span>: <span class="hljs-string">&#x27;stylesheet&#x27;</span>, <br>            <span class="hljs-attr">href</span>: <span class="hljs-string">&#x27;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&#x27;</span> &#125;<br>        ]&#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="动态添加样式表"><a href="#动态添加样式表" class="headerlink" title="动态添加样式表"></a>动态添加样式表</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">app</span>: &#123;<br>        <span class="hljs-attr">head</span>: &#123;<br>        <span class="hljs-attr">link</span>: [&#123; <br>            <span class="hljs-attr">rel</span>: <span class="hljs-string">&#x27;stylesheet&#x27;</span>, <br>            <span class="hljs-attr">href</span>: <span class="hljs-string">&#x27;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&#x27;</span> <br>        &#125;]<br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="使用预处理器"><a href="#使用预处理器" class="headerlink" title="使用预处理器"></a>使用预处理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -D sass<br></code></pre></td></tr></table></figure>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~assets/css/main.scss&#x27;</span>;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>或者全局引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">css</span>: [<span class="hljs-string">&#x27;~/assets/scss/main.scss&#x27;</span>]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="局部作用于"><a href="#局部作用于" class="headerlink" title="局部作用于"></a>局部作用于</h4><p><code>scoped</code></p>
+<h3 id="单文件组件-SFC-样式"><a href="#单文件组件-SFC-样式" class="headerlink" title="单文件组件 (SFC) 样式"></a>单文件组件 (SFC) 样式</h3><p>js操作css</p>
+<h4 id="ref-和-reactive"><a href="#ref-和-reactive" class="headerlink" title="ref 和 reactive"></a>ref 和 reactive</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> isActive = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> hasError = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> classObject = <span class="hljs-title function_">reactive</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">active</span>: <span class="hljs-literal">true</span>,</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;text-danger&#x27;</span>: <span class="hljs-literal">false</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;static&quot;</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;&#123; active: isActive, &#x27;text-danger&#x27;: hasError &#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;classObject&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> isActive = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> error = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">null</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> classObject = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> (&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">active</span>: isActive.<span class="hljs-property">value</span> &amp;&amp; !error.<span class="hljs-property">value</span>,</span><br><span class="language-javascript">        <span class="hljs-string">&#x27;text-danger&#x27;</span>: error.<span class="hljs-property">value</span> &amp;&amp; error.<span class="hljs-property">value</span>.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;fatal&#x27;</span></span><br><span class="language-javascript">    &#125;))</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;classObject&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="array"><a href="#array" class="headerlink" title="array"></a>array</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> isActive = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> errorClass = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;text-danger&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;[&#123; active: isActive &#125;, errorClass]&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="style"><a href="#style" class="headerlink" title="style"></a>style</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> activeColor = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;red&#x27;</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> fontSize = <span class="hljs-title function_">ref</span>(<span class="hljs-number">30</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> styleObject = <span class="hljs-title function_">reactive</span>(&#123; <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-attr">fontSize</span>: <span class="hljs-string">&#x27;13px&#x27;</span> &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123; color: activeColor, fontSize: fontSize + &#x27;px&#x27; &#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;[baseStyles, overridingStyles]&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;styleObject&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> color = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;red&quot;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-selector-class">.text</span> &#123;<span class="hljs-attribute">color</span>: <span class="hljs-built_in">v-bind</span>(color);&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="css模块"><a href="#css模块" class="headerlink" title="css模块"></a>css模块</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;$style.red&quot;</span>&gt;</span>This should be red<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">module</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-selector-class">.red</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">color</span>: red;</span><br><span class="language-css">    &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="使用-PostCSS"><a href="#使用-PostCSS" class="headerlink" title="使用 PostCSS"></a>使用 PostCSS</h3><p>内置了 PostCSS，您可以使用 <code>postcss.config.js</code> 文件来配置它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">postcss</span>: &#123;<br>        <span class="hljs-attr">plugins</span>: &#123;<br>            <span class="hljs-string">&#x27;postcss-nested&#x27;</span>: &#123;&#125;,<br>            <span class="hljs-string">&#x27;postcss-custom-media&#x27;</span>: &#123;&#125;<br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="默认情况下，Nuxt-已经预配置了以下插件"><a href="#默认情况下，Nuxt-已经预配置了以下插件" class="headerlink" title="默认情况下，Nuxt 已经预配置了以下插件"></a>默认情况下，Nuxt 已经预配置了以下插件</h3><ul>
+<li>postcss-import：改进 @import 规则</li>
+<li>postcss-url：转换 url() 语句</li>
+<li>autoprefixer：自动添加供应商前缀</li>
+<li>cssnano：缩小和清除</li>
+</ul>
+<h3 id="轻松加载网络字体"><a href="#轻松加载网络字体" class="headerlink" title="轻松加载网络字体"></a>轻松加载网络字体</h3><p>您可以使用 <a target="_blank" rel="noopener" href="https://github.com/nuxt-modules/google-fonts">Nuxt Google Fonts</a> 模块 来加载 Google Fonts。<br>如果您正在使用 UnoCSS，请注意它附带了 网络字体预设，可以方便地从常见的提供商（包括 Google Fonts 等）加载字体。</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>Nuxt 文件系统路由为 <code>pages/</code> 目录中的每个文件创建一个路由。</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">-| pages/<br>---| about.vue<br>---| index.vue<br>---| posts/<br>-----| [id].vue<br></code></pre></td></tr></table></figure>
+<h5 id="对应自动生成的路由配置文件"><a href="#对应自动生成的路由配置文件" class="headerlink" title="对应自动生成的路由配置文件"></a>对应自动生成的路由配置文件</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-string">&quot;routes&quot;</span>: [<br>        &#123;<br>            <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;/about&quot;</span>,<br>            <span class="hljs-string">&quot;component&quot;</span>: <span class="hljs-string">&quot;pages/about.vue&quot;</span><br>        &#125;,<br>        &#123;<br>            <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>            <span class="hljs-string">&quot;component&quot;</span>: <span class="hljs-string">&quot;pages/index.vue&quot;</span><br>        &#125;,<br>        &#123;<br>            <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;/posts/:id&quot;</span>,<br>            <span class="hljs-string">&quot;component&quot;</span>: <span class="hljs-string">&quot;pages/posts/[id].vue&quot;</span><br>        &#125;<br>    ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">nuxt-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;&#123; name: &#x27;about&#x27; &#125;&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">nuxt-link</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><p><code>useRoute()</code> 组合式 API 可用于 Vue 组件的 <code>&lt;script setup&gt;</code> 块或 <code>setup()</code> 方法中，以访问当前路由的详细信息。</p>
+<h4 id="pages-posts-id-vue"><a href="#pages-posts-id-vue" class="headerlink" title="pages&#x2F;posts&#x2F;[id].vue"></a>pages&#x2F;posts&#x2F;[id].vue</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>()</span><br><span class="language-javascript">    <span class="hljs-comment">// When accessing /posts/1, route.params.id will be 1</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="路由中间件"><a href="#路由中间件" class="headerlink" title="路由中间件"></a>路由中间件</h3><p>路由中间件有三种：</p>
+<ol>
+<li>匿名（或内联）路由中间件，直接在使用它们的页面中定义。</li>
+<li>命名路由中间件，放置在目录中，在页面上使用时将通过异步导入自动加载。 （注意：路由中间件名称规范化为 <code>kebab-case</code>，因此变为。）<code>middleware/someMiddlewaresome-middleware</code></li>
+<li>全局路由中间件，放置在目录中（带有后缀），并将在每次路由更改时自动运行。<code>middleware/.global auth</code>保护页面的中间件示例<code>/dashboard</code>：<br><code>middleware/auth.js</code></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isAuthenticated</span>(<span class="hljs-params"></span>): boolean &#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> &#125;<br><span class="hljs-comment">// ---cut---</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// isAuthenticated() is an example method verifying if a user is authenticated</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isAuthenticated</span>() === <span class="hljs-literal">false</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;/login&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p><code>pages/dashboard.vue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">middleware</span>: <span class="hljs-string">&#x27;auth&#x27;</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to your dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="路由验证"><a href="#路由验证" class="headerlink" title="路由验证"></a>路由验证</h3><p><code>pages/posts/[id].vue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">validate</span>: <span class="hljs-title function_">async</span> (route) =&gt; &#123;</span><br><span class="language-javascript">            <span class="hljs-comment">// Check if the id is made up of digits</span></span><br><span class="language-javascript">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span> === <span class="hljs-string">&#x27;string&#x27;</span> &amp;&amp; <span class="hljs-regexp">/^\d+$/</span>.<span class="hljs-title function_">test</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><p><code>pages/posts/_slug.vue</code></p>
+<h2 id="SEO和meta"><a href="#SEO和meta" class="headerlink" title="SEO和meta"></a>SEO和meta</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">app</span>: &#123;<br>        <span class="hljs-attr">head</span>: &#123;<br>            <span class="hljs-attr">charset</span>: <span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>            <span class="hljs-attr">viewport</span>: <span class="hljs-string">&#x27;width=device-width, initial-scale=1&#x27;</span>,<br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p>此方法不允许您提供响应式数据。我们建议在 app.vue 中使用 useHead()。</p>
+</blockquote>
+</blockquote>
+<h3 id="使用-useHead"><a href="#使用-useHead" class="headerlink" title="使用 useHead()"></a>使用 useHead()</h3><p>可组合函数 <code>useHead</code> 允许您以编程方式和响应式地管理头部标签，由 <code>Unhead</code> 提供支持。<br>与所有可组合函数一样，它只能与组件的 <code>setup</code> 和生命周期钩子一起使用。<br><code>app.vue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;My App&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">meta</span>: [</span><br><span class="language-javascript">            &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;description&#x27;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;My amazing site.&#x27;</span> &#125;</span><br><span class="language-javascript">        ],</span><br><span class="language-javascript">        <span class="hljs-attr">bodyAttrs</span>: &#123;</span><br><span class="language-javascript">            <span class="hljs-attr">class</span>: <span class="hljs-string">&#x27;test&#x27;</span></span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">        <span class="hljs-attr">script</span>: [ &#123; <span class="hljs-attr">innerHTML</span>: <span class="hljs-string">&#x27;console.log(\&#x27;Hello world\&#x27;)&#x27;</span> &#125; ]</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="类型useHead-和app-head"><a href="#类型useHead-和app-head" class="headerlink" title="类型useHead()和app.head"></a>类型useHead()和app.head</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MetaObject</span> &#123;<br>  <span class="hljs-attr">title</span>?: <span class="hljs-built_in">string</span><br>  <span class="hljs-attr">titleTemplate</span>?: <span class="hljs-built_in">string</span> | (<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">title</span>?: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>)<br>  <span class="hljs-attr">templateParams</span>?: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;&gt;<br>  <span class="hljs-attr">base</span>?: <span class="hljs-title class_">Base</span><br>  <span class="hljs-attr">link</span>?: <span class="hljs-title class_">Link</span>[]<br>  <span class="hljs-attr">meta</span>?: <span class="hljs-title class_">Meta</span>[]<br>  <span class="hljs-attr">style</span>?: <span class="hljs-title class_">Style</span>[]<br>  <span class="hljs-attr">script</span>?: <span class="hljs-title class_">Script</span>[]<br>  <span class="hljs-attr">noscript</span>?: <span class="hljs-title class_">Noscript</span>[];<br>  <span class="hljs-attr">htmlAttrs</span>?: <span class="hljs-title class_">HtmlAttributes</span>;<br>  <span class="hljs-attr">bodyAttrs</span>?: <span class="hljs-title class_">BodyAttributes</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用useSeoMeta"><a href="#使用useSeoMeta" class="headerlink" title="使用useSeoMeta"></a>使用useSeoMeta</h3><p>可组合函数 useSeoMeta 允许您将网站的 SEO 元标签定义为一个扁平对象，并完全支持 TypeScript。<br>这可以帮助您避免错别字和常见错误，例如使用 name 而不是 property。<br><code>app.vue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">useSeoMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;My Amazing Site&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">ogTitle</span>: <span class="hljs-string">&#x27;My Amazing Site&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;This is my amazing site, let me tell you all about it.&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">ogDescription</span>: <span class="hljs-string">&#x27;This is my amazing site, let me tell you all about it.&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">ogImage</span>: <span class="hljs-string">&#x27;https://example.com/image.png&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">twitterCard</span>: <span class="hljs-string">&#x27;summary_large_image&#x27;</span>,</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="组件-1"><a href="#组件-1" class="headerlink" title="组件"></a>组件</h3><p>组件<br>Nuxt 提供了 </p>
+<ul>
+<li><code>&lt;Title&gt;</code></li>
+<li><code>&lt;Base&gt;</code></li>
+<li><code>&lt;NoScript&gt;</code></li>
+<li><code>&lt;Style&gt;</code></li>
+<li><code>&lt;Meta&gt;</code></li>
+<li><code>&lt;Link&gt;</code></li>
+<li><code>&lt;Body&gt;</code></li>
+<li><code>&lt;Html&gt;</code></li>
+<li><code>&lt;Head&gt; </code><br>组件，以便您可以在组件的模板中直接与元数据进行交互。<br>因为这些组件名称与原生 HTML 元素匹配，所以必须在模板中大写。<br><code>&lt;Head&gt;</code> 和 <code>&lt;Body&gt;</code> 可以接受嵌套的元标签（出于美观考虑），但这不会影响嵌套元标签在最终 HTML 中的渲染位置。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> title = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Hello World&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Title</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">Title</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">:content</span>=<span class="hljs-string">&quot;title&quot;</span> /&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">children</span>=<span class="hljs-string">&quot;body &#123; background-color: green; &#125;&quot;</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Style</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">const</span> description = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;My amazing site.&#x27;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">  <span class="hljs-attr">meta</span>: [</span><br><span class="language-javascript">    &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;description&#x27;</span>, <span class="hljs-attr">content</span>: description &#125;</span><br><span class="language-javascript">  ],</span><br><span class="language-javascript">&#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="使用useMeta"><a href="#使用useMeta" class="headerlink" title="使用useMeta()"></a>使用useMeta()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">useSeoMeta</span>(&#123;<br>    description<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="组件渲染"><a href="#组件渲染" class="headerlink" title="组件渲染"></a>组件渲染</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">:content</span>=<span class="hljs-string">&quot;description&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="标题模板"><a href="#标题模板" class="headerlink" title="标题模板"></a>标题模板</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">  <span class="hljs-attr">titleTemplate</span>: <span class="hljs-function">(<span class="hljs-params">titleChunk</span>) =&gt;</span> &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">return</span> titleChunk ? <span class="hljs-string">`<span class="hljs-subst">$&#123;titleChunk&#125;</span> - Site Title`</span> : <span class="hljs-string">&#x27;Site Title&#x27;</span>;</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">&#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="body标签"><a href="#body标签" class="headerlink" title="body标签"></a>body标签</h3><p>您可以使用<code>tagPosition: &#39;bodyClose&#39;</code>适用标签上的选项将它们附加到标签的末尾<code>&lt;body&gt;</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">script</span>: [</span><br><span class="language-javascript">            &#123;</span><br><span class="language-javascript">                <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;https://third-party-script.com&#x27;</span>,</span><br><span class="language-javascript">                <span class="hljs-comment">// valid options are: &#x27;head&#x27; | &#x27;bodyClose&#x27; | &#x27;bodyOpen&#x27;</span></span><br><span class="language-javascript">                <span class="hljs-attr">tagPosition</span>: <span class="hljs-string">&#x27;bodyClose&#x27;</span></span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        ]</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>和definePageMeta<br>在您的目录中，您可以使用以及根据当前路线设置元数据。<code>pages/definePageMetauseHead</code><br>例如，您可以首先设置当前页面标题（这是在构建时通过宏提取的，因此不能动态设置）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Some Page&#x27;</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>()</span><br><span class="language-javascript">    <span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">meta</span>: [&#123; <span class="hljs-attr">property</span>: <span class="hljs-string">&#x27;og:title&#x27;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">`App Name - <span class="hljs-subst">$&#123;route.meta.title&#125;</span>`</span> &#125;]</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="动态标题"><a href="#动态标题" class="headerlink" title="动态标题"></a>动态标题</h3><p>在下面的示例中，<code>titleTemplate</code>可以将其设置为带有占位符的字符串<code>%s</code>，也可以将其设置为<code>function</code>，这样可以更灵活地为 Nuxt 应用的每个路由动态设置页面标题：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">    <span class="hljs-comment">// as a string,</span></span><br><span class="language-javascript">    <span class="hljs-comment">// where `%s` is replaced with the title</span></span><br><span class="language-javascript">    <span class="hljs-attr">titleTemplate</span>: <span class="hljs-string">&#x27;%s - Site Title&#x27;</span>,</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// or as a function</span></span><br><span class="language-javascript">        <span class="hljs-attr">titleTemplate</span>: <span class="hljs-function">(<span class="hljs-params">productCategory</span>) =&gt;</span> &#123;</span><br><span class="language-javascript">            <span class="hljs-keyword">return</span> productCategory</span><br><span class="language-javascript">            ? <span class="hljs-string">`<span class="hljs-subst">$&#123;productCategory&#125;</span> - Site Title`</span></span><br><span class="language-javascript">            : <span class="hljs-string">&#x27;Site Title&#x27;</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>nuxt.config</code>也是设置页面标题的另一种方式。但是，<code>nuxt.config</code>不允许页面标题动态化。因此，建议<code>titleTemplate</code>在<code>app.vue</code>文件中添加动态标题，然后将其应用于 Nuxt 应用的所有路由。</p>
+<h3 id="外部-CSS"><a href="#外部-CSS" class="headerlink" title="外部 CSS"></a>外部 CSS</h3><p>下面的示例展示了如何使用可组合项<code>link</code>的属性或组件启用 Google 字体：<code>useHead``&lt;Link&gt;</code><br>useHead</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">link</span>: [</span><br><span class="language-javascript">            &#123;</span><br><span class="language-javascript">                <span class="hljs-attr">rel</span>: <span class="hljs-string">&#x27;preconnect&#x27;</span>,</span><br><span class="language-javascript">                <span class="hljs-attr">href</span>: <span class="hljs-string">&#x27;https://fonts.googleapis.com&#x27;</span></span><br><span class="language-javascript">            &#125;,</span><br><span class="language-javascript">            &#123;</span><br><span class="language-javascript">                <span class="hljs-attr">rel</span>: <span class="hljs-string">&#x27;stylesheet&#x27;</span>,</span><br><span class="language-javascript">                <span class="hljs-attr">href</span>: <span class="hljs-string">&#x27;https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap&#x27;</span>,</span><br><span class="language-javascript">                <span class="hljs-attr">crossorigin</span>: <span class="hljs-string">&#x27;&#x27;</span></span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        ]</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>模板</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;preconnect&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="过渡动画"><a href="#过渡动画" class="headerlink" title="过渡动画"></a>过渡动画</h2><p>所有页面添加过渡动画<br><code>nuxt.config.ts</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">app</span>: &#123;<br>        <span class="hljs-attr">pageTransition</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;page&#x27;</span>, <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;out-in&#x27;</span> &#125;, <span class="hljs-comment">// 页面过渡</span><br>    &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p>如果更改name属性，则还必须相应地重命名 CSS 类。<br>要开始在页面之间添加过渡，请将以下 CSS 添加到：<code>app.vue</code></p>
+</blockquote>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-selector-class">.page-enter-active</span>,</span><br><span class="language-css">    <span class="hljs-selector-class">.page-leave-active</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.4s</span>;</span><br><span class="language-css">    &#125;</span><br><span class="language-css">    <span class="hljs-selector-class">.page-enter-from</span>,</span><br><span class="language-css">    <span class="hljs-selector-class">.page-leave-to</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">        <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">blur</span>(<span class="hljs-number">1rem</span>);</span><br><span class="language-css">    &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>页面1.vue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Home page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about&quot;</span>&gt;</span>About page<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>页面2.vue</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home page<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="设置独特的过渡动画"><a href="#设置独特的过渡动画" class="headerlink" title="设置独特的过渡动画"></a>设置独特的过渡动画</h3><p>要为页面设置不同的过渡，请在页面<code>pageTransition</code>中设置键：<code>definePageMeta</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">pageTransition</span>: &#123;</span><br><span class="language-javascript">            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;rotate&#x27;</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>``<br>`app.vue`<br>​```html<br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-selector-class">.rotate-enter-active</span>,</span><br><span class="language-css">    <span class="hljs-selector-class">.rotate-leave-active</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.4s</span>;</span><br><span class="language-css">    &#125;</span><br><span class="language-css">    <span class="hljs-selector-class">.rotate-enter-from</span>,</span><br><span class="language-css">    <span class="hljs-selector-class">.rotate-leave-to</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate3d</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">15deg</span>);</span><br><span class="language-css">    &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="布局过渡"><a href="#布局过渡" class="headerlink" title="布局过渡"></a>布局过渡</h3><p>所有页面添加布局过渡<br><code>nuxt.config.ts</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">app</span>: &#123;<br>        <span class="hljs-attr">layoutTransition</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;layout&#x27;</span>, <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;out-in&#x27;</span> &#125; <span class="hljs-comment">// 布局过渡</span><br>    &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p>如果更改name属性，则还必须相应地重命名 CSS 类。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLayout</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLayout</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    <span class="hljs-selector-class">.layout-enter-active</span>,</span><br><span class="language-css">    <span class="hljs-selector-class">.layout-leave-active</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.4s</span>;</span><br><span class="language-css">    &#125;</span><br><span class="language-css">    <span class="hljs-selector-class">.layout-enter-from</span>,</span><br><span class="language-css">    <span class="hljs-selector-class">.layout-leave-to</span> &#123;</span><br><span class="language-css">        <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(<span class="hljs-number">1</span>);</span><br><span class="language-css">    &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>与类似<code>pageTransition</code>，您可以使用以下方式将自定义<code>layoutTransition</code>应用于页面组件<code>definePageMeta</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">layout</span>: <span class="hljs-string">&#x27;orange&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">layoutTransition</span>: &#123;</span><br><span class="language-javascript">            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;slide-in&#x27;</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="设置独特的布局过渡"><a href="#设置独特的布局过渡" class="headerlink" title="设置独特的布局过渡"></a>设置独特的布局过渡</h3><p>要覆盖全局过渡属性，请使用<code>definePageMeta</code>定义单个 Nuxt 页面的页面或布局过渡，并覆盖<code>nuxt.config</code>文件中全局定义的任何页面或布局过渡。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">pageTransition</span>: &#123;</span><br><span class="language-javascript">            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;bounce&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;out-in&#x27;</span> <span class="hljs-comment">// default</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="禁用过渡"><a href="#禁用过渡" class="headerlink" title="禁用过渡"></a>禁用过渡</h3><p><code>pageTransition</code>并<code>layoutTransition</code>可以针对特定路线禁用：<br>局部模板</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">pageTransition</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">layoutTransition</span>: <span class="hljs-literal">false</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>全局</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>    <span class="hljs-attr">app</span>: &#123;<br>        <span class="hljs-attr">pageTransition</span>: <span class="hljs-literal">false</span>,<br>        <span class="hljs-attr">layoutTransition</span>: <span class="hljs-literal">false</span><br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="JavaScript-钩子"><a href="#JavaScript-钩子" class="headerlink" title="JavaScript 钩子"></a>JavaScript 钩子</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">pageTransition</span>: &#123;</span><br><span class="language-javascript">            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;custom-flip&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;out-in&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">onBeforeEnter</span>: <span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;</span><br><span class="language-javascript">                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Before enter...&#x27;</span>)</span><br><span class="language-javascript">            &#125;,</span><br><span class="language-javascript">            <span class="hljs-attr">onEnter</span>: <span class="hljs-function">(<span class="hljs-params">el, done</span>) =&gt;</span> &#123;&#125;,</span><br><span class="language-javascript">            <span class="hljs-attr">onAfterEnter</span>: <span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;&#125;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="动态转换"><a href="#动态转换" class="headerlink" title="动态转换"></a>动态转换</h3><p>要使用条件逻辑应用动态转换，您可以利用内联中间件为分配不同的转换名称<code>to.meta.pageTransition</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">pageTransition</span>: &#123;</span><br><span class="language-javascript">            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;slide-right&#x27;</span>,</span><br><span class="language-javascript">            <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;out-in&#x27;</span></span><br><span class="language-javascript">        &#125;,</span><br><span class="language-javascript">        <span class="hljs-title function_">middleware</span> (to, <span class="hljs-keyword">from</span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-keyword">if</span> (to.<span class="hljs-property">meta</span>.<span class="hljs-property">pageTransition</span> &amp;&amp; <span class="hljs-keyword">typeof</span> to.<span class="hljs-property">meta</span>.<span class="hljs-property">pageTransition</span> !== <span class="hljs-string">&#x27;boolean&#x27;</span>)</span><br><span class="language-javascript">            to.<span class="hljs-property">meta</span>.<span class="hljs-property">pageTransition</span>.<span class="hljs-property">name</span> = +to.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>! &gt; +<span class="hljs-keyword">from</span>.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>! ? <span class="hljs-string">&#x27;slide-left&#x27;</span> : <span class="hljs-string">&#x27;slide-right&#x27;</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>#&#123;&#123; $route.params.id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.slide-left-enter-active</span>,</span><br><span class="language-css"><span class="hljs-selector-class">.slide-left-leave-active</span>,</span><br><span class="language-css"><span class="hljs-selector-class">.slide-right-enter-active</span>,</span><br><span class="language-css"><span class="hljs-selector-class">.slide-right-leave-active</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.2s</span>;</span><br><span class="language-css">&#125;</span><br><span class="language-css"><span class="hljs-selector-class">.slide-left-enter-from</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">50px</span>, <span class="hljs-number">0</span>);</span><br><span class="language-css">&#125;</span><br><span class="language-css"><span class="hljs-selector-class">.slide-left-leave-to</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50px</span>, <span class="hljs-number">0</span>);</span><br><span class="language-css">&#125;</span><br><span class="language-css"><span class="hljs-selector-class">.slide-right-enter-from</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50px</span>, <span class="hljs-number">0</span>);</span><br><span class="language-css">&#125;</span><br><span class="language-css"><span class="hljs-selector-class">.slide-right-leave-to</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">50px</span>, <span class="hljs-number">0</span>);</span><br><span class="language-css">&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>布局</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>()</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> id = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Number</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span> || <span class="hljs-number">1</span>))</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> prev = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;/&#x27;</span> + (id.<span class="hljs-property">value</span> - <span class="hljs-number">1</span>))</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;/&#x27;</span> + (id.<span class="hljs-property">value</span> + <span class="hljs-number">1</span>))</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;$route.params.id&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;prev&quot;</span>&gt;</span>⬅️<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span> |<br>            <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;next&quot;</span>&gt;</span>➡️<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="使用-NuxtPage-进行过渡"><a href="#使用-NuxtPage-进行过渡" class="headerlink" title="使用 NuxtPage 进行过渡"></a>使用 NuxtPage 进行过渡</h3><p>在<code>&lt;NuxtPage /&gt;</code>使用时<code>app.vue</code>，可以使用 <code>prop</code> 配置转换<code>transition</code>以全局激活转换。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLayout</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span> <span class="hljs-attr">:transition</span>=<span class="hljs-string">&quot;&#123;</span></span><br><span class="hljs-string"><span class="hljs-tag">                name: &#x27;bounce&#x27;,</span></span><br><span class="hljs-string"><span class="hljs-tag">                mode: &#x27;out-in&#x27;</span></span><br><span class="hljs-string"><span class="hljs-tag">            &#125;&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLayout</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><ul>
+<li><code>$fetch</code>是发出网络请求的最简单方法。</li>
+<li><code>useFetch</code>是在通用渲染<code>$fetch</code>中仅获取一次数据的包装器。</li>
+<li><code>useAsyncData</code>类似<code>useFetch</code>但提供更细粒度的控制。</li>
+</ul>
+<p><code>useFetch</code>和都<code>useAsyncData</code>共享一组通用的选项和模式。</p>
+<h3 id="例子-useFetch"><a href="#例子-useFetch" class="headerlink" title="例子 useFetch"></a>例子 useFetch</h3><ul>
+<li><code>useFetch</code> 将确保请求将在服务器中发生并正确转发到浏览器。</li>
+<li><code>$fetch</code> 没有此机制，并且当请求仅从浏览器发出时，它是更好的选择。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> &#123; data &#125; = <span class="hljs-keyword">await</span> <span class="hljs-title function_">useFetch</span>(<span class="hljs-string">&#x27;/api/data&#x27;</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleFormSubmit</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> $fetch(<span class="hljs-string">&#x27;/api/submit&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">body</span>: &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// My form data</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;data == null&quot;</span>&gt;</span><br>        No data<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;handleFormSubmit&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- form input tags --&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="例子-fetch"><a href="#例子-fetch" class="headerlink" title="例子 $fetch"></a>例子 $fetch</h3><p>Nuxt 包含 <code>ofetch</code> 库，并在整个应用程序中作为 <code>$fetch</code> 别名全局自动导入。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">addTodo</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> todo = <span class="hljs-keyword">await</span> $fetch(<span class="hljs-string">&#x27;/api/todos&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">body</span>: &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// My todo data</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>请注意，仅使用 <code>$fetch</code> 不会提供 网络调用去重和导航阻止。<br>建议将 <code>$fetch</code> 用于客户端交互（基于事件）或与 <code>useAsyncData</code> 结合使用以获取初始组件数据。</p>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2022/08/11/%E5%AD%97%E4%BD%93%E5%8E%8B%E7%BC%A9.html">字体压缩</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/22/node-%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96ts%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">node爬虫抓取ts视频文件多线程</a>
+                <p>2023-06-22</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/25/golang-%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB.html">golang简单爬虫</a>
+                <p>2023-04-25</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/nvm-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86.html">nvm node版本管理</a>
+                <p>2023-05-15</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/10/golang-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html">golang-内置函数</a>
+                <p>2023-09-10</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2022/08/11/%E5%AD%97%E4%BD%93%E5%8E%8B%E7%BC%A9.html">字体压缩</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/22/node-%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96ts%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">node爬虫抓取ts视频文件多线程</a>
+                <p>2023-06-22</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/25/golang-%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB.html">golang简单爬虫</a>
+                <p>2023-04-25</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/nvm-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86.html">nvm node版本管理</a>
+                <p>2023-05-15</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/10/golang-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html">golang-内置函数</a>
+                <p>2023-09-10</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(5)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/vue/">vue(40)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

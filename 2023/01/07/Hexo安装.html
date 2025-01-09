@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/01/07/Hexo安装.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">Hexo安装</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-01-07
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/hexo/" rel="tag">Hexo</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <p>快速、简洁且高效的博客框架</p>
+<span id="more"></span>
+<h3 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a>一键安装脚本</h3><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-function">https://<span class="hljs-title">vercel.com</span>/<span class="hljs-title">new</span>/<span class="hljs-title">clone</span>?<span class="hljs-title">repository</span>-<span class="hljs-title">url</span>=<span class="hljs-title">https</span>://<span class="hljs-title">github.com</span>/<span class="hljs-title">EvanNotFound</span>/<span class="hljs-title">vercel</span>-<span class="hljs-title">hexo</span>-<span class="hljs-title">template</span>/<span class="hljs-title">tree</span>/<span class="hljs-title">main</span>&amp;<span class="hljs-title">template</span>=<span class="hljs-title">hexo</span></span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br><span class="hljs-comment"># 安装完成后验证</span><br>hexo -v<br></code></pre></td></tr></table></figure>
+<p><img src="/src/Hexo%E5%AE%89%E8%A3%85/1" alt="hexo"></p>
+<h3 id="github设置"><a href="#github设置" class="headerlink" title="github设置"></a>github设置</h3><p><img src="/src/Hexo%E5%AE%89%E8%A3%85/2" alt="2"><br><img src="/src/Hexo%E5%AE%89%E8%A3%85/3" alt="3"></p>
+<h3 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h3><p><a target="_blank" rel="noopener" href="https://git-scm.com/downloads">下载链接</a><br><a target="_blank" rel="noopener" href="https://registry.npmmirror.com/binary.html?path=git-for-windows/v2.36.1.windows.1/">淘宝镜像</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config -l  //查看所有配置<br>git config --system --list //查看系统配置<br>git config --global --list //查看用户（全局）配置<br><br>git config --global user.name <span class="hljs-string">&quot;你的用户名&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;你的邮箱&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="连接至github"><a href="#连接至github" class="headerlink" title="连接至github"></a>连接至github</h3><p><code>执行以下命令生成ssh公钥，此公钥用于你的计算机连接Github</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;你的邮箱&quot;</span><br></code></pre></td></tr></table></figure>
+<p><code>之后打开C盘下用户文件夹下的.ssh的文件夹，会看到 id_rsa.pub</code><br><img src="/src/Hexo%E5%AE%89%E8%A3%85/4.png"><br><code>用记事本打开上述图片中的公钥（id_rsa.pub），复制里面的内容，然后开始在github中配置ssh密钥。</code><br>将 SSH KEY 配置到 GitHub<br>进入github，点击右上角头像 选择settings，进入设置页后选择 SSH and GPG keys，名字随便起，公钥填到Key那一栏。<br><img src="/src/Hexo%E5%AE%89%E8%A3%85/5"><br><img src="/src/Hexo%E5%AE%89%E8%A3%85/6"><br><img src="/src/Hexo%E5%AE%89%E8%A3%85/7"><br>测试连接，输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br>ping github.com<br></code></pre></td></tr></table></figure>
+<h3 id="初始化-Hexo-项目"><a href="#初始化-Hexo-项目" class="headerlink" title="初始化 Hexo 项目"></a>初始化 Hexo 项目</h3><p>在目标路径（我这里选的路径为【C:&#x2F;Hexo-Blog】）打开cmd命令窗口，执行hexo init初始化项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init blog-demo(项目名)<br></code></pre></td></tr></table></figure>
+<p><img src="/src/Hexo%E5%AE%89%E8%A3%85/8"><br>进入blog-demo ，输入npm i安装相关依赖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> blog-demo  //进入blog-demo文件夹<br>npm install<br></code></pre></td></tr></table></figure>
+<p>初始化项目后，blog-demo有如下结构：<br><img src="/src/Hexo%E5%AE%89%E8%A3%85/9"></p>
+<ul>
+<li>【node_modules】：依赖包</li>
+<li>【scaffolds】：生成文章的一些模板</li>
+<li>【source】：用来存放你的文章</li>
+<li>【themes】：主题</li>
+<li>【.npmignore】：发布时忽略的文件（可忽略）</li>
+<li>【_config.landscape.yml】：主题的配置文件</li>
+<li>【config.yml】：博客的配置文件</li>
+<li>【package.json】：项目名称、描述、版本、运行和开发等信息</li>
+</ul>
+<p>输入hexo server或者hexo s 启动项目</p>
+<h3 id="将静态博客挂载到-GitHub-Pages"><a href="#将静态博客挂载到-GitHub-Pages" class="headerlink" title="将静态博客挂载到 GitHub Pages"></a>将静态博客挂载到 GitHub Pages</h3><p>安装 hexo-deployer-git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+<p>修改 _config.yml 文件<br>在blog-demo目录下的_config.yml，就是整个Hexo框架的配置文件了。可以在里面修改大部分的配置。详细可参考官方的配置描述。<br>修改最后一行的配置，将repository修改为你自己的github项目地址即可，还有分支要改为main代表主分支（注意缩进）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># YAML</span><br>deploy:<br>  <span class="hljs-built_in">type</span>: git<br>  repository: git@github.com:Fomalhaut-Blog/Fomalhaut-Blog.github.io.git<br>  branch: main<br></code></pre></td></tr></table></figure>
+<p>修改好配置后，运行如下命令，将代码部署到 GitHub（Hexo三连）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Git BASH终端</span><br>hexo clean<br>hexo generate<br>hexo deploy  <br><span class="hljs-comment"># VSCODE终端</span><br>hexo clean; <br>hexo generate; <br>hexo deploy  <br></code></pre></td></tr></table></figure>
+<ul>
+<li>hexo clean：删除之前生成的文件，若未生成过静态文件，可忽略此命令。</li>
+<li>hexo generate：生成静态文章，可以用hexo g缩写</li>
+<li>hexo deploy：部署文章，可以用hexo d缩写<blockquote>
+<p>注意：deploy时可能要你输入 username 和 password。</p>
+</blockquote>
+</li>
+</ul>
+<p>如果出现Deploy done，则说明部署成功了。</p>
+<h3 id="无法连接至Github的解决方案"><a href="#无法连接至Github的解决方案" class="headerlink" title="无法连接至Github的解决方案"></a>无法连接至Github的解决方案</h3><ul>
+<li>挂代理和换网络（这个就不用多说了）</li>
+<li>Git问题：解决“ssh:connect to host github.com port 22: Connection timed out”<br>这是评论区的朋友提供的，可以解决SSH连接超时等问题</li>
+</ul>
+<h3 id="github-io配置自定义域名"><a href="#github-io配置自定义域名" class="headerlink" title="github.io配置自定义域名"></a>github.io配置自定义域名</h3><p><img src="/src/Hexo%E5%AE%89%E8%A3%85/10.webp"></p>
+<h3 id="Vercel部署与自定义域名"><a href="#Vercel部署与自定义域名" class="headerlink" title="Vercel部署与自定义域名"></a>Vercel部署与自定义域名</h3><p><code>Vercel简介：vercel是一个代码托管平台，它能够托管你的静态html界面，甚至能够托管你的node.js与Python服务端脚本，是不想买服务器的懒人的福音！</code><br><a target="_blank" rel="noopener" href="https://vercel.com/">vercel</a><br>首先需要一个Vercel账号，这里推荐用GitHub账户关联，这样你就可以在vercel中直接托管你的GitHub库中的项目了，实现开发部署一步到位（网络不流畅可以考虑挂梯子）。<br>当你用你的Github账户关联并绑定手机号登录之后，点击右上角的Add New Project创建新的项目，之后导入选项那里选择Continue with Github，这时候应该能看到你Github账号的仓库，选择你刚刚部署成功的存储静态博客的仓库<username>.github.io右边的Import选项，表示你要导入该仓库。<br>起一个只能有字母、数字或者或者连字符的项目名称，然后其他默认，点击Deploy，等待一分钟即可部署成功，部署成功后电极Continue to Dashboard跳转到控制面板，下图所示就是控制面板，看到就代表成功部署到了，但是我们现在还不能访问他给出的域，因为GFW最近把Vercel屏蔽了。</p>
+<blockquote>
+<p>当你有了新的域名之后，需要[BlogRoot]_config.yml文件中的url配置项为自己的新域名，这样博客的文章链接才会正确生成。</p>
+</blockquote>
+<p><img src="/src/Hexo%E5%AE%89%E8%A3%85/11"></p>
+<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>本教程用的 🦋 hexo-theme-butterfly 主题 v4.5.0最新版，请放心食用。</p>
+<p>本教程用的是npm方式安装的 hexo-theme-butterfly，后续魔改时更改的文件都是【C:&#x2F;Hexo-Blog&#x2F;blog-demo&#x2F;node_modules&#x2F;hexo-theme-butterfly】文件夹中的文件。如果你是git clone克隆方式安装的主题，请在【C:&#x2F;Hexo-Blog&#x2F;blog-demo&#x2F;themes&#x2F;butterfly】文件夹下修改对应的文件。</p>
+<p>npm安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm i hexo-theme-butterfly<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>升级方法：在博客根目录下，运行 npm update hexo-theme-butterfly。<br>升级前请将hexo-theme-butterfly文件夹备份，npm更新会直接覆盖成新的包。</p>
+</blockquote>
+<p>github安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> -b 4.5.0 https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>升级方法：在主题目录下，运行git pull</p>
+</blockquote>
+<h3 id="应用主题"><a href="#应用主题" class="headerlink" title="应用主题"></a>应用主题</h3><p>修改站点配置文件_config.yml，把主题改为butterfly</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># YAML</span><br>theme: butterfly<br></code></pre></td></tr></table></figure>
+<p>如果你没有pug以及stylus的渲染器，请下载安装，这两个渲染器是Butterfly生成基础页面所需的依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-renderer-pug hexo-renderer-stylus --save<br></code></pre></td></tr></table></figure>
+<p>为了减少升级主题后带来的不便，请使用以下方法（建议，可以不做，高度魔改的一般都不会升级主题了，不然魔改的会被覆盖掉）<br>把主题文件夹中的 _config.yml 复制到 Hexo 根目录里（我这里路径为【C:&#x2F;Hexo-Blog&#x2F;blog-demo】），同时重新命名为 _config.butterfly.yml。以后只需要在 _config.butterfly.yml进行配置即可生效。Hexo会自动合併主题中的_config.yml和 _config.butterfly.yml里的配置，如果存在同名配置，会使用_config.butterfly.yml的配置，其优先度较高。</p>
+<h3 id="基础用法说明"><a href="#基础用法说明" class="headerlink" title="基础用法说明"></a>基础用法说明</h3><p>Front-matter 是 markdown 文件最上方以—分隔的区域，用于指定个别档案的变数。</p>
+<ul>
+<li>Page Front-matter 用于页面配置</li>
+<li>Post Front-matter 用于文章页配置<blockquote>
+<p>如果标注可选的参数，可根据自己需要添加，不用全部都写</p>
+</blockquote>
+</li>
+</ul>
+<p>Page Front-matter:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">---<br>title:<br><span class="hljs-built_in">date</span>:<br><span class="hljs-built_in">type</span>:<br>---<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">写法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">【必需】页面标题</td>
+</tr>
+<tr>
+<td align="left">date</td>
+<td align="left">【必需】页面创建日期</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">【必需】标籤、分类和友情链接三个页面需要配置</td>
+</tr>
+<tr>
+<td align="left">updated</td>
+<td align="left">【可选】页面更新日期</td>
+</tr>
+<tr>
+<td align="left">description</td>
+<td align="left">【可选】页面描述</td>
+</tr>
+<tr>
+<td align="left">keywords</td>
+<td align="left">【可选】页面关键字</td>
+</tr>
+<tr>
+<td align="left">comments</td>
+<td align="left">【可选】显示页面评论模块(默认 true)</td>
+</tr>
+<tr>
+<td align="left">top_img</td>
+<td align="left">【可选】页面顶部图片</td>
+</tr>
+<tr>
+<td align="left">mathjax</td>
+<td align="left">【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)</td>
+</tr>
+<tr>
+<td align="left">kates</td>
+<td align="left">【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)</td>
+</tr>
+<tr>
+<td align="left">aside</td>
+<td align="left">【可选】显示侧边栏 (默认 true)</td>
+</tr>
+<tr>
+<td align="left">aplayer</td>
+<td align="left">【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置</td>
+</tr>
+<tr>
+<td align="left">highlight_shrink</td>
+<td align="left">【可选】配置代码框是否展开(true&#x2F;false)(默认为设置中highlight_shrink的配置)</td>
+</tr>
+</tbody></table>
+<p>Post Front-matter：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">---<br>title:<br><span class="hljs-built_in">date</span>:<br>---<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">写法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">【必需】文章标题</td>
+</tr>
+<tr>
+<td align="left">date</td>
+<td align="left">【必需】文章创建日期</td>
+</tr>
+<tr>
+<td align="left">updated</td>
+<td align="left">【可选】文章更新日期</td>
+</tr>
+<tr>
+<td align="left">tags</td>
+<td align="left">【可选】文章标籤</td>
+</tr>
+<tr>
+<td align="left">categories</td>
+<td align="left">【可选】文章分类</td>
+</tr>
+<tr>
+<td align="left">keywords</td>
+<td align="left">【可选】文章关键字</td>
+</tr>
+<tr>
+<td align="left">description</td>
+<td align="left">【可选】文章描述</td>
+</tr>
+<tr>
+<td align="left">top_img</td>
+<td align="left">【可选】文章顶部图片</td>
+</tr>
+<tr>
+<td align="left">cover</td>
+<td align="left">【可选】文章缩略图(如果没有设置top_img,文章页顶部将显示缩略图，可设为false&#x2F;图片地址&#x2F;留空)</td>
+</tr>
+<tr>
+<td align="left">comments</td>
+<td align="left">【可选】显示文章评论模块(默认 true)</td>
+</tr>
+<tr>
+<td align="left">toc</td>
+<td align="left">【可选】显示文章TOC(默认为设置中toc的enable配置)</td>
+</tr>
+<tr>
+<td align="left">toc_number</td>
+<td align="left">【可选】显示toc_number(默认为设置中toc的number配置)</td>
+</tr>
+<tr>
+<td align="left">toc_style_simple</td>
+<td align="left">【可选】显示 toc 简洁模式</td>
+</tr>
+<tr>
+<td align="left">copyright</td>
+<td align="left">【可选】显示文章版权模块(默认为设置中post_copyright的enable配置)</td>
+</tr>
+<tr>
+<td align="left">copyright_author</td>
+<td align="left">【可选】文章版权模块的文章作者</td>
+</tr>
+<tr>
+<td align="left">copyright_author_href</td>
+<td align="left">【可选】文章版权模块的文章作者链接</td>
+</tr>
+<tr>
+<td align="left">copyright_url</td>
+<td align="left">【可选】文章版权模块的文章连结链接</td>
+</tr>
+<tr>
+<td align="left">copyright_info</td>
+<td align="left">【可选】文章版权模块的版权声明文字</td>
+</tr>
+<tr>
+<td align="left">mathjax</td>
+<td align="left">【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)</td>
+</tr>
+<tr>
+<td align="left">katex</td>
+<td align="left">【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)</td>
+</tr>
+<tr>
+<td align="left">aplayer</td>
+<td align="left">【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置</td>
+</tr>
+<tr>
+<td align="left">highlight_shrink</td>
+<td align="left">【可选】配置代码框是否展开(true&#x2F;false)(默认为设置中highlight_shrink的配置)</td>
+</tr>
+<tr>
+<td align="left">aside</td>
+<td align="left">【可选】显示侧边栏 (默认 true)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：我的博客根目录路径为 【C:&#x2F;Hexo-Blog&#x2F;blog-demo】，下文所说的根目录都是此路径，将用[BlogRoot]代替。</p>
+</blockquote>
+<h4 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h4><p>前往你的Hexo博客根目录，打开Git Bash执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page tags<br></code></pre></td></tr></table></figure>
+<p>在[BlogRoot]\source\会生成一个含有index.md文件的tags文件夹。<br>修改[BlogRoot]\source\tags\index.md，添加type: “tags”。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">---<br>title: tags<br><span class="hljs-built_in">date</span>: 2022-10-28 12:00:00<br><span class="hljs-built_in">type</span>: <span class="hljs-string">&quot;tags&quot;</span><br>---<br></code></pre></td></tr></table></figure>
+<h4 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h4><p>前往你的Hexo博客根目录，打开cmd命令窗口执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page <span class="hljs-built_in">link</span><br></code></pre></td></tr></table></figure>
+<p>在[BlogRoot]\source\会生成一个含有index.md文件的link文件夹<br>修改[BlogRoot]\source\link\index.md，添加type: “link”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">---<br>title: <span class="hljs-built_in">link</span><br><span class="hljs-built_in">date</span>: 2022-10-28 12:00:00<br><span class="hljs-built_in">type</span>: <span class="hljs-string">&quot;link&quot;</span><br>---<br></code></pre></td></tr></table></figure>
+<p>前往[BlogRoot]\source_data创建一个link.yml文件（如果沒有 <strong>_data</strong> 文件夹，请自行创建），并写入如下信息（根据你的需要写）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">- class_name: 1.技术支持<br>  class_desc: 本网站的搭建由以下开源作者提供技术支持<br>  link_list: <br>    - name: Hexo <br>      <span class="hljs-built_in">link</span>: https://hexo.io/zh-cn/<br>      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg<br>      descr: 快速、简单且强大的网志框架<br>      siteshot: https://source.fomal.cc/siteshot/hexo.io.jpg<br>      <br>- class_name: 2.友情链接<br>  class_desc: 一些好朋友~~<br>  link_list:<br>    - name: Fomalhaut🥝<br>      <span class="hljs-built_in">link</span>: https://fomal.cc/<br>      avatar: /assets/head.jpg<br>      descr: Future is now 🍭🍭🍭<br>      siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>class_name和class_desc支持 html 格式，如不需要，也可以留空。</p>
+</blockquote>
+<h4 id="图库"><a href="#图库" class="headerlink" title="图库"></a>图库</h4><p>图库页面只是普通的页面，你只需要hexo new page xxx创建你的页面就行。<br>然后使用外挂标签 galleryGroup，具体用法请查看对应的内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;div class=<span class="hljs-string">&quot;gallery-group-main&quot;</span>&gt;<br>&#123;% galleryGroup <span class="hljs-string">&#x27;封面专区&#x27;</span> <span class="hljs-string">&#x27;本站用作文章封面的图片，不保证分辨率&#x27;</span> <span class="hljs-string">&#x27;/box/Gallery/photo&#x27;</span> https://source.fomal.cc/img/default_cover_61.webp %&#125;<br>&#123;% galleryGroup <span class="hljs-string">&#x27;背景专区&#x27;</span> <span class="hljs-string">&#x27;收藏的一些的背景与壁纸，分辨率很高&#x27;</span> <span class="hljs-string">&#x27;/box/Gallery/wallpaper&#x27;</span> https://source.fomal.cc/img/dm11.webp %&#125;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+<h4 id="子页面"><a href="#子页面" class="headerlink" title="子页面"></a>子页面</h4><p>子页面也是普通的页面，你只需要hexo new page xxx创建你的页面就行。<br>然后使用标签外挂 gallery，具体用法请查看对应的内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">&#123;% gallery %&#125; <br>![p1]( https://source.fomal.cc/img/default_cover_1.webp ) <br>![p2]( https://source.fomal.cc/img/default_cover_2.webp ) <br>![p3]( https://source.fomal.cc/img/default_cover_3.webp ) <br>&#123;% endgallery %&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h4><p>主題內置了一个简单的404页面，可在设置中开放。<br>如需本地预览，请访问 <a target="_blank" rel="noopener" href="http://localhost:4000/404.html">http://localhost:4000/404.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># A simple 404 page</span><br>error_404:<br>  <span class="hljs-built_in">enable</span>: <span class="hljs-literal">true</span><br>  subtitle: <span class="hljs-string">&quot;页面沒有找到&quot;</span><br>  background: <br></code></pre></td></tr></table></figure>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/06/21/vuex-%E7%AE%80%E5%8D%95demo.html">vuex简单demo</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/30/nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/node%E6%A3%80%E6%B5%8B%E6%96%87%E6%A1%A3%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F%E5%B9%B6%E8%BD%AC%E6%8D%A2%E7%BC%96%E7%A0%81.html">node检测文档编码方式并转换编码</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/16/node-%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87.html">node下载图片</a>
+                <p>2023-05-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/09/StableDiffusion-%E5%92%92%E8%AF%AD.html">StableDiffusion-咒语</a>
+                <p>2023-04-09</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/06/21/vuex-%E7%AE%80%E5%8D%95demo.html">vuex简单demo</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/30/nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/node%E6%A3%80%E6%B5%8B%E6%96%87%E6%A1%A3%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F%E5%B9%B6%E8%BD%AC%E6%8D%A2%E7%BC%96%E7%A0%81.html">node检测文档编码方式并转换编码</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/16/node-%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87.html">node下载图片</a>
+                <p>2023-05-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/09/StableDiffusion-%E5%92%92%E8%AF%AD.html">StableDiffusion-咒语</a>
+                <p>2023-04-09</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(5)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/vue/">vue(40)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

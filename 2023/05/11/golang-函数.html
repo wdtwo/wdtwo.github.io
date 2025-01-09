@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/05/11/golang-函数.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">golang-函数</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-05-11
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/go/" rel="tag">go</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <p>函数</p>
+<span id="more"></span>
+
+<h2 id="定义一个函数"><a href="#定义一个函数" class="headerlink" title="定义一个函数"></a>定义一个函数</h2><p>跨包的函数需要首字母大写</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 返回值类型int 如果只有一个返回值则可以不写()</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> (<span class="hljs-type">int</span>) &#123;<br>    <span class="hljs-keyword">return</span> a + b<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br>&#125;<br><br><span class="hljs-comment">// 两个返回值 多个参数不想接收的可以用 _ 来忽略</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> (<span class="hljs-type">int</span>, <span class="hljs-type">int</span>) &#123;<br>    <span class="hljs-keyword">return</span> a + b, a - b<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    a, b := add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)<br>    fmt.Println(a, b)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="不支持重载"><a href="#不支持重载" class="headerlink" title="不支持重载"></a>不支持重载</h2><p>相同函数重新声明会报错</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">demo1</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> &#123;<br>    fmt.Println(a + b)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">demo1</span><span class="hljs-params">(a <span class="hljs-type">int</span>)</span></span> &#123;<br>    fmt.Println(a)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="可变长度参数"><a href="#可变长度参数" class="headerlink" title="可变长度参数"></a>可变长度参数</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    test()<br>    test(<span class="hljs-number">1</span>)<br>    test(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)<br>&#125;<br><span class="hljs-comment">// 可变长度参数</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(args ...<span class="hljs-type">int</span>)</span></span> &#123;<br>    <span class="hljs-comment">// 用切片的方式来接收</span><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(args); i++ &#123;<br>        fmt.Printf(<span class="hljs-string">&quot;args[%d]=%d \n&quot;</span>, i, args[i])<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="基本数据类型和数组进行值传递"><a href="#基本数据类型和数组进行值传递" class="headerlink" title="基本数据类型和数组进行值传递"></a>基本数据类型和数组进行值传递</h2><p>值传递是只传递值 函数内部改变值不会导致函数外数据的改变<br>引用传递是改变函数内部的值会改变函数外部的变量</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 值传递</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    <span class="hljs-keyword">var</span> a <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br>    test(a)<br>    fmt.Println(<span class="hljs-string">&quot;test a = &quot;</span>, a)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(a <span class="hljs-type">int</span>)</span></span> &#123;<br>    a = <span class="hljs-number">20</span><br>    fmt.Println(a)<br>&#125;<br><span class="hljs-comment">// 引用传递 通过 * 来进行引用传递 把外部变量的指针直接传递到函数里 再进行操作即可</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    <span class="hljs-keyword">var</span> a <span class="hljs-type">int</span> = <span class="hljs-number">10</span><br>    test(&amp;a)<br>    fmt.Println(<span class="hljs-string">&quot;test a = &quot;</span>, a)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(a *<span class="hljs-type">int</span>)</span></span> &#123;<br>    *a = <span class="hljs-number">20</span><br>    fmt.Println(*a)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="函数可以作为值被变量引用"><a href="#函数可以作为值被变量引用" class="headerlink" title="函数可以作为值被变量引用"></a>函数可以作为值被变量引用</h2><p>基本实例</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    fun := test<br>    fun(<span class="hljs-number">10</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(a <span class="hljs-type">int</span>)</span></span> &#123;<br>    fmt.Println(a)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>函数作为参数传递进另一个函数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    fun := test<br>    getFunc(<span class="hljs-number">10</span>, test)<br>    getFunc(<span class="hljs-number">10</span>, fun)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(a <span class="hljs-type">int</span>)</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;test&quot;</span>)<br>    fmt.Println(a)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getFunc</span><span class="hljs-params">(a <span class="hljs-type">int</span>, testFunc <span class="hljs-keyword">func</span>(<span class="hljs-type">int</span>)</span></span>) &#123;<br>    fmt.Println(<span class="hljs-string">&quot;getFunc&quot;</span>)<br>    testFunc(a)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="为了简化数据类型定义-go支持自定义数据类型"><a href="#为了简化数据类型定义-go支持自定义数据类型" class="headerlink" title="为了简化数据类型定义 go支持自定义数据类型"></a>为了简化数据类型定义 go支持自定义数据类型</h2><p>其实相当于给数据类型起别名<br>虽然是相当于起别名 但是go还是认为自定义的是一种新的数据类型<br>如果想要相互转换需要强转<br>基本语法 type 自定义类型别名 数据类型</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    <span class="hljs-keyword">type</span> myInt <span class="hljs-type">int</span><br>    <span class="hljs-keyword">var</span> num1 myInt = <span class="hljs-number">10</span><br>    <span class="hljs-keyword">var</span> num2 <span class="hljs-type">int</span> = <span class="hljs-number">20</span><br>    num2 = <span class="hljs-type">int</span>(num1) <span class="hljs-comment">//此处如果不强转会报错提示不是相同类型</span><br>    fmt.Println(num2)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="可以给函数起别名-方便数据传递时候参数类型的书写"><a href="#可以给函数起别名-方便数据传递时候参数类型的书写" class="headerlink" title="可以给函数起别名 方便数据传递时候参数类型的书写"></a>可以给函数起别名 方便数据传递时候参数类型的书写</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> myFunc <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    test(<span class="hljs-number">10</span>, t)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">t</span><span class="hljs-params">(a <span class="hljs-type">int</span>)</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;test:&quot;</span>, a)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(a <span class="hljs-type">int</span>, testFunc myFunc)</span></span> &#123;<br>    testFunc(a)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="支持给返回值命名"><a href="#支持给返回值命名" class="headerlink" title="支持给返回值命名"></a>支持给返回值命名</h2><p>这样返回值的顺序不会影响最终返回值的位置</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;main&quot;</span>)<br>    a, b := test(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>)<br>    fmt.Println(a, b)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>)</span></span> (res1 <span class="hljs-type">int</span>, res2 <span class="hljs-type">int</span>) &#123;<br>    res1 = a + b  <span class="hljs-comment">// 此处需要注意是 = 不是 :=</span><br>    res2 = a - b  <span class="hljs-comment">// 此处需要注意是 = 不是 :=</span><br>    <span class="hljs-keyword">return</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="init函数"><a href="#init函数" class="headerlink" title="init函数"></a>init函数</h2><p>初始化函数,可以用来进行一些初始化的操作<br>init函数在main函数之前被执行<br>全局变量在init函数之前执行</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> n1 <span class="hljs-type">int</span> = test()<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> <span class="hljs-type">int</span>&#123;<br>    fmt.Println(<span class="hljs-string">&quot;test func&quot;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">10</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;<br>    fmt.Println(<span class="hljs-string">&quot;init func&quot;</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    fmt.Println(<span class="hljs-string">&quot;mian func&quot;</span>)<br>&#125;<br><span class="hljs-comment">// 执行顺序</span><br><span class="hljs-comment">// test func</span><br><span class="hljs-comment">// init func</span><br><span class="hljs-comment">// mian func</span><br></code></pre></td></tr></table></figure>
+<p>如果包中含有init函数 则先执行包中的init函数再执行main中的全局变量</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>如果有个函数只需要被调用该一次可以使用匿名函数</p>
+<h3 id="在定义匿名函数的时候直接调用"><a href="#在定义匿名函数的时候直接调用" class="headerlink" title="在定义匿名函数的时候直接调用"></a>在定义匿名函数的时候直接调用</h3><p>使用最多的方式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">var</span> n1 <span class="hljs-type">int</span> = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(a <span class="hljs-type">int</span>,b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>&#123;<br>        <span class="hljs-keyword">return</span> a + b<br>    &#125;(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>)<br>    fmt.Println(n1) <span class="hljs-comment">// 30</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="将匿名函数赋值给一个变量"><a href="#将匿名函数赋值给一个变量" class="headerlink" title="将匿名函数赋值给一个变量"></a>将匿名函数赋值给一个变量</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    f1 := <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(a <span class="hljs-type">int</span>,b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>&#123;<br>        <span class="hljs-keyword">return</span> a+b<br>    &#125;<br>    fmt.Println(f1(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>)) <span class="hljs-comment">// 30</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="全局可调用的匿名函数"><a href="#全局可调用的匿名函数" class="headerlink" title="全局可调用的匿名函数"></a>全局可调用的匿名函数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> Func1 = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(a <span class="hljs-type">int</span>,b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>&#123;<br>    <span class="hljs-keyword">return</span> a * b<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    fmt.Println(Func1(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包就是一个函数与其相关的引用环境组合的一个整体<br>闭包是返回的匿名函数+匿名函数意外的变量</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 全局函数</span><br><span class="hljs-comment">//第一次被调用的函数 返回一个函数 这个函数的返回值是int类型</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getSum</span><span class="hljs-params">()</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>&#123;<br>    <span class="hljs-comment">//定义个变量存储闭包的数据变化</span><br>    <span class="hljs-keyword">var</span> sum <span class="hljs-type">int</span> = <span class="hljs-number">0</span> <span class="hljs-comment">// sum不会被释放</span><br>    <span class="hljs-comment">//返回的函数</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(num <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>&#123;<br>        sum += num<br>        <span class="hljs-comment">//返回最后的int</span><br>        <span class="hljs-keyword">return</span> sum<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    f := getSum()<span class="hljs-comment">// 第一次调用闭包</span><br>    fmt.Println(f(<span class="hljs-number">1</span>)) <span class="hljs-comment">//第一次改变闭包内变量的值</span><br>    fmt.Println(f(<span class="hljs-number">2</span>)) <span class="hljs-comment">// 第二次改变闭包内变量的值 getSum()只调用了一次 所以getSum内的sum不会被重置</span><br>    fmt.Println(f(<span class="hljs-number">3</span>)) <span class="hljs-comment">// 同上</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>不使用闭包实现以上代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getSum</span><span class="hljs-params">(a *<span class="hljs-type">int</span>,b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    *a += b<br>    <span class="hljs-keyword">return</span> *a<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">var</span> (<br>        sum = <span class="hljs-number">0</span><br>        a = <span class="hljs-number">10</span><br>        b = <span class="hljs-number">20</span><br>        c = <span class="hljs-number">30</span><br>    )<br>    fmt.Println(getSum(&amp;sum,a)) <span class="hljs-comment">//第一次改变闭包内变量的值</span><br>    fmt.Println(getSum(&amp;sum,b)) <span class="hljs-comment">// 第二次改变闭包内变量的值 getSum()只调用了一次 所以getSum内的sum不会被重置</span><br>    fmt.Println(getSum(&amp;sum,c)) <span class="hljs-comment">// 同上</span><br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/10/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E5%9F%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html">微信小程序自动更新</a>
+                <p>2023-10-27</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/koa2-%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2022/06/21/%E7%A7%BB%E5%8A%A8%E7%AB%AFhead.html">通用header</a>
+                <p>2022-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/30/python-nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/13/canvas-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9.html">canvas图片压缩</a>
+                <p>2023-02-13</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/10/27/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E5%9F%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.html">微信小程序自动更新</a>
+                <p>2023-10-27</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/koa2-%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2022/06/21/%E7%A7%BB%E5%8A%A8%E7%AB%AFhead.html">通用header</a>
+                <p>2022-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/30/python-nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/13/canvas-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9.html">canvas图片压缩</a>
+                <p>2023-02-13</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(5)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/vue/">vue(40)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

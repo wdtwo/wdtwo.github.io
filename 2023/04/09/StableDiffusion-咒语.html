@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/04/09/StableDiffusion-咒语.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">StableDiffusion-咒语</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-04-09
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/stablediffusion/" rel="tag">StableDiffusion</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <ul>
+<li>提示词</li>
+<li>反向提示词</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="光影镜头提示词"><a href="#光影镜头提示词" class="headerlink" title="光影镜头提示词"></a>光影镜头提示词</h2><table>
+<thead>
+<tr>
+<th align="left">提示词</th>
+<th>翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">best quality</td>
+<td>最佳质量</td>
+</tr>
+<tr>
+<td align="left">ultra high res</td>
+<td>超高分辨率</td>
+</tr>
+<tr>
+<td align="left">{masterpiece}</td>
+<td>杰作</td>
+</tr>
+<tr>
+<td align="left">(photorealistic:1.4)</td>
+<td>（照片真实感：1.4）</td>
+</tr>
+<tr>
+<td align="left">(8k, RAW photo,  masterpiece:1.2)</td>
+<td>（8k，RAW照片，杰作：1.2）</td>
+</tr>
+<tr>
+<td align="left">(realistic, photo-realistic:1.37)</td>
+<td>（真实，照片真实：1.37）</td>
+</tr>
+<tr>
+<td align="left">8k resolution</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">F&#x2F;2.8</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">HDR</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">professional lighting</td>
+<td>专业照明</td>
+</tr>
+<tr>
+<td align="left">photon mapping</td>
+<td>光子贴图</td>
+</tr>
+<tr>
+<td align="left">radiosity</td>
+<td>光能传递</td>
+</tr>
+<tr>
+<td align="left">lens flare</td>
+<td>透镜光斑</td>
+</tr>
+<tr>
+<td align="left">cinematic lighting</td>
+<td>电影照明</td>
+</tr>
+<tr>
+<td align="left">physically-based rendering</td>
+<td>基于物理的渲染</td>
+</tr>
+<tr>
+<td align="left">[:(highly detail face: 1.2):0.1]</td>
+<td>[:(高度细节面部：1.2)：0.1]</td>
+</tr>
+<tr>
+<td align="left">photographed on a Canon EOS R5</td>
+<td>用佳能EOS R5拍摄</td>
+</tr>
+<tr>
+<td align="left">Kodak Portra 400</td>
+<td>柯达Portra 400</td>
+</tr>
+<tr>
+<td align="left">50mm lens</td>
+<td>50mm镜头</td>
+</tr>
+<tr>
+<td align="left">(looking at camera:1.4)</td>
+<td>（看着相机：1.4）</td>
+</tr>
+<tr>
+<td align="left">looking at viewer</td>
+<td>看着观看者</td>
+</tr>
+<tr>
+<td align="left">solo focus</td>
+<td>单人对焦</td>
+</tr>
+<tr>
+<td align="left">((closeup))</td>
+<td>（特写）</td>
+</tr>
+<tr>
+<td align="left">from below</td>
+<td>从下面看</td>
+</tr>
+<tr>
+<td align="left">(low angle)</td>
+<td>（低角度）</td>
+</tr>
+<tr>
+<td align="left">(photo realistic:1.4)</td>
+<td>（照片逼真度：1.4）</td>
+</tr>
+<tr>
+<td align="left">(close-up:1)</td>
+<td>特写：1</td>
+</tr>
+<tr>
+<td align="left">portrait</td>
+<td>肖像</td>
+</tr>
+<tr>
+<td align="left">{an extremely delicate and beautiful}</td>
+<td>极其精致美丽</td>
+</tr>
+<tr>
+<td align="left">Amazing</td>
+<td>太神了</td>
+</tr>
+<tr>
+<td align="left">light effects</td>
+<td>光效应</td>
+</tr>
+<tr>
+<td align="left">finely detail</td>
+<td>精细细节</td>
+</tr>
+<tr>
+<td align="left">(symmetry:1.2)</td>
+<td>（对称度：1.2）</td>
+</tr>
+<tr>
+<td align="left">bokeh:l.2</td>
+<td>散焦：1.2</td>
+</tr>
+<tr>
+<td align="left">film grain</td>
+<td>薄膜颗粒</td>
+</tr>
+<tr>
+<td align="left">dynamic angle</td>
+<td>动态角度</td>
+</tr>
+<tr>
+<td align="left">Helltaker style Helltaker</td>
+<td>风格</td>
+</tr>
+<tr>
+<td align="left">(vibrant color:l.2)</td>
+<td>（鲜艳的颜色：l.2）</td>
+</tr>
+<tr>
+<td align="left">(darkness:1.4)</td>
+<td>（暗度：1.4）</td>
+</tr>
+<tr>
+<td align="left">front view</td>
+<td>正视图</td>
+</tr>
+<tr>
+<td align="left">strong rim light</td>
+<td>强边缘光</td>
+</tr>
+<tr>
+<td align="left">dramatic shadows</td>
+<td>戏剧性的阴影</td>
+</tr>
+<tr>
+<td align="left">intense shadows</td>
+<td>强烈的阴影</td>
+</tr>
+<tr>
+<td align="left">SIGMA 35mm F1.4</td>
+<td>西格玛35mm F1.4</td>
+</tr>
+<tr>
+<td align="left">ISO 200 Shutter Speed 2000</td>
+<td>ISO 200快门速度2000</td>
+</tr>
+<tr>
+<td align="left">Photorealism</td>
+<td>摄影现实主义</td>
+</tr>
+<tr>
+<td align="left">photogenic</td>
+<td>上镜的</td>
+</tr>
+<tr>
+<td align="left">Illustration</td>
+<td>插图</td>
+</tr>
+</tbody></table>
+<h2 id="脸部描述"><a href="#脸部描述" class="headerlink" title="脸部描述"></a>脸部描述</h2><table>
+<thead>
+<tr>
+<th align="left">提示词</th>
+<th>翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">blush</td>
+<td>脸红</td>
+</tr>
+<tr>
+<td align="left">smiling</td>
+<td>微笑</td>
+</tr>
+<tr>
+<td align="left">laughing</td>
+<td>大笑</td>
+</tr>
+<tr>
+<td align="left">cute</td>
+<td>可爱</td>
+</tr>
+<tr>
+<td align="left">smug</td>
+<td>得意</td>
+</tr>
+<tr>
+<td align="left">blush</td>
+<td>腮红</td>
+</tr>
+<tr>
+<td align="left">smirk</td>
+<td>傻笑</td>
+</tr>
+<tr>
+<td align="left">laughing</td>
+<td>笑着</td>
+</tr>
+<tr>
+<td align="left">happy</td>
+<td>开心</td>
+</tr>
+<tr>
+<td align="left">waby hair</td>
+<td>波浪形头发</td>
+</tr>
+<tr>
+<td align="left">long hair</td>
+<td>长发</td>
+</tr>
+<tr>
+<td align="left">blonde long hair</td>
+<td>金色长发</td>
+</tr>
+<tr>
+<td align="left">(blonde grey long hair:1.3)</td>
+<td>（金发灰长发：1.3）</td>
+</tr>
+<tr>
+<td align="left">pink hair</td>
+<td>粉红色的头发</td>
+</tr>
+<tr>
+<td align="left">floating hair</td>
+<td>漂浮的头发</td>
+</tr>
+<tr>
+<td align="left">(platinum blonde hair:1)</td>
+<td>（白金金发：1）</td>
+</tr>
+<tr>
+<td align="left">(light blue hair:1)</td>
+<td>（浅蓝色头发：1）</td>
+</tr>
+<tr>
+<td align="left">(light blonde twintail:1)</td>
+<td>（浅金色双尾：1）</td>
+</tr>
+<tr>
+<td align="left">gradient hair</td>
+<td>渐变头发</td>
+</tr>
+<tr>
+<td align="left">grey hair</td>
+<td>灰色头发</td>
+</tr>
+<tr>
+<td align="left">two-tone hair</td>
+<td>双色头发</td>
+</tr>
+<tr>
+<td align="left">multicolored hair</td>
+<td>五颜六色头发</td>
+</tr>
+<tr>
+<td align="left">curly</td>
+<td>hair</td>
+</tr>
+<tr>
+<td align="left">gradation</td>
+<td>hair</td>
+</tr>
+<tr>
+<td align="left">hair rings</td>
+<td>发环</td>
+</tr>
+<tr>
+<td align="left">blunt bangs</td>
+<td>钝刘海</td>
+</tr>
+<tr>
+<td align="left">pink eyeshadow</td>
+<td>粉红色眼影</td>
+</tr>
+<tr>
+<td align="left">purple eyes</td>
+<td>紫色的眼睛</td>
+</tr>
+<tr>
+<td align="left">((puffy eyes))</td>
+<td>（（浮肿的眼睛））</td>
+</tr>
+<tr>
+<td align="left">plump lips</td>
+<td>丰满的嘴唇</td>
+</tr>
+<tr>
+<td align="left">tongue out</td>
+<td>吐舌头</td>
+</tr>
+<tr>
+<td align="left">licking lips</td>
+<td>舔舐嘴唇</td>
+</tr>
+<tr>
+<td align="left">fangs</td>
+<td>尖牙</td>
+</tr>
+<tr>
+<td align="left">seductive smile</td>
+<td>诱人的微笑</td>
+</tr>
+<tr>
+<td align="left">beautiful detailed eyes</td>
+<td>美丽细致的眼睛</td>
+</tr>
+<tr>
+<td align="left">bright pupils</td>
+<td>明亮的瞳孔</td>
+</tr>
+<tr>
+<td align="left">((thick frame glasses))</td>
+<td>（厚框眼镜）</td>
+</tr>
+<tr>
+<td align="left">black cat ears</td>
+<td>黑猫耳朵</td>
+</tr>
+<tr>
+<td align="left">dragon horns</td>
+<td>龙角</td>
+</tr>
+<tr>
+<td align="left">vampire</td>
+<td>吸血鬼</td>
+</tr>
+<tr>
+<td align="left">straw hat on head</td>
+<td>头戴草帽</td>
+</tr>
+<tr>
+<td align="left">clear facial skin</td>
+<td>清晰的面部皮肤</td>
+</tr>
+<tr>
+<td align="left">short hair</td>
+<td>短发</td>
+</tr>
+<tr>
+<td align="left">nose blush</td>
+<td>腮红</td>
+</tr>
+<tr>
+<td align="left">(closed mouth)</td>
+<td>（闭着嘴）</td>
+</tr>
+</tbody></table>
+<h2 id="人物提示词"><a href="#人物提示词" class="headerlink" title="人物提示词"></a>人物提示词</h2><table>
+<thead>
+<tr>
+<th align="left">提示词</th>
+<th>翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">18 years old</td>
+<td>十八岁</td>
+</tr>
+<tr>
+<td align="left">{full body}</td>
+<td>全身</td>
+</tr>
+<tr>
+<td align="left">dynamic pose</td>
+<td>动态姿态</td>
+</tr>
+<tr>
+<td align="left">squatting</td>
+<td>蹲下</td>
+</tr>
+<tr>
+<td align="left">angel</td>
+<td>天使</td>
+</tr>
+<tr>
+<td align="left">small breastsinds</td>
+<td>小胸脯</td>
+</tr>
+<tr>
+<td align="left">outstretched arms</td>
+<td>伸出的手臂</td>
+</tr>
+<tr>
+<td align="left">slim legs</td>
+<td>纤细的双腿</td>
+</tr>
+<tr>
+<td align="left">knees together feet apart</td>
+<td>膝盖并拢双脚分开</td>
+</tr>
+<tr>
+<td align="left">yoga pants</td>
+<td>瑜伽裤</td>
+</tr>
+<tr>
+<td align="left">leggings</td>
+<td>紧身裤</td>
+</tr>
+<tr>
+<td align="left">white pantyhose</td>
+<td>白色连裤袜</td>
+</tr>
+<tr>
+<td align="left">bare shoulders</td>
+<td>裸露的肩膀</td>
+</tr>
+<tr>
+<td align="left">high heels</td>
+<td>高跟鞋</td>
+</tr>
+<tr>
+<td align="left">naked apron</td>
+<td>裸露的围裙</td>
+</tr>
+<tr>
+<td align="left">pussy juice</td>
+<td>猫咪汁</td>
+</tr>
+<tr>
+<td align="left">detailed clothes</td>
+<td>详细的衣服</td>
+</tr>
+<tr>
+<td align="left">outline</td>
+<td>轮廓</td>
+</tr>
+<tr>
+<td align="left">red dress</td>
+<td>红色连衣裙</td>
+</tr>
+<tr>
+<td align="left">redgown</td>
+<td>红色长袍</td>
+</tr>
+<tr>
+<td align="left">dancing</td>
+<td>跳舞</td>
+</tr>
+<tr>
+<td align="left">silver dress</td>
+<td>银色连衣裙</td>
+</tr>
+<tr>
+<td align="left">china dress</td>
+<td>中国服装</td>
+</tr>
+<tr>
+<td align="left">(hoodie:1.2)</td>
+<td>连帽衫：1.2</td>
+</tr>
+<tr>
+<td align="left">(bare top mini dress:1.4)</td>
+<td>裸顶迷你裙：1.4</td>
+</tr>
+<tr>
+<td align="left">(camisole)</td>
+<td>背心</td>
+</tr>
+<tr>
+<td align="left">(short shorts:1.2)</td>
+<td>短裤：1.2</td>
+</tr>
+<tr>
+<td align="left">(standing:1.4)</td>
+<td>站立：1.4</td>
+</tr>
+<tr>
+<td align="left">frills</td>
+<td>褶边</td>
+</tr>
+<tr>
+<td align="left">ribbons</td>
+<td>缎带</td>
+</tr>
+<tr>
+<td align="left">arms behind back</td>
+<td>手臂在背后</td>
+</tr>
+<tr>
+<td align="left">business_suit</td>
+<td>商务服</td>
+</tr>
+<tr>
+<td align="left">black choker</td>
+<td>黑色颈圈</td>
+</tr>
+<tr>
+<td align="left">pink lucency full dress</td>
+<td>粉红色透光连衣裙</td>
+</tr>
+<tr>
+<td align="left">shirt</td>
+<td>衬衫</td>
+</tr>
+<tr>
+<td align="left">shorts</td>
+<td>短裤</td>
+</tr>
+<tr>
+<td align="left">sleeveless</td>
+<td>无袖</td>
+</tr>
+<tr>
+<td align="left">sleeveless turtleneck</td>
+<td>无袖高领毛衣</td>
+</tr>
+<tr>
+<td align="left">sleeveless turtleneck crop top</td>
+<td>无袖高翻领毛衣上衣</td>
+</tr>
+<tr>
+<td align="left">stomach</td>
+<td>腹部</td>
+</tr>
+<tr>
+<td align="left">french braid</td>
+<td>法国辫子</td>
+</tr>
+<tr>
+<td align="left">white kneehighs</td>
+<td>白色膝盖</td>
+</tr>
+<tr>
+<td align="left">turtleneck</td>
+<td>高领毛衫</td>
+</tr>
+<tr>
+<td align="left">turtleneck crop top</td>
+<td>高领短上衣</td>
+</tr>
+<tr>
+<td align="left">clothing cutout</td>
+<td>衣服裁剪</td>
+</tr>
+<tr>
+<td align="left">crop top</td>
+<td>露背上衣</td>
+</tr>
+<tr>
+<td align="left">(platinum blonde grey hair:1)</td>
+<td>（白金金色灰色头发：1）</td>
+</tr>
+<tr>
+<td align="left">brown blazer</td>
+<td>棕色运动夹克</td>
+</tr>
+<tr>
+<td align="left">((school uniform))</td>
+<td>（（校服））</td>
+</tr>
+<tr>
+<td align="left">thighhighs</td>
+<td>长腿</td>
+</tr>
+<tr>
+<td align="left">white office uniform</td>
+<td>白色的办公服</td>
+</tr>
+<tr>
+<td align="left">black shorts</td>
+<td>黑色短裤</td>
+</tr>
+<tr>
+<td align="left">white camisole</td>
+<td>白色贴身背心</td>
+</tr>
+<tr>
+<td align="left">(seductive pose)</td>
+<td>（诱人的姿势）</td>
+</tr>
+<tr>
+<td align="left">sleeveless white blouse</td>
+<td>无袖白色上衣</td>
+</tr>
+<tr>
+<td align="left">bare shoulders</td>
+<td>裸露的肩膀</td>
+</tr>
+<tr>
+<td align="left">red skirt</td>
+<td>红色裙子</td>
+</tr>
+<tr>
+<td align="left">black choker</td>
+<td>黑色围巾</td>
+</tr>
+<tr>
+<td align="left">facing front</td>
+<td>面向前方</td>
+</tr>
+<tr>
+<td align="left">posing</td>
+<td>摆姿势</td>
+</tr>
+<tr>
+<td align="left">(white bikini:1.4)</td>
+<td>（白色比基尼：1.4）</td>
+</tr>
+<tr>
+<td align="left">(curvy)</td>
+<td>（曲线）</td>
+</tr>
+<tr>
+<td align="left">(intricate white sleeveless maid clothes:1)</td>
+<td>（复杂的白色无袖女仆服装：1）</td>
+</tr>
+<tr>
+<td align="left">(Kpop idol)</td>
+<td>（Kpop偶像）</td>
+</tr>
+<tr>
+<td align="left">standing</td>
+<td>站立</td>
+</tr>
+<tr>
+<td align="left">((flat chest))</td>
+<td>平胸</td>
+</tr>
+<tr>
+<td align="left">(long loose silver revealing dress:1.1)</td>
+<td>（长款宽松银色暴露连衣裙：1.1）</td>
+</tr>
+<tr>
+<td align="left">glowing skin容光焕发的皮肤</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="背景提示词"><a href="#背景提示词" class="headerlink" title="背景提示词"></a>背景提示词</h2><table>
+<thead>
+<tr>
+<th align="left">提示词</th>
+<th>翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">{extremely detailed CG unity 8k wallpaper}</td>
+<td>极其详细的CG统一8k壁纸</td>
+</tr>
+<tr>
+<td align="left">{Sakura}</td>
+<td>樱花</td>
+</tr>
+<tr>
+<td align="left">outdoors</td>
+<td>在户外</td>
+</tr>
+<tr>
+<td align="left">sky</td>
+<td>天空</td>
+</tr>
+<tr>
+<td align="left">{wind}</td>
+<td>风</td>
+</tr>
+<tr>
+<td align="left">detailed background</td>
+<td>详细背景</td>
+</tr>
+<tr>
+<td align="left">{highres}</td>
+<td>高层建筑</td>
+</tr>
+<tr>
+<td align="left">ballroom</td>
+<td>舞厅</td>
+</tr>
+<tr>
+<td align="left">(outdoor )</td>
+<td>室外</td>
+</tr>
+<tr>
+<td align="left">(parking lot:1.2)</td>
+<td>停车场：1.2</td>
+</tr>
+<tr>
+<td align="left">(pale skin)</td>
+<td>苍白的皮肤</td>
+</tr>
+<tr>
+<td align="left">desert</td>
+<td>沙漠</td>
+</tr>
+<tr>
+<td align="left">in the cyberpunk city</td>
+<td>在赛博朋克城</td>
+</tr>
+<tr>
+<td align="left">night</td>
+<td>夜晚</td>
+</tr>
+<tr>
+<td align="left">stars</td>
+<td>星星</td>
+</tr>
+<tr>
+<td align="left">sunset</td>
+<td>日落</td>
+</tr>
+<tr>
+<td align="left">beach</td>
+<td>海滩</td>
+</tr>
+<tr>
+<td align="left">outdoors</td>
+<td>户外</td>
+</tr>
+<tr>
+<td align="left">blurry background</td>
+<td>背景模糊</td>
+</tr>
+<tr>
+<td align="left">(outdoor:1.6)</td>
+<td>（室外：1.6）</td>
+</tr>
+<tr>
+<td align="left">(starry sky:1.3)</td>
+<td>（星空：1.3）</td>
+</tr>
+<tr>
+<td align="left">moon light</td>
+<td>月光</td>
+</tr>
+<tr>
+<td align="left">moon light city</td>
+<td>月光城</td>
+</tr>
+<tr>
+<td align="left">forest background</td>
+<td>森林背景</td>
+</tr>
+<tr>
+<td align="left">cityscape</td>
+<td>城市景观</td>
+</tr>
+<tr>
+<td align="left">winter</td>
+<td>冬天</td>
+</tr>
+<tr>
+<td align="left">streets</td>
+<td>街道</td>
+</tr>
+<tr>
+<td align="left">office</td>
+<td>办公室</td>
+</tr>
+<tr>
+<td align="left">school</td>
+<td>学校</td>
+</tr>
+<tr>
+<td align="left">school room in the background</td>
+<td>教室背景</td>
+</tr>
+<tr>
+<td align="left">cyberpunk busy city street 赛博庞克繁忙的城市街道</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="反向提示词"><a href="#反向提示词" class="headerlink" title="反向提示词"></a>反向提示词</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">(worst quality:2), (low quality:2),(normal quality:2), <br>lowres,normal, (monochrome), (grayscale), <br>skin spots,skin blemishes,veins, acnes, age spot, <br>glan,extra fingers, fewer fingers, strange fingers, fused fingers,<br>bad hand,bad anatomy, missing leg, mutated hand, malformed limbs, <br>missing feet, (toe:l.5),(sandals:1.5),(curtain),<br>breast,nude, nipple,naked, sex, pussy,taking off her bikini, <br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">提示词</th>
+<th>翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">3d</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">sepia</td>
+<td>深褐色</td>
+</tr>
+<tr>
+<td align="left">paintings</td>
+<td>绘画</td>
+</tr>
+<tr>
+<td align="left">sketches</td>
+<td>素描</td>
+</tr>
+<tr>
+<td align="left">(worst quality:2)</td>
+<td>（最差质量：2）</td>
+</tr>
+<tr>
+<td align="left">(low quality:2)</td>
+<td>低质量：2</td>
+</tr>
+<tr>
+<td align="left">(normal quality:2)</td>
+<td>（正常质量：2个）</td>
+</tr>
+<tr>
+<td align="left">lowres</td>
+<td>低分辨率</td>
+</tr>
+<tr>
+<td align="left">normal</td>
+<td>正常质量</td>
+</tr>
+<tr>
+<td align="left">((monochrome))</td>
+<td>（（单色））</td>
+</tr>
+<tr>
+<td align="left">((grayscale))</td>
+<td>（（灰度））</td>
+</tr>
+<tr>
+<td align="left">(ugly:1.6)</td>
+<td>（丑陋：1.6）</td>
+</tr>
+<tr>
+<td align="left">orgasm</td>
+<td>高潮</td>
+</tr>
+<tr>
+<td align="left">embarrassed</td>
+<td>尴尬</td>
+</tr>
+<tr>
+<td align="left">extra fingers</td>
+<td>多指</td>
+</tr>
+<tr>
+<td align="left">fewer fingers</td>
+<td>少指</td>
+</tr>
+<tr>
+<td align="left">strange fingers</td>
+<td>奇怪的手指</td>
+</tr>
+<tr>
+<td align="left">fused fingers</td>
+<td>融合手指</td>
+</tr>
+<tr>
+<td align="left">mutated hand</td>
+<td>变异的手</td>
+</tr>
+<tr>
+<td align="left">bad hand</td>
+<td>手不好</td>
+</tr>
+<tr>
+<td align="left">bad anatomy</td>
+<td>解剖学不良</td>
+</tr>
+<tr>
+<td align="left">missing leg</td>
+<td>缺腿</td>
+</tr>
+<tr>
+<td align="left">missing feet</td>
+<td>缺脚</td>
+</tr>
+<tr>
+<td align="left">(toe:l.5)</td>
+<td>脚趾</td>
+</tr>
+<tr>
+<td align="left">malformed limbs</td>
+<td>畸形的肢体</td>
+</tr>
+<tr>
+<td align="left">(sandals:1.5)</td>
+<td>凉鞋</td>
+</tr>
+<tr>
+<td align="left">(curtain)</td>
+<td>窗帘</td>
+</tr>
+<tr>
+<td align="left">nude</td>
+<td>裸体</td>
+</tr>
+<tr>
+<td align="left">naked</td>
+<td>裸体的</td>
+</tr>
+<tr>
+<td align="left">sex</td>
+<td>性感</td>
+</tr>
+<tr>
+<td align="left">pussy</td>
+<td>猫咪</td>
+</tr>
+<tr>
+<td align="left">bikini</td>
+<td>比基尼</td>
+</tr>
+<tr>
+<td align="left">empty eyes</td>
+<td>空洞的眼睛</td>
+</tr>
+<tr>
+<td align="left">no underwear</td>
+<td>没有内裤</td>
+</tr>
+<tr>
+<td align="left">unbuttoned clothes</td>
+<td>解开扣子的衣服</td>
+</tr>
+<tr>
+<td align="left">fucked silly</td>
+<td>他妈的傻</td>
+</tr>
+<tr>
+<td align="left">skin spots</td>
+<td>皮肤斑点</td>
+</tr>
+<tr>
+<td align="left">skin blemishes</td>
+<td>皮肤瑕疵</td>
+</tr>
+<tr>
+<td align="left">age spot</td>
+<td>老人斑</td>
+</tr>
+<tr>
+<td align="left">acnes</td>
+<td>粉刺</td>
+</tr>
+<tr>
+<td align="left">navel</td>
+<td>肚脐</td>
+</tr>
+<tr>
+<td align="left">revealing dress</td>
+<td>暴露的衣服</td>
+</tr>
+<tr>
+<td align="left">cleavage cutout</td>
+<td>乳沟裁剪</td>
+</tr>
+<tr>
+<td align="left">((cleavage))</td>
+<td>（（乳沟））</td>
+</tr>
+<tr>
+<td align="left">(busty)</td>
+<td>（丰满）</td>
+</tr>
+<tr>
+<td align="left">upturned nipples</td>
+<td>乳头上翘</td>
+</tr>
+<tr>
+<td align="left">super hugeness breasts</td>
+<td>超级丰胸</td>
+</tr>
+<tr>
+<td align="left">huge_breasts</td>
+<td>胸部丰满</td>
+</tr>
+<tr>
+<td align="left">breasts</td>
+<td>胸部</td>
+</tr>
+<tr>
+<td align="left">medium breasts</td>
+<td>中等胸部</td>
+</tr>
+<tr>
+<td align="left">large breasts</td>
+<td>大胸部</td>
+</tr>
+<tr>
+<td align="left">small boobs</td>
+<td>小胸部</td>
+</tr>
+<tr>
+<td align="left">nipples</td>
+<td>乳头</td>
+</tr>
+<tr>
+<td align="left">nipplepierces</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">glans</td>
+<td>龟头</td>
+</tr>
+<tr>
+<td align="left">vaginas in breasts</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">glans penis</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">veins</td>
+<td>纹理</td>
+</tr>
+</tbody></table>
+<h1 id="NovelAI可用tag关键词收集（一-·-姿势，构图）"><a href="#NovelAI可用tag关键词收集（一-·-姿势，构图）" class="headerlink" title="NovelAI可用tag关键词收集（一 · 姿势，构图）"></a>NovelAI可用tag关键词收集（一 · 姿势，构图）</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv19007299?from=articleDetail">原文地址</a></p>
+<p>首先是总之要输进去的一串负面：<br>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, bad feet<br>提高质量：<br>masterpiece,best quality,official art,extremely detailed CG unity 8k wallpaper</p>
+<p>姿势，构图</p>
+<p>几个女&#x2F;男孩：Xgirl&#x2F;boy（比如2女既是2girl，3男既是3boy）</p>
+<p>六人以上：6+girls</p>
+<p>多人：multiple girls&#x2F;boys</p>
+<p>向下看：looking down （加from below就是从上往下看）</p>
+<p>向上看：looking up （加from above就是从下往上看）</p>
+<p>身高差：height difference（2girls不生效，但是1girl and 1boy可以）</p>
+<p>玩水：wading</p>
+<p>浸在水中：partially submerged</p>
+<p>浮在水上：afloat</p>
+<p>脚在水里：soaking feet</p>
+<p>侧面：silhouette</p>
+<p>头&#x2F;足部在画外：head&#x2F;feet out of frame</p>
+<p>在XX里：in container XX（在纸箱里 in container cardboard box）</p>
+<p>狙击：aiming at viewer</p>
+<p>逃跑：fleeing（画会变得比较有动作感）</p>
+<p>弯腰，自然站立：contrapposto</p>
+<p>抱枕：dakimakura</p>
+<p>战斗姿势：fighting stance</p>
+<p>自拍：selfie</p>
+<p>透过玻璃：through glass&#x2F;against glass</p>
+<p>锻炼：exercise（服装，动作会变为运动系）</p>
+<p>伸展姿势：stretching</p>
+<p>唱歌：singing</p>
+<p>跳舞：dancing</p>
+<p>拳打：punching（在负面里加boxing gloves）</p>
+<p>脚踢：kicking</p>
+<p>婴儿的姿势：fetal position（脚容易崩）</p>
+<p>胸贴在一起：symmetrical docking</p>
+<p>正面相对：asymmetrical docking</p>
+<p>互看：eye contact</p>
+<p>面对面：face to face &#x2F; heads together</p>
+<p>跨坐：straddling</p>
+<p>仰面躺着：on stomach</p>
+<p>侧卧：on side</p>
+<p>不知道怎么说总之是orz的姿势：all fours</p>
+<p>跪着：prostration</p>
+<p>拘束：restrained</p>
+<p>背着：piggyback（四肢容易崩）</p>
+<p>袖口卷起：clothes lift &#x2F; shirt lift &#x2F; skirt lift &#x2F; sweater lift &#x2F; lifted by self &#x2F; dress lift</p>
+<p>狗：doggystyle</p>
+<p>jack-o’_challenge：top down bottom up（上身着地，双腿张开，臀部高高翘起的姿势）</p>
+<p>站立一字马：standing split</p>
+<p>贴墙：against wall</p>
+<p>背靠背：back to back</p>
+<p>喂食：feeding（要两个人）</p>
+<p>睡觉：sleeping</p>
+<p>躺着：reclining（比较微妙）</p>
+<p>玩牌：playing card</p>
+<p>敬礼：salute</p>
+<p>紧缚：bound &#x2F; bondage &#x2F; breast bondage &#x2F; shibari</p>
+<p>拿着枪：polearm</p>
+<p>抱腿坐：knees up</p>
+<p>头发过肩的构图：hair over shoulder</p>
+<p>用手整理头发：hand in own hair</p>
+<p>手放头上：hand on own face</p>
+<p>手放头发里：hands in hair</p>
+<p>手插兜：hands in pockets</p>
+<p>手在大腿之间：between legs</p>
+<p>手放背后：arm behind back</p>
+<p>手遮脸：hand over own mouth</p>
+<p>手放帽子上：hand on headwear</p>
+<p>手放下颚：hand on own chin</p>
+<p>手放脸颊：hand on own cheek</p>
+<p>脸贴脸：cheek to cheek</p>
+<p>双手抱胸：crossed arms</p>
+<p>向外伸手：outstretched hand</p>
+<p>等待亲吻：imminent kiss</p>
+<p>点赞：thumbs up</p>
+<p>扎头发：adjusting hair &#x2F; tying hair</p>
+<p>拍头：headpat</p>
+<p>扶正帽子：adjusting headwear</p>
+<p>身体前倾：leaning forward</p>
+<p>更加前倾：bent over</p>
+<p>弯腰：squatting</p>
+<p>从背后抱住：hug from behind</p>
+<p>盖着被：under covers</p>
+<p>嘴口有血：blood from mouth（会令其他部位也带血）</p>
+<p>扶正眼镜：adjusting eyewear</p>
+<p>抱着枕头：pillow hug</p>
+<p>猫一样的姿势：claw pose（会生成爪子所以负面加上claw）</p>
+<p>剪刀手：peace sign</p>
+<p>牵手：holding hands</p>
+<p>双手支撑：arm support</p>
+<p>张开双手：outstretched arms&#x2F;spread arms</p>
+<p>抱着玩偶：stuffed toy &#x2F; stuffed animal</p>
+<p>攥拳：clenched hand</p>
+<p>双手紧握：interlocked fingers</p>
+<p>嘘🤫：index finger raised</p>
+<p>手指向（观众&#x2F;向上&#x2F;自己&#x2F;另一个人&#x2F;向前&#x2F;武器&#x2F;向下&#x2F;剑&#x2F;向侧）：pointing (at viewer &#x2F; up &#x2F; at self &#x2F; another &#x2F; forward &#x2F; weapon &#x2F; down &#x2F; sword &#x2F; to the side)</p>
+<p>胸前两手紧握：own hands together</p>
+<p>舔手指：finger to mouth</p>
+<p>抱着什么：object hug</p>
+<p>胸放桌子上：breasts rest on table</p>
+<p>掐腰：hands on hips</p>
+<p>翘尾巴：tail raised</p>
+<p>挽手：arm hug</p>
+<p>抬腿：leg lift</p>
+<p>二郎腿：crossed legs</p>
+<p>金鸡独立：standing on one leg</p>
+<p>单膝跪地：one knee</p>
+<p>躺着抬腿：feet up（和lying, on stomach一起用。脚容易崩）</p>
+<p>跪地直立：kneeling</p>
+<p>盘腿坐：indian style</p>
+<h1 id="NovelAI可用tag关键词收集（二-·-头发，表情）"><a href="#NovelAI可用tag关键词收集（二-·-头发，表情）" class="headerlink" title="NovelAI可用tag关键词收集（二 · 头发，表情）"></a>NovelAI可用tag关键词收集（二 · 头发，表情）</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv19008409">原文地址</a></p>
+<p>首先是总之要输进去的一串负面：</p>
+<p>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, bad feet</p>
+<p>提高质量：</p>
+<p>masterpiece,best quality,official art,extremely detailed CG unity 8k wallpaper</p>
+<p>头发：</p>
+<p>呆毛：ahoge（两根以上antenna hair）</p>
+<p>大号呆毛：huge ahoge（胸也会变大，自行调整如small breasts等）</p>
+<p>马尾：ponytail</p>
+<p>长鬓角，边落：sidelocks</p>
+<p>侧马尾：side ponytail或one side up</p>
+<p>单编发：single braid</p>
+<p>钻头辫：drill hair</p>
+<p>斜刘海：swept bangs</p>
+<p>内卷发：hair intakes</p>
+<p>侧面编发：side braid</p>
+<p>短发，部分长发：short hair with long locks</p>
+<p>编发：french braid</p>
+<p>Half-up：half updo&#x2F;updo</p>
+<p>编发马尾：braid ponytail</p>
+<p>公主切：hime cut</p>
+<p>长刘海：hair between eyes &#x2F; pointy hair &#x2F; long bangs</p>
+<p>背头：hair slicked back</p>
+<p>盘发：bun &#x2F; braided bun</p>
+<p>隐藏染：colored inner hair</p>
+<p>露出耳朵：hair behind ear</p>
+<p>部分染发：streaked hair</p>
+<p>头发飘起：floating hair</p>
+<p>皮筋：hair bobbles</p>
+<p>花冠：head wreath</p>
+<p>发饰(X&#x2F;星&#x2F;心&#x2F;蝴蝶&#x2F;新月&#x2F;叶&#x2F;骷髅&#x2F;胡萝卜&#x2F;蝙蝠 ) ：hair ornament &#x2F; (x &#x2F; star &#x2F; heart &#x2F; butterfly &#x2F; crescent &#x2F; leaf &#x2F; skull &#x2F; carrot &#x2F; bat ) </p>
+<p>花的发饰：hair flower</p>
+<p>铃铛发饰：hair bell</p>
+<p>头饰：headpiece</p>
+<p>表情：</p>
+<p>wink：one eye closed</p>
+<p>笑：grin</p>
+<p>害羞：embarrassed</p>
+<p>汗水四溅：flying sweatdrops</p>
+<p>脸上有大片阴影：shaded face</p>
+<p>震惊：surprised</p>
+<p>皱眉：frown &#x2F; furrowed brow &#x2F; wince</p>
+<p>顽皮：naughty face</p>
+<p>哭泣：crying with eyes open</p>
+<p>认真：serious</p>
+<p>傲慢地笑：smirk</p>
+<p>愠怒：pout</p>
+<p>得意：smug</p>
+<p>烦恼不安：annoyance</p>
+<p>悲伤：sad</p>
+<p>尖叫：shouting &#x2F; screaming</p>
+<p>因紧张或恐怖大量出汗：sweating profusely</p>
+<p>锐利：glaring &#x2F; scowl</p>
+<p>短眉毛：short eyebrows</p>
+<p>粗眉毛：thick eyebrows</p>
+<p>额头有记号：forehead mark</p>
+<p>眉毛被刘海遮挡： eyebrows hidden by hair</p>
+<p>俊眉：v shaped eyebrows</p>
+<p>垂眼角：tareme</p>
+<p>高眼角：tsurime</p>
+<p>盯着人的样子&#x2F;半睁眼：jitome &#x2F; half closed eyes</p>
+<p>眼泪：tearing up</p>
+<p>心型眼：tearing up</p>
+<p>猫眼：slit pupils</p>
+<p>遮住一支眼：hair over one eye &#x2F; one eye covered</p>
+<p>异色瞳：heterochromia</p>
+<p>长睫毛：long eyelashes</p>
+<p>可爱脸：blush stickers</p>
+<p>波形嘴：waby mouth &#x2F; :3</p>
+<p>顔文字：:D、:o、:&lt;、:p、:q、:&#x2F;、:I、:X、:C</p>
+<p>咬牙切齿：slenched teeth</p>
+<p>虎牙：skin fang</p>
+<p>上牙：upper teeth</p>
+<p>尖牙：upper teeth</p>
+<p>露出牙齿：round teeth</p>
+<p>咬紧牙：clenched teeth</p>
+<p>遮住嘴：covering mouth</p>
+<p>塞口器（口球）：bit gag</p>
+<p>咧嘴：lip biting</p>
+<p>嘟嘴：puckered lips</p>
+<p>伸出舌头：tongue out</p>
+<p>精灵耳：pointy ears &#x2F; elves</p>
+<p>泪痣：mole under eye</p>
+<p>摇头晃脑：head tilt</p>
+<p>美人痣：mole under mouth</p>
+<p>哈欠：yawning</p>
+<p>傲娇：tsundere</p>
+<p>表情集：expressions</p>
+<p>垂耳：floppy ears </p>
+<p>异色瞳我用(heterochromia(xx_eyes xx_eyes)）</p>
+<h1 id="NovelAI可用tag关键词收集（三-·-身体，服装）"><a href="#NovelAI可用tag关键词收集（三-·-身体，服装）" class="headerlink" title="NovelAI可用tag关键词收集（三 · 身体，服装）"></a>NovelAI可用tag关键词收集（三 · 身体，服装）</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv19010392?from=articleDetail">原文地址</a></p>
+<p>首先是总之要输进去的一串负面：</p>
+<p>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, bad feet</p>
+<p>提高质量：</p>
+<p>masterpiece,best quality,official art,extremely detailed CG unity 8k wallpaper</p>
+<p>身体：</p>
+<p>汗：sweatdrop</p>
+<p>猫耳:cat ear</p>
+<p>肌肉：muscular</p>
+<p>微胖：curvy</p>
+<p>晒痕：tanlines</p>
+<p>连衣裙的晒痕：one piece tan</p>
+<p>低身高：minigirl</p>
+<p>丰满：plump</p>
+<p>伤痕：injury &#x2F; scar on face</p>
+<p>纹身&#x2F;阴部纹身&#x2F;面部纹身&#x2F;手臂纹身&#x2F;肩部纹身：tattoo &#x2F; pubic tattoo &#x2F; facial tattoo &#x2F; arm tattoo &#x2F; shoulder tattoo</p>
+<p>颈背：nape</p>
+<p>肩胛骨：shoulder blades</p>
+<p>腋窝：armpits</p>
+<p>胸大小：small breasts &#x2F; meidum breasts &#x2F; large breasts &#x2F; huge breasts &#x2F; gigantic breasts</p>
+<p>侧乳：sideboob</p>
+<p>下乳：underboob</p>
+<p>抱胸：breast hold</p>
+<p>无O头：pasties</p>
+<p>肋骨：ribs</p>
+<p>孕肚：pregnant</p>
+<p>肚子：stomach</p>
+<p>马甲线：linea alba</p>
+<p>美甲：nail polish</p>
+<p>骆驼趾：cameltoe</p>
+<p>大腿间隙：thigh gap</p>
+<p>绝对领域：zettai ryouiki</p>
+<p>大腿内侧：pigeon toed</p>
+<p>小P股：flat ass</p>
+<p>P股半露：butt crack</p>
+<p>脚底：soles</p>
+<p>脚趾甲：toenail polish</p>
+<p>服装：</p>
+<p>暴露的衣服：revealing clothes</p>
+<p>不暴露的衣服：unexposed</p>
+<p>勒痕：skindentation</p>
+<p>丝袜：stocking</p>
+<p>紧身衣：skin tight</p>
+<p>宽松：baggy clothes &#x2F; baggy pants</p>
+<p>毛巾：towel</p>
+<p>棵体毛巾：naked towel</p>
+<p>稞体围裙：naked apron</p>
+<p>稞体大衣：naked coat</p>
+<p>连体衣：bodystocking</p>
+<p>胶衣：latex</p>
+<p>穿衣捆绑：shibari over clothes</p>
+<p>脱衣：undressing</p>
+<p>无肩带：strapless</p>
+<p>透视：see-through silhouette&#x2F;see-through</p>
+<p>有毛皮装饰的什么什么：fur trimmed XX</p>
+<p>带蕾丝的什么什么：lace trim XX</p>
+<p>开肩式上衣：detached sleeves</p>
+<p>水手服：serafuku</p>
+<p>吊带内裤：side tie bikini bottom(泳装) &#x2F; side tie panties(内裤)</p>
+<p>破碎的衣服：torn clothes</p>
+<p>童贞杀手：cleavage cutout</p>
+<p>BDSM：BDSM</p>
+<p>袴：hakama</p>
+<p>和服：kimono</p>
+<p>婚纱手套：bridal gauntlets</p>
+<p>婚纱：wedding dress</p>
+<p>无肩带礼服：bridal gauntlets</p>
+<p>露肩连衣裙：off shoulder dress</p>
+<p>带字的衣服：clothes writing</p>
+<p>微型比基尼：micro bikini &#x2F; string bikini</p>
+<p>竞赛泳装：competition swimsuit</p>
+<p>无肩带比基尼：bandeau</p>
+<p>前系带比基尼：front tie top</p>
+<p>圣诞比基尼：santa bikini</p>
+<p>时尚洛丽塔：lolita fashion</p>
+<p>哥特式洛丽塔：gothic lolita</p>
+<p>体操服：gym uniform</p>
+<p>长袍：robe</p>
+<p>纹章战袍：tabard</p>
+<p>盔甲上穿的衣服：surcoat</p>
+<p>睡衣：pajamas</p>
+<p>露背装：backless outfit</p>
+<p>白大褂：labcoat</p>
+<p>白色连衣裙：sundress</p>
+<p>双排扣：double breasted</p>
+<p>细腰裙：pinafore dress</p>
+<p>棒球衫：raglan sleeves</p>
+<p>叠层裙：layered dress</p>
+<p>无袖高领毛衣：sleeveless turtleneck</p>
+<p>运动服：track suits &#x2F; track pants</p>
+<p>夏服：summer uniform</p>
+<p>身体束带：harness &#x2F; chest harness</p>
+<p>裙装睡衣，娃娃裙：nightgown &#x2F; negligee &#x2F; chemise &#x2F; babydoll</p>
+<p>阿兰毛衣：aran sweater</p>
+<p>小号衣服：undersized clothes</p>
+<p>多肩带比基尼：multi strapped bikini（可能过多）</p>
+<p>燕尾服：tailcoat</p>
+<p>睡衣：sleepwear</p>
+<p>网球服：tennis uniform</p>
+<p>店员制服：employee uniform</p>
+<p>赛车女郎：race queen</p>
+<p>僵尸：jiangshi</p>
+<p>摔跤服：wrestling outfit</p>
+<p>丧尸：zombie pose</p>
+<p>海盗：pirate</p>
+<p>军服：military jacket</p>
+<p>校服：gakuran</p>
+<p>兔女郎：playboy bunny &#x2F; bunny suits</p>
+<p>迷你帽：mini hat</p>
+<p>官帽：peaked cap</p>
+<p>军帽：military hat &#x2F; cap</p>
+<p>遮阳帽：visor cap</p>
+<p>水手帽：sailor hat</p>
+<p>草帽：straw hat</p>
+<p>针织帽：beanie &#x2F; knitted hat</p>
+<p>前进帽：cabbie hat</p>
+<p>礼帽：top hat</p>
+<p>耳罩：earmuffs</p>
+<p>眼罩：blindfold</p>
+<p>眼带：eyepatch</p>
+<p>半框眼镜：semi rimless eyewear</p>
+<p>眼镜戴在头上：eyewear on head</p>
+<p>圆形眼镜：round eyewear</p>
+<p>丝带：ribbon &#x2F; bow</p>
+<p>环形耳环：hoop earrings</p>
+<p>动物头套：animal hood</p>
+<p>项圈&#x2F;黑项圈&#x2F;红项圈&#x2F;皮带项圈：leash &#x2F; blak collar &#x2F; red collar &#x2F; belt collar</p>
+<p>围巾：scarf &#x2F; hair in scarf</p>
+<p>领结：traditional bowtie</p>
+<p>透视袖：see-through sleeves</p>
+<p>腰带：belt &#x2F; buckle &#x2F; belt buckle</p>
+<p>服务员围裙：waist apron</p>
+<p>胸牌：breastplate</p>
+<p>运动内衣：sports bra</p>
+<p>（衬衫）扣子间隙：unbuttoned &#x2F; button gap</p>
+<p>袖口：cuffs</p>
+<p>萌袖：sleeves past wrists</p>
+<p>臂章：armlet</p>
+<p>肩章：epaulettes</p>
+<p>袖子卷起：sleeves rolled up</p>
+<p>爪式手套：爪式手套</p>
+<p>无指手套：fingerless glove &#x2F; partially fingerless glove</p>
+<p>串珠手镯：bead bracelet</p>
+<p>毛衣卷在腰间：sweater around waist</p>
+<p>背带短裤：suspender shorts</p>
+<p>运动短裤：dolphin shorts &#x2F; gym shorts</p>
+<p>喇叭裤：bloomers</p>
+<p>高腰裙：high waist skirt</p>
+<p>紧身裙：pencil skirt &#x2F; skirt suit</p>
+<p>连裤袜：pantyhose</p>
+<p>挂颈式吊带：halterneck</p>
+<p>吊带袜：garter straps</p>
+<p>赤脚：barefoot（如果只穿袜子no shoes）</p>
+<p>牛仔裤：jeans &#x2F; denim</p>
+<p>打底裤：bike shorts &#x2F; bike shorts under skirt</p>
+<p>网袜：fishnets</p>
+<p>裆部前面的布：pelvic curtain &#x2F; loincloth</p>
+<p>系带靴：cross laced footwear &#x2F; lace up boots</p>
+<p>不对称袜子：asymmetrical legwear</p>
+<p>宽松的袜子：loose socks</p>
+<p>拉链：zipper&#x2F;unzipped</p>
+<p>条纹的XX：striped XX</p>
+<p>花卉图案&#x2F;动物图案&#x2F;菱形图案&#x2F;奶牛图案&#x2F;爪子图案&#x2F;星星图案&#x2F;老虎图案&#x2F;迷彩图案&#x2F;旗帜图案&#x2F;薮猫图案 印花&#x2F;薮猫印花&#x2F;圆点的XX：floral print &#x2F; animal print &#x2F; argyle &#x2F; cow print &#x2F; paw print &#x2F; star print &#x2F; tiger print &#x2F; camouflage &#x2F; flag print &#x2F; serval print &#x2F; polka dot XX<br>涩涩三件套：<br>Bashful，sweat，orgasm（或者O-face）（可以加一个bullet，plug，bead之类的，可能有意想不到的效果[妙啊]）</p>
+<h1 id="NovelAI可用tag关键词收集（四-·-背景，其他）"><a href="#NovelAI可用tag关键词收集（四-·-背景，其他）" class="headerlink" title="NovelAI可用tag关键词收集（四 · 背景，其他）"></a>NovelAI可用tag关键词收集（四 · 背景，其他）</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv19011382">原文地址</a><br>首先是总之要输进去的一串负面：</p>
+<p>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, bad feet</p>
+<p>提高质量：</p>
+<p>masterpiece,best quality,official art,extremely detailed CG unity 8k wallpaper</p>
+<p>背景：</p>
+<p>焰火：fireworks</p>
+<p>花田：flower field</p>
+<p>水下：underwater</p>
+<p>爆炸：explosion</p>
+<p>栏杆：railing</p>
+<p>温泉：onsen</p>
+<p>榻榻米：tatami</p>
+<p>浴室：bathing</p>
+<p>淋浴：showering &#x2F; shower</p>
+<p>走廊：hallway</p>
+<p>更衣室：locker room</p>
+<p>电车内：train &#x2F; train interior</p>
+<p>地平线：horizon&#x2F;mountainous horizon</p>
+<p>被褥：futon</p>
+<p>斑驳的阳光：dappled sunlight</p>
+<p>浴缸：bathtub</p>
+<p>电线杆：power lines &#x2F; utility pole&#x2F;telephone pole</p>
+<p>路灯：lamppost &#x2F; street light</p>
+<p>沙发：couch &#x2F; sofa</p>
+<p>其他：</p>
+<p>音符：musical note</p>
+<p>烟雾：steam</p>
+<p>扇子：hand fan</p>
+<p>触手：tentacles</p>
+<p>棒棒糖：lolipop</p>
+<p>油纸伞：oil paper umbrella</p>
+<p>包&#x2F;手提包&#x2F;背包&#x2F;单肩包&#x2F;挎包：bag &#x2F; handbag &#x2F; backpack &#x2F; shoulder bag &#x2F; satchel</p>
+<p>巫女：miko</p>
+<p>护士：nurse &#x2F; nurse cap</p>
+<p>警察：police</p>
+<p>口罩：mask &#x2F; mouth mask</p>
+<p>面罩：anklet</p>
+<p>花束：bouquet</p>
+<p>情人节：valentine</p>
+<p>万圣节：halloween</p>
+<p>圣诞节：christmas</p>
+<p>婚礼：wedding</p>
+<p>头上的鸟：bird on head</p>
+<p>冲浪板：surfboard</p>
+<p>刨冰：shaved ice</p>
+<p>余烬：embers</p>
+<p>解除瑟瑟限制:nsfw（不加不会画出特定部位）</p>
+<p>瑟瑟关键字自行翻译，发不出来</p>
+<p>由于众所周知的原因，还有一些特殊玩法</p>
+<p>如需要像某位老师的画风，可以在tag中直接指定老师的名字</p>
+<p>如需要像某角色，也可以指定角色名。可以指定多角色来融合角色特点（需单人1girl&#x2F;1boy）</p>
+<p>如果某关键词总是连带生成不需要的东西可以在负面里去掉 </p>
+<p>双丸子头 double bun</p>
+<h1 id="NovelAI服装Tag收集"><a href="#NovelAI服装Tag收集" class="headerlink" title="NovelAI服装Tag收集"></a>NovelAI服装Tag收集</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv19060338">原文地址</a><br>连衣裙：dress</p>
+<p>裙子：skirt</p>
+<p>长裙：long skirt</p>
+<p>女仆：maid</p>
+<p>洛丽塔：lolita</p>
+<p>哥特洛丽塔：gothic lolita</p>
+<p>偶像：idol</p>
+<p>旗袍：china dress&#x2F;qipao&#x2F;cheongsam</p>
+<p>和服：kimono</p>
+<p>浴衣：yukata</p>
+<p>巫女：miko</p>
+<p>弓手：archer</p>
+<p>忍者：ninja</p>
+<p>武士：samurai</p>
+<p>阴阳师：onmyoji</p>
+<p>女巫：witch</p>
+<p>魔术师帽：magician_hat</p>
+<p>精灵：elf</p>
+<p>妖精：fairy</p>
+<p>天使：angel</p>
+<p>恶魔：evil</p>
+<p>吸血鬼：vampire</p>
+<p>死灵术士：necromancer</p>
+<p>啦啦队服：cheerleader</p>
+<p>兔女郎：bunny girl</p>
+<p>公主：princess</p>
+<p>女王：queen</p>
+<p>护士：nurse</p>
+<p>医生：doctor</p>
+<p>警察：police</p>
+<p>老师：teacher</p>
+<p>保健老师：health teacher</p>
+<p>军服：uniform&#x2F;military</p>
+<p>学生制服：school uniform</p>
+<p>水手服：sailor</p>
+<p>泳装：swim suit</p>
+<p>学校泳装（死库水）：school swim suit</p>
+<p>比基尼：bikini</p>
+<p>潜水服：diving suit</p>
+<p>运动女孩：sports girl</p>
+<p>健身房：gym</p>
+<p>体操：gymnastics</p>
+<p>自行车短裤：bike shorts</p>
+<p>足球：football</p>
+<p>篮球：basketball</p>
+<p>网球：tennis</p>
+<p>歌手：singer</p>
+<p>舞者：dancer</p>
+<p>毛衣：sweater</p>
+<p>露背毛衣：backless sweater</p>
+<p>连帽衫&#x2F;卫衣：hoodie</p>
+<p>夹克：jacket</p>
+<p>外套：coat</p>
+<p>实验室外套：labcoat</p>
+<p>衬衫：shirt</p>
+<p>开襟衬衫：open shirt</p>
+<p>黑客：hacker</p>
+<p>居家服：homewear</p>
+<p>睡衣：pajamas</p>
+<p>瑜伽：yoga</p>
+<p>芭蕾：ballet</p>
+<p>拉丁舞服：Latin dance clothes</p>
+<p>埃及风：Egypt</p>
+<p>法老：Pharaoh</p>
+<p>情人节：valentine</p>
+<p>万圣节：halloween</p>
+<p>圣诞节：christmas</p>
+<p>婚纱：wedding dress</p>
+<p>燕尾服：tuxedo</p>
+<p>礼服：formal dress</p>
+<p>化妆舞会：masquerade</p>
+<p>炼金工坊：Atelier</p>
+<p>浴巾：bath towel</p>
+<p>内衣：underwear</p>
+<p>兜裆布：fundoshi</p>
+<p>围裙：apron</p>
+<p>果体围裙：naked apron</p>
+<p>长袍：rope</p>
+<p>披肩：cape</p>
+<p>乘务员（飞机）：flight attendants</p>
+<p>乘务员（火车）：train attendants</p>
+<p>女乘务员：stewardess</p>
+<p>服务员：waiter</p>
+<p>女服务员：waitress</p>
+<p>飞行员：pilot</p>
+<p>宇航服：space suit</p>
+<p>主教：bishop</p>
+<p>修女：nun</p>
+<p>赛车手：racing car girl</p>
+<p>机能风：techwear</p>
+<p>赛博朋克：cyberpunk</p>
+<p>蒸汽朋克：steampunk</p>
+<p>角斗士：gladiator</p>
+<p>跆拳道：taekwondo</p>
+<p>柔道：judo</p>
+<p>领带：tie</p>
+<p>皮带：leash</p>
+<p>锁链：chain</p>
+<p>枷锁：shackles</p>
+<p>项链：necklace</p>
+<p>蕾丝：lace</p>
+<p>皇冠：crown</p>
+<p>绷带：bandage</p>
+<p>丝带：ribbon</p>
+<p>连体黑丝：conjoined black silk</p>
+<p>黑丝：black stocking</p>
+<p>白丝：white stocking</p>
+<p>连裤袜：panty hose</p>
+<p>渔网：fishnet&#x2F;fishnet stocking</p>
+<p>吊袜带：garter hose</p>
+<p>吊带裙：slip dress&#x2F;halter skirt&#x2F;halter dress</p>
+<p>吊带裤：suspender pants</p>
+<p>背带裤：overalls</p>
+<p>果体背带裤：naked overalls</p>
+<p>长裤：trousers</p>
+<p>人体彩绘：body painting</p>
+<p>触手：tentacles</p>
+<p>藤蔓：vine </p>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/06/21/js-axios%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">axios配置和使用</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/golang%E4%BD%BF%E7%94%A8ping%E6%93%8D%E4%BD%9C%E8%BF%94%E5%9B%9E%E5%BB%B6%E8%BF%9F%E7%9A%84%E6%AF%AB%E7%A7%92.html">golang使用ping操作返回延迟的毫秒</a>
+                <p>2023-10-19</p>
+            </li>
+        
+            <li>
+                <a href="/2024/04/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2title.html">微信小程序修改页面title</a>
+                <p>2024-04-28</p>
+            </li>
+        
+            <li>
+                <a href="/2024/03/23/ffmpeg-%E6%89%B9%E9%87%8Fm4a%E8%BD%ACmp3.html">ffmpeg批量m4a转mp3</a>
+                <p>2024-03-23</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/vue2-%E5%A4%9A%E5%85%A5%E5%8F%A3%E9%85%8D%E7%BD%AE.html">vue多入口配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/06/21/js-axios%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">axios配置和使用</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/golang%E4%BD%BF%E7%94%A8ping%E6%93%8D%E4%BD%9C%E8%BF%94%E5%9B%9E%E5%BB%B6%E8%BF%9F%E7%9A%84%E6%AF%AB%E7%A7%92.html">golang使用ping操作返回延迟的毫秒</a>
+                <p>2023-10-19</p>
+            </li>
+        
+            <li>
+                <a href="/2024/04/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2title.html">微信小程序修改页面title</a>
+                <p>2024-04-28</p>
+            </li>
+        
+            <li>
+                <a href="/2024/03/23/ffmpeg-%E6%89%B9%E9%87%8Fm4a%E8%BD%ACmp3.html">ffmpeg批量m4a转mp3</a>
+                <p>2024-03-23</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/vue2-%E5%A4%9A%E5%85%A5%E5%8F%A3%E9%85%8D%E7%BD%AE.html">vue多入口配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(5)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/vue/">vue(40)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

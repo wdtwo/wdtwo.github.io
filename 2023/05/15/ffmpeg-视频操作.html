@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2023/05/15/ffmpeg-视频操作.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+    
+        <h1 class="post-title t-c">FFMPEG 视频操作</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2023-05-15
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/ffmpeg/" rel="tag">ffmpeg</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <ul>
+<li>FFMPEG 视频</li>
+<li>新版本命令</li>
+<li>m3u8视频合并</li>
+<li>视频格式转换</li>
+<li>合并视频</li>
+<li>常用命令如下</li>
+<li>其他指令</li>
+<li>参数说明</li>
+<li>腾讯视频qlv转mp4</li>
+<li>文件转换</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="FFMPEG-视频"><a href="#FFMPEG-视频" class="headerlink" title="FFMPEG 视频"></a>FFMPEG 视频</h2><p><a target="_blank" rel="noopener" href="https://teddysun.com/486.html">https://teddysun.com/486.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://ffmpeg.org/download.html">ffmpeg官网</a><br><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-downloads">英伟达CUDA驱动</a></p>
+<h2 id="调用显卡"><a href="#调用显卡" class="headerlink" title="调用显卡"></a>调用显卡</h2><p>查询ffmpeg是否支持cuda</p>
+<ol>
+<li>-hwaccel cuvid：指定使用cuvid硬件加速</li>
+<li>-c:v h264_cuvid：使用h264_cuvid进行视频解码</li>
+<li>-c:v h264_nvenc：使用h264_nvenc进行视频编码</li>
+<li>-vf scale_npp&#x3D;1280:-1：指定输出视频的宽高，注意，这里和软解码时使用的-vf scale&#x3D;x:x不一样</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccels<br></code></pre></td></tr></table></figure>
+<p>测试命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccel cuvid -c:v h264_cuvid -i 0.mp4 -c:v h264_nvenc -y 00.mp4<br></code></pre></td></tr></table></figure>
+
+<p>将当前目录下的0.mp4转成00.mp4</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccel cuvid -c:v h264_cuvid -i 0.mp4 -c:v h264_nvenc -r 15 -b 500k -y 00.mp4<br></code></pre></td></tr></table></figure>
+<p>将当前目录下的0.mp4转成00.mp4，并指定输出帧率为15（-r 15），比特率为500k（-b 500k）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccel cuvid -c:v h264_cuvid -i &lt;input&gt; -c:v h264_nvenc -b:v 2048k -vf scale_npp=1280:-1 -y &lt;output&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="无损压缩-调用显卡"><a href="#无损压缩-调用显卡" class="headerlink" title="无损压缩 调用显卡"></a>无损压缩 调用显卡</h2><ul>
+<li>c:v hevc_nvenc 指定使用 NVIDIA 的 HEVC 硬件编码器。</li>
+<li>preset slow 设置编码器的预设值，控制编码速度和质量的平衡。</li>
+<li>b:v 0 -cq 28 设置恒定质量模式，cq 值类似于 CRF 值。</li>
+<li>b:a 128K 设置音频比特率。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># hevc_nvenc 是英伟达显卡的硬件编码器</span><br>ffmpeg -i input.mp4 -c:v hevc_nvenc -preset slow -crf 0 output.mp4<br>ffmpeg -i input.mp4 -c:v hevc_nvenc -preset slow -crf 28 -b:a 128K output2.mp4<br></code></pre></td></tr></table></figure>
+
+<p>多显卡 向不同GPU提交转码任务<br>显卡0</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccel cuvid -hwaccel_device 0 -c:v h264_cuvid -i &lt;input&gt; -c:v h264_nvenc -b:v 2048k -vf scale_npp=1280:-1 -y &lt;output&gt;<br></code></pre></td></tr></table></figure>
+<p>显卡1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccel cuvid -hwaccel_device 1 -c:v h264_cuvid -i &lt;input&gt; -c:v h264_nvenc -b:v 2048k -vf scale_npp=1280:-1 -y &lt;output&gt;<br></code></pre></td></tr></table></figure>
+<p>说明：<br>-hwaccel_device N：指定某颗GPU执行转码任务，N为数字</p>
+<h2 id="视频操作"><a href="#视频操作" class="headerlink" title="视频操作"></a>视频操作</h2><h3 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h3><ul>
+<li><p>-vcodec xvid 使用xvid压缩</p>
+</li>
+<li><p>-s 320x240 指定分辨率</p>
+</li>
+<li><p>-r fps 设置帧频 缺省25</p>
+</li>
+<li><p>-b &lt;比特率&gt; 指定压缩比特</p>
+</li>
+<li><p>-acodec aac 设定声音编码</p>
+</li>
+<li><p>-ac &lt;数值&gt; 设定声道数，1就是单声道，2就是立体声</p>
+</li>
+<li><p>-ar &lt;采样率&gt; 设定声音采样率，PSP只认24000</p>
+</li>
+<li><p>-ab &lt;比特率&gt; 设定声音比特率</p>
+</li>
+<li><p>-vol &lt;百分比&gt; 设定音量</p>
+</li>
+<li><p>-y（覆盖输出文件</p>
+</li>
+<li><p>-t duration 设置纪录时间 hh:mm:ss[.xxx]格式的记录时间也支持</p>
+</li>
+<li><p>-ss position 搜索到指定的时间 [-]hh:mm:ss[.xxx]的格式也支持</p>
+</li>
+<li><p>-title string 设置标题</p>
+</li>
+<li><p>-author string 设置作者</p>
+</li>
+<li><p>-copyright string 设置版权</p>
+</li>
+<li><p>-hq 激活高质量设置</p>
+</li>
+<li><p>-aspect aspect 设置横纵比 4:3 16:9 或 1.3333 1.7777</p>
+</li>
+<li><p>-croptop size 设置顶部切除带大小 像素单位</p>
+</li>
+<li><p>-cropbottom size -cropleft size -cropright size</p>
+</li>
+<li><p>-padtop size 设置顶部补齐的大小 像素单位</p>
+</li>
+<li><p>-padbottom size -padleft size -padright size -padcolor color 设置补齐条颜色(hex,6个16进制的数，红:绿:兰排列，比如 000000代表黑色)</p>
+</li>
+<li><p>-bt tolerance 设置视频码率容忍度kbit&#x2F;s</p>
+</li>
+<li><p>-maxrate bitrate设置最大视频码率容忍度</p>
+</li>
+<li><p>-minrate bitreate 设置最小视频码率容忍度</p>
+</li>
+<li><p>-bufsize size 设置码率控制缓冲区大小</p>
+</li>
+<li><p>-vcodec codec 强制使用codec编解码方式。 如果用copy表示原始编解码数据必须被拷贝。</p>
+</li>
+<li><p>-sameq 使用同样视频质量作为源（VBR）</p>
+</li>
+<li><p>-pass n 选择处理遍数（1或者2）。两遍编码非常有用。第一遍生成统计信息，第二遍生成精确的请求的码率</p>
+</li>
+<li><p>-passlogfile file 选择两遍的纪录文件名为file</p>
+</li>
+<li><p>-map file:stream 设置输入流映射</p>
+</li>
+<li><p>-debug 打印特定调试信息</p>
+</li>
+</ul>
+<h3 id="视频格式转换"><a href="#视频格式转换" class="headerlink" title="视频格式转换"></a>视频格式转换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i out.ogv -vcodec h264 out.mp4<br>ffmpeg -i out.ogv -vcodec mpeg4 out.mp4<br>ffmpeg -i out.ogv -vcodec libxvid out.mp4<br>ffmpeg -i out.mp4 -vcodec wmv1 out.wmv<br>ffmpeg -i out.mp4 -vcodec wmv2 out.wmv<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频剪切"><a href="#视频剪切" class="headerlink" title="视频剪切"></a>视频剪切</h3><ol>
+<li>-ss 指定从什么时间开始</li>
+<li>-t 指定需要截取多长时间</li>
+<li>-i 指定输入文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -ss 00:00:00 -t 00:00:30 -i test.mp4 -vcodec copy -acodec copy output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="合并视频"><a href="#合并视频" class="headerlink" title="合并视频"></a>合并视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">//进行视频的合并<br>ffmpeg -f concat -i list.txt -c copy concat.mp4<br></code></pre></td></tr></table></figure>
+<p>在list.txt文件中，对要合并的视频片段进行了描述。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">file &#x27;split.mp4&#x27;<br>file &#x27;split1.mp4&#x27;<br></code></pre></td></tr></table></figure>
+
+<h3 id="帧间编码转换为帧内编码-文件会大很多"><a href="#帧间编码转换为帧内编码-文件会大很多" class="headerlink" title="帧间编码转换为帧内编码 文件会大很多"></a>帧间编码转换为帧内编码 文件会大很多</h3><ul>
+<li>-i 输入，后面是空格，紧跟着就是输入视频文件；</li>
+<li>INPUT 输入文件；</li>
+<li>-sameq 表示保持同样的视频质量；</li>
+<li>-intra， 帧内编码；</li>
+<li>OUTPUT 输出文件名。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i ./MyVideo.mpg -sameq -intra ./temp.mpg<br></code></pre></td></tr></table></figure>
+<p>这个命令的结果文件就是.&#x2F;temp.mpg.这个文件的视频和.&#x2F;MyVideo.mpg是一样的，但是你会发现这个文件会比.&#x2F;MyVideo.mpg大很多倍，原因就是转换前一般采用的帧间编码，转换后变成了帧内编码。这里我们说是一般，原因是有些视频文件本身就采用了帧内编码。<br>经过这样的处理后，我们就可以精确的剪切视频了。</p>
+<h3 id="新版本命令"><a href="#新版本命令" class="headerlink" title="新版本命令"></a>新版本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i output.mp4 -strict -2  -qscale 0 -intra keyoutput.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="m3u8视频合并"><a href="#m3u8视频合并" class="headerlink" title="m3u8视频合并"></a>m3u8视频合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i xxx.m3u8 -vcodec copy -acodec copy xxx.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="去掉视频中的音频"><a href="#去掉视频中的音频" class="headerlink" title="去掉视频中的音频"></a>去掉视频中的音频</h3><p>-an: 去掉音频；-vcodec:视频选项，一般后面加copy表示拷贝</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -vcodec copy -an output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="音视频合成"><a href="#音视频合成" class="headerlink" title="音视频合成"></a>音视频合成</h3><p>-y 覆盖输出文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -y –i input.mp4 –i input.mp3 –vcodec copy –acodec copy output.mp4<br>ffmpeg -i 01v.mp4 -i 01a.m4a -c:v copy -c:a aac -strict experimental 01.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="FFmpeg批量提取视频某一帧作为封面"><a href="#FFmpeg批量提取视频某一帧作为封面" class="headerlink" title="FFmpeg批量提取视频某一帧作为封面"></a>FFmpeg批量提取视频某一帧作为封面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.flv -ss 00:00:02 -frames:v 1 out.png<br></code></pre></td></tr></table></figure>
+
+<h3 id="将视频提取10帧"><a href="#将视频提取10帧" class="headerlink" title="将视频提取10帧"></a>将视频提取10帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i test.mp4 -r 10 %06d.jpg;<br></code></pre></td></tr></table></figure>
+
+<h3 id="生产视频的每分钟的缩略图："><a href="#生产视频的每分钟的缩略图：" class="headerlink" title="生产视频的每分钟的缩略图："></a>生产视频的每分钟的缩略图：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i film.mp4 -vf fps=1/60 img%03d.jpg<br></code></pre></td></tr></table></figure>
+<ol>
+<li>上面这个-vf fps&#x3D;1&#x2F;60，就是1分钟的意思，比如说视频25分钟，会生成25个jpg图片，分别是img001，img002….，</li>
+<li>当fps&#x3D;1的时候：就代表每一秒截取个缩略图</li>
+<li>而fps&#x3D;1&#x2F;600：则代表每10分钟截取一个画面</li>
+</ol>
+<h3 id="另外也可以按照关键帧提取画面依次产生画面保存起来，可以按照以下的参数："><a href="#另外也可以按照关键帧提取画面依次产生画面保存起来，可以按照以下的参数：" class="headerlink" title="另外也可以按照关键帧提取画面依次产生画面保存起来，可以按照以下的参数："></a>另外也可以按照关键帧提取画面依次产生画面保存起来，可以按照以下的参数：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -skip_frame nokey -i my-film.mp4 -vsync 0 -f image2 myfilm/my-film-%06d.png<br></code></pre></td></tr></table></figure>
+<ol>
+<li><code>-vsync 0</code> 参数避免了需要指定帧速率</li>
+<li><code>my-file-%06d.png</code> 保存的文件名字是6个数字</li>
+</ol>
+<h3 id="视频截图"><a href="#视频截图" class="headerlink" title="视频截图"></a>视频截图</h3><p>-s 设置分辨率; -f 强迫采用格式fmt;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg –i test.mp4 –f image2 -t 0.001 -s 320x240 image-%3d.jpg<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频分解为图片"><a href="#视频分解为图片" class="headerlink" title="视频分解为图片"></a>视频分解为图片</h3><p>-r 指定截屏频率</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg –i test.mp4 –r 1 –f image2 image-%3d.jpg<br></code></pre></td></tr></table></figure>
+
+<h3 id="将图片合成视频"><a href="#将图片合成视频" class="headerlink" title="将图片合成视频"></a>将图片合成视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -f image2 -i image%d.jpg output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频拼接"><a href="#视频拼接" class="headerlink" title="视频拼接"></a>视频拼接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -f concat -i filelist.txt -c copy output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="旋转视频"><a href="#旋转视频" class="headerlink" title="旋转视频"></a>旋转视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -vf rotate=PI/2 output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="缩放视频"><a href="#缩放视频" class="headerlink" title="缩放视频"></a>缩放视频</h3><p>iw 是输入的宽度， iw&#x2F;2就是一半;-1 为保持宽高比</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -vf scale=iw/2:-1 output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频变速"><a href="#视频变速" class="headerlink" title="视频变速"></a>视频变速</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -filter:v setpts=0.5*PTS output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="音视频同时变速，但是音视频为互倒关系"><a href="#音视频同时变速，但是音视频为互倒关系" class="headerlink" title="音视频同时变速，但是音视频为互倒关系"></a>音视频同时变速，但是音视频为互倒关系</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -filter_complex <span class="hljs-string">&quot;[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]&quot;</span> -map <span class="hljs-string">&quot;[v]&quot;</span> -map <span class="hljs-string">&quot;[a]&quot;</span> output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频添加水印"><a href="#视频添加水印" class="headerlink" title="视频添加水印"></a>视频添加水印</h3><p>main_w-overlay_w-10 视频的宽度-水印的宽度-水印边距；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -i logo.jpg -filter_complex [0:v][1:v]overlay=main_w-overlay_w-10:main_h-overlay_h-10[out] -map [out] -map 0:a -codec:a copy output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频压缩"><a href="#视频压缩" class="headerlink" title="视频压缩"></a>视频压缩</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i a.mp4 -r 10 -b:a 32k 1.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="截取视频局部"><a href="#截取视频局部" class="headerlink" title="截取视频局部"></a>截取视频局部</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i in.mp4 -filter:v <span class="hljs-string">&quot;crop=out_w:out_h:x:y&quot;</span> out.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="截取视频局部-1"><a href="#截取视频局部-1" class="headerlink" title="截取视频局部"></a>截取视频局部</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 截取部分视频，从[80,60]的位置开始，截取宽200，高100的视频<br>ffmpeg -i in.mp4 -filter:v <span class="hljs-string">&quot;crop=80:60:200:100&quot;</span> -c:a copy out.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="截取右下角的四分之一"><a href="#截取右下角的四分之一" class="headerlink" title="截取右下角的四分之一"></a>截取右下角的四分之一</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i in.mp4 -filter:v <span class="hljs-string">&quot;crop=in_w/2:in_h/2:in_w/2:in_h/2&quot;</span> -c:a copy out.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="截去底部40像素高度"><a href="#截去底部40像素高度" class="headerlink" title="截去底部40像素高度"></a>截去底部40像素高度</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i in.mp4 -filter:v <span class="hljs-string">&quot;crop=in_w:in_h-40&quot;</span> -c:a copy out.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="调整视频大小-resize-是改变视频的宽度和高度"><a href="#调整视频大小-resize-是改变视频的宽度和高度" class="headerlink" title="调整视频大小(resize)是改变视频的宽度和高度"></a>调整视频大小(resize)是改变视频的宽度和高度</h3><p>使用-s参数实现，语法：<code>ffmpeg  -i  input_file  -s  wxh  output_file (wxh是宽x高，比如320x240)</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i demo.mp4 -s 960x540 demo1.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="视频裁剪"><a href="#视频裁剪" class="headerlink" title="视频裁剪"></a>视频裁剪</h3><p>视频裁剪使用crop视频滤镜，它可以把视频从指定的x、y位置裁剪成指定的w、h。坐标系是基于左上点开始的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg  -i  intput.avi  -vf  crop=iw/2:ih/2  output.avi <br></code></pre></td></tr></table></figure>
+<h3 id="视频裁剪-1"><a href="#视频裁剪-1" class="headerlink" title="视频裁剪"></a>视频裁剪</h3><p>视频裁剪使用crop视频滤镜，它可以把视频从指定的x、y位置裁剪成指定的w、h。坐标系是基于左上点开始的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -hwaccel cuda -i 输入视频.mp4 -vf <span class="hljs-string">&quot;crop=宽度:高度:起始X坐标:起始Y坐标&quot;</span> -c:v h264_nvenc 输出视频.mp4<br>ffmpeg -hwaccel cuda -i intput.avi -vf crop=iw/2:ih/2 output.avi <br></code></pre></td></tr></table></figure>
+
+<h3 id="mp4转h-264"><a href="#mp4转h-264" class="headerlink" title="mp4转h.264"></a>mp4转h.264</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -vcodec h264 output.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="腾讯视频qlv转mp4"><a href="#腾讯视频qlv转mp4" class="headerlink" title="腾讯视频qlv转mp4"></a>腾讯视频qlv转mp4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">copy/B 7*.tdl Video001.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i <span class="hljs-string">&quot;input.flv&quot;</span> -c copy <span class="hljs-string">&quot;output.mp4&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="批量转换"><a href="#批量转换" class="headerlink" title="批量转换"></a>批量转换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> %i <span class="hljs-keyword">in</span> (*.flv) <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">&quot;%i&quot;</span> -c copy <span class="hljs-string">&quot;%~ni.mp4&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="某些flv文件转换成mp4时会报错，这时可尝试以下代码"><a href="#某些flv文件转换成mp4时会报错，这时可尝试以下代码" class="headerlink" title="某些flv文件转换成mp4时会报错，这时可尝试以下代码"></a>某些flv文件转换成mp4时会报错，这时可尝试以下代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i filename.flv -c:v libx264 -crf 19 -strict experimental filename.mp4<br></code></pre></td></tr></table></figure>
+
+<h3 id="flv-mp4文件的合并"><a href="#flv-mp4文件的合并" class="headerlink" title="flv&#x2F;mp4文件的合并"></a>flv&#x2F;mp4文件的合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -f concat -safe 0 -i combine.txt -c copy output.mp4<br></code></pre></td></tr></table></figure>
+<h3 id="combine-txt"><a href="#combine-txt" class="headerlink" title="combine.txt"></a>combine.txt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">file <span class="hljs-string">&#x27;文件1.mp4&#x27;</span><br>file <span class="hljs-string">&#x27;文件2.mp4&#x27;</span><br>file <span class="hljs-string">&#x27;文件3.mp4&#x27;</span><br>file <span class="hljs-string">&#x27;文件4.mp4&#x27;</span><br>file <span class="hljs-string">&#x27;文件5.mp4&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="音频操作"><a href="#音频操作" class="headerlink" title="音频操作"></a>音频操作</h2><h3 id="音频变速"><a href="#音频变速" class="headerlink" title="音频变速"></a>音频变速</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp3 -filter:a atempo=2.0 output.mp3<br></code></pre></td></tr></table></figure>
+
+<h3 id="mp3剪切"><a href="#mp3剪切" class="headerlink" title="mp3剪切"></a>mp3剪切</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -y -i input.wav -ss 00:00:00 -t 00:08:52 -acodec copy output_mp3.wav<br></code></pre></td></tr></table></figure>
+
+<h3 id="提取视频中的音频"><a href="#提取视频中的音频" class="headerlink" title="提取视频中的音频"></a>提取视频中的音频</h3><p>-vn: 去掉视频；-acodec: 音频选项， 一般后面加copy表示拷贝</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -acodec copy -vn output.wma<br></code></pre></td></tr></table></figure>
+
+<h3 id="音频转换"><a href="#音频转换" class="headerlink" title="音频转换"></a>音频转换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i qishi.mp3 -acodec aac qishi.aac<br>ffmpeg -i qishi.acc -acodec mp3 qishi.mp3<br></code></pre></td></tr></table></figure>
+
+<h3 id="m4a添加封面"><a href="#m4a添加封面" class="headerlink" title="m4a添加封面"></a>m4a添加封面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i 1.m4a -i 1.png -map 0 -map 1 -c copy -disposition:v:0 attached_pic output.m4a<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="gif操作"><a href="#gif操作" class="headerlink" title="gif操作"></a>gif操作</h2><p>尽量不要使用swscale做缩放了，尽量使用ffmpeg里的avfilter的滤镜。</p>
+<h3 id="查看图片信息"><a href="#查看图片信息" class="headerlink" title="查看图片信息"></a>查看图片信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffprobe demo.gif    <br></code></pre></td></tr></table></figure>
+
+<h3 id="将视频转为gif"><a href="#将视频转为gif" class="headerlink" title="将视频转为gif"></a>将视频转为gif</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 out.gif <br></code></pre></td></tr></table></figure>
+
+<h3 id="将-GIF-转化为-MP4"><a href="#将-GIF-转化为-MP4" class="headerlink" title="将 GIF 转化为 MP4"></a>将 GIF 转化为 MP4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -f gif -i test.gif test.mp4<br><span class="hljs-comment"># 也可以将 gif 转为其他视频格式</span><br>ffmpeg -f gif -i test.gif test.mpeg<br>ffmpeg -f gif -i test.gif test.mkv<br></code></pre></td></tr></table></figure>
+
+<h3 id="转化高质量-GIF"><a href="#转化高质量-GIF" class="headerlink" title="转化高质量 GIF"></a>转化高质量 GIF</h3><p>默认转化是中等质量模式，若要转化出高质量的 gif，可以修改比特率</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i test.mp4 -b:v 2048k test.gif<br></code></pre></td></tr></table></figure>
+
+<h3 id="设置截取时间"><a href="#设置截取时间" class="headerlink" title="设置截取时间"></a>设置截取时间</h3><ol>
+<li>-ss -ss代表的是开始时间，时:分:秒.毫秒的格式，比如00:12:14.500。</li>
+<li>-t是要截取的时长,单位秒</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -ss 73.5 -t 12 out.gif<br>ffmpeg -i input.mp4 -ss 00:01:13.500 -t 12 out.gif<br></code></pre></td></tr></table></figure>
+
+<h3 id="将视频转为gif-1"><a href="#将视频转为gif-1" class="headerlink" title="将视频转为gif"></a>将视频转为gif</h3><p>-pix_fmt 指定编码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -ss 0:0:30 -t 10 -s 320x240 -pix_fmt rgb24 output.gif<br></code></pre></td></tr></table></figure>
+
+<h3 id="将视频前30帧转为gif"><a href="#将视频前30帧转为gif" class="headerlink" title="将视频前30帧转为gif"></a>将视频前30帧转为gif</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -vframes 30 -f gif output.gif<br></code></pre></td></tr></table></figure>
+
+<h3 id="gif压缩"><a href="#gif压缩" class="headerlink" title="gif压缩"></a>gif压缩</h3><h4 id="降低动图的帧率"><a href="#降低动图的帧率" class="headerlink" title="降低动图的帧率"></a>降低动图的帧率</h4><p>用-r参数来降低征率，比如原始的input.mp4是30帧的，可以用-r 15来降低成15帧。<br>-r参数一定要放到-i参数后面，它在前在后的作用是不一样的<br>具体效果也是很明显的，生成的文件大小从原来的86MB下降到56MB，具体命令行如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -ss 00:01:13.500 -t 12 -r 15 out1.gif<br>ffmpeg -i input.gif -r 8 out1.gif<br></code></pre></td></tr></table></figure>
+
+<h4 id="调整画面分辨率"><a href="#调整画面分辨率" class="headerlink" title="调整画面分辨率"></a>调整画面分辨率</h4><p>比如原始视频是1080p的，我们可以将其减低到480p，从而显著降低最终的gif文件大小，<br>这里可以使用-s参数，后面跟具体的分辨率大小比如480x272 具体命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -ss 00:01:13.500 -t 12 -s 480x272 out2.gif <br>ffmpeg -i input.gif -s 320x180 out2.gif<br></code></pre></td></tr></table></figure>
+
+<h4 id="vf等比例缩放"><a href="#vf等比例缩放" class="headerlink" title="-vf等比例缩放"></a>-vf等比例缩放</h4><p>scale后面可以指定具体的分辨率宽:高，作用同-s，也可以只指定宽或者高，<br>另一者用-d代替，ffmpeg就会自动缩放，保持原比例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -ss 00:01:13.500 -t 12 -vf <span class="hljs-string">&quot;scale=480:-1&quot;</span> out3.gif  <br></code></pre></td></tr></table></figure>
+
+<h4 id="降分辨率的同时降帧率"><a href="#降分辨率的同时降帧率" class="headerlink" title="降分辨率的同时降帧率"></a>降分辨率的同时降帧率</h4><p>将上面两种方式结合到一起，命令行如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mp4 -ss 00:01:13.500 -t 12 -vf <span class="hljs-string">&quot;scale=480:-1&quot;</span> -r 15 out4.gif <br></code></pre></td></tr></table></figure>
+
+<h4 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h4><p>裁剪区域的宽度为180，高度为180，<br>从以左上角为原点、x轴向右偏移量为100、y轴向下偏移量为0的位置开始裁剪。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.gif -vf <span class="hljs-string">&quot;crop=180:180:100:0&quot;</span> output.gif<br></code></pre></td></tr></table></figure>
+
+<h4 id="滤镜的排列组合，实现各种各样复杂的功能"><a href="#滤镜的排列组合，实现各种各样复杂的功能" class="headerlink" title="滤镜的排列组合，实现各种各样复杂的功能"></a>滤镜的排列组合，实现各种各样复杂的功能</h4><p>FFmpeg滤镜共包含以下3个层级：<br>filter -&gt; filterchain -&gt; filtergraph 也即 滤镜 -&gt; 滤镜链 -&gt; 滤镜图<br>多个滤镜可以串联成一条滤镜链，多条滤镜链可以组合成一个滤镜图。</p>
+<ol>
+<li>首先，使用split滤镜将输入流分割为两个流[main]和[tmp] (你可以理解为copy了一份)；</li>
+<li>将其中一个流[tmp]先通过crop滤镜裁剪出左半部分；</li>
+<li>将步骤2的输出再经过hflip滤镜进行水平翻转，并输出为[flip]；</li>
+<li>把步骤3的输出[flip]叠加到[main]的右半部分。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.gif -vf <span class="hljs-string">&quot;split[main][tmp];[tmp]crop=iw/2:ih:0:0,hflip[flip];[main][flip]overlay=W/2:0&quot;</span> output.gif<br></code></pre></td></tr></table></figure>
+
+<h3 id="高质量gif优化"><a href="#高质量gif优化" class="headerlink" title="高质量gif优化"></a>高质量gif优化</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40212938/article/details/113060064">原文链接</a><br>整理资料<br>经过上面的分析，视频转gif，<br>考虑大小使用单一色板，这样对图片压缩好，但是相对使用色板难度较高，如果使用原图生成的色板，可能会失去部分色彩。并且要跑两次程序，一次生成色板，一次抖色。<br>考虑失真情况，每张图生成一个色板，这个是screentogif使用的方案。效果好，色彩优异。<br>综合考虑，使用rgb8的色板，进行抖色。这个方案会有噪点，但是体积控制较好，色彩比格式工厂优异</p>
+<p>命令行指令<br>考虑大小版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i “H:\样本.mp4” -s 320x180 -vf “[<span class="hljs-keyword">in</span>]scale=320x180,<span class="hljs-built_in">split</span>[split1][split2];[split1]palettegen[pal];[split2][pal]paletteuse” H:\FFOutput\test.gif<br></code></pre></td></tr></table></figure>
+<p>注意-s的尺寸务必与scale一致，否则会造成二次损失，另外如果帧数超过300建议先生成色板再抖色编码，速度很慢</p>
+<p>考虑色彩版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i “H:\样本.mp4” -s 320x180 -vf “[<span class="hljs-keyword">in</span>]scale=320x180,<span class="hljs-built_in">split</span>[split1][split2];[split1]palettegen=stats_mode=diff[pal];[split2][pal]paletteuse=new=1:diff_mode=rectangle” H:\FFOutput\test.gif<br></code></pre></td></tr></table></figure>
+<p>2021&#x2F;4&#x2F;7分析源码后调整因为矩阵扫描会用上一次调色板，调试板是不能变化的，修复bug问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i “H:\样本.mp4” -s 320x180 -vf “[<span class="hljs-keyword">in</span>]scale=320x180,<span class="hljs-built_in">split</span>[split1][split2];[split1]palettegen=stats_mode=single[pal];[split2][pal]paletteuse=new=1” H:\FFOutput\test.gif<br></code></pre></td></tr></table></figure>
+<p>注意事项 -s要与scale一致，可以超过300帧速度相对慢</p>
+<h4 id="添加文字"><a href="#添加文字" class="headerlink" title="添加文字"></a>添加文字</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.gif -vf <span class="hljs-string">&quot;drawtext=fontsize=30:text=&#x27;吔屎啦你&#x27;:fontcolor=white:x=25:y=100:fontfile=JingNanYuanMoTi/KNFONTYUANMO-2.otf&quot;</span> output.gif<br></code></pre></td></tr></table></figure>
+
+<h4 id="多宫格处理"><a href="#多宫格处理" class="headerlink" title="多宫格处理"></a>多宫格处理</h4><ol>
+<li>首先，通过-i 选项输入4张待处理的静态图素材；</li>
+<li>其次，通过-filter_complex 选项创建一个复杂滤镜；</li>
+<li>该复杂滤镜首先创建了一个360x360的空白画布，并指定输出流的标签为[base]；</li>
+<li>[0:v]表示取第一个输入流(第1张静态图)，然后使用overlay滤镜，将第1张静态图叠加到左上角原点的位置(也即左上角)，并指定叠加处理输出流的标签为[tmp1]；</li>
+<li>继续使用overlay滤镜，将第2张静态图叠加到以左上角原点，x轴向右偏移量为180、y轴向下偏移量为0的位置(也即右上角)，并指定叠加处理输出流的标签为[tmp2]；</li>
+<li>继续使用overlay滤镜，将第3张静态图叠加到以左上角原点，x轴向右偏移量为0、y轴向下偏移量为180的位置(也即左下角)，并指定叠加处理输出流的标签为[tmp3]；</li>
+<li>继续使用overlay滤镜，将第4张静态图叠加到以左上角原点，x轴向右偏移量为180、y轴向下偏移量为180的位置(也即右下角)；</li>
+<li>将全部处理完成的内容输出到一个名为“output.jpg”的文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i 1.jpg -i 2.jpg -i 3.jpg -i 4.jpg -filter_complex <span class="hljs-string">&quot;nullsrc=size=360x360[base];[base][0:v]overlay=0:0[tmp1];[tmp1][1:v]overlay=180:0[tmp2];[tmp2][2:v]overlay=0:180[tmp3];[tmp3][3:v]overlay=180:180&quot;</span> -frames:v 1 output.jpg<br></code></pre></td></tr></table></figure>
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2022/08/11/div-%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%847%E7%A7%8D%E6%96%B9%E6%B3%95.html">div垂直居中的7种方法</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/03/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">git常用命令</a>
+                <p>2023-03-05</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/31/js-%E6%A8%A1%E6%8B%9Fios%E4%B8%8B%E6%8B%89%E6%A1%86%E6%A0%B7%E5%BC%8F.html">js模拟ios下拉框样式</a>
+                <p>2023-05-31</p>
+            </li>
+        
+            <li>
+                <a href="/2020/05/14/python-%E6%8A%93%E5%8F%96%E5%B9%BB%E5%90%AC%E7%BD%91%E5%B0%8F%E8%AF%B4.html">python抓取www.ysts8.net幻听网小说多线程</a>
+                <p>2020-05-14</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98php.html">黑马程序员php</a>
+                <p>2023-06-21</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2022/08/11/div-%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%847%E7%A7%8D%E6%96%B9%E6%B3%95.html">div垂直居中的7种方法</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/03/05/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">git常用命令</a>
+                <p>2023-03-05</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/31/js-%E6%A8%A1%E6%8B%9Fios%E4%B8%8B%E6%8B%89%E6%A1%86%E6%A0%B7%E5%BC%8F.html">js模拟ios下拉框样式</a>
+                <p>2023-05-31</p>
+            </li>
+        
+            <li>
+                <a href="/2020/05/14/python-%E6%8A%93%E5%8F%96%E5%B9%BB%E5%90%AC%E7%BD%91%E5%B0%8F%E8%AF%B4.html">python抓取www.ysts8.net幻听网小说多线程</a>
+                <p>2020-05-14</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98php.html">黑马程序员php</a>
+                <p>2023-06-21</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(184)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(11)</a>
+        
+            <a href="/tag/hexo/">Hexo(5)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(12)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(6)</a>
+        
+            <a href="/tag/linux/">linux(24)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(9)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(2)</a>
+        
+            <a href="/tag/node/">node(59)</a>
+        
+            <a href="/tag/css/">css(19)</a>
+        
+            <a href="/tag/dns/">dns(7)</a>
+        
+            <a href="/tag/go/">go(59)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(2)</a>
+        
+            <a href="/tag/vps/">vps(9)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(11)</a>
+        
+            <a href="/tag/vue/">vue(40)</a>
+        
+            <a href="/tag/jquery/">jquery(7)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/typescript/">typescript(4)</a>
+        
+            <a href="/tag/websocket/">websocket(5)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(5)</a>
+        
+            <a href="/tag/php/">php(14)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(14)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(4)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(2)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/npm/">npm(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(9)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(20)</a>
+        
+            <a href="/tag/cmd/">cmd(1)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/ai/">ai(1)</a>
+        
+            <a href="/tag/ps/">PS(2)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(17)</a>
+        
+            <a href="/tag/react/">react(4)</a>
+        
+            <a href="/tag/svg/">svg(2)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(2)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(15)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/emoji/">emoji(4)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(2)</a>
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(6)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(2)</a>
+        
+            <a href="/tag/%E5%85%B5%E6%B3%95/">兵法(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(3)</a>
+        
+            <a href="/tag/%E6%91%A9%E6%89%98%E8%BD%A6/">摩托车(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E5%87%8F%E8%82%A5/">减肥(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E5%90%83/">小吃(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        // // 返回顶部
+        // document.getElementById('gotopage').addEventListener('click',function() {
+        //     document.querySelector('.main').scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // },false)
+        // document.querySelector('.main').addEventListener('scroll',function() {
+        //     if(document.querySelector('.main').scrollTop > 300) {
+        //         document.getElementById('gotopage').classList.add('show')
+        //     }else{
+        //         document.getElementById('gotopage').classList.remove('show')
+        //     }
+        // })
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 50
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>
