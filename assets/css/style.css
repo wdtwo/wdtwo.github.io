@@ -951,21 +951,7 @@ html,body {
     border-radius: 8px;
     background-color: var(--box-bg);
 }
-@media screen and (max-width: 550px) {
-    .archive-item-cover {
-        display: none;
-    }
-    .post-title {
-        font-size: 24px;
-    }
-    .post-content p {
-        font-size: 20px;
-    }
-    #live2dcanvas {
-        transform: scale(.5);
-        transform-origin: bottom;
-    }
-}
+
 .archive-item-cover img {
     width: 100%;
     height: 100%;
@@ -1607,4 +1593,20 @@ body.mobile .mobile-menu {
 }
 #live2d-widget {
     cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+    .archive-item-cover {
+        display: none;
+    }
+    .post-title {
+        font-size: 24px;
+    }
+    .post-content p {
+        font-size: 20px;
+    }
+    #live2dcanvas {
+        transform: scale(.5);
+        transform-origin: bottom;
+    }
 }
