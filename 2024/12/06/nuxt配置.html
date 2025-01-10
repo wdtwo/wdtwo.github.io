@@ -183,11 +183,9 @@
 <ol>
 <li>匿名（或内联）路由中间件，直接在使用它们的页面中定义。</li>
 <li>命名路由中间件，放置在目录中，在页面上使用时将通过异步导入自动加载。 （注意：路由中间件名称规范化为 <code>kebab-case</code>，因此变为。）<code>middleware/someMiddlewaresome-middleware</code></li>
-<li>全局路由中间件，放置在目录中（带有后缀），并将在每次路由更改时自动运行。<code>middleware/.global auth</code>保护页面的中间件示例<code>/dashboard</code>：<br><code>middleware/auth.js</code></li>
+<li>全局路由中间件，放置在目录中（带有后缀），并将在每次路由更改时自动运行。<code>middleware/.global auth</code>保护页面的中间件示例<code>/dashboard</code>：<br><code>middleware/auth.js</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isAuthenticated</span>(<span class="hljs-params"></span>): boolean &#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> &#125;<br><span class="hljs-comment">// ---cut---</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// isAuthenticated() is an example method verifying if a user is authenticated</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isAuthenticated</span>() === <span class="hljs-literal">false</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;/login&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<code>pages/dashboard.vue</code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">middleware</span>: <span class="hljs-string">&#x27;auth&#x27;</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to your dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isAuthenticated</span>(<span class="hljs-params"></span>): boolean &#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> &#125;<br><span class="hljs-comment">// ---cut---</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// isAuthenticated() is an example method verifying if a user is authenticated</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isAuthenticated</span>() === <span class="hljs-literal">false</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;/login&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-<p><code>pages/dashboard.vue</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">middleware</span>: <span class="hljs-string">&#x27;auth&#x27;</span></span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to your dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h3 id="路由验证"><a href="#路由验证" class="headerlink" title="路由验证"></a>路由验证</h3><p><code>pages/posts/[id].vue</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">definePageMeta</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">validate</span>: <span class="hljs-title function_">async</span> (route) =&gt; &#123;</span><br><span class="language-javascript">            <span class="hljs-comment">// Check if the id is made up of digits</span></span><br><span class="language-javascript">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span> === <span class="hljs-string">&#x27;string&#x27;</span> &amp;&amp; <span class="hljs-regexp">/^\d+$/</span>.<span class="hljs-title function_">test</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>)</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><p><code>pages/posts/_slug.vue</code></p>
@@ -213,9 +211,8 @@
 <li><code>&lt;Link&gt;</code></li>
 <li><code>&lt;Body&gt;</code></li>
 <li><code>&lt;Html&gt;</code></li>
-<li><code>&lt;Head&gt; </code><br>组件，以便您可以在组件的模板中直接与元数据进行交互。<br>因为这些组件名称与原生 HTML 元素匹配，所以必须在模板中大写。<br><code>&lt;Head&gt;</code> 和 <code>&lt;Body&gt;</code> 可以接受嵌套的元标签（出于美观考虑），但这不会影响嵌套元标签在最终 HTML 中的渲染位置。</li>
+<li><code>&lt;Head&gt; </code><br>组件，以便您可以在组件的模板中直接与元数据进行交互。<br>因为这些组件名称与原生 HTML 元素匹配，所以必须在模板中大写。<br><code>&lt;Head&gt;</code> 和 <code>&lt;Body&gt;</code> 可以接受嵌套的元标签（出于美观考虑），但这不会影响嵌套元标签在最终 HTML 中的渲染位置。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> title = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Hello World&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Title</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">Title</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">:content</span>=<span class="hljs-string">&quot;title&quot;</span> /&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">children</span>=<span class="hljs-string">&quot;body &#123; background-color: green; &#125;&quot;</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Style</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> title = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Hello World&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Title</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">Title</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">:content</span>=<span class="hljs-string">&quot;title&quot;</span> /&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">children</span>=<span class="hljs-string">&quot;body &#123; background-color: green; &#125;&quot;</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Style</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">const</span> description = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;My amazing site.&#x27;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-title function_">useHead</span>(&#123;</span><br><span class="language-javascript">  <span class="hljs-attr">meta</span>: [</span><br><span class="language-javascript">    &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;description&#x27;</span>, <span class="hljs-attr">content</span>: description &#125;</span><br><span class="language-javascript">  ],</span><br><span class="language-javascript">&#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h4 id="使用useMeta"><a href="#使用useMeta" class="headerlink" title="使用useMeta()"></a>使用useMeta()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">useSeoMeta</span>(&#123;<br>    description<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h4 id="组件渲染"><a href="#组件渲染" class="headerlink" title="组件渲染"></a>组件渲染</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">:content</span>=<span class="hljs-string">&quot;description&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -279,9 +276,8 @@
 <p><code>useFetch</code>和都<code>useAsyncData</code>共享一组通用的选项和模式。</p>
 <h3 id="例子-useFetch"><a href="#例子-useFetch" class="headerlink" title="例子 useFetch"></a>例子 useFetch</h3><ul>
 <li><code>useFetch</code> 将确保请求将在服务器中发生并正确转发到浏览器。</li>
-<li><code>$fetch</code> 没有此机制，并且当请求仅从浏览器发出时，它是更好的选择。</li>
+<li><code>$fetch</code> 没有此机制，并且当请求仅从浏览器发出时，它是更好的选择。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> &#123; data &#125; = <span class="hljs-keyword">await</span> <span class="hljs-title function_">useFetch</span>(<span class="hljs-string">&#x27;/api/data&#x27;</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleFormSubmit</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> $fetch(<span class="hljs-string">&#x27;/api/submit&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">body</span>: &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// My form data</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;data == null&quot;</span>&gt;</span><br>        No data<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;handleFormSubmit&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- form input tags --&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> &#123; data &#125; = <span class="hljs-keyword">await</span> <span class="hljs-title function_">useFetch</span>(<span class="hljs-string">&#x27;/api/data&#x27;</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleFormSubmit</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> $fetch(<span class="hljs-string">&#x27;/api/submit&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">body</span>: &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// My form data</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;data == null&quot;</span>&gt;</span><br>        No data<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;handleFormSubmit&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- form input tags --&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h3 id="例子-fetch"><a href="#例子-fetch" class="headerlink" title="例子 $fetch"></a>例子 $fetch</h3><p>Nuxt 包含 <code>ofetch</code> 库，并在整个应用程序中作为 <code>$fetch</code> 别名全局自动导入。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">addTodo</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> todo = <span class="hljs-keyword">await</span> $fetch(<span class="hljs-string">&#x27;/api/todos&#x27;</span>, &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">body</span>: &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// My todo data</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>请注意，仅使用 <code>$fetch</code> 不会提供 网络调用去重和导航阻止。<br>建议将 <code>$fetch</code> 用于客户端交互（基于事件）或与 <code>useAsyncData</code> 结合使用以获取初始组件数据。</p>
@@ -294,56 +290,56 @@
     <ul>
         
             <li>
-                <a href="/2023/10/19/golang%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BD%92%E5%B1%9E%E5%9C%B0%E4%BF%A1%E6%81%AF.html">golang查询ip地址的归属地信息</a>
-                <p>2023-10-19</p>
+                <a href="/2024/07/29/astro%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99sharp.html">astro打包报错sharp</a>
+                <p>2024-07-29</p>
             </li>
         
             <li>
-                <a href="/2024/03/25/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%AE%89%E8%A3%85casaos.html">玩客云安装casaos</a>
-                <p>2024-03-25</p>
+                <a href="/2023/06/21/js%E6%96%87%E5%AD%97%E8%B7%91%E9%A9%AC%E7%81%AF.html">js文字跑马灯</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/%E6%97%B6%E9%97%B4%E8%BD%AC%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0.html">时间转文字描述</a>
-                <p>2023-02-13</p>
+                <a href="/2022/08/11/ajax.html">ajax</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/05/16/Superspeed%E4%B8%80%E9%94%AE%E6%B5%8B%E8%AF%95linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%B0%E5%9B%BD%E5%86%85%E7%9A%84%E9%80%9F%E5%BA%A6.html">Superspeed一键测试linux服务器到国内的速度</a>
-                <p>2023-05-16</p>
+                <a href="/2023/07/06/electron%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.html">electron学习教程</a>
+                <p>2023-07-06</p>
             </li>
         
             <li>
-                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
-                <p>2024-03-01</p>
+                <a href="/2020/06/22/%E7%82%92%E8%82%A1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.html">炒股入门知识</a>
+                <p>2020-06-22</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/10/19/golang%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BD%92%E5%B1%9E%E5%9C%B0%E4%BF%A1%E6%81%AF.html">golang查询ip地址的归属地信息</a>
-                <p>2023-10-19</p>
+                <a href="/2024/07/29/astro%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99sharp.html">astro打包报错sharp</a>
+                <p>2024-07-29</p>
             </li>
         
             <li>
-                <a href="/2024/03/25/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%AE%89%E8%A3%85casaos.html">玩客云安装casaos</a>
-                <p>2024-03-25</p>
+                <a href="/2023/06/21/js%E6%96%87%E5%AD%97%E8%B7%91%E9%A9%AC%E7%81%AF.html">js文字跑马灯</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/%E6%97%B6%E9%97%B4%E8%BD%AC%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0.html">时间转文字描述</a>
-                <p>2023-02-13</p>
+                <a href="/2022/08/11/ajax.html">ajax</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/05/16/Superspeed%E4%B8%80%E9%94%AE%E6%B5%8B%E8%AF%95linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%B0%E5%9B%BD%E5%86%85%E7%9A%84%E9%80%9F%E5%BA%A6.html">Superspeed一键测试linux服务器到国内的速度</a>
-                <p>2023-05-16</p>
+                <a href="/2023/07/06/electron%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.html">electron学习教程</a>
+                <p>2023-07-06</p>
             </li>
         
             <li>
-                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
-                <p>2024-03-01</p>
+                <a href="/2020/06/22/%E7%82%92%E8%82%A1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.html">炒股入门知识</a>
+                <p>2020-06-22</p>
             </li>
         
     </ul> -->
@@ -353,13 +349,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -369,11 +365,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -409,9 +405,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -427,11 +423,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -501,9 +497,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -515,9 +511,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

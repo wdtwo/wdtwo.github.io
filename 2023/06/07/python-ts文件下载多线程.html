@@ -112,10 +112,9 @@
 <li>爬虫</li>
 <li>视频处理</li>
 <li>文件处理</li>
-<li></li>
+<li><span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment"># import subprocess</span><br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep<br><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Pool<br><br><span class="hljs-comment"># 创建文件夹</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">mkdir</span>(<span class="hljs-params">path</span>):<br>    isExists = os.path.exists(path)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isExists:<br>        os.makedirs(path) <span class="hljs-comment"># 不存在则创建</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;文件夹创建成功&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;文件夹已存在&#x27;</span>)<br><span class="hljs-comment"># 循环加零并转换数字为字符串</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">forNum</span>(<span class="hljs-params">n</span>):<br>    n = <span class="hljs-built_in">int</span>(n)<br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">10</span>:<br>        a = <span class="hljs-string">&#x27;00000&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">100</span>:<br>            a = <span class="hljs-string">&#x27;0000&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">1000</span>:<br>                a = <span class="hljs-string">&#x27;000&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">10000</span>:<br>                    a = <span class="hljs-string">&#x27;00&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">100000</span>:<br>                        a = <span class="hljs-string">&#x27;0&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>                    <span class="hljs-keyword">else</span>:<br>                        <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">1000000</span>:<br>                            a = <span class="hljs-built_in">str</span>(n)<br>    <span class="hljs-keyword">return</span> a<br><span class="hljs-comment"># 分离m3u8文件 修改下载文件为 | 提取下载文件名称</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">editM3u8</span>(<span class="hljs-params">url_m3u8</span>):<br>    f = <span class="hljs-built_in">open</span>(url_m3u8, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-comment"># 分解文件行数据</span><br>    text_list = f.readlines()<br>    <span class="hljs-comment"># 下载列表</span><br>    files = []<br>    <span class="hljs-comment"># 提取下载文件列表</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> text_list:<br>        <span class="hljs-keyword">if</span> i.find(<span class="hljs-string">&#x27;#EX&#x27;</span>) == -<span class="hljs-number">1</span>:<br>            files.append(<span class="hljs-built_in">str</span>.strip(i))<br>    f.close()<br>    <span class="hljs-keyword">return</span> files<br><span class="hljs-comment"># 调用线程下载文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download_init</span>(<span class="hljs-params">files, tit_link</span>):<br>    <span class="hljs-comment"># 循环列表下载</span><br>    <span class="hljs-comment"># 多线程</span><br>    <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>        pool = Pool(<span class="hljs-number">4</span>)<br>        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(files)):<br>            a = forNum(n)<br>            url = tit_link + <span class="hljs-built_in">str</span>(files[n])<br>            pool.apply_async(download, (url, a))<br>        pool.close()<br>        pool.join()<br>    <span class="hljs-comment"># 单线程</span><br>    <span class="hljs-comment"># for n in range(0, len(files)):</span><br>    <span class="hljs-comment">#     # 数字加零并转换成字符串</span><br>    <span class="hljs-comment">#     a = forNum(n)</span><br>    <span class="hljs-comment">#     url = tit_link + str(n) + &#x27;.ts&#x27;</span><br>    <span class="hljs-comment">#     # print(url, a)</span><br>    <span class="hljs-comment">#     # 下载文件</span><br>    <span class="hljs-comment">#     download(url, a)</span><br><span class="hljs-comment"># 下载文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">url, num</span>):<br>    <span class="hljs-comment"># print(num + &quot;开始下载&quot;)</span><br>    headers = &#123;<br>        <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36&quot;</span><br>    &#125;<br>    <span class="hljs-built_in">print</span>(url)<br>    response = requests.get(url, headers=headers)<br>    f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./ts/&quot;</span> + num + <span class="hljs-string">&#x27;.ts&#x27;</span>, <span class="hljs-string">&quot;wb&quot;</span>)<br>    f.write(response.content)<br>    f.close()<br>    <span class="hljs-built_in">print</span>(num + <span class="hljs-string">&quot;下载完成&quot;</span>)<br><span class="hljs-comment"># 删除文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">delFile</span>(<span class="hljs-params">file</span>):<br>    os.remove(file)<br><span class="hljs-comment"># m3u8地址</span><br>url_m3u8 = <span class="hljs-string">&#x27;./ts/boss.m3u8&#x27;</span> <span class="hljs-comment"># 文件路径</span><br>tit_link = <span class="hljs-string">&quot;https://baikevideo.cdn.bcebos.com/media/mda-XzWxczOmPXU0VoI4/&quot;</span> <span class="hljs-comment"># 下载前缀</span><br>mkdir(<span class="hljs-string">&#x27;./ts/&#x27;</span>)<br><span class="hljs-comment"># 提取m3u8文件</span><br>files = editM3u8(url_m3u8)<br><span class="hljs-comment"># 启动下载进程</span><br>download_init(files, tit_link)<br><span class="hljs-comment"># sleep(2)</span><br><span class="hljs-comment"># 合并视频命令</span><br><span class="hljs-comment"># subprocess.Popen(&#x27;cd ts &amp;&amp; copy/b *.ts video.mp4&#x27;, shell=True)</span><br><span class="hljs-comment"># 在windows系统下面，直接可以使用:copy/b *.ts video.mp4  把所有ts文件合成一个mp4格式文件</span><br><br></code></pre></td></tr></table></figure></li>
 </ul>
-<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment"># import subprocess</span><br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep<br><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Pool<br><br><span class="hljs-comment"># 创建文件夹</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">mkdir</span>(<span class="hljs-params">path</span>):<br>    isExists = os.path.exists(path)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isExists:<br>        os.makedirs(path) <span class="hljs-comment"># 不存在则创建</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;文件夹创建成功&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;文件夹已存在&#x27;</span>)<br><span class="hljs-comment"># 循环加零并转换数字为字符串</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">forNum</span>(<span class="hljs-params">n</span>):<br>    n = <span class="hljs-built_in">int</span>(n)<br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">10</span>:<br>        a = <span class="hljs-string">&#x27;00000&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">100</span>:<br>            a = <span class="hljs-string">&#x27;0000&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">1000</span>:<br>                a = <span class="hljs-string">&#x27;000&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">10000</span>:<br>                    a = <span class="hljs-string">&#x27;00&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">100000</span>:<br>                        a = <span class="hljs-string">&#x27;0&#x27;</span> + <span class="hljs-built_in">str</span>(n)<br>                    <span class="hljs-keyword">else</span>:<br>                        <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">1000000</span>:<br>                            a = <span class="hljs-built_in">str</span>(n)<br>    <span class="hljs-keyword">return</span> a<br><span class="hljs-comment"># 分离m3u8文件 修改下载文件为 | 提取下载文件名称</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">editM3u8</span>(<span class="hljs-params">url_m3u8</span>):<br>    f = <span class="hljs-built_in">open</span>(url_m3u8, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>    <span class="hljs-comment"># 分解文件行数据</span><br>    text_list = f.readlines()<br>    <span class="hljs-comment"># 下载列表</span><br>    files = []<br>    <span class="hljs-comment"># 提取下载文件列表</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> text_list:<br>        <span class="hljs-keyword">if</span> i.find(<span class="hljs-string">&#x27;#EX&#x27;</span>) == -<span class="hljs-number">1</span>:<br>            files.append(<span class="hljs-built_in">str</span>.strip(i))<br>    f.close()<br>    <span class="hljs-keyword">return</span> files<br><span class="hljs-comment"># 调用线程下载文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download_init</span>(<span class="hljs-params">files, tit_link</span>):<br>    <span class="hljs-comment"># 循环列表下载</span><br>    <span class="hljs-comment"># 多线程</span><br>    <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>        pool = Pool(<span class="hljs-number">4</span>)<br>        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(files)):<br>            a = forNum(n)<br>            url = tit_link + <span class="hljs-built_in">str</span>(files[n])<br>            pool.apply_async(download, (url, a))<br>        pool.close()<br>        pool.join()<br>    <span class="hljs-comment"># 单线程</span><br>    <span class="hljs-comment"># for n in range(0, len(files)):</span><br>    <span class="hljs-comment">#     # 数字加零并转换成字符串</span><br>    <span class="hljs-comment">#     a = forNum(n)</span><br>    <span class="hljs-comment">#     url = tit_link + str(n) + &#x27;.ts&#x27;</span><br>    <span class="hljs-comment">#     # print(url, a)</span><br>    <span class="hljs-comment">#     # 下载文件</span><br>    <span class="hljs-comment">#     download(url, a)</span><br><span class="hljs-comment"># 下载文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">url, num</span>):<br>    <span class="hljs-comment"># print(num + &quot;开始下载&quot;)</span><br>    headers = &#123;<br>        <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36&quot;</span><br>    &#125;<br>    <span class="hljs-built_in">print</span>(url)<br>    response = requests.get(url, headers=headers)<br>    f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./ts/&quot;</span> + num + <span class="hljs-string">&#x27;.ts&#x27;</span>, <span class="hljs-string">&quot;wb&quot;</span>)<br>    f.write(response.content)<br>    f.close()<br>    <span class="hljs-built_in">print</span>(num + <span class="hljs-string">&quot;下载完成&quot;</span>)<br><span class="hljs-comment"># 删除文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">delFile</span>(<span class="hljs-params">file</span>):<br>    os.remove(file)<br><span class="hljs-comment"># m3u8地址</span><br>url_m3u8 = <span class="hljs-string">&#x27;./ts/boss.m3u8&#x27;</span> <span class="hljs-comment"># 文件路径</span><br>tit_link = <span class="hljs-string">&quot;https://baikevideo.cdn.bcebos.com/media/mda-XzWxczOmPXU0VoI4/&quot;</span> <span class="hljs-comment"># 下载前缀</span><br>mkdir(<span class="hljs-string">&#x27;./ts/&#x27;</span>)<br><span class="hljs-comment"># 提取m3u8文件</span><br>files = editM3u8(url_m3u8)<br><span class="hljs-comment"># 启动下载进程</span><br>download_init(files, tit_link)<br><span class="hljs-comment"># sleep(2)</span><br><span class="hljs-comment"># 合并视频命令</span><br><span class="hljs-comment"># subprocess.Popen(&#x27;cd ts &amp;&amp; copy/b *.ts video.mp4&#x27;, shell=True)</span><br><span class="hljs-comment"># 在windows系统下面，直接可以使用:copy/b *.ts video.mp4  把所有ts文件合成一个mp4格式文件</span><br><br></code></pre></td></tr></table></figure>
 
         </div>
     </article>
@@ -125,56 +124,56 @@
     <ul>
         
             <li>
-                <a href="/2023/06/30/python-PaddleDetection%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">PaddleDetection官方安装教程</a>
-                <p>2023-06-30</p>
+                <a href="/2023/03/20/dns-ip%E5%AD%90%E6%8E%A9%E7%A0%81%E8%BD%AC%E6%8D%A2%E6%88%90ip.html">ip子掩码转换成ip</a>
+                <p>2023-03-20</p>
             </li>
         
             <li>
-                <a href="/2023/06/27/echarts%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">charts使用问题汇总</a>
-                <p>2023-06-27</p>
+                <a href="/2023/05/24/js%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BAcanvas%E6%92%AD%E6%94%BE%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E5%85%A8%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">js苹果手机canvas播放视频自动全屏解决方法</a>
+                <p>2023-05-24</p>
             </li>
         
             <li>
-                <a href="/2024/08/01/astro%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95.html">astro模板语法</a>
-                <p>2024-08-01</p>
+                <a href="/2023/05/15/node-request%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%B9%B1%E7%A0%81.html">request请求数据乱码</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2024/03/11/vue%E8%AE%BE%E7%BD%AE%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86.html">vue设置开发请求代理</a>
-                <p>2024-03-11</p>
+                <a href="/2022/08/11/css3%E5%8A%A8%E7%94%BB.html">css3动画</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7261-270.html">超级散户261-270</a>
-                <p>2020-06-01</p>
+                <a href="/2023/04/14/golang-io%E6%93%8D%E4%BD%9C.html">go-io操作</a>
+                <p>2023-04-14</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/06/30/python-PaddleDetection%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">PaddleDetection官方安装教程</a>
-                <p>2023-06-30</p>
+                <a href="/2023/03/20/dns-ip%E5%AD%90%E6%8E%A9%E7%A0%81%E8%BD%AC%E6%8D%A2%E6%88%90ip.html">ip子掩码转换成ip</a>
+                <p>2023-03-20</p>
             </li>
         
             <li>
-                <a href="/2023/06/27/echarts%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">charts使用问题汇总</a>
-                <p>2023-06-27</p>
+                <a href="/2023/05/24/js%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BAcanvas%E6%92%AD%E6%94%BE%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E5%85%A8%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">js苹果手机canvas播放视频自动全屏解决方法</a>
+                <p>2023-05-24</p>
             </li>
         
             <li>
-                <a href="/2024/08/01/astro%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95.html">astro模板语法</a>
-                <p>2024-08-01</p>
+                <a href="/2023/05/15/node-request%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%B9%B1%E7%A0%81.html">request请求数据乱码</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2024/03/11/vue%E8%AE%BE%E7%BD%AE%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86.html">vue设置开发请求代理</a>
-                <p>2024-03-11</p>
+                <a href="/2022/08/11/css3%E5%8A%A8%E7%94%BB.html">css3动画</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7261-270.html">超级散户261-270</a>
-                <p>2020-06-01</p>
+                <a href="/2023/04/14/golang-io%E6%93%8D%E4%BD%9C.html">go-io操作</a>
+                <p>2023-04-14</p>
             </li>
         
     </ul> -->
@@ -184,13 +183,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -200,11 +199,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -240,9 +239,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -258,11 +257,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -332,9 +331,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -346,9 +345,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

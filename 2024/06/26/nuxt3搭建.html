@@ -145,13 +145,11 @@
 </li>
 <li>配置代码组织和类型安全：<ul>
 <li>使用<code>TypeScript（.ts扩展名）</code>编写<code>nuxt.config.ts</code>可以提供类型安全和更好的代码组织。</li>
-<li>这有助于减少错误并提高代码的可读性和可维护性。<br><code>nuxt.config.ts</code>是<code>Nuxt.js</code>应用中不可或缺的配置文件，它允许你全局管理应用的配置、环境变量、构建选项等，并提供了丰富的配置选项和模块化设计，使得你可以根据自己的需求灵活配置和管理<code>Nuxt.js</code>应用。</li>
+<li>这有助于减少错误并提高代码的可读性和可维护性。<br><code>nuxt.config.ts</code>是<code>Nuxt.js</code>应用中不可或缺的配置文件，它允许你全局管理应用的配置、环境变量、构建选项等，并提供了丰富的配置选项和模块化设计，使得你可以根据自己的需求灵活配置和管理<code>Nuxt.js</code>应用。<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">runtimeConfig</span>: &#123;<br>    <span class="hljs-comment">// 仅在服务器端可用的私钥</span><br>    <span class="hljs-attr">apiSecret</span>: <span class="hljs-string">&#x27;123&#x27;</span>,<br>    <span class="hljs-comment">// public中的密钥也在客户端公开</span><br>    <span class="hljs-attr">public</span>: &#123;<br>      <span class="hljs-attr">apiBase</span>: <span class="hljs-string">&#x27;/api&#x27;</span><br>    &#125;<br>  &#125;<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+在vue文件中通过runtimeConfig获取配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> runtimeConfig = <span class="hljs-title function_">useRuntimeConfig</span>()<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(runtimeConfig)<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtConfig</span>(&#123;<br>  <span class="hljs-attr">runtimeConfig</span>: &#123;<br>    <span class="hljs-comment">// 仅在服务器端可用的私钥</span><br>    <span class="hljs-attr">apiSecret</span>: <span class="hljs-string">&#x27;123&#x27;</span>,<br>    <span class="hljs-comment">// public中的密钥也在客户端公开</span><br>    <span class="hljs-attr">public</span>: &#123;<br>      <span class="hljs-attr">apiBase</span>: <span class="hljs-string">&#x27;/api&#x27;</span><br>    &#125;<br>  &#125;<br>&#125;)<br><br></code></pre></td></tr></table></figure>
-<p>在vue文件中通过runtimeConfig获取配置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> runtimeConfig = <span class="hljs-title function_">useRuntimeConfig</span>()<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(runtimeConfig)<br></code></pre></td></tr></table></figure>
 <h2 id="app-config-ts"><a href="#app-config-ts" class="headerlink" title="app.config.ts"></a>app.config.ts</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineAppConfig</span>(&#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Hello Nuxt6666&#x27;</span>,<br>    <span class="hljs-attr">theme</span>: &#123;<br>        <span class="hljs-attr">dark</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">colors</span>: &#123;<br>            <span class="hljs-attr">primary</span>: <span class="hljs-string">&#x27;#ff0000&#x27;</span><br>        &#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 <p>在vue文件中通过runtimeConfig获取配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> appConfig = <span class="hljs-title function_">useAppConfig</span>()<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(appConfig)<br></code></pre></td></tr></table></figure>
@@ -163,56 +161,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/10/html%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E6%8F%90%E7%A4%BA%E6%A1%86.html">html提交成功提示框</a>
+                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E7%AE%80%E4%BD%93%E6%B1%89%E5%AD%973500.html">常用简体汉字</a>
+                <p>2023-05-15</p>
+            </li>
+        
+            <li>
+                <a href="/2023/01/28/node-fluent-ffmpeg.html">node-fluent-ffmpeg</a>
+                <p>2023-01-28</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/jquery-toast%E5%BC%B9%E7%AA%97%E6%8F%90%E7%A4%BA.html">toast弹窗提示</a>
                 <p>2023-05-10</p>
             </li>
         
             <li>
-                <a href="/2023/09/08/golang%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86gvm%E5%AE%89%E8%A3%85.html">golang版本管理gvm安装</a>
-                <p>2023-09-08</p>
+                <a href="/2024/02/29/bat%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%90%8D%E7%A7%B0.html">bat获取当前所在文件夹的名称</a>
+                <p>2024-02-29</p>
             </li>
         
             <li>
-                <a href="/2023/02/11/%E4%B8%AD%E5%8C%BB-%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">经典配方</a>
-                <p>2023-02-11</p>
-            </li>
-        
-            <li>
-                <a href="/2024/02/28/ffmpeg%E5%A4%9A%E4%B8%AAmp4%E6%96%87%E4%BB%B6%E5%90%88%E5%B9%B6%E6%88%90%E4%B8%80%E4%B8%AAmp4%E6%96%87%E4%BB%B6.html">ffmpeg多个mp4文件合并成一个mp4文件</a>
-                <p>2024-02-28</p>
-            </li>
-        
-            <li>
-                <a href="/2023/02/13/websocket%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE.html">websocket页面配置</a>
-                <p>2023-02-13</p>
+                <a href="/2023/06/21/vue-api-js%E5%A4%96%E9%83%A8%E8%B0%83%E7%94%A8ajax%E8%AF%B7%E6%B1%82.html">vue-api.js外部调用ajax请求</a>
+                <p>2023-06-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/10/html%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E6%8F%90%E7%A4%BA%E6%A1%86.html">html提交成功提示框</a>
+                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E7%AE%80%E4%BD%93%E6%B1%89%E5%AD%973500.html">常用简体汉字</a>
+                <p>2023-05-15</p>
+            </li>
+        
+            <li>
+                <a href="/2023/01/28/node-fluent-ffmpeg.html">node-fluent-ffmpeg</a>
+                <p>2023-01-28</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/jquery-toast%E5%BC%B9%E7%AA%97%E6%8F%90%E7%A4%BA.html">toast弹窗提示</a>
                 <p>2023-05-10</p>
             </li>
         
             <li>
-                <a href="/2023/09/08/golang%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86gvm%E5%AE%89%E8%A3%85.html">golang版本管理gvm安装</a>
-                <p>2023-09-08</p>
+                <a href="/2024/02/29/bat%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%90%8D%E7%A7%B0.html">bat获取当前所在文件夹的名称</a>
+                <p>2024-02-29</p>
             </li>
         
             <li>
-                <a href="/2023/02/11/%E4%B8%AD%E5%8C%BB-%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">经典配方</a>
-                <p>2023-02-11</p>
-            </li>
-        
-            <li>
-                <a href="/2024/02/28/ffmpeg%E5%A4%9A%E4%B8%AAmp4%E6%96%87%E4%BB%B6%E5%90%88%E5%B9%B6%E6%88%90%E4%B8%80%E4%B8%AAmp4%E6%96%87%E4%BB%B6.html">ffmpeg多个mp4文件合并成一个mp4文件</a>
-                <p>2024-02-28</p>
-            </li>
-        
-            <li>
-                <a href="/2023/02/13/websocket%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE.html">websocket页面配置</a>
-                <p>2023-02-13</p>
+                <a href="/2023/06/21/vue-api-js%E5%A4%96%E9%83%A8%E8%B0%83%E7%94%A8ajax%E8%AF%B7%E6%B1%82.html">vue-api.js外部调用ajax请求</a>
+                <p>2023-06-21</p>
             </li>
         
     </ul> -->
@@ -222,13 +220,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -238,11 +236,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -278,9 +276,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -296,11 +294,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -370,9 +368,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -384,9 +382,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

@@ -110,9 +110,8 @@
         <div class="post-content">
             <ul>
 <li>开启ssh</li>
-<li>服务器连接其他linux服务器</li>
+<li>服务器连接其他linux服务器<span id="more"></span></li>
 </ul>
-<span id="more"></span>
 <h3 id="google-cloud-开启ssh"><a href="#google-cloud-开启ssh" class="headerlink" title="google cloud 开启ssh"></a>google cloud 开启ssh</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//切换到 root</span><br>sudo -i<br><span class="hljs-comment">//编辑ssh配置文件</span><br>vi /etc/ssh/sshd_config<br><span class="hljs-comment">//修改以下内容即可</span><br><span class="hljs-title class_">PermitRootLogin</span> yes<br><span class="hljs-title class_">PasswordAuthentication</span> yes<br><span class="hljs-comment">//重启ssh</span><br>service sshd restart<br></code></pre></td></tr></table></figure>
 <p><a target="_blank" rel="noopener" href="https://www.jingxialai.com/1618.html">原文</a></p>
 <p><code>Xshell创建密钥</code></p>
@@ -132,56 +131,56 @@
     <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7311-320.html">超级散户311-320</a>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7231-240.html">超级散户231-240</a>
                 <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/04/25/golang%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB.html">golang简单爬虫</a>
-                <p>2023-04-25</p>
+                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
+                <p>2023-09-16</p>
             </li>
         
             <li>
-                <a href="/2023/01/22/dns-gcore%E9%85%8D%E7%BD%AE.html">cloudflare gcore配置</a>
-                <p>2023-01-22</p>
+                <a href="/2024/05/14/golang-%E8%A7%86%E9%A2%91%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9%E8%84%9A%E6%9C%AC.html">golang-视频无损压缩脚本</a>
+                <p>2024-05-14</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2-token%E9%85%8D%E7%BD%AE.html">koa2-token配置</a>
-                <p>2023-06-21</p>
+                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/04/09/StableDiffusion-%E5%92%92%E8%AF%AD.html">StableDiffusion-咒语</a>
-                <p>2023-04-09</p>
+                <a href="/2023/02/13/%E6%97%B6%E9%97%B4%E8%BD%AC%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0.html">时间转文字描述</a>
+                <p>2023-02-13</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7311-320.html">超级散户311-320</a>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7231-240.html">超级散户231-240</a>
                 <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/04/25/golang%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB.html">golang简单爬虫</a>
-                <p>2023-04-25</p>
+                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
+                <p>2023-09-16</p>
             </li>
         
             <li>
-                <a href="/2023/01/22/dns-gcore%E9%85%8D%E7%BD%AE.html">cloudflare gcore配置</a>
-                <p>2023-01-22</p>
+                <a href="/2024/05/14/golang-%E8%A7%86%E9%A2%91%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9%E8%84%9A%E6%9C%AC.html">golang-视频无损压缩脚本</a>
+                <p>2024-05-14</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2-token%E9%85%8D%E7%BD%AE.html">koa2-token配置</a>
-                <p>2023-06-21</p>
+                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/04/09/StableDiffusion-%E5%92%92%E8%AF%AD.html">StableDiffusion-咒语</a>
-                <p>2023-04-09</p>
+                <a href="/2023/02/13/%E6%97%B6%E9%97%B4%E8%BD%AC%E6%96%87%E5%AD%97%E6%8F%8F%E8%BF%B0.html">时间转文字描述</a>
+                <p>2023-02-13</p>
             </li>
         
     </ul> -->
@@ -191,13 +190,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -207,11 +206,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -247,9 +246,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -265,11 +264,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -339,9 +338,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -353,9 +352,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

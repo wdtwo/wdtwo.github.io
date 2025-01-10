@@ -129,9 +129,8 @@
 <ul>
 <li>要检查的文件路径，</li>
 <li>一个常量表示要执行的操作（在这种情况下，我们想要检查文件是否存在，所以使用 fs.constants.F_OK），</li>
-<li>以及一个回调函数。<br>如果文件存在，回调函数不会接收任何参数。<br>如果文件不存在，回调函数的参数将包含一个错误对象。<br>需要注意的是，fs.access 方法是异步的，这意味着它会立即返回，而不会等待操作完成。因此，在上面的例子中，当回调函数被调用时，文件可能还没有完全被读取。如果您需要确保文件已经被读取，请在回调函数中执行其他操作，或者将该方法包装在 Promise 中并使用 async&#x2F;await。</li>
+<li>以及一个回调函数。<br>如果文件存在，回调函数不会接收任何参数。<br>如果文件不存在，回调函数的参数将包含一个错误对象。<br>需要注意的是，fs.access 方法是异步的，这意味着它会立即返回，而不会等待操作完成。因此，在上面的例子中，当回调函数被调用时，文件可能还没有完全被读取。如果您需要确保文件已经被读取，请在回调函数中执行其他操作，或者将该方法包装在 Promise 中并使用 async&#x2F;await。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 检查文件是否存在</span><br><span class="hljs-keyword">let</span> path = <span class="hljs-string">&#x27;文件路径&#x27;</span><br>fs.<span class="hljs-title function_">access</span>(path, fs.<span class="hljs-property">constants</span>.<span class="hljs-property">F_OK</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;文件不存在&#x27;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;文件已存在&#x27;</span>);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 检查文件是否存在</span><br><span class="hljs-keyword">let</span> path = <span class="hljs-string">&#x27;文件路径&#x27;</span><br>fs.<span class="hljs-title function_">access</span>(path, fs.<span class="hljs-property">constants</span>.<span class="hljs-property">F_OK</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;文件不存在&#x27;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;文件已存在&#x27;</span>);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>)<br><span class="hljs-keyword">const</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;cheerio&#x27;</span>)<br><span class="hljs-keyword">const</span> encoding = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;encoding&#x27;</span>)<br><br><span class="hljs-comment">// 配置代理</span><br>request.<span class="hljs-title function_">defaults</span>(&#123;<br>    <span class="hljs-attr">proxy</span>: <span class="hljs-string">&quot;http://127.0.0.1:8888&quot;</span>,<br>    <span class="hljs-attr">rejectunauthorized</span>: <span class="hljs-literal">false</span>,<br>&#125;)<br><br><span class="hljs-keyword">var</span> pageIndex = <span class="hljs-number">1</span>;<span class="hljs-comment">//当前页码</span><br><span class="hljs-keyword">var</span> pageLength = <span class="hljs-number">0</span><span class="hljs-comment">//当前页面总个数</span><br><span class="hljs-keyword">const</span> maxPage = <span class="hljs-number">148</span><span class="hljs-comment">//列表页最大页码</span><br><span class="hljs-keyword">let</span> dataIndexArr = []<span class="hljs-comment">//数组索引数组</span><br><br><span class="hljs-comment">//需要保存页面的数据请求</span><br><span class="hljs-keyword">let</span> <span class="hljs-title function_">download</span> = data =&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>    request.<span class="hljs-title function_">get</span>(data.<span class="hljs-property">link</span>,<span class="hljs-function">(<span class="hljs-params">err,res,body</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span>(res.<span class="hljs-property">statusCode</span> == <span class="hljs-number">200</span>)&#123;<br>            <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>                <span class="hljs-keyword">let</span> $ = cheerio.<span class="hljs-title function_">load</span>(res.<span class="hljs-property">body</span>)<br>                <span class="hljs-keyword">let</span> tit = $(<span class="hljs-string">&#x27;#subject_tpc&#x27;</span>).<span class="hljs-title function_">html</span>()<br>                <span class="hljs-keyword">let</span> inner = $(<span class="hljs-string">&#x27;#read_tpc&#x27;</span>).<span class="hljs-title function_">html</span>().<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;br&gt;&lt;br&gt;/g</span>,<span class="hljs-string">&#x27;\n&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;br&gt;/g</span>,<span class="hljs-string">&#x27;&#x27;</span>)<br>                fs.<span class="hljs-title function_">writeFile</span>(__dirname + <span class="hljs-string">`/txt/<span class="hljs-subst">$&#123;tit&#125;</span>.txt`</span>,inner,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;当前完成索引:&#x27;</span>,data.<span class="hljs-property">index</span>,<span class="hljs-string">&#x27;总个数:&#x27;</span>,pageLength,<span class="hljs-string">&#x27;当前页数:&#x27;</span>,pageIndex,<span class="hljs-string">&#x27;总页数:&#x27;</span>,maxPage);<br>                    <span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;success&#x27;</span>)<br>                &#125;)<br>            &#125;,data.<span class="hljs-property">index</span>*<span class="hljs-number">500</span>)<br>        &#125;<br>    &#125;)<br>&#125;)<br><br><span class="hljs-comment">// 1. 获取列表页面数据</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAllPage</span>(<span class="hljs-params">url</span>)&#123;<br>    request.<span class="hljs-title function_">get</span>(url,<span class="hljs-function">(<span class="hljs-params">err,res,body</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span>(res.<span class="hljs-property">statusCode</span> == <span class="hljs-number">200</span>)&#123;<br>            <span class="hljs-keyword">let</span> $ = cheerio.<span class="hljs-title function_">load</span>(res.<span class="hljs-property">body</span>)<br>            <span class="hljs-keyword">let</span> list = $(<span class="hljs-string">&#x27;#ajaxtable&#x27;</span>).<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;h3&#x27;</span>)<br>            <span class="hljs-comment">//前七个是广告</span><br>            <span class="hljs-keyword">let</span> dataList = []<br>            <span class="hljs-keyword">if</span>(pageIndex == <span class="hljs-number">1</span>)&#123;<br>                pageLength = list.<span class="hljs-property">length</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">7</span>;i &lt; pageLength;i++)&#123;<br>                    <span class="hljs-keyword">let</span> a = i<br>                    dataList.<span class="hljs-title function_">push</span>(<span class="hljs-title function_">download</span>(&#123;<br>                        <span class="hljs-attr">name</span>:list.<span class="hljs-title function_">eq</span>(a).<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;a&#x27;</span>).<span class="hljs-title function_">html</span>(),<br>                        <span class="hljs-attr">link</span>:list.<span class="hljs-title function_">eq</span>(a).<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;a&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;href&#x27;</span>),<br>                        <span class="hljs-attr">index</span>:i<br>                    &#125;))<br>                &#125;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                pageLength = list.<span class="hljs-property">length</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; pageLength;i++)&#123;<br>                    <span class="hljs-keyword">let</span> a = i<br>                    dataList.<span class="hljs-title function_">push</span>(<span class="hljs-title function_">download</span>(&#123;<br>                        <span class="hljs-attr">name</span>:list.<span class="hljs-title function_">eq</span>(a).<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;a&#x27;</span>).<span class="hljs-title function_">html</span>(),<br>                        <span class="hljs-attr">link</span>:list.<span class="hljs-title function_">eq</span>(a).<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;a&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;href&#x27;</span>),<br>                        <span class="hljs-attr">index</span>:i<br>                    &#125;))<br>                &#125;<br>            &#125;<br>           <br>            <span class="hljs-comment">//console.log(dataList);</span><br>            <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(dataList).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;PromiseAll success pageIndex&#x27;</span>,pageIndex);<br>                <span class="hljs-keyword">if</span>(pageIndex &lt;= maxPage)&#123;<br>                    pageIndex++<br>                    <span class="hljs-title function_">getAllPage</span>(url)<br>                &#125;<br>            &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);<br>            &#125;)<br>        &#125;<br>    &#125;)<br>&#125;<br><br><span class="hljs-title function_">getAllPage</span>(url)<br></code></pre></td></tr></table></figure>
 
 
@@ -149,56 +148,56 @@
     <ul>
         
             <li>
-                <a href="/2023/10/16/%E5%85%B6%E4%BB%96-%E9%9A%8F%E6%9C%BA%E5%A3%81%E7%BA%B8.html">随机壁纸</a>
-                <p>2023-10-16</p>
+                <a href="/2024/08/01/astro%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95.html">astro模板语法</a>
+                <p>2024-08-01</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B711-20.html">超级散户11-20</a>
+                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
+                <p>2023-09-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
+            </li>
+        
+            <li>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B791-100.html">超级散户91-100</a>
                 <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/09/08/golang-%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">golang-变量和基本数据类型</a>
-                <p>2023-09-08</p>
-            </li>
-        
-            <li>
-                <a href="/2023/12/21/dns-%E4%BD%BF%E7%94%A8CloudflareTunnel%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">dns-使用CloudflareTunnel实现内网穿透</a>
-                <p>2023-12-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/19/js%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6.html">js鼠标滚轮事件</a>
-                <p>2023-05-19</p>
+                <a href="/2023/08/01/%E8%AE%BE%E8%AE%A1-photoshop%E4%B8%8Ecreativecloud%E6%A1%8C%E9%9D%A2%E7%89%88%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5.html">photoshop与creativecloud桌面版连接失败</a>
+                <p>2023-08-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/10/16/%E5%85%B6%E4%BB%96-%E9%9A%8F%E6%9C%BA%E5%A3%81%E7%BA%B8.html">随机壁纸</a>
-                <p>2023-10-16</p>
+                <a href="/2024/08/01/astro%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95.html">astro模板语法</a>
+                <p>2024-08-01</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B711-20.html">超级散户11-20</a>
+                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
+                <p>2023-09-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
+            </li>
+        
+            <li>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B791-100.html">超级散户91-100</a>
                 <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/09/08/golang-%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">golang-变量和基本数据类型</a>
-                <p>2023-09-08</p>
-            </li>
-        
-            <li>
-                <a href="/2023/12/21/dns-%E4%BD%BF%E7%94%A8CloudflareTunnel%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">dns-使用CloudflareTunnel实现内网穿透</a>
-                <p>2023-12-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/19/js%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6.html">js鼠标滚轮事件</a>
-                <p>2023-05-19</p>
+                <a href="/2023/08/01/%E8%AE%BE%E8%AE%A1-photoshop%E4%B8%8Ecreativecloud%E6%A1%8C%E9%9D%A2%E7%89%88%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5.html">photoshop与creativecloud桌面版连接失败</a>
+                <p>2023-08-01</p>
             </li>
         
     </ul> -->
@@ -208,13 +207,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -224,11 +223,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -264,9 +263,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -282,11 +281,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -356,9 +355,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -370,9 +369,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

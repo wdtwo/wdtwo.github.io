@@ -112,28 +112,22 @@
 <li>echo</li>
 <li>print</li>
 <li>print_r</li>
-<li>var_dump();</li>
+<li>var_dump();<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">echo <span class="hljs-title function_">print</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);  <span class="hljs-comment">//hello world 1(返回值)</span><br>print <span class="hljs-string">&quot;hello world!&quot;</span>;        <span class="hljs-comment">//hello world</span><br>$a = <span class="hljs-number">1</span>;<br><span class="hljs-title function_">print_r</span>($a);                 <span class="hljs-comment">//1</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">echo <span class="hljs-title function_">print</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);  <span class="hljs-comment">//hello world 1(返回值)</span><br>print <span class="hljs-string">&quot;hello world!&quot;</span>;        <span class="hljs-comment">//hello world</span><br>$a = <span class="hljs-number">1</span>;<br><span class="hljs-title function_">print_r</span>($a);                 <span class="hljs-comment">//1</span><br></code></pre></td></tr></table></figure>
-
 <h4 id="时间输出"><a href="#时间输出" class="headerlink" title="时间输出"></a>时间输出</h4><ul>
 <li>date();&#x2F;&#x2F;格林威治时间</li>
 <li>time();&#x2F;&#x2F;当前时间   </li>
 <li>microtime();&#x2F;&#x2F;微秒</li>
-<li>strtotime();&#x2F;&#x2F;字符串转换成时间戳</li>
+<li>strtotime();&#x2F;&#x2F;字符串转换成时间戳<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">echo <span class="hljs-title function_">date</span>(<span class="hljs-string">&#x27;Y 年 m 月 d 日 H:i:s&#x27;</span>,<span class="hljs-number">12345678</span>);    <span class="hljs-comment">//1970 年 05月 24 日 05:21:18</span><br>echo <span class="hljs-title function_">time</span>();                                  <span class="hljs-comment">//时间戳</span><br>echo <span class="hljs-title function_">microtime</span>();                             <span class="hljs-comment">//微秒,时间戳</span><br>echo <span class="hljs-title function_">strtotime</span>(<span class="hljs-string">&#x27;tomorrow 10 hours&#x27;</span>);          <span class="hljs-comment">//时间戳</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">echo <span class="hljs-title function_">date</span>(<span class="hljs-string">&#x27;Y 年 m 月 d 日 H:i:s&#x27;</span>,<span class="hljs-number">12345678</span>);    <span class="hljs-comment">//1970 年 05月 24 日 05:21:18</span><br>echo <span class="hljs-title function_">time</span>();                                  <span class="hljs-comment">//时间戳</span><br>echo <span class="hljs-title function_">microtime</span>();                             <span class="hljs-comment">//微秒,时间戳</span><br>echo <span class="hljs-title function_">strtotime</span>(<span class="hljs-string">&#x27;tomorrow 10 hours&#x27;</span>);          <span class="hljs-comment">//时间戳</span><br></code></pre></td></tr></table></figure>
-
 <h4 id="数学方法"><a href="#数学方法" class="headerlink" title="数学方法"></a>数学方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">max</span>();<span class="hljs-comment">//最大值</span><br><span class="hljs-title function_">min</span>();<span class="hljs-comment">//最小值</span><br><span class="hljs-title function_">rand</span>();<span class="hljs-comment">//区间取随机数</span><br><span class="hljs-title function_">mt_rand</span>();<span class="hljs-comment">//效率高的取随机数</span><br><span class="hljs-title function_">round</span>();<span class="hljs-comment">//四舍五入</span><br><span class="hljs-title function_">ceil</span>();<span class="hljs-comment">//向上取整</span><br><span class="hljs-title function_">floor</span>();<span class="hljs-comment">//向下取整</span><br><span class="hljs-title function_">abs</span>();<span class="hljs-comment">//绝对值</span><br><span class="hljs-title function_">pow</span>();<span class="hljs-comment">//指数</span><br><span class="hljs-title function_">sqrt</span>();<span class="hljs-comment">//平方根</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="有关函数的方法"><a href="#有关函数的方法" class="headerlink" title="有关函数的方法"></a>有关函数的方法</h4><ol>
 <li>函数是否存在 function_exists();</li>
 <li>获取指定的参数 func_get_arg();</li>
 <li>获取全部的参数 func_get_args();</li>
-<li>获取参数的长度 func_num_args();</li>
+<li>获取参数的长度 func_num_args();<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">demo</span>(<span class="hljs-params">$a,$b</span>)&#123;<br>    <span class="hljs-title function_">var_dump</span>(<span class="hljs-title function_">func_get_arg</span>());<br>    <span class="hljs-title function_">var_dump</span>(<span class="hljs-title function_">func_get_args</span>());<br>    <span class="hljs-title function_">var_dump</span>(<span class="hljs-title function_">func_num_args</span>());<br>&#125;<br><span class="hljs-title function_">function_exists</span>() &amp;&amp; <span class="hljs-title function_">demo</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);<br></code></pre></td></tr></table></figure></li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">demo</span>(<span class="hljs-params">$a,$b</span>)&#123;<br>    <span class="hljs-title function_">var_dump</span>(<span class="hljs-title function_">func_get_arg</span>());<br>    <span class="hljs-title function_">var_dump</span>(<span class="hljs-title function_">func_get_args</span>());<br>    <span class="hljs-title function_">var_dump</span>(<span class="hljs-title function_">func_num_args</span>());<br>&#125;<br><span class="hljs-title function_">function_exists</span>() &amp;&amp; <span class="hljs-title function_">demo</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);<br></code></pre></td></tr></table></figure>
-
 <h2 id="include-require"><a href="#include-require" class="headerlink" title="include&amp;require"></a>include&amp;require</h2><ul>
 <li>include      &#x2F;&#x2F;引用多次执行多次  warning</li>
 <li>include_once &#x2F;&#x2F;引用多次执行一次</li>
@@ -189,10 +183,8 @@
 </ul>
 <p><code>错误调用：</code></p>
 <ul>
-<li>trigger_error();&#x2F;&#x2F;手动报错</li>
+<li>trigger_error();&#x2F;&#x2F;手动报错<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">header</span>(<span class="hljs-string">&quot;Content-type:text/html;charset=utf8&quot;</span>);<br>$a = <span class="hljs-number">0</span>;<br>$b = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">if</span>($a == <span class="hljs-number">0</span>)&#123;<br>  <span class="hljs-title function_">trigger_error</span>(<span class="hljs-string">&quot;被除数不能为0！&quot;</span>); <span class="hljs-comment">//可以继续执行</span><br>  <span class="hljs-title function_">trigger_error</span>(<span class="hljs-string">&quot;被除数不能为0！&quot;</span>,<span class="hljs-variable constant_">E_USER_ERROR</span>);<span class="hljs-comment">//不能继续执行</span><br>&#125;<br>echo <span class="hljs-string">&quot;hello world!&quot;</span>;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">header</span>(<span class="hljs-string">&quot;Content-type:text/html;charset=utf8&quot;</span>);<br>$a = <span class="hljs-number">0</span>;<br>$b = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">if</span>($a == <span class="hljs-number">0</span>)&#123;<br>  <span class="hljs-title function_">trigger_error</span>(<span class="hljs-string">&quot;被除数不能为0！&quot;</span>); <span class="hljs-comment">//可以继续执行</span><br>  <span class="hljs-title function_">trigger_error</span>(<span class="hljs-string">&quot;被除数不能为0！&quot;</span>,<span class="hljs-variable constant_">E_USER_ERROR</span>);<span class="hljs-comment">//不能继续执行</span><br>&#125;<br>echo <span class="hljs-string">&quot;hello world!&quot;</span>;<br></code></pre></td></tr></table></figure>
-
 <h2 id="开启日志log"><a href="#开启日志log" class="headerlink" title="开启日志log"></a>开启日志log</h2><p><code>配置文件php.ini</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//1. 开启功能</span><br>log_error = <span class="hljs-title class_">On</span><br><span class="hljs-comment">//2. 指定路径</span><br>error_log = <span class="hljs-string">&quot;E:/log/php_errors.log&quot;</span><br></code></pre></td></tr></table></figure>
 
@@ -571,9 +563,8 @@
 
 <h2 id="对象设计模式"><a href="#对象设计模式" class="headerlink" title="对象设计模式"></a>对象设计模式</h2><h3 id="111"><a href="#111" class="headerlink" title="111"></a>111</h3><ul>
 <li>面相对象代码设计经验的总结</li>
-<li>可以实现代码重用,节省时间,利于后期维护</li>
+<li>可以实现代码重用,节省时间,利于后期维护<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><br></code></pre></td></tr></table></figure>
 <h3 id="常用的设计模式"><a href="#常用的设计模式" class="headerlink" title="常用的设计模式"></a>常用的设计模式</h3><ul>
 <li>单例模式： 一个类只能创建一个对象,不论什么办法,都不能创建第二个对象</li>
 <li>工厂模式：根据传递的不同类名，来创建不同类的对象的工厂</li>
@@ -762,56 +753,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/10/js%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2.html">js关闭当前页面</a>
-                <p>2023-05-10</p>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
             </li>
         
             <li>
-                <a href="/2023/09/17/golang%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
-                <p>2023-09-17</p>
+                <a href="/2024/05/16/js-swiper%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB.html">swiper方法汇总</a>
+                <p>2024-05-16</p>
             </li>
         
             <li>
-                <a href="/2023/09/13/golang-%E7%BB%93%E6%9E%84%E4%BD%93.html">golang-结构体</a>
-                <p>2023-09-13</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/07/node%E5%BC%80%E5%90%AF%E4%B8%80%E4%B8%AAhttp%E6%9C%8D%E5%8A%A1.html">node开启一个http服务</a>
-                <p>2023-06-07</p>
-            </li>
-        
-            <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7161-170.html">超级散户161-170</a>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7361-370.html">超级散户361-370</a>
                 <p>2020-06-01</p>
+            </li>
+        
+            <li>
+                <a href="/2024/01/09/react-clsx%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">react-clsx使用方法</a>
+                <p>2024-01-09</p>
+            </li>
+        
+            <li>
+                <a href="/2024/04/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2title.html">微信小程序修改页面title</a>
+                <p>2024-04-28</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/10/js%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2.html">js关闭当前页面</a>
-                <p>2023-05-10</p>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
             </li>
         
             <li>
-                <a href="/2023/09/17/golang%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
-                <p>2023-09-17</p>
+                <a href="/2024/05/16/js-swiper%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB.html">swiper方法汇总</a>
+                <p>2024-05-16</p>
             </li>
         
             <li>
-                <a href="/2023/09/13/golang-%E7%BB%93%E6%9E%84%E4%BD%93.html">golang-结构体</a>
-                <p>2023-09-13</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/07/node%E5%BC%80%E5%90%AF%E4%B8%80%E4%B8%AAhttp%E6%9C%8D%E5%8A%A1.html">node开启一个http服务</a>
-                <p>2023-06-07</p>
-            </li>
-        
-            <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7161-170.html">超级散户161-170</a>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7361-370.html">超级散户361-370</a>
                 <p>2020-06-01</p>
+            </li>
+        
+            <li>
+                <a href="/2024/01/09/react-clsx%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">react-clsx使用方法</a>
+                <p>2024-01-09</p>
+            </li>
+        
+            <li>
+                <a href="/2024/04/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2title.html">微信小程序修改页面title</a>
+                <p>2024-04-28</p>
             </li>
         
     </ul> -->
@@ -821,13 +812,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -837,11 +828,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -877,9 +868,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -895,11 +886,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -969,9 +960,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -983,9 +974,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

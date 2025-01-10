@@ -113,10 +113,8 @@
 <li>m4atomp3格式修改</li>
 <li>视频合并</li>
 <li>音频合并</li>
-<li>移动文件</li>
+<li>移动文件<span id="more"></span></li>
 </ul>
-<span id="more"></span>
-
 <h2 id="ts合并mp4并删除ts"><a href="#ts合并mp4并删除ts" class="headerlink" title="ts合并mp4并删除ts"></a>ts合并mp4并删除ts</h2><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bat"><br>@<span class="hljs-built_in">ECHO</span> OFF<br><span class="hljs-built_in">copy</span> /b *.ts <span class="hljs-number">00000000</span>.mp4<br><span class="hljs-built_in">del</span> *.ts/s<br><br><br><br>@<span class="hljs-built_in">ECHO</span> OFF<br><span class="hljs-built_in">cd</span> ./ts<br><span class="hljs-built_in">copy</span> /b *.ts <span class="hljs-number">111111</span>.mp4<br><span class="hljs-built_in">del</span> *.ts/s<br><span class="hljs-built_in">move</span> <span class="hljs-number">111111</span>.mp4 ../<br><span class="hljs-built_in">cd</span> ../<br><span class="hljs-built_in">del</span> index.m3u8<br></code></pre></td></tr></table></figure>
 
 <h2 id="m4a-to-mp3格式修改"><a href="#m4a-to-mp3格式修改" class="headerlink" title="m4a to mp3格式修改"></a>m4a to mp3格式修改</h2><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bat"><br>@<span class="hljs-built_in">ECHO</span> OFF<br><span class="hljs-keyword">FOR</span> /R <span class="hljs-variable">%%G</span> <span class="hljs-keyword">IN</span> (*.m4a) <span class="hljs-keyword">DO</span> (<span class="hljs-keyword">CALL</span> :SUB_VLC &quot;<span class="hljs-variable">%%G</span>&quot;)<br><span class="hljs-keyword">FOR</span> /R <span class="hljs-variable">%%G</span> <span class="hljs-keyword">IN</span> (*.m4a.mp*) <span class="hljs-keyword">DO</span> (<span class="hljs-keyword">CALL</span> :SUB_RENAME &quot;<span class="hljs-variable">%%G</span>&quot;)<br><span class="hljs-keyword">GOTO</span> :eof<br>:SUB_VLC<br> <span class="hljs-built_in">SET</span> _firstbit=%<span class="hljs-number">1</span><br> <span class="hljs-built_in">SET</span> _qt=&quot;<br> <span class="hljs-keyword">CALL</span> <span class="hljs-built_in">SET</span> _newnm=<span class="hljs-variable">%%_</span>firstbit:<span class="hljs-variable">%_qt%</span>=<span class="hljs-variable">%%</span><br><span class="hljs-variable"></span> <span class="hljs-built_in">SET</span> _commanm=<span class="hljs-variable">%_newnm:,=_COMMA_%</span><br><span class="hljs-comment"> REM echo %_commanm%</span><br> <span class="hljs-keyword">CALL</span> &quot;C:\Program Files\ffmpeg\bin\ffmpeg.exe&quot; -i %<span class="hljs-number">1</span> -b:a <span class="hljs-number">320</span>K -vn &quot;<span class="hljs-variable">%_commanm%</span>.mp3<br><span class="hljs-keyword">GOTO</span> :eof<br>:SUB_RENAME<br> <span class="hljs-built_in">SET</span> _origfnm=%<span class="hljs-number">1</span><br> <span class="hljs-built_in">SET</span> _endbit=<span class="hljs-variable">%_origfnm:*.m4a=%</span><br> <span class="hljs-keyword">CALL</span> <span class="hljs-built_in">SET</span> _newfilenm=<span class="hljs-variable">%%_</span>origfnm:.m4a<span class="hljs-variable">%_endbit%</span>=.mp3<span class="hljs-variable">%%</span><br><span class="hljs-variable"></span> <span class="hljs-built_in">SET</span> _newfilenm=<span class="hljs-variable">%_newfilenm:_COMMA_=,%</span><br> <span class="hljs-built_in">COPY</span> %<span class="hljs-number">1</span> <span class="hljs-variable">%_newfilenm%</span><br> <span class="hljs-built_in">DEL</span> %<span class="hljs-number">1</span><br><span class="hljs-keyword">GOTO</span> :eof<br>:eof<br><br></code></pre></td></tr></table></figure>
@@ -136,56 +134,56 @@
     <ul>
         
             <li>
-                <a href="/2023/06/30/node-paddleOCR%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%AB%E7%9A%84%E6%96%87%E5%AD%97%E4%B8%BAtxt.html">node-paddleOCR保存图片识别的文字为txt</a>
-                <p>2023-06-30</p>
+                <a href="/2023/09/14/golang-%E6%96%B9%E6%B3%95.html">golang-方法</a>
+                <p>2023-09-14</p>
             </li>
         
             <li>
-                <a href="/2023/06/30/python-PaddleDetection%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">PaddleDetection官方安装教程</a>
-                <p>2023-06-30</p>
+                <a href="/2023/06/28/js%E8%BF%94%E5%9B%9E%E4%B8%8A%E4%B8%80%E9%A1%B5%E5%B9%B6%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2.html">js返回上一页并刷新页面</a>
+                <p>2023-06-28</p>
             </li>
         
             <li>
-                <a href="/2023/06/01/js%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8.html">js移动端日期选择器</a>
-                <p>2023-06-01</p>
+                <a href="/2023/06/21/php-header%E6%93%8D%E4%BD%9C.html">php-header操作</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/09/13/golang-%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87.html">golang-数组和切片</a>
-                <p>2023-09-13</p>
+                <a href="/2023/06/21/koa2%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE.html">koa2请求配置</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7301-310.html">超级散户301-310</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/06/30/node-paddleOCR%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%AB%E7%9A%84%E6%96%87%E5%AD%97%E4%B8%BAtxt.html">node-paddleOCR保存图片识别的文字为txt</a>
-                <p>2023-06-30</p>
+                <a href="/2023/09/14/golang-%E6%96%B9%E6%B3%95.html">golang-方法</a>
+                <p>2023-09-14</p>
             </li>
         
             <li>
-                <a href="/2023/06/30/python-PaddleDetection%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">PaddleDetection官方安装教程</a>
-                <p>2023-06-30</p>
+                <a href="/2023/06/28/js%E8%BF%94%E5%9B%9E%E4%B8%8A%E4%B8%80%E9%A1%B5%E5%B9%B6%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2.html">js返回上一页并刷新页面</a>
+                <p>2023-06-28</p>
             </li>
         
             <li>
-                <a href="/2023/06/01/js%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8.html">js移动端日期选择器</a>
-                <p>2023-06-01</p>
+                <a href="/2023/06/21/php-header%E6%93%8D%E4%BD%9C.html">php-header操作</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/09/13/golang-%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87.html">golang-数组和切片</a>
-                <p>2023-09-13</p>
+                <a href="/2023/06/21/koa2%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE.html">koa2请求配置</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7301-310.html">超级散户301-310</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul> -->
@@ -195,13 +193,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -211,11 +209,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -251,9 +249,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -269,11 +267,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -343,9 +341,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -357,9 +355,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

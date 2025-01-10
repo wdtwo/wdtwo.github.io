@@ -116,7 +116,7 @@
 </ul>
 <p>如何实现封装:</p>
 <p>建议将结构体 字段(属性)的首字母小写,其他包不能使用,实际开发不小写也行,规定的不是很严格<br>给结构体所在的包提供一个工厂函数,首字母大写</p>
-<p>提供Set方法提供设置参数<br>func Set函数名(参数) {<br>	此处可以处理数据<br>}<br>提供Get方法用来获取参数<br>func Get函数名(参数) 返回值类型{<br>	此处可以处理数据<br>	return 返回值<br>}</p>
+<p>提供Set方法提供设置参数<br>func Set函数名(参数) {<br>    此处可以处理数据<br>}<br>提供Get方法用来获取参数<br>func Get函数名(参数) 返回值类型{<br>    此处可以处理数据<br>    return 返回值<br>}</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// person.go</span><br><span class="hljs-comment">// 创建一个结构体</span><br><span class="hljs-keyword">type</span> person <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>    age  <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-comment">// 给结构体添加工厂函数 相当于构造器</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewPerson</span><span class="hljs-params">(str <span class="hljs-type">string</span>)</span></span> person &#123; <span class="hljs-comment">//此处的返回值可以是指针类型 *person</span><br>    <span class="hljs-keyword">return</span> person&#123;Name: str&#125; <span class="hljs-comment">// &amp;person&#123;Name:str&#125;</span><br>&#125;<br><span class="hljs-comment">//给结构体添加set方法 用来操作age字段</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *person)</span></span> SetAge(a <span class="hljs-type">int</span>) &#123;<br>    <span class="hljs-keyword">if</span> a &gt; <span class="hljs-number">0</span> &amp;&amp; a &lt; <span class="hljs-number">128</span> &#123;<br>        p.age = a<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        fmt.Println(<span class="hljs-string">&quot;age 错误&quot;</span>)<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 添加get方法 用来获取age字段</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *person)</span></span> GetAge() <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">return</span> p.age<br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// main.go</span><br><span class="hljs-keyword">import</span> (<br>    <span class="hljs-string">&quot;demo4/person&quot;</span><br>    <span class="hljs-string">&quot;fmt&quot;</span><br>)<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    p1 := person.NewPerson(<span class="hljs-string">&quot;Gary Wang&quot;</span>) <span class="hljs-comment">// 创建一个结构体的实例</span><br>    p1.SetAge(<span class="hljs-number">33</span>)            <span class="hljs-comment">// 给结构体赋值的方法</span><br>    fmt.Println(p1.GetAge()) <span class="hljs-comment">// 输出结构体的get方法的返回值 =&gt; 33</span><br>    fmt.Println(p1)          <span class="hljs-comment">// 输出结构体 =&gt; &#123;Gary Wang 33&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -128,56 +128,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/24/js%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BAcanvas%E6%92%AD%E6%94%BE%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E5%85%A8%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">js苹果手机canvas播放视频自动全屏解决方法</a>
-                <p>2023-05-24</p>
+                <a href="/2023/06/07/python%E7%A6%8F%E5%BD%A9%E5%8F%8C%E8%89%B2%E7%90%83%E4%BF%9D%E5%AD%98%E5%88%B0mysql%E6%95%B0%E6%8D%AE%E5%BA%93.html">python福彩双色球保存到mysql数据库</a>
+                <p>2023-06-07</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6.html">移动端touch事件</a>
-                <p>2023-02-14</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E8%84%B1%E5%8F%91.html">中医秘方-治脱发</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/google%20cloud%20%E5%BC%80%E5%90%AFssh%E7%99%BB%E9%99%86.html">google cloud 开启ssh</a>
+                <a href="/2023/05/15/mysql%E5%AF%86%E7%A0%81.html">mysql密码</a>
                 <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/07/01/webpack%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE.html">webpack新建一个项目</a>
-                <p>2023-07-01</p>
+                <a href="/2023/06/21/koa2-cookies%E9%85%8D%E7%BD%AE.html">koa2-cookies配置</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E9%98%B4%E7%AC%A6%E7%BB%8F.html">阴符经</a>
-                <p>2024-01-11</p>
+                <a href="/2023/11/01/dns-%E5%B0%86%E4%B8%80%E4%B8%AAip%E5%9C%B0%E5%9D%80%E7%BD%91%E4%BA%A7%E5%88%86%E6%88%90%E5%A4%9A%E4%B8%AAip%E5%9C%B0%E5%9D%80%E7%BD%91.html">dns-将一个ip地址网产分成多个ip地址网</a>
+                <p>2023-11-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/24/js%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BAcanvas%E6%92%AD%E6%94%BE%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E5%85%A8%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">js苹果手机canvas播放视频自动全屏解决方法</a>
-                <p>2023-05-24</p>
+                <a href="/2023/06/07/python%E7%A6%8F%E5%BD%A9%E5%8F%8C%E8%89%B2%E7%90%83%E4%BF%9D%E5%AD%98%E5%88%B0mysql%E6%95%B0%E6%8D%AE%E5%BA%93.html">python福彩双色球保存到mysql数据库</a>
+                <p>2023-06-07</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6.html">移动端touch事件</a>
-                <p>2023-02-14</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E8%84%B1%E5%8F%91.html">中医秘方-治脱发</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/google%20cloud%20%E5%BC%80%E5%90%AFssh%E7%99%BB%E9%99%86.html">google cloud 开启ssh</a>
+                <a href="/2023/05/15/mysql%E5%AF%86%E7%A0%81.html">mysql密码</a>
                 <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/07/01/webpack%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE.html">webpack新建一个项目</a>
-                <p>2023-07-01</p>
+                <a href="/2023/06/21/koa2-cookies%E9%85%8D%E7%BD%AE.html">koa2-cookies配置</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E9%98%B4%E7%AC%A6%E7%BB%8F.html">阴符经</a>
-                <p>2024-01-11</p>
+                <a href="/2023/11/01/dns-%E5%B0%86%E4%B8%80%E4%B8%AAip%E5%9C%B0%E5%9D%80%E7%BD%91%E4%BA%A7%E5%88%86%E6%88%90%E5%A4%9A%E4%B8%AAip%E5%9C%B0%E5%9D%80%E7%BD%91.html">dns-将一个ip地址网产分成多个ip地址网</a>
+                <p>2023-11-01</p>
             </li>
         
     </ul> -->
@@ -187,13 +187,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -203,11 +203,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -243,9 +243,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -261,11 +261,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -335,9 +335,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -349,9 +349,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

@@ -363,11 +363,9 @@
 <h3 id="引用glsl文件"><a href="#引用glsl文件" class="headerlink" title="引用glsl文件"></a>引用glsl文件</h3><p>用于将 GLSL 文件转换为 JavaScript 代码。它允许您在 Vue、React 或其他支持 Vite 的框架中使用 GLSL 着色<br>二选一即可:</p>
 <ul>
 <li><code>vite-plugin-glslify</code> 很久没更新了</li>
-<li><code>vite-plugin-glsl</code> 还在持续更新</li>
+<li><code>vite-plugin-glsl</code> 还在持续更新<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install vite-plugin-glslify -d<br>npm install vite-plugin-glsl -d<br></code></pre></td></tr></table></figure>
+安装好glsl后需要在vite.config.js中配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> glsl <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite-plugin-glsl&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">glsl</span>()<br>    ]<br>&#125;)<br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install vite-plugin-glslify -d<br>npm install vite-plugin-glsl -d<br></code></pre></td></tr></table></figure>
-<p>安装好glsl后需要在vite.config.js中配置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> glsl <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite-plugin-glsl&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>    <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">glsl</span>()<br>    ]<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h3 id="在vue文件中引用glsl"><a href="#在vue文件中引用glsl" class="headerlink" title="在vue文件中引用glsl"></a>在vue文件中引用glsl</h3><p><strong>着色器材料中失效的属性 map alphaMap color etc 需要在glsl中处理</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">import</span> vertexShader <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./vertexShader.glsl&#x27;</span></span><br><span class="language-javascript">    <span class="hljs-keyword">import</span> fragmentShader <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./fragmentShader.glsl&#x27;</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 创建着色器材质</span></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> material = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Three</span>.<span class="hljs-title class_">ShaderMaterial</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">vertexShader</span>: vertexShader, <span class="hljs-comment">// 顶点着色器代码</span></span><br><span class="language-javascript">        <span class="hljs-attr">fragmentShader</span>: fragmentShader, <span class="hljs-comment">// 片段着色器代码</span></span><br><span class="language-javascript">        <span class="hljs-attr">uniforms</span>: &#123; <span class="hljs-comment">// uniform变量 传递给着色器</span></span><br><span class="language-javascript">            <span class="hljs-attr">color</span>: &#123; <span class="hljs-attr">value</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Three</span>.<span class="hljs-title class_">Color</span>(<span class="hljs-number">0xff0000</span>) &#125; <span class="hljs-comment">// 红色</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p><a target="_blank" rel="noopener" href="https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83">代码插件</a></p>
@@ -428,105 +426,105 @@
 <li>mix(a,b,c) 混合两种颜色 a第一种 b第二种 c渲染的向量位置</li>
 </ul>
 <h5 id="公用部分"><a href="#公用部分" class="headerlink" title="公用部分"></a>公用部分</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 常量</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> PI 3.1415926535897932384626433832795</span><br><br>varying vec2 vUv;<br><span class="hljs-comment">// 返回一个 0 ~ 1 之间的随机数(伪随机)</span><br><span class="hljs-type">float</span> <span class="hljs-title function_">random</span><span class="hljs-params">(vec2 st)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> fract(<span class="hljs-built_in">sin</span>(dot(st.xy, vec2(<span class="hljs-number">12.9898</span>,<span class="hljs-number">78.233</span>))) * <span class="hljs-number">43758.5453123</span>);<br>&#125;<br><span class="hljs-comment">// 旋转坐标系 (原来的坐标系,旋转角度π=180°,旋转中心vec2(0.5,0.5))</span><br>vec2 <span class="hljs-title function_">rotate</span><span class="hljs-params">(vec2 uv, <span class="hljs-type">float</span> rotation, vec2 mid)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> vec2(<br>      <span class="hljs-built_in">cos</span>(rotation) * (uv.x - mid.x) + <span class="hljs-built_in">sin</span>(rotation) * (uv.y - mid.y) + mid.x,<br>      <span class="hljs-built_in">cos</span>(rotation) * (uv.y - mid.y) - <span class="hljs-built_in">sin</span>(rotation) * (uv.x - mid.x) + mid.y<br>    );<br>&#125;<br><br>vec2 <span class="hljs-title function_">fade</span><span class="hljs-params">(vec2 t)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> t*t*t*(t*(t*<span class="hljs-number">6.0</span><span class="hljs-number">-15.0</span>)+<span class="hljs-number">10.0</span>);<br>&#125;<br><br><br>vec4 <span class="hljs-title function_">permute</span><span class="hljs-params">(vec4 x)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> mod(((x*<span class="hljs-number">34.0</span>)+<span class="hljs-number">1.0</span>)*x, <span class="hljs-number">289.0</span>);<br>&#125;<br><span class="hljs-type">float</span> <span class="hljs-title function_">cnoise</span><span class="hljs-params">(vec2 P)</span><br>&#123;<br>    vec4 Pi = <span class="hljs-built_in">floor</span>(P.xyxy) + vec4(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>);<br>    vec4 Pf = fract(P.xyxy) - vec4(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>);<br>    Pi = mod(Pi, <span class="hljs-number">289.0</span>); <span class="hljs-comment">// To avoid truncation effects in permutation</span><br>    vec4 ix = Pi.xzxz;<br>    vec4 iy = Pi.yyww;<br>    vec4 fx = Pf.xzxz;<br>    vec4 fy = Pf.yyww;<br>    vec4 i = permute(permute(ix) + iy);<br>    vec4 gx = <span class="hljs-number">2.0</span> * fract(i * <span class="hljs-number">0.0243902439</span>) - <span class="hljs-number">1.0</span>; <span class="hljs-comment">// 1/41 = 0.024...</span><br>    vec4 gy = <span class="hljs-built_in">abs</span>(gx) - <span class="hljs-number">0.5</span>;<br>    vec4 tx = <span class="hljs-built_in">floor</span>(gx + <span class="hljs-number">0.5</span>);<br>    gx = gx - tx;<br>    vec2 g00 = vec2(gx.x,gy.x);<br>    vec2 g10 = vec2(gx.y,gy.y);<br>    vec2 g01 = vec2(gx.z,gy.z);<br>    vec2 g11 = vec2(gx.w,gy.w);<br>    vec4 norm = <span class="hljs-number">1.79284291400159</span> - <span class="hljs-number">0.85373472095314</span> * vec4(dot(g00, g00), dot(g01, g01), dot(g10, g10), dot(g11, g11));<br>    g00 *= norm.x;<br>    g01 *= norm.y;<br>    g10 *= norm.z;<br>    g11 *= norm.w;<br>    <span class="hljs-type">float</span> n00 = dot(g00, vec2(fx.x, fy.x));<br>    <span class="hljs-type">float</span> n10 = dot(g10, vec2(fx.y, fy.y));<br>    <span class="hljs-type">float</span> n01 = dot(g01, vec2(fx.z, fy.z));<br>    <span class="hljs-type">float</span> n11 = dot(g11, vec2(fx.w, fy.w));<br>    vec2 fade_xy = fade(Pf.xy);<br>    vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);<br>    <span class="hljs-type">float</span> n_xy = mix(n_x.x, n_x.y, fade_xy.y);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2.3</span> * n_xy;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="使用demo"><a href="#使用demo" class="headerlink" title="使用demo"></a>使用demo</h4><p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;1.png"></p>
+<h4 id="使用demo"><a href="#使用demo" class="headerlink" title="使用demo"></a>使用demo</h4><p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/1.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 1</span><br>gl_FragColor = vec4(vUv, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;2.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/2.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 2</span><br>gl_FragColor = vec4(vUv, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;3.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/3.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 3</span><br><span class="hljs-type">float</span> strength = vUv.x;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;4.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/4.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 4</span><br><span class="hljs-type">float</span> strength = vUv.y;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;5.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/5.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 5</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - vUv.y;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;6.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/6.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 6</span><br><span class="hljs-type">float</span> strength = vUv.y * <span class="hljs-number">10.0</span>;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;7.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/7.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 7</span><br><span class="hljs-type">float</span> strength = mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;8.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/8.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 8</span><br><span class="hljs-type">float</span> strength = mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>);<br>strength = step(<span class="hljs-number">0.5</span>, strength);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;9.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/9.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 9</span><br><span class="hljs-type">float</span> strength = mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>);<br>strength = step(<span class="hljs-number">0.8</span>, strength);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;10.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/10.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 10</span><br><span class="hljs-type">float</span> strength = mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>);<br>strength = step(<span class="hljs-number">0.8</span>, strength);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;11.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/11.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 11</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.8</span>, mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br>strength += step(<span class="hljs-number">0.8</span>, mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br>strength = clamp(strength, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;12.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/12.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 12</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.8</span>, mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br>strength *= step(<span class="hljs-number">0.8</span>, mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;13.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/13.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 13</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.4</span>, mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br>strength *= step(<span class="hljs-number">0.8</span>, mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;14.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/14.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 14</span><br><span class="hljs-type">float</span> barX = step(<span class="hljs-number">0.4</span>, mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>)) * step(<span class="hljs-number">0.8</span>, mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br><span class="hljs-type">float</span> barY = step(<span class="hljs-number">0.8</span>, mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>)) * step(<span class="hljs-number">0.4</span>, mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br><span class="hljs-type">float</span> strength = barX + barY;<br>strength = clamp(strength, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;15.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/15.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 15</span><br><span class="hljs-type">float</span> barX = step(<span class="hljs-number">0.4</span>, mod(vUv.x * <span class="hljs-number">10.0</span> - <span class="hljs-number">0.2</span>, <span class="hljs-number">1.0</span>)) * step(<span class="hljs-number">0.8</span>, mod(vUv.y * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>));<br><span class="hljs-type">float</span> barY = step(<span class="hljs-number">0.8</span>, mod(vUv.x * <span class="hljs-number">10.0</span>, <span class="hljs-number">1.0</span>)) * step(<span class="hljs-number">0.4</span>, mod(vUv.y * <span class="hljs-number">10.0</span> - <span class="hljs-number">0.2</span>, <span class="hljs-number">1.0</span>));<br><span class="hljs-type">float</span> strength = barX + barY;<br>strength = clamp(strength, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;16.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/16.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 16</span><br><span class="hljs-type">float</span> strength = <span class="hljs-built_in">abs</span>(vUv.x - <span class="hljs-number">0.5</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;17.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/17.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 17</span><br><span class="hljs-type">float</span> strength = min(<span class="hljs-built_in">abs</span>(vUv.x - <span class="hljs-number">0.5</span>), <span class="hljs-built_in">abs</span>(vUv.y - <span class="hljs-number">0.5</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;18.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/18.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 18</span><br><span class="hljs-type">float</span> strength = max(<span class="hljs-built_in">abs</span>(vUv.x - <span class="hljs-number">0.5</span>), <span class="hljs-built_in">abs</span>(vUv.y - <span class="hljs-number">0.5</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;19.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/19.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 19</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.2</span>, max(<span class="hljs-built_in">abs</span>(vUv.x - <span class="hljs-number">0.5</span>), <span class="hljs-built_in">abs</span>(vUv.y - <span class="hljs-number">0.5</span>)));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;20.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/20.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 20</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.2</span>, max(<span class="hljs-built_in">abs</span>(vUv.x - <span class="hljs-number">0.5</span>), <span class="hljs-built_in">abs</span>(vUv.y - <span class="hljs-number">0.5</span>)));<br>strength *= <span class="hljs-number">1.0</span> - step(<span class="hljs-number">0.25</span>, max(<span class="hljs-built_in">abs</span>(vUv.x - <span class="hljs-number">0.5</span>), <span class="hljs-built_in">abs</span>(vUv.y - <span class="hljs-number">0.5</span>)));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;21.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/21.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 21</span><br><span class="hljs-type">float</span> strength = <span class="hljs-built_in">floor</span>(vUv.x * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span>;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;22.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/22.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 22</span><br><span class="hljs-type">float</span> strength = <span class="hljs-built_in">floor</span>(vUv.x * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span> * <span class="hljs-built_in">floor</span>(vUv.y * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span>;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;23.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/23.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 23</span><br><span class="hljs-type">float</span> strength = random(vUv);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;24.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/24.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 24</span><br>vec2 gridUv = vec2(<span class="hljs-built_in">floor</span>(vUv.x * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span>, <span class="hljs-built_in">floor</span>(vUv.y * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span>);<br><span class="hljs-type">float</span> strength = random(gridUv);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;25.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/25.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 25</span><br>vec2 gridUv = vec2(<span class="hljs-built_in">floor</span>(vUv.x * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span>, <span class="hljs-built_in">floor</span>((vUv.y + vUv.x * <span class="hljs-number">0.5</span>) * <span class="hljs-number">10.0</span>) / <span class="hljs-number">10.0</span>);<br><span class="hljs-type">float</span> strength = random(gridUv);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;26.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/26.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 26</span><br><span class="hljs-type">float</span> strength = length(vUv);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;27.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/27.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 27</span><br><span class="hljs-type">float</span> strength = distance(vUv, vec2(<span class="hljs-number">0.5</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;28.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/28.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 28</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - distance(vUv, vec2(<span class="hljs-number">0.5</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;29.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/29.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 29</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">0.015</span> / (distance(vUv, vec2(<span class="hljs-number">0.5</span>)));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;30.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/30.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 30</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">0.15</span> / (distance(vec2(vUv.x, (vUv.y - <span class="hljs-number">0.5</span>) * <span class="hljs-number">5.0</span> + <span class="hljs-number">0.5</span>), vec2(<span class="hljs-number">0.5</span>)));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;31.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/31.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 31</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">0.15</span> / (distance(vec2(vUv.x, (vUv.y - <span class="hljs-number">0.5</span>) * <span class="hljs-number">5.0</span> + <span class="hljs-number">0.5</span>), vec2(<span class="hljs-number">0.5</span>)));<br>strength *= <span class="hljs-number">0.15</span> / (distance(vec2(vUv.y, (vUv.x - <span class="hljs-number">0.5</span>) * <span class="hljs-number">5.0</span> + <span class="hljs-number">0.5</span>), vec2(<span class="hljs-number">0.5</span>)));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;32.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/32.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 32</span><br>vec2 rotatedUv = rotate(vUv, PI * <span class="hljs-number">0.25</span>, vec2(<span class="hljs-number">0.5</span>));<br><span class="hljs-type">float</span> strength = <span class="hljs-number">0.15</span> / (distance(vec2(rotatedUv.x, (rotatedUv.y - <span class="hljs-number">0.5</span>) * <span class="hljs-number">5.0</span> + <span class="hljs-number">0.5</span>), vec2(<span class="hljs-number">0.5</span>)));<br>strength *= <span class="hljs-number">0.15</span> / (distance(vec2(rotatedUv.y, (rotatedUv.x - <span class="hljs-number">0.5</span>) * <span class="hljs-number">5.0</span> + <span class="hljs-number">0.5</span>), vec2(<span class="hljs-number">0.5</span>)));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;33.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/33.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 33</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.5</span>, distance(vUv, vec2(<span class="hljs-number">0.5</span>)) + <span class="hljs-number">0.25</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;34.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/34.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 34</span><br><span class="hljs-type">float</span> strength = <span class="hljs-built_in">abs</span>(distance(vUv, vec2(<span class="hljs-number">0.5</span>)) - <span class="hljs-number">0.25</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;35.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/35.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 35</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.01</span>, <span class="hljs-built_in">abs</span>(distance(vUv, vec2(<span class="hljs-number">0.5</span>)) - <span class="hljs-number">0.25</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;36.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/36.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 36</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - step(<span class="hljs-number">0.01</span>, <span class="hljs-built_in">abs</span>(distance(vUv, vec2(<span class="hljs-number">0.5</span>)) - <span class="hljs-number">0.25</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;37.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/37.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 37</span><br>vec2 wavedUv = vec2(<br>    vUv.x,<br>    vUv.y + <span class="hljs-built_in">sin</span>(vUv.x * <span class="hljs-number">30.0</span>) * <span class="hljs-number">0.1</span><br>);<br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - step(<span class="hljs-number">0.01</span>, <span class="hljs-built_in">abs</span>(distance(wavedUv, vec2(<span class="hljs-number">0.5</span>)) - <span class="hljs-number">0.25</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;38.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/38.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 38</span><br>vec2 wavedUv = vec2(<br>    vUv.x + <span class="hljs-built_in">sin</span>(vUv.y * <span class="hljs-number">30.0</span>) * <span class="hljs-number">0.1</span>,<br>    vUv.y + <span class="hljs-built_in">sin</span>(vUv.x * <span class="hljs-number">30.0</span>) * <span class="hljs-number">0.1</span><br>);<br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - step(<span class="hljs-number">0.01</span>, <span class="hljs-built_in">abs</span>(distance(wavedUv, vec2(<span class="hljs-number">0.5</span>)) - <span class="hljs-number">0.25</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;39.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/39.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 39</span><br>vec2 wavedUv = vec2(<br>    vUv.x + <span class="hljs-built_in">sin</span>(vUv.y * <span class="hljs-number">100.0</span>) * <span class="hljs-number">0.1</span>,<br>    vUv.y + <span class="hljs-built_in">sin</span>(vUv.x * <span class="hljs-number">100.0</span>) * <span class="hljs-number">0.1</span><br>);<br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - step(<span class="hljs-number">0.01</span>, <span class="hljs-built_in">abs</span>(distance(wavedUv, vec2(<span class="hljs-number">0.5</span>)) - <span class="hljs-number">0.25</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;40.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/40.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 40</span><br><span class="hljs-type">float</span> angle = <span class="hljs-built_in">atan</span>(vUv.x, vUv.y);<br><span class="hljs-type">float</span> strength = angle;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;41.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/41.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 41</span><br><span class="hljs-type">float</span> angle = <span class="hljs-built_in">atan</span>(vUv.x - <span class="hljs-number">0.5</span>, vUv.y - <span class="hljs-number">0.5</span>);<br><span class="hljs-type">float</span> strength = angle;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;42.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/42.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 42</span><br><span class="hljs-type">float</span> angle = <span class="hljs-built_in">atan</span>(vUv.x - <span class="hljs-number">0.5</span>, vUv.y - <span class="hljs-number">0.5</span>) / (PI * <span class="hljs-number">2.0</span>) + <span class="hljs-number">0.5</span>;<br><span class="hljs-type">float</span> strength = angle;<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;43.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/43.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 43</span><br><span class="hljs-type">float</span> angle = <span class="hljs-built_in">atan</span>(vUv.x - <span class="hljs-number">0.5</span>, vUv.y - <span class="hljs-number">0.5</span>) / (PI * <span class="hljs-number">2.0</span>) + <span class="hljs-number">0.5</span>;<br><span class="hljs-type">float</span> strength = mod(angle * <span class="hljs-number">20.0</span>, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;44.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/44.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 44</span><br><span class="hljs-type">float</span> angle = <span class="hljs-built_in">atan</span>(vUv.x - <span class="hljs-number">0.5</span>, vUv.y - <span class="hljs-number">0.5</span>) / (PI * <span class="hljs-number">2.0</span>) + <span class="hljs-number">0.5</span>;<br><span class="hljs-type">float</span> strength = <span class="hljs-built_in">sin</span>(angle * <span class="hljs-number">100.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;45.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/45.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 45</span><br><span class="hljs-type">float</span> angle = <span class="hljs-built_in">atan</span>(vUv.x - <span class="hljs-number">0.5</span>, vUv.y - <span class="hljs-number">0.5</span>) / (PI * <span class="hljs-number">2.0</span>) + <span class="hljs-number">0.5</span>;<br><span class="hljs-type">float</span> radius = <span class="hljs-number">0.25</span> + <span class="hljs-built_in">sin</span>(angle * <span class="hljs-number">100.0</span>) * <span class="hljs-number">0.02</span>;<br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - step(<span class="hljs-number">0.01</span>, <span class="hljs-built_in">abs</span>(distance(vUv, vec2(<span class="hljs-number">0.5</span>)) - radius));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;46.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/46.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 46</span><br><span class="hljs-type">float</span> strength = cnoise(vUv * <span class="hljs-number">10.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;47.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/47.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 47</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.0</span>, cnoise(vUv * <span class="hljs-number">10.0</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;48.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/48.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 48</span><br><span class="hljs-type">float</span> strength = <span class="hljs-number">1.0</span> - <span class="hljs-built_in">abs</span>(cnoise(vUv * <span class="hljs-number">10.0</span>));<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;49.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/49.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 49</span><br><span class="hljs-type">float</span> strength = <span class="hljs-built_in">sin</span>(cnoise(vUv * <span class="hljs-number">10.0</span>) * <span class="hljs-number">20.0</span>);<br></code></pre></td></tr></table></figure>
-<p><img src="/demo" alt="https:&#x2F;&#x2F;cdn.wdtwo.com&#x2F;glsl&#x2F;images&#x2F;50.png"></p>
+<p><img src="/demo" alt="https://cdn.wdtwo.com/glsl/images/50.png"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Pattern 50</span><br><span class="hljs-type">float</span> strength = step(<span class="hljs-number">0.9</span>, <span class="hljs-built_in">sin</span>(cnoise(vUv * <span class="hljs-number">10.0</span>) * <span class="hljs-number">20.0</span>));<br></code></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">gl_FragColor = vec4(vec3(strength), <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Final color</span><br>vec3 blackColor = vec3(<span class="hljs-number">0.0</span>);<br>vec3 uvColor = vec3(vUv, <span class="hljs-number">1.0</span>);<br>vec3 mixedColor = mix(blackColor, uvColor, strength);<br>gl_FragColor = vec4(mixedColor, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
@@ -543,56 +541,56 @@
     <ul>
         
             <li>
-                <a href="/2023/09/10/golang-%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0.html">golang-系统函数</a>
-                <p>2023-09-10</p>
+                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A82.html">indexDB浏览器存储本地数据</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
-                <p>2023-09-27</p>
+                <a href="/2023/06/21/php-header%E6%93%8D%E4%BD%9C.html">php-header操作</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/11/22/koa2%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81html%E7%AD%89%E8%B5%84%E6%BA%90.html">koa加载静态html等资源</a>
-                <p>2023-11-22</p>
+                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
+                <p>2023-06-07</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8.html">浏览器存储</a>
-                <p>2023-02-13</p>
+                <a href="/2023/11/15/js%E8%AE%BE%E7%BD%AEselect%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84%E5%80%BC.html">js设置select下拉框的值</a>
+                <p>2023-11-15</p>
             </li>
         
             <li>
-                <a href="/2023/06/08/live-server%E9%85%8D%E7%BD%AE.html">live-server配置</a>
-                <p>2023-06-08</p>
+                <a href="/2024/10/24/nginx%E9%83%A8%E7%BD%B2vue3%E9%9D%99%E6%80%81%E9%A1%B9%E7%9B%AE.html">nginx部署vue3静态项目</a>
+                <p>2024-10-24</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/09/10/golang-%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0.html">golang-系统函数</a>
-                <p>2023-09-10</p>
+                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A82.html">indexDB浏览器存储本地数据</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
-                <p>2023-09-27</p>
+                <a href="/2023/06/21/php-header%E6%93%8D%E4%BD%9C.html">php-header操作</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/11/22/koa2%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81html%E7%AD%89%E8%B5%84%E6%BA%90.html">koa加载静态html等资源</a>
-                <p>2023-11-22</p>
+                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
+                <p>2023-06-07</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8.html">浏览器存储</a>
-                <p>2023-02-13</p>
+                <a href="/2023/11/15/js%E8%AE%BE%E7%BD%AEselect%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84%E5%80%BC.html">js设置select下拉框的值</a>
+                <p>2023-11-15</p>
             </li>
         
             <li>
-                <a href="/2023/06/08/live-server%E9%85%8D%E7%BD%AE.html">live-server配置</a>
-                <p>2023-06-08</p>
+                <a href="/2024/10/24/nginx%E9%83%A8%E7%BD%B2vue3%E9%9D%99%E6%80%81%E9%A1%B9%E7%9B%AE.html">nginx部署vue3静态项目</a>
+                <p>2024-10-24</p>
             </li>
         
     </ul> -->
@@ -602,13 +600,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -618,11 +616,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -658,9 +656,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -676,11 +674,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -750,9 +748,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -764,9 +762,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

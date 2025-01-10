@@ -140,9 +140,8 @@
 <h3 id="单独修改某个字段的值"><a href="#单独修改某个字段的值" class="headerlink" title="单独修改某个字段的值"></a>单独修改某个字段的值</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$Form</span> = <span class="hljs-title function_ invoke__">M</span>(<span class="hljs-string">&quot;Form&quot;</span>);<br><span class="hljs-variable">$Form</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&quot;id=4&quot;</span>)-&gt;<span class="hljs-title function_ invoke__">setField</span>(<span class="hljs-string">&#x27;title&#x27;</span>,<span class="hljs-string">&quot;thinkphp&quot;</span>);<br></code></pre></td></tr></table></figure>
 <h3 id="统计字段"><a href="#统计字段" class="headerlink" title="统计字段"></a>统计字段</h3><ul>
 <li>setInc增加 </li>
-<li>setDec减少</li>
+<li>setDec减少<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$User</span> = <span class="hljs-title function_ invoke__">M</span>(<span class="hljs-string">&quot;User&quot;</span>);<br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&quot;id=3&quot;</span>)-&gt;<span class="hljs-title function_ invoke__">setInc</span>(<span class="hljs-string">&#x27;score&#x27;</span>,<span class="hljs-number">3</span>); <span class="hljs-comment">//积分加3</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&#x27;id=5&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setInc</span>(<span class="hljs-string">&#x27;score&#x27;</span>);   <span class="hljs-comment">//积分加1</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&#x27;id=5&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setDec</span>(<span class="hljs-string">&#x27;score&#x27;</span>,<span class="hljs-number">3</span>); <span class="hljs-comment">//积分减3</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&#x27;id=3&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setDec</span>(<span class="hljs-string">&#x27;score&#x27;</span>);   <span class="hljs-comment">//积分减1</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$User</span> = <span class="hljs-title function_ invoke__">M</span>(<span class="hljs-string">&quot;User&quot;</span>);<br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&quot;id=3&quot;</span>)-&gt;<span class="hljs-title function_ invoke__">setInc</span>(<span class="hljs-string">&#x27;score&#x27;</span>,<span class="hljs-number">3</span>); <span class="hljs-comment">//积分加3</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&#x27;id=5&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setInc</span>(<span class="hljs-string">&#x27;score&#x27;</span>);   <span class="hljs-comment">//积分加1</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&#x27;id=5&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setDec</span>(<span class="hljs-string">&#x27;score&#x27;</span>,<span class="hljs-number">3</span>); <span class="hljs-comment">//积分减3</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&#x27;id=3&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setDec</span>(<span class="hljs-string">&#x27;score&#x27;</span>);   <span class="hljs-comment">//积分减1</span><br></code></pre></td></tr></table></figure>
 <h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$.<span class="hljs-title function_">ajax</span>(&#123;<br>    url     : <span class="hljs-string">&quot;__URL__/del&quot;</span>,<br>    data    : &#123;<span class="hljs-attr">id</span>:<span class="hljs-number">1</span>&#125;,<br>    type    : <span class="hljs-string">&#x27;post&#x27;</span>,<br>    success : <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)&#123;&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$Form</span> = <span class="hljs-title function_ invoke__">M</span>(<span class="hljs-string">&quot;Form&quot;</span>);<br><span class="hljs-variable">$Form</span>-&gt;<span class="hljs-title function_ invoke__">delete</span>(<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$User</span> = <span class="hljs-title function_ invoke__">M</span>(<span class="hljs-string">&quot;User&quot;</span>);<br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&quot;id=5&quot;</span>)-&gt;<span class="hljs-title function_ invoke__">delete</span>();<span class="hljs-comment">//删除id=5的数据</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">delete</span>(<span class="hljs-string">&quot;1,2,5&quot;</span>);<span class="hljs-comment">//删除主键为1,2,5的数据</span><br><span class="hljs-variable">$User</span>-&gt;<span class="hljs-title function_ invoke__">where</span>(<span class="hljs-string">&quot;status=0&quot;</span>)-&gt;<span class="hljs-title function_ invoke__">delete</span>();<span class="hljs-comment">//删除所有状态为0的数据</span><br></code></pre></td></tr></table></figure>
@@ -489,27 +488,27 @@
     <ul>
         
             <li>
-                <a href="/2023/05/30/js-dayjs%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">dayjs的使用方法</a>
-                <p>2023-05-30</p>
+                <a href="/2023/09/17/golang%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
+                <p>2023-09-17</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B791-100.html">超级散户91-100</a>
-                <p>2020-06-01</p>
+                <a href="/2023/06/07/python-ts%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">python-ts文件下载多线程</a>
+                <p>2023-06-07</p>
             </li>
         
             <li>
-                <a href="/2023/05/10/js%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2.html">js关闭当前页面</a>
-                <p>2023-05-10</p>
+                <a href="/2023/05/19/golang-web.html">go web</a>
+                <p>2023-05-19</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7381-390.html">超级散户381-390</a>
-                <p>2020-06-01</p>
+                <a href="/2023/05/13/StableDiffusion-%E8%A1%A8%E6%83%85%E5%8C%85%E5%92%92%E8%AF%AD.html">StableDiffusion-表情包咒语</a>
+                <p>2023-05-13</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E7%9C%81%E5%B8%82%E5%8E%BFjson%E6%95%B0%E6%8D%AE.html">省市县json数据</a>
+                <a href="/2022/08/11/media.html">media每天变换改变宽度</a>
                 <p>2022-08-11</p>
             </li>
         
@@ -517,27 +516,27 @@
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/30/js-dayjs%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">dayjs的使用方法</a>
-                <p>2023-05-30</p>
+                <a href="/2023/09/17/golang%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
+                <p>2023-09-17</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B791-100.html">超级散户91-100</a>
-                <p>2020-06-01</p>
+                <a href="/2023/06/07/python-ts%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">python-ts文件下载多线程</a>
+                <p>2023-06-07</p>
             </li>
         
             <li>
-                <a href="/2023/05/10/js%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2.html">js关闭当前页面</a>
-                <p>2023-05-10</p>
+                <a href="/2023/05/19/golang-web.html">go web</a>
+                <p>2023-05-19</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7381-390.html">超级散户381-390</a>
-                <p>2020-06-01</p>
+                <a href="/2023/05/13/StableDiffusion-%E8%A1%A8%E6%83%85%E5%8C%85%E5%92%92%E8%AF%AD.html">StableDiffusion-表情包咒语</a>
+                <p>2023-05-13</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E7%9C%81%E5%B8%82%E5%8E%BFjson%E6%95%B0%E6%8D%AE.html">省市县json数据</a>
+                <a href="/2022/08/11/media.html">media每天变换改变宽度</a>
                 <p>2022-08-11</p>
             </li>
         
@@ -548,13 +547,13 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
-            <a href="/tag/chatgpt/">chatgpt(2)</a>
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
-            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
         
             <a href="/tag/js/">js(124)</a>
         
@@ -564,11 +563,11 @@
         
             <a href="/tag/canvas/">canvas(5)</a>
         
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -604,9 +603,9 @@
         
             <a href="/tag/html/">html(6)</a>
         
-            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
-        
             <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
         
             <a href="/tag/jquery/">jquery(3)</a>
         
@@ -622,11 +621,11 @@
         
             <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
         
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
             <a href="/tag/markdown/">markdown(1)</a>
         
             <a href="/tag/sql/">sql(1)</a>
-        
-            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
         
             <a href="/tag/nginx/">nginx(4)</a>
         
@@ -696,9 +695,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
-        
             <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -710,9 +709,9 @@
         
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         
