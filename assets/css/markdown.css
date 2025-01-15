@@ -128,6 +128,7 @@ li > ol {
   margin: 1em 0;
   padding:.4em .4em .4em 1.1em;
   border-left: 0.2em var(--yellow) solid;
+  background-color: rgba(255, 157, 101,.1);
 }
 .post-content blockquote p {
   margin:0;
@@ -208,7 +209,7 @@ pre code {
 .post-content p {
   margin: 1em 0;
   font-size: 1em;
-  line-height: 1.9;
+  line-height: 2;
 }
 .post-content p img {
   display: block;
