@@ -204,7 +204,18 @@ btn.onclick = function(){
     addGround()
 }
 btn.innerHTML = '添加球体'
-btn.style.cssText = 'position:fixed;top:100px;left:10px;z-index:999;'
+btn.style.cssText = `
+    position:fixed;
+    top:85px;
+    left:20px;
+    z-index:999;
+    border:none;
+    background:#3498db;
+    color:white;
+    border-radius:5px;
+    padding:3px 5px;
+    cursor:pointer;
+`
 document.body.appendChild(btn)
 
 
