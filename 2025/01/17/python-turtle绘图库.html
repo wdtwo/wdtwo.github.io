@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2025/01/17/python-turtle绘图库.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+        <i class="fa fa-bars extend" id="extend"></i>
+        <h1 class="post-title t-c">turtle绘图库</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2025-01-17
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/python/" rel="tag">python</a>,<a class="archive-item-tag-none-link" href="/tag/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <p>官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.9/library/turtle.html">https://docs.python.org/zh-cn/3.9/library/turtle.html</a></p>
+<p>引入turtle库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> turtle<br></code></pre></td></tr></table></figure>
+
+<h2 id="窗口控制"><a href="#窗口控制" class="headerlink" title="窗口控制"></a>窗口控制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.bgcolor(<span class="hljs-string">&#x27;orange&#x27;</span>) <span class="hljs-comment"># 设置背景颜色</span><br>turtle.bgpic(<span class="hljs-string">&quot;&quot;</span>) <span class="hljs-comment"># 设置背景图片</span><br>turtle.clearscreen() <span class="hljs-comment"># 清空窗口</span><br>turtle.resetscreen() <span class="hljs-comment"># 重置窗口设置</span><br>turtle.screensize(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>) <span class="hljs-comment"># 窗口大小</span><br>turtle.setworldcoordinates() <span class="hljs-comment"># 设置世界坐标系</span><br></code></pre></td></tr></table></figure>
+<h2 id="动画控制"><a href="#动画控制" class="headerlink" title="动画控制"></a>动画控制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.tracer(<span class="hljs-number">0</span>) <span class="hljs-comment"># 关闭动画，绘图速度更快</span><br>turtle.update() <span class="hljs-comment"># 更新画布显示内容</span><br>turtle.delay(<span class="hljs-number">1000</span>) <span class="hljs-comment"># 延迟</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="画笔控制"><a href="#画笔控制" class="headerlink" title="画笔控制"></a>画笔控制</h2><h3 id="颜色控制"><a href="#颜色控制" class="headerlink" title="颜色控制"></a>颜色控制</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.color(<span class="hljs-string">&#x27;blue&#x27;</span>) <span class="hljs-comment"># 内部颜色</span><br>turtle.pencolor(<span class="hljs-string">&#x27;red&#x27;</span>) <span class="hljs-comment"># 边缘颜色</span><br>turtle.fillcolor(<span class="hljs-string">&#x27;orange&#x27;</span>) <span class="hljs-comment"># 填充颜色</span><br></code></pre></td></tr></table></figure>
+<h3 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.filling() <span class="hljs-comment"># 是否填充 返回布尔值 True or False</span><br>turtle.begin_fill() <span class="hljs-comment"># 开始填充</span><br>turtle.end_fill() <span class="hljs-comment"># 结束填充</span><br></code></pre></td></tr></table></figure>
+<h3 id="绘图状态"><a href="#绘图状态" class="headerlink" title="绘图状态"></a>绘图状态</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.showturtle() <span class="hljs-comment"># 显示鼠标 st()</span><br>turtle.hideturtle() <span class="hljs-comment"># 隐藏鼠标 ht()</span><br><br>turtle.penup() <span class="hljs-comment"># 抬起画笔 pu() up()</span><br>turtle.pendown() <span class="hljs-comment"># 放下画笔 pd() down()</span><br>turtle.pen() <span class="hljs-comment"># 返回画笔状态</span><br><br>turtle.pensize(<span class="hljs-number">10</span>) <span class="hljs-comment"># 设置画笔大小 width(10)</span><br>turtle.speed(<span class="hljs-number">2</span>) <span class="hljs-comment"># 设置绘画速度，范围是 0-10，默认为6</span><br><br>turtle.isdown() <span class="hljs-comment"># 是否按下画笔 返回布尔值 True or False</span><br>turtle.isvisible() <span class="hljs-comment"># 是否可见 返回布尔值 True or False</span><br></code></pre></td></tr></table></figure>
+<h3 id="其他控制"><a href="#其他控制" class="headerlink" title="其他控制"></a>其他控制</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.reset() <span class="hljs-comment"># 重置画布</span><br>turtle.clear() <span class="hljs-comment"># 清除画布</span><br>turtle.hideturtle() <span class="hljs-comment"># 隐藏画笔</span><br>turtle.showturtle() <span class="hljs-comment"># 显示画笔</span><br>turtle.write(<span class="hljs-string">&#x27;Hello, World!&#x27;</span>, <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;left&quot;</span>, (<span class="hljs-string">&quot;Arial&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&quot;normal&quot;</span>)) <span class="hljs-comment"># 绘制文字</span><br>turtle.done() <span class="hljs-comment"># 完成绘画，关闭窗口</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="移动和绘制"><a href="#移动和绘制" class="headerlink" title="移动和绘制"></a>移动和绘制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.forward(<span class="hljs-number">100</span>) <span class="hljs-comment"># 前进  fd()</span><br>turtle.backward(<span class="hljs-number">100</span>) <span class="hljs-comment"># 后退  bk()</span><br>turtle.right(<span class="hljs-number">90</span>) <span class="hljs-comment"># 右转  rt()</span><br>turtle.left(<span class="hljs-number">90</span>) <span class="hljs-comment"># 左转  lt()</span><br>turtle.goto(x, y) <span class="hljs-comment"># 移动到指定位置  setpos() setposition()</span><br>turtle.setx(<span class="hljs-number">100</span>) <span class="hljs-comment"># 设置x坐标</span><br>turtle.sety(<span class="hljs-number">100</span>) <span class="hljs-comment"># 设置y坐标</span><br>turtle.setheading(<span class="hljs-number">90</span>) <span class="hljs-comment"># 设置朝向  seth()</span><br>turtle.home() <span class="hljs-comment"># 移动到起始位置</span><br><br>turtle.circle(<span class="hljs-number">100</span>,<span class="hljs-number">360</span>,<span class="hljs-number">6</span>) <span class="hljs-comment"># 画圆</span><br>turtle.dot(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;red&#x27;</span>) <span class="hljs-comment"># 画点</span><br><br>turtle.undo() <span class="hljs-comment"># 撤销</span><br>turtle.speed(<span class="hljs-number">1</span>) <span class="hljs-comment"># 设置绘画速度，范围是 0-10，默认为6</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="获取当前状态"><a href="#获取当前状态" class="headerlink" title="获取当前状态"></a>获取当前状态</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.position() <span class="hljs-comment"># 返回当前位置 turtle.pos()</span><br>turtle.towards() <span class="hljs-comment"># 返回当前朝向</span><br>turtle.xcor() <span class="hljs-comment"># 返回当前位置的x坐标</span><br>turtle.ycor() <span class="hljs-comment"># 返回当前位置的y坐标</span><br>turtle.heading() <span class="hljs-comment"># 返回当前朝向 返回left的角度值</span><br>turtle.distance(x, y) <span class="hljs-comment"># 返回当前位置到指定位置的直线距离</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="设置度量单位"><a href="#设置度量单位" class="headerlink" title="设置度量单位"></a>设置度量单位</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">degrees() <span class="hljs-comment"># 设置角度模式</span><br>radians() <span class="hljs-comment"># 设置弧度模式</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="正方形"><a href="#正方形" class="headerlink" title="正方形"></a>正方形</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    turtle.forward(<span class="hljs-number">100</span>)<br>    turtle.right(<span class="hljs-number">90</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="圆形"><a href="#圆形" class="headerlink" title="圆形"></a>圆形</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.circle(<span class="hljs-number">50</span>)  <span class="hljs-comment"># 半径为50的圆</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="多边形"><a href="#多边形" class="headerlink" title="多边形"></a>多边形</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">n = <span class="hljs-number">5</span>  <span class="hljs-comment"># 边数</span><br>angle = <span class="hljs-number">360</span> / n  <span class="hljs-comment"># 每条边的角度</span><br><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>    turtle.forward(<span class="hljs-number">100</span>)<br>    turtle.right(angle)<br></code></pre></td></tr></table></figure>
+
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">width, height = <span class="hljs-number">100</span>, <span class="hljs-number">50</span>  <br><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取当前鼠标位置：</span><br>x, y = turtle.pos()<br><span class="hljs-comment"># 前进100个单位：turtle.fd(100)</span><br>turtle.forword(<span class="hljs-number">100</span>)<br><span class="hljs-comment"># 右转90度：turtle.rt(90)</span><br>turtle.right(<span class="hljs-number">90</span>)<br><span class="hljs-comment"># 左转90度：turtle.lt(90)</span><br>turtle.left(<span class="hljs-number">90</span>)<br><br><span class="hljs-comment"># 绘制完成后</span><br>turtle.done()<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7301-310.html">超级散户301-310</a>
+                <p>2020-06-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/08/03/node%E4%BD%BF%E7%94%A8ffmpeg%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9wav%E6%96%87%E4%BB%B6%E4%B8%BAmp3%E6%A0%BC%E5%BC%8F.html">node使用ffmpeg批量修改wav文件为mp3格式</a>
+                <p>2023-08-03</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/13/%E5%85%B6%E4%BB%96-%E7%83%A4%E5%85%A8%E7%BE%8A%E7%83%A4%E7%BE%8A%E6%8E%92%E7%83%A4%E7%BE%8A%E8%85%BF.html">烤全羊烤羊排烤羊腿</a>
+                <p>2023-06-13</p>
+            </li>
+        
+            <li>
+                <a href="/2025/01/17/python-turtle%E7%BB%98%E5%9B%BE%E5%BA%93.html">turtle绘图库</a>
+                <p>2025-01-17</p>
+            </li>
+        
+            <li>
+                <a href="/2023/11/13/vue2-vue.config%E9%85%8D%E7%BD%AE.html">vue.config配置</a>
+                <p>2023-11-13</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7301-310.html">超级散户301-310</a>
+                <p>2020-06-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/08/03/node%E4%BD%BF%E7%94%A8ffmpeg%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9wav%E6%96%87%E4%BB%B6%E4%B8%BAmp3%E6%A0%BC%E5%BC%8F.html">node使用ffmpeg批量修改wav文件为mp3格式</a>
+                <p>2023-08-03</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/13/%E5%85%B6%E4%BB%96-%E7%83%A4%E5%85%A8%E7%BE%8A%E7%83%A4%E7%BE%8A%E6%8E%92%E7%83%A4%E7%BE%8A%E8%85%BF.html">烤全羊烤羊排烤羊腿</a>
+                <p>2023-06-13</p>
+            </li>
+        
+            <li>
+                <a href="/2025/01/17/python-turtle%E7%BB%98%E5%9B%BE%E5%BA%93.html">turtle绘图库</a>
+                <p>2025-01-17</p>
+            </li>
+        
+            <li>
+                <a href="/2023/11/13/vue2-vue.config%E9%85%8D%E7%BD%AE.html">vue.config配置</a>
+                <p>2023-11-13</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/js/">js(124)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/hexo/">Hexo(4)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
+        
+            <a href="/tag/linux/">linux(17)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(6)</a>
+        
+            <a href="/tag/node/">node(37)</a>
+        
+            <a href="/tag/dns/">dns(8)</a>
+        
+            <a href="/tag/css/">css(14)</a>
+        
+            <a href="/tag/go/">go(57)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(1)</a>
+        
+            <a href="/tag/vps/">vps(8)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
+        
+            <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/jquery/">jquery(3)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/websocket/">websocket(3)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(8)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(4)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/php/">php(9)</a>
+        
+            <a href="/tag/npm/">npm(1)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(11)</a>
+        
+            <a href="/tag/%E7%BB%98%E5%9B%BE/">绘图(1)</a>
+        
+            <a href="/tag/react/">react(3)</a>
+        
+            <a href="/tag/svg/">svg(1)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/typescript/">typescript(2)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    // 文章全屏显示
+    document.querySelector('#extend').addEventListener('click',function(){
+        let ele = document.querySelector('.post-box').classList
+        if(ele.value.includes('post-full')){
+            ele.remove('post-full')
+        }else{
+            ele.add('post-full')
+        }
+    },false)
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 60
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

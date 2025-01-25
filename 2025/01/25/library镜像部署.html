@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2025/01/25/library镜像部署.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+        <i class="fa fa-bars extend" id="extend"></i>
+        <h1 class="post-title t-c">library镜像部署</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2025-01-25
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/%E5%85%B6%E4%BB%96/" rel="tag">其他</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <h2 id="主力链接"><a href="#主力链接" class="headerlink" title="主力链接"></a>主力链接</h2><p><a target="_blank" rel="noopener" href="https://x.com/Z_Lib_official">twitter</a><br><a target="_blank" rel="noopener" href="https://c-lib.cn/sites/347.html">海盗游击队</a><br><a target="_blank" rel="noopener" href="https://www.ahhhhfs.com/19317/">ahhhhfs</a><br><a target="_blank" rel="noopener" href="https://discuss.sci-hub.org.cn/d/2579">Sci-Hub中文社区</a><br><a target="_blank" rel="noopener" href="https://www.tboxn.com/sites/320.html">tbox导航</a><br><a target="_blank" rel="noopener" href="https://www.tboxn.com/sites/1248.html">Library Genesis</a><br><a target="_blank" rel="noopener" href="https://zh.zlib-book.top/">直接访问</a></p>
+<p><a target="_blank" rel="noopener" href="https://zlib.pro/">Z-Library Pro助手</a></p>
+<h2 id="使用cloudflare-workers部署"><a href="#使用cloudflare-workers部署" class="headerlink" title="使用cloudflare workers部署"></a>使用cloudflare workers部署</h2><h3 id="worker-js"><a href="#worker-js" class="headerlink" title="worker.js"></a>worker.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 你要镜像的网站.</span><br><span class="hljs-keyword">const</span> upstream = <span class="hljs-string">&#x27;z-library.sk&#x27;</span><br><span class="hljs-comment">// 镜像网站的目录，比如你想镜像某个网站的二级目录则填写二级目录的目录名，镜像 google 用不到，默认即可.</span><br><span class="hljs-keyword">const</span> upstream_path = <span class="hljs-string">&#x27;/&#x27;</span><br><span class="hljs-comment">// 镜像站是否有手机访问专用网址，没有则填一样的.</span><br><span class="hljs-keyword">const</span> upstream_mobile = <span class="hljs-string">&#x27;z-library.sk&#x27;</span><br><span class="hljs-comment">// 屏蔽国家和地区.</span><br><span class="hljs-keyword">const</span> blocked_region = [<span class="hljs-string">&#x27;KP&#x27;</span>, <span class="hljs-string">&#x27;SY&#x27;</span>, <span class="hljs-string">&#x27;PK&#x27;</span>, <span class="hljs-string">&#x27;CU&#x27;</span>];<br><span class="hljs-comment">// 屏蔽 IP 地址.</span><br><span class="hljs-keyword">const</span> blocked_ip_address = [<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>]<br><span class="hljs-comment">// 镜像站是否开启 HTTPS.</span><br><span class="hljs-keyword">const</span> https = <span class="hljs-literal">true</span><br><span class="hljs-comment">// 文本替换.</span><br><span class="hljs-keyword">const</span> replace_dict = &#123;<br>    <span class="hljs-string">&#x27;$upstream&#x27;</span>: <span class="hljs-string">&#x27;$custom_domain&#x27;</span>,<br>&#125;<br><span class="hljs-comment">// 以下保持默认，不要动</span><br><span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>    event.<span class="hljs-title function_">respondWith</span>(<span class="hljs-title function_">fetchAndApply</span>(event.<span class="hljs-property">request</span>));<br>&#125;)<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchAndApply</span>(<span class="hljs-params">request</span>) &#123;<br>    <span class="hljs-keyword">const</span> region = request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cf-ipcountry&#x27;</span>).<span class="hljs-title function_">toUpperCase</span>();<br>    <span class="hljs-keyword">const</span> ip_address = request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cf-connecting-ip&#x27;</span>);<br>    <span class="hljs-keyword">const</span> user_agent = request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;user-agent&#x27;</span>);<br>    <span class="hljs-keyword">let</span> response = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">let</span> url = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(request.<span class="hljs-property">url</span>);<br>    <span class="hljs-keyword">let</span> url_hostname = url.<span class="hljs-property">hostname</span>;<br>    <span class="hljs-keyword">if</span> (https == <span class="hljs-literal">true</span>) &#123;<br>        url.<span class="hljs-property">protocol</span> = <span class="hljs-string">&#x27;https:&#x27;</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        url.<span class="hljs-property">protocol</span> = <span class="hljs-string">&#x27;http:&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">await</span> <span class="hljs-title function_">device_status</span>(user_agent)) &#123;<br>        <span class="hljs-keyword">var</span> upstream_domain = upstream;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">var</span> upstream_domain = upstream_mobile;<br>    &#125;<br>    url.<span class="hljs-property">host</span> = upstream_domain;<br>    <span class="hljs-keyword">if</span> (url.<span class="hljs-property">pathname</span> == <span class="hljs-string">&#x27;/&#x27;</span>) &#123;<br>        url.<span class="hljs-property">pathname</span> = upstream_path;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        url.<span class="hljs-property">pathname</span> = upstream_path + url.<span class="hljs-property">pathname</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (blocked_region.<span class="hljs-title function_">includes</span>(region)) &#123;<br>        response = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;Access denied: WorkersProxy is not available in your region yet.&#x27;</span>, &#123;<br>            <span class="hljs-attr">status</span>: <span class="hljs-number">403</span><br>        &#125;);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (blocked_ip_address.<span class="hljs-title function_">includes</span>(ip_address)) &#123;<br>        response = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;Access denied: Your IP address is blocked by WorkersProxy.&#x27;</span>, &#123;<br>            <span class="hljs-attr">status</span>: <span class="hljs-number">403</span><br>        &#125;);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">let</span> method = request.<span class="hljs-property">method</span>;<br>        <span class="hljs-keyword">let</span> request_headers = request.<span class="hljs-property">headers</span>;<br>        <span class="hljs-keyword">let</span> new_request_headers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>(request_headers);<br>        new_request_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Host&#x27;</span>, url.<span class="hljs-property">hostname</span>);<br>        new_request_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Referer&#x27;</span>, url.<span class="hljs-property">hostname</span>);<br>        <span class="hljs-keyword">let</span> original_response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url.<span class="hljs-property">href</span>, &#123;<br>            <span class="hljs-attr">method</span>: method,<br>            <span class="hljs-attr">headers</span>: new_request_headers<br>        &#125;)<br>        <span class="hljs-keyword">let</span> original_response_clone = original_response.<span class="hljs-title function_">clone</span>();<br>        <span class="hljs-keyword">let</span> original_text = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">let</span> response_headers = original_response.<span class="hljs-property">headers</span>;<br>        <span class="hljs-keyword">let</span> new_response_headers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>(response_headers);<br>        <span class="hljs-keyword">let</span> status = original_response.<span class="hljs-property">status</span>;<br>        new_response_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;access-control-allow-origin&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>);<br>        new_response_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;access-control-allow-credentials&#x27;</span>, <span class="hljs-literal">true</span>);<br>        new_response_headers.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&#x27;content-security-policy&#x27;</span>);<br>        new_response_headers.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&#x27;content-security-policy-report-only&#x27;</span>);<br>        new_response_headers.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&#x27;clear-site-data&#x27;</span>);<br>        <span class="hljs-keyword">const</span> content_type = new_response_headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;content-type&#x27;</span>);<br>        <span class="hljs-keyword">if</span> (content_type.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;text/html&#x27;</span>) &amp;&amp; content_type.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;UTF-8&#x27;</span>)) &#123;<br>            original_text = <span class="hljs-keyword">await</span> <span class="hljs-title function_">replace_response_text</span>(original_response_clone, upstream_domain, url_hostname);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            original_text = original_response_clone.<span class="hljs-property">body</span><br>        &#125;<br>        response = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(original_text, &#123;<br>            status,<br>            <span class="hljs-attr">headers</span>: new_response_headers<br>        &#125;)<br>    &#125;<br>    <span class="hljs-keyword">return</span> response;<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">replace_response_text</span>(<span class="hljs-params">response, upstream_domain, host_name</span>) &#123;<br>    <span class="hljs-keyword">let</span> text = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">text</span>()<br>    <span class="hljs-keyword">var</span> i, j;<br>    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> replace_dict) &#123;<br>        j = replace_dict[i]<br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-string">&#x27;$upstream&#x27;</span>) &#123;<br>            i = upstream_domain<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == <span class="hljs-string">&#x27;$custom_domain&#x27;</span>) &#123;<br>            i = host_name<br>        &#125;<br>        <span class="hljs-keyword">if</span> (j == <span class="hljs-string">&#x27;$upstream&#x27;</span>) &#123;<br>            j = upstream_domain<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (j == <span class="hljs-string">&#x27;$custom_domain&#x27;</span>) &#123;<br>            j = host_name<br>        &#125;<br>        <span class="hljs-keyword">let</span> re = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(i, <span class="hljs-string">&#x27;g&#x27;</span>)<br>        text = text.<span class="hljs-title function_">replace</span>(re, j);<br>    &#125;<br>    <span class="hljs-keyword">return</span> text;<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">device_status</span>(<span class="hljs-params">user_agent_info</span>) &#123;<br>    <span class="hljs-keyword">var</span> agents = [<span class="hljs-string">&quot;Android&quot;</span>, <span class="hljs-string">&quot;iPhone&quot;</span>, <span class="hljs-string">&quot;SymbianOS&quot;</span>, <span class="hljs-string">&quot;Windows Phone&quot;</span>, <span class="hljs-string">&quot;iPad&quot;</span>, <span class="hljs-string">&quot;iPod&quot;</span>];<br>    <span class="hljs-keyword">var</span> flag = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> v = <span class="hljs-number">0</span>; v &lt; agents.<span class="hljs-property">length</span>; v++) &#123;<br>        <span class="hljs-keyword">if</span> (user_agent_info.<span class="hljs-title function_">indexOf</span>(agents[v]) &gt; <span class="hljs-number">0</span>) &#123;<br>            flag = <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> flag;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/06/07/python-ts%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">python-ts文件下载多线程</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/video%E8%A7%86%E9%A2%91%E6%B5%81%E5%AA%92%E4%BD%93HLS-m3u8%E6%A0%BC%E5%BC%8F%E5%8A%A0%E5%AF%86%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.html">video视频流媒体HLS m3u8格式加密视频开发</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/vue%E5%A4%9A%E5%85%A5%E5%8F%A3%E9%85%8D%E7%BD%AE.html">vue多入口配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/13/golang-%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87.html">golang-数组和切片</a>
+                <p>2023-09-13</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni-plus.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/06/07/python-ts%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">python-ts文件下载多线程</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/video%E8%A7%86%E9%A2%91%E6%B5%81%E5%AA%92%E4%BD%93HLS-m3u8%E6%A0%BC%E5%BC%8F%E5%8A%A0%E5%AF%86%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.html">video视频流媒体HLS m3u8格式加密视频开发</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/vue%E5%A4%9A%E5%85%A5%E5%8F%A3%E9%85%8D%E7%BD%AE.html">vue多入口配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/13/golang-%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87.html">golang-数组和切片</a>
+                <p>2023-09-13</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni-plus.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/js/">js(124)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/hexo/">Hexo(4)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
+        
+            <a href="/tag/linux/">linux(17)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(6)</a>
+        
+            <a href="/tag/node/">node(37)</a>
+        
+            <a href="/tag/dns/">dns(8)</a>
+        
+            <a href="/tag/css/">css(14)</a>
+        
+            <a href="/tag/go/">go(57)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(1)</a>
+        
+            <a href="/tag/vps/">vps(8)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
+        
+            <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/jquery/">jquery(3)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/websocket/">websocket(3)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(8)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(4)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/php/">php(9)</a>
+        
+            <a href="/tag/npm/">npm(1)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(11)</a>
+        
+            <a href="/tag/%E7%BB%98%E5%9B%BE/">绘图(1)</a>
+        
+            <a href="/tag/react/">react(3)</a>
+        
+            <a href="/tag/svg/">svg(1)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/typescript/">typescript(2)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    // 文章全屏显示
+    document.querySelector('#extend').addEventListener('click',function(){
+        let ele = document.querySelector('.post-box').classList
+        if(ele.value.includes('post-full')){
+            ele.remove('post-full')
+        }else{
+            ele.add('post-full')
+        }
+    },false)
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 60
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

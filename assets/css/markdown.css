@@ -1,6 +1,6 @@
 .post-content {
   height:100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 .post-content h1,
 .post-content h2,
@@ -10,7 +10,7 @@
 .post-content h6{
   font-weight: 200;
   line-height: 1.2;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   position: relative;
 }
 .post-content h1::after,
@@ -50,7 +50,7 @@
   margin: 0.5em 0;
 }
 .post-content h3::after {
-  left: 2px;
+  left: -15px;
   width: 10px;
   height: 10px;
 }
@@ -209,7 +209,7 @@ pre code {
 .post-content p {
   margin: 1em 0;
   font-size: 1em;
-  line-height: 2;
+  line-height: 2.5;
 }
 .post-content p img {
   display: block;

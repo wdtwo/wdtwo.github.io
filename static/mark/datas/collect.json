@@ -1667,13 +1667,58 @@
     ]
   },
   {
-    "category": "电子书",
+    "category": "z-library",
     "data": [
       {
-        "name": "电子书博物馆",
+        "name": "自建",
+        "info": "Z-Library",
+        "url": "https://library.wdtwo.eu.org/"
+      },
+      {
+        "name": "cn1lib",
         "info": "Z-Library",
         "url": "https://cn1lib.is/"
       },
+      {
+        "name": "zlib-book",
+        "info": "Z-Library",
+        "url": "https://zh.zlib-book.top/"
+      },
+      {
+        "name": "cnlib",
+        "info": "Z-Library",
+        "url": "https://zh.cnlib.icu/"
+      },
+      {
+        "name": "z-lib",
+        "info": "Z-Library",
+        "url": "https://z-lib.help/"
+      },
+      {
+        "name": "镜像导航",
+        "info": "Z-Library",
+        "url": "https://www.wangwangit.com/%E9%95%9C%E5%83%8F%E7%BD%91%E7%AB%99/index.html"
+      },
+      {
+        "name": "LibGen",
+        "info": "LibGen",
+        "url": "https://libgen.mx/"
+      },
+      {
+        "name": "libgenesis",
+        "info": "LibGen",
+        "url": "https://libgenesis.net/"
+      },
+      {
+        "name": "安娜的档案",
+        "info": "安娜的档案",
+        "url": "https://zh.annas-archive.org/"
+      }
+    ]
+  },
+  {
+    "category": "电子书",
+    "data": [
       {
         "name": "英文原版pdf",
         "info": "SaltTiger",
@@ -1759,6 +1804,10 @@
       {
         "name": "微信读书",
         "url": "https://weread.qq.com/web/shelf"
+      },
+      {
+        "name": "知轩藏书",
+        "url": "https://zxcs.zip/"
       },
       {
         "name": "皇帝之家",

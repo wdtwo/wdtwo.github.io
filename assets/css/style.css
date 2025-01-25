@@ -1154,6 +1154,26 @@ html,body {
     background-color: var(--box-bg);
     box-shadow: var(--box-shadow);
     border-radius: 5px;
+    position: relative;
+    transition: max-width ease 500ms;
+}
+.post-full .post {
+    max-width: 100%;
+}
+.post-full .fixed-item-right {
+    display: none;
+}
+.post .extend {
+    position: absolute;
+    right:15px;
+    top:15px;
+    z-index: 9;
+    opacity: .5;
+    cursor: pointer;
+    font-size: 18px;
+}
+.post .extend:hover {
+    opacity: 1;
 }
 .post-title {
     font-size: 30px;
@@ -1594,7 +1614,6 @@ body.mobile .mobile-menu {
 #live2d-widget {
     cursor: pointer;
 }
-
 @media screen and (max-width: 550px) {
     .header-title {
         font-size: 20px;
@@ -1608,7 +1627,7 @@ body.mobile .mobile-menu {
     .post-content p {
         font-size: 20px;
     }
-    #live2dcanvas {
+    #live2d-widget {
         transform: scale(.5);
         transform-origin: bottom;
     }
