@@ -101,9 +101,14 @@
   {
     "category": "AI工具",
     "data": [
+      
       {
-        "name": "google bard",
-        "url": "https://bard.google.com/"
+        "name": "谷歌人工智能工作室",
+        "url": "https://aistudio.google.com/prompts/new_chat"
+      },
+      {
+        "name": "google gemini",
+        "url": "https://gemini.google.com/app"
       },
       {
         "name": "chatGPT",

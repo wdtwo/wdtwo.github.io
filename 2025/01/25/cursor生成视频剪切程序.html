@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2025/01/25/cursor生成视频剪切程序.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+        <i class="fa fa-bars extend" id="extend"></i>
+        <h1 class="post-title t-c">cursor生成视频剪切程序</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2025-01-25
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/cursor/" rel="tag">cursor</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <h2 id="总结的需求文档"><a href="#总结的需求文档" class="headerlink" title="总结的需求文档"></a>总结的需求文档</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"># 视频剪切工具需求文档<br><br>## 1. 项目概述<br>开发一个基于PyQt6的视频剪切工具，提供简洁的图形界面和基本的视频剪切功能。<br><br>## 2. 界面布局需求<br><br>### 2.1 整体布局<br>- 窗口标题：视频剪切工具<br>- 最小窗口尺寸：1000x600<br>- 左右分栏设计（比例为3:2）：<br>  - 左侧：视频预览区域<br>  - 右侧：控制面板（固定宽度400px）<br><br>### 2.2 左侧区域<br>- 视频预览窗口<br>  - 固定尺寸：480x200<br>  - 背景色：#1a1a1a<br>  - 支持自适应缩放<br>- 进度条和时间显示<br>  - 显示格式：当前时间 / 总时长（HH:MM:SS）<br>  - 进度条支持拖拽定位<br><br>### 2.3 右侧控制面板（从上到下）<br>1. 文件选择区域<br>   - &quot;选择视频&quot;按钮（左对齐）<br>   - 文件路径显示（支持自动换行）<br><br>2. 播放控制区域<br>   - 播放/暂停按钮<br>   - &quot;设为开始时间&quot;按钮<br>   - &quot;设为结束时间&quot;按钮<br>   - 按钮组左对齐<br>   - 上下内边距：0px，左右内边距：5px<br><br>3. 音量控制区域<br>   - 静音按钮（30x30px）<br>   - 音量滑块（宽度200px）<br>   - 默认静音状态<br><br>4. 时间设置区域<br>   - 开始时间和结束时间设置<br>   - 每组包含时分秒三个下拉框<br>   - 分隔符(:)宽度为5px<br>   - 左对齐排列<br><br>5. 剪切控制<br>   - &quot;开始剪切&quot;按钮<br>   - 剪切时按钮禁用并显示&quot;正在剪切...&quot;<br><br>## 3. 功能需求<br><br>### 3.1 视频预览功能<br>- 支持mp4、avi、mkv、mov格式<br>- 视频播放/暂停控制<br>- 进度条拖拽定位<br>- 实时显示播放时间和总时长<br><br>### 3.2 时间控制功能<br>- 时分秒精确选择（下拉框）<br>- 支持通过播放进度快捷设置<br>- 时间范围：<br>  - 小时：00-23<br>  - 分钟：00-59<br>  - 秒：00-59<br><br>### 3.3 剪切功能<br>- 使用ffmpeg进行视频剪切<br>- 保持原视频编码格式<br>- 输出文件命名规则：原文件名_年月日_时分秒.mp4<br>- 保存在原视频相同目录<br><br>## 4. 技术要求<br><br>### 4.1 开发环境<br>- Python 3.x<br>- PyQt6<br>- OpenCV-Python<br>- FFmpeg<br><br>### 4.2 项目文件结构<br><br>### 4.3 项目文件结构<br><br>## 5. 样式规范<br><br>### 5.1 颜色方案<br>- 主背景色：#f0f0f0<br>- 视频预览背景：#1a1a1a<br>- 按钮颜色：#3498db<br>- 按钮悬停：#2980b9<br>- 文字颜色：#2c3e50<br><br>### 5.2 控件样式<br>- 按钮圆角：4px<br>- 按钮内边距：8px 15px<br>- 面板圆角：8px<br>- 面板内边距：10px<br>- 统一的按钮样式和交互效果<br><br>## 6. 使用流程<br><br>1. 选择视频文件<br>   - 点击&quot;选择视频&quot;按钮<br>   - 选择支持的视频格式文件<br><br>2. 视频预览和时间设置<br>   - 使用播放控制预览视频<br>   - 通过进度条定位<br>   - 设置开始和结束时间点<br><br>3. 执行剪切<br>   - 点击&quot;开始剪切&quot;按钮<br>   - 等待处理完成<br>   - 在原目录生成剪切后的视频<br><br>## 7. 注意事项<br>- 确保正确安装所有依赖库<br>- 确保ffmpeg.exe存在于程序目录的ffmpeg文件夹中<br>- 剪切时会保持原视频的编码格式<br>- 剪切大文件时需要耐心等待<br><br>## 8. 资源管理<br>- 程序会自动管理视频资源<br>- 关闭时自动释放资源<br></code></pre></td></tr></table></figure>
+
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>根据需求文档中的技术要求，需要安装以下Python包：<br>PyQt6 相关：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install PyQt6        <span class="hljs-comment"># PyQt6基础包</span><br>pip install PyQt6-Qt6    <span class="hljs-comment"># PyQt6多媒体支持</span><br></code></pre></td></tr></table></figure>
+<p>OpenCV-Python：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install opencv-python    <span class="hljs-comment"># 视频处理和图像处理</span><br></code></pre></td></tr></table></figure>
+<p>FFmpeg：<br>    这个不是Python包，而是需要下载可执行文件<br>    需要将 ffmpeg.exe 放在项目目录的 ffmpeg 文件夹下<br>    或者将FFmpeg添加到系统环境变量中<br>总结安装命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install PyQt6 PyQt6-Qt6 opencv-python<br></code></pre></td></tr></table></figure>
+<p>这些是项目运行所必需的依赖项。其中：<br>    PyQt6：用于构建图形界面<br>    PyQt6-Qt6：提供音频播放支持<br>    OpenCV-Python：用于视频帧的读取和处理<br>    FFmpeg：用于视频剪切功能<br>注意：如果使用清华源等国内镜像，安装命令可以是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple PyQt6 PyQt6-Qt6 opencv-python<br></code></pre></td></tr></table></figure>
+
+<h3 id="脚本内容"><a href="#脚本内容" class="headerlink" title="脚本内容"></a>脚本内容</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta<br><span class="hljs-keyword">import</span> subprocess<br><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-keyword">from</span> PyQt6.QtWidgets <span class="hljs-keyword">import</span> (QApplication, QMainWindow, QWidget, QVBoxLayout, <br>                            QHBoxLayout, QPushButton, QLabel, QFileDialog, <br>                            QComboBox, QFrame, QSlider, QMessageBox, QStyle,<br>                            QProgressDialog)<br><span class="hljs-keyword">from</span> PyQt6.QtCore <span class="hljs-keyword">import</span> Qt, QTimer, QUrl<br><span class="hljs-keyword">from</span> PyQt6.QtGui <span class="hljs-keyword">import</span> QPixmap, QImage, QPalette, QColor, QIcon<br><span class="hljs-keyword">from</span> PyQt6.QtMultimedia <span class="hljs-keyword">import</span> QMediaPlayer, QAudioOutput<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">resource_path</span>(<span class="hljs-params">relative_path</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;获取资源的绝对路径&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">try</span>:<br>        base_path = sys._MEIPASS<br>    <span class="hljs-keyword">except</span> Exception:<br>        base_path = os.path.abspath(<span class="hljs-string">&quot;.&quot;</span>)<br>    <span class="hljs-keyword">return</span> os.path.join(base_path, relative_path)<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">VideoClipper</span>(<span class="hljs-title class_ inherited__">QMainWindow</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__()<br>        <span class="hljs-variable language_">self</span>.setWindowTitle(<span class="hljs-string">&quot;视频剪切工具&quot;</span>)<br>        <span class="hljs-variable language_">self</span>.setMinimumSize(<span class="hljs-number">1000</span>, <span class="hljs-number">600</span>)<br>        <span class="hljs-variable language_">self</span>.setStyleSheet(<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">            QMainWindow &#123;</span><br><span class="hljs-string">                background-color: #f0f0f0;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QLabel &#123;</span><br><span class="hljs-string">                color: #2c3e50;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QPushButton &#123;</span><br><span class="hljs-string">                background-color: #3498db;</span><br><span class="hljs-string">                color: white;</span><br><span class="hljs-string">                border: none;</span><br><span class="hljs-string">                padding: 8px 15px;</span><br><span class="hljs-string">                border-radius: 4px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QPushButton:hover &#123;</span><br><span class="hljs-string">                background-color: #2980b9;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QPushButton:pressed &#123;</span><br><span class="hljs-string">                background-color: #2574a9;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QFrame &#123;</span><br><span class="hljs-string">                background-color: white;</span><br><span class="hljs-string">                border-radius: 8px;</span><br><span class="hljs-string">                padding: 10px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QComboBox &#123;</span><br><span class="hljs-string">                padding: 5px;</span><br><span class="hljs-string">                border: 1px solid #bdc3c7;</span><br><span class="hljs-string">                border-radius: 4px;</span><br><span class="hljs-string">                min-width: 50px;</span><br><span class="hljs-string">                background-color: white;</span><br><span class="hljs-string">                color: black;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QComboBox QAbstractItemView &#123;</span><br><span class="hljs-string">                background-color: white;</span><br><span class="hljs-string">                selection-background-color: #3498db;</span><br><span class="hljs-string">                selection-color: white;</span><br><span class="hljs-string">                color: black;</span><br><span class="hljs-string">                border: 1px solid #bdc3c7;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QComboBox::drop-down &#123;</span><br><span class="hljs-string">                border: none;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QComboBox::down-arrow &#123;</span><br><span class="hljs-string">                image: none;</span><br><span class="hljs-string">                border-left: 5px solid transparent;</span><br><span class="hljs-string">                border-right: 5px solid transparent;</span><br><span class="hljs-string">                border-top: 5px solid #2c3e50;</span><br><span class="hljs-string">                margin-right: 5px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QSlider::groove:horizontal &#123;</span><br><span class="hljs-string">                border: 1px solid #bdc3c7;</span><br><span class="hljs-string">                height: 8px;</span><br><span class="hljs-string">                background: #e0e0e0;</span><br><span class="hljs-string">                margin: 2px 0;</span><br><span class="hljs-string">                border-radius: 4px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QSlider::handle:horizontal &#123;</span><br><span class="hljs-string">                background: #3498db;</span><br><span class="hljs-string">                border: none;</span><br><span class="hljs-string">                width: 18px;</span><br><span class="hljs-string">                margin: -6px 0;</span><br><span class="hljs-string">                border-radius: 9px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QSlider::handle:horizontal:hover &#123;</span><br><span class="hljs-string">                background: #2980b9;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br>        <br>        <span class="hljs-variable language_">self</span>.video_path = <span class="hljs-string">&quot;&quot;</span><br>        <span class="hljs-variable language_">self</span>.cap = <span class="hljs-literal">None</span><br>        <span class="hljs-variable language_">self</span>.is_playing = <span class="hljs-literal">False</span><br>        <span class="hljs-variable language_">self</span>.current_frame = <span class="hljs-literal">None</span><br>        <span class="hljs-variable language_">self</span>.video_duration = <span class="hljs-number">0</span><br>        <span class="hljs-variable language_">self</span>.current_position = <span class="hljs-number">0</span><br>        <br>        <span class="hljs-comment"># 添加媒体播放器</span><br>        <span class="hljs-variable language_">self</span>.media_player = QMediaPlayer()<br>        <span class="hljs-variable language_">self</span>.audio_output = QAudioOutput()<br>        <span class="hljs-variable language_">self</span>.media_player.setAudioOutput(<span class="hljs-variable language_">self</span>.audio_output)<br>        <span class="hljs-variable language_">self</span>.audio_output.setVolume(<span class="hljs-number">0</span>)  <span class="hljs-comment"># 默认静音</span><br>        <br>        <span class="hljs-variable language_">self</span>.setup_ui()<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setup_ui</span>(<span class="hljs-params">self</span>):<br>        central_widget = QWidget()<br>        <span class="hljs-variable language_">self</span>.setCentralWidget(central_widget)<br>        main_layout = QHBoxLayout(central_widget)<br>        main_layout.setSpacing(<span class="hljs-number">15</span>)<br>        main_layout.setContentsMargins(<span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>)<br>        <br>        <span class="hljs-comment"># 左侧视频预览和控制区域</span><br>        left_frame = QFrame()<br>        left_layout = QVBoxLayout(left_frame)<br>        left_layout.setSpacing(<span class="hljs-number">10</span>)<br>        <br>        <span class="hljs-comment"># 视频预览容器</span><br>        video_container = QFrame()<br>        video_container.setStyleSheet(<span class="hljs-string">&quot;background-color: #1a1a1a; border-radius: 4px;&quot;</span>)<br>        video_layout = QVBoxLayout(video_container)<br>        video_layout.setContentsMargins(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br>        <br>        <span class="hljs-comment"># 视频预览标签</span><br>        <span class="hljs-variable language_">self</span>.video_label = QLabel()<br>        <span class="hljs-variable language_">self</span>.video_label.setMinimumSize(<span class="hljs-number">480</span>, <span class="hljs-number">200</span>)<br>        <span class="hljs-variable language_">self</span>.video_label.setAlignment(Qt.AlignmentFlag.AlignCenter)<br>        video_layout.addWidget(<span class="hljs-variable language_">self</span>.video_label)<br>        <br>        left_layout.addWidget(video_container, stretch=<span class="hljs-number">1</span>)  <span class="hljs-comment"># 添加stretch=1使其自适应</span><br>        <br>        <span class="hljs-comment"># 进度条和时间显示</span><br>        time_layout = QHBoxLayout()<br>        <span class="hljs-variable language_">self</span>.time_label = QLabel(<span class="hljs-string">&quot;00:00:00 / 00:00:00&quot;</span>)<br>        time_layout.addWidget(<span class="hljs-variable language_">self</span>.time_label)<br>        <br>        <span class="hljs-variable language_">self</span>.progress_slider = QSlider(Qt.Orientation.Horizontal)<br>        <span class="hljs-variable language_">self</span>.progress_slider.setRange(<span class="hljs-number">0</span>, <span class="hljs-number">1000</span>)<br>        <span class="hljs-variable language_">self</span>.progress_slider.sliderPressed.connect(<span class="hljs-variable language_">self</span>.on_slider_pressed)<br>        <span class="hljs-variable language_">self</span>.progress_slider.sliderReleased.connect(<span class="hljs-variable language_">self</span>.on_slider_released)<br>        <span class="hljs-variable language_">self</span>.progress_slider.valueChanged.connect(<span class="hljs-variable language_">self</span>.on_slider_value_changed)<br>        time_layout.addWidget(<span class="hljs-variable language_">self</span>.progress_slider)<br>        left_layout.addLayout(time_layout)<br>        <br>        main_layout.addWidget(left_frame, stretch=<span class="hljs-number">1</span>)<br>        <br>        <span class="hljs-comment"># 右侧控制面板</span><br>        right_frame = QFrame()<br>        right_frame.setFixedWidth(<span class="hljs-number">400</span>)<br>        right_layout = QVBoxLayout(right_frame)<br>        right_layout.setSpacing(<span class="hljs-number">15</span>)<br>        right_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)<br>        <br>        <span class="hljs-comment"># 文件选择区域</span><br>        file_group = QFrame()<br>        file_layout = QHBoxLayout(file_group)<br>        file_layout.setContentsMargins(<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>)<br>        file_layout.setAlignment(Qt.AlignmentFlag.AlignLeft)<br>        <br>        select_btn = QPushButton(<span class="hljs-string">&quot;选择视频&quot;</span>)<br>        select_btn.setStyleSheet(<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">            QPushButton &#123;</span><br><span class="hljs-string">                background-color: #3498db;</span><br><span class="hljs-string">                color: white;</span><br><span class="hljs-string">                border: none;</span><br><span class="hljs-string">                padding: 8px 15px;</span><br><span class="hljs-string">                border-radius: 4px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QPushButton:hover &#123;</span><br><span class="hljs-string">                background-color: #2980b9;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br>        select_btn.clicked.connect(<span class="hljs-variable language_">self</span>.select_video)<br>        file_layout.addWidget(select_btn)<br>        <br>        <span class="hljs-variable language_">self</span>.path_label = QLabel(<span class="hljs-string">&quot;未选择视频&quot;</span>)<br>        <span class="hljs-variable language_">self</span>.path_label.setWordWrap(<span class="hljs-literal">True</span>)<br>        file_layout.addWidget(<span class="hljs-variable language_">self</span>.path_label)<br>        <br>        right_layout.addWidget(file_group)<br>        <br>        <span class="hljs-comment"># 播放控制区域</span><br>        play_group = QFrame()<br>        play_layout = QHBoxLayout(play_group)<br>        play_layout.setContentsMargins(<span class="hljs-number">5</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>)  <span class="hljs-comment"># 修改上下间距为0</span><br>        play_layout.setAlignment(Qt.AlignmentFlag.AlignLeft)<br>        <br>        <span class="hljs-comment"># 修改play_group的样式，减小内边距</span><br>        play_group.setStyleSheet(<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">            QFrame &#123;</span><br><span class="hljs-string">                background-color: white;</span><br><span class="hljs-string">                border-radius: 8px;</span><br><span class="hljs-string">                padding: 5px;  /* 减小内边距为5px */</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br>        <br>        <span class="hljs-variable language_">self</span>.play_button = QPushButton(<span class="hljs-string">&quot;播放&quot;</span>)<br>        <span class="hljs-variable language_">self</span>.play_button.clicked.connect(<span class="hljs-variable language_">self</span>.toggle_play)<br>        play_layout.addWidget(<span class="hljs-variable language_">self</span>.play_button)<br>        <br>        set_start_btn = QPushButton(<span class="hljs-string">&quot;设为开始时间&quot;</span>)<br>        set_start_btn.clicked.connect(<span class="hljs-variable language_">self</span>.set_start_time)<br>        play_layout.addWidget(set_start_btn)<br>        <br>        set_end_btn = QPushButton(<span class="hljs-string">&quot;设为结束时间&quot;</span>)<br>        set_end_btn.clicked.connect(<span class="hljs-variable language_">self</span>.set_end_time)<br>        play_layout.addWidget(set_end_btn)<br>        <br>        right_layout.addWidget(play_group)<br>        <br>        <span class="hljs-comment"># 音量控制区域</span><br>        volume_group = QFrame()<br>        volume_layout = QHBoxLayout(volume_group)<br>        volume_layout.setContentsMargins(<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>)<br>        volume_layout.setAlignment(Qt.AlignmentFlag.AlignLeft)<br>        <br>        <span class="hljs-comment"># 静音按钮</span><br>        <span class="hljs-variable language_">self</span>.mute_button = QPushButton()<br>        <span class="hljs-variable language_">self</span>.mute_button.setFixedSize(<span class="hljs-number">30</span>, <span class="hljs-number">30</span>)<br>        <span class="hljs-variable language_">self</span>.mute_button.clicked.connect(<span class="hljs-variable language_">self</span>.toggle_mute)<br>        <span class="hljs-variable language_">self</span>.update_mute_button_icon()<br>        volume_layout.addWidget(<span class="hljs-variable language_">self</span>.mute_button)<br>        <br>        <span class="hljs-comment"># 音量滑块</span><br>        <span class="hljs-variable language_">self</span>.volume_slider = QSlider(Qt.Orientation.Horizontal)<br>        <span class="hljs-variable language_">self</span>.volume_slider.setFixedWidth(<span class="hljs-number">200</span>)  <span class="hljs-comment"># 增加音量滑块的宽度</span><br>        <span class="hljs-variable language_">self</span>.volume_slider.setRange(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>)<br>        <span class="hljs-variable language_">self</span>.volume_slider.setValue(<span class="hljs-number">0</span>)<br>        <span class="hljs-variable language_">self</span>.volume_slider.valueChanged.connect(<span class="hljs-variable language_">self</span>.set_volume)<br>        volume_layout.addWidget(<span class="hljs-variable language_">self</span>.volume_slider)<br>        <br>        right_layout.addWidget(volume_group)<br>        <br>        <span class="hljs-comment"># 时间设置区域</span><br>        time_group = QFrame()<br>        time_layout = QVBoxLayout(time_group)<br>        time_layout.setSpacing(<span class="hljs-number">5</span>)<br>        time_layout.setContentsMargins(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">5</span>)<br>        time_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)<br>        <br>        <span class="hljs-comment"># 开始时间</span><br>        start_layout = QHBoxLayout()<br>        start_layout.setContentsMargins(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br>        start_layout.setAlignment(Qt.AlignmentFlag.AlignLeft)<br>        start_layout.addWidget(QLabel(<span class="hljs-string">&quot;开始时间&quot;</span>))<br>        <br>        start_time_layout = QHBoxLayout()<br>        start_time_layout.setSpacing(<span class="hljs-number">5</span>)<br>        start_time_layout.setContentsMargins(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br>        <br>        <span class="hljs-variable language_">self</span>.start_hour = QComboBox()<br>        <span class="hljs-variable language_">self</span>.start_hour.addItems([<span class="hljs-built_in">str</span>(i).zfill(<span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">24</span>)])<br>        start_time_layout.addWidget(<span class="hljs-variable language_">self</span>.start_hour)<br>        <br>        colon_label = QLabel(<span class="hljs-string">&quot;:&quot;</span>)<br>        colon_label.setFixedWidth(<span class="hljs-number">5</span>)<br>        start_time_layout.addWidget(colon_label)<br>        <br>        <span class="hljs-variable language_">self</span>.start_minute = QComboBox()<br>        <span class="hljs-variable language_">self</span>.start_minute.addItems([<span class="hljs-built_in">str</span>(i).zfill(<span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">60</span>)])<br>        start_time_layout.addWidget(<span class="hljs-variable language_">self</span>.start_minute)<br>        <br>        colon_label = QLabel(<span class="hljs-string">&quot;:&quot;</span>)<br>        colon_label.setFixedWidth(<span class="hljs-number">5</span>)<br>        start_time_layout.addWidget(colon_label)<br>        <br>        <span class="hljs-variable language_">self</span>.start_second = QComboBox()<br>        <span class="hljs-variable language_">self</span>.start_second.addItems([<span class="hljs-built_in">str</span>(i).zfill(<span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">60</span>)])<br>        start_time_layout.addWidget(<span class="hljs-variable language_">self</span>.start_second)<br>        <br>        start_layout.addLayout(start_time_layout)<br>        start_layout.addStretch()<br>        time_layout.addLayout(start_layout)<br>        <br>        <span class="hljs-comment"># 结束时间</span><br>        end_layout = QHBoxLayout()<br>        end_layout.setContentsMargins(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br>        end_layout.setAlignment(Qt.AlignmentFlag.AlignLeft)<br>        end_layout.addWidget(QLabel(<span class="hljs-string">&quot;结束时间&quot;</span>))<br>        <br>        end_time_layout = QHBoxLayout()<br>        end_time_layout.setSpacing(<span class="hljs-number">5</span>)<br>        end_time_layout.setContentsMargins(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br>        <br>        <span class="hljs-variable language_">self</span>.end_hour = QComboBox()<br>        <span class="hljs-variable language_">self</span>.end_hour.addItems([<span class="hljs-built_in">str</span>(i).zfill(<span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">24</span>)])<br>        end_time_layout.addWidget(<span class="hljs-variable language_">self</span>.end_hour)<br>        <br>        colon_label = QLabel(<span class="hljs-string">&quot;:&quot;</span>)<br>        colon_label.setFixedWidth(<span class="hljs-number">5</span>)<br>        end_time_layout.addWidget(colon_label)<br>        <br>        <span class="hljs-variable language_">self</span>.end_minute = QComboBox()<br>        <span class="hljs-variable language_">self</span>.end_minute.addItems([<span class="hljs-built_in">str</span>(i).zfill(<span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">60</span>)])<br>        end_time_layout.addWidget(<span class="hljs-variable language_">self</span>.end_minute)<br>        <br>        colon_label = QLabel(<span class="hljs-string">&quot;:&quot;</span>)<br>        colon_label.setFixedWidth(<span class="hljs-number">5</span>)<br>        end_time_layout.addWidget(colon_label)<br>        <br>        <span class="hljs-variable language_">self</span>.end_second = QComboBox()<br>        <span class="hljs-variable language_">self</span>.end_second.addItems([<span class="hljs-built_in">str</span>(i).zfill(<span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">60</span>)])<br>        end_time_layout.addWidget(<span class="hljs-variable language_">self</span>.end_second)<br>        <br>        end_layout.addLayout(end_time_layout)<br>        end_layout.addStretch()<br>        time_layout.addLayout(end_layout)<br>        <br>        right_layout.addWidget(time_group)<br>        <br>        <span class="hljs-comment"># 剪切按钮</span><br>        clip_btn = QPushButton(<span class="hljs-string">&quot;开始剪切&quot;</span>)<br>        clip_btn.setStyleSheet(<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">            QPushButton &#123;</span><br><span class="hljs-string">                background-color: #27ae60;</span><br><span class="hljs-string">                font-weight: bold;</span><br><span class="hljs-string">                padding: 10px 20px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QPushButton:hover &#123;</span><br><span class="hljs-string">                background-color: #219a52;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br>        clip_btn.clicked.connect(<span class="hljs-variable language_">self</span>.clip_video)<br>        right_layout.addWidget(clip_btn)<br>        <br>        <span class="hljs-comment"># 添加弹簧推动所有控件到顶部</span><br>        right_layout.addStretch(<span class="hljs-number">1</span>)<br>        <br>        main_layout.addWidget(right_frame)<br>        <br>        <span class="hljs-comment"># 设置定时器</span><br>        <span class="hljs-variable language_">self</span>.timer = QTimer()<br>        <span class="hljs-variable language_">self</span>.timer.timeout.connect(<span class="hljs-variable language_">self</span>.update_video_frame)<br>        <span class="hljs-variable language_">self</span>.timer.setInterval(<span class="hljs-number">30</span>)<br>        <br>        <span class="hljs-comment"># 修改样式表设置部分</span><br>        current_style = <span class="hljs-variable language_">self</span>.styleSheet()<br>        <span class="hljs-variable language_">self</span>.setStyleSheet(current_style + <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">            QSlider::groove:horizontal &#123;</span><br><span class="hljs-string">                height: 4px;</span><br><span class="hljs-string">                background: #bdc3c7;</span><br><span class="hljs-string">                margin: 0px;</span><br><span class="hljs-string">                border-radius: 2px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QSlider::handle:horizontal &#123;</span><br><span class="hljs-string">                background: #3498db;</span><br><span class="hljs-string">                border: none;</span><br><span class="hljs-string">                width: 12px;</span><br><span class="hljs-string">                height: 12px;</span><br><span class="hljs-string">                margin: -4px 0;</span><br><span class="hljs-string">                border-radius: 6px;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">            QSlider::handle:horizontal:hover &#123;</span><br><span class="hljs-string">                background: #2980b9;</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">format_time</span>(<span class="hljs-params">self, seconds</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>(timedelta(seconds=<span class="hljs-built_in">int</span>(seconds))).zfill(<span class="hljs-number">8</span>)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">on_slider_pressed</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.timer.isActive():<br>            <span class="hljs-variable language_">self</span>.timer.stop()<br>            <span class="hljs-variable language_">self</span>.was_playing = <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-variable language_">self</span>.was_playing = <span class="hljs-literal">False</span><br>            <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">on_slider_released</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(<span class="hljs-variable language_">self</span>, <span class="hljs-string">&#x27;was_playing&#x27;</span>) <span class="hljs-keyword">and</span> <span class="hljs-variable language_">self</span>.was_playing:<br>            <span class="hljs-variable language_">self</span>.timer.start()<br>            <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">on_slider_value_changed</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.cap <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.video_duration:<br>            <span class="hljs-keyword">return</span><br>            <br>        position = <span class="hljs-variable language_">self</span>.progress_slider.value() / <span class="hljs-number">1000.0</span> * <span class="hljs-variable language_">self</span>.video_duration<br>        <span class="hljs-variable language_">self</span>.current_position = position<br>        <br>        <span class="hljs-comment"># 更新视频帧和音频位置</span><br>        <span class="hljs-variable language_">self</span>.cap.<span class="hljs-built_in">set</span>(cv2.CAP_PROP_POS_FRAMES, position * <span class="hljs-variable language_">self</span>.cap.get(cv2.CAP_PROP_FPS))<br>        <span class="hljs-variable language_">self</span>.media_player.setPosition(<span class="hljs-built_in">int</span>(position * <span class="hljs-number">1000</span>))  <span class="hljs-comment"># 设置音频位置（毫秒）</span><br>        <br>        ret, frame = <span class="hljs-variable language_">self</span>.cap.read()<br>        <span class="hljs-keyword">if</span> ret:<br>            <span class="hljs-variable language_">self</span>.display_frame(frame)<br>            <br>        <span class="hljs-variable language_">self</span>.time_label.setText(<br>            <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;self.format_time(position)&#125;</span> / <span class="hljs-subst">&#123;self.format_time(self.video_duration)&#125;</span>&quot;</span><br>        )<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">toggle_play</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.cap:<br>            <span class="hljs-keyword">return</span><br>            <br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.timer.isActive():<br>            <span class="hljs-variable language_">self</span>.timer.stop()<br>            <span class="hljs-variable language_">self</span>.play_button.setText(<span class="hljs-string">&quot;播放&quot;</span>)<br>            <span class="hljs-variable language_">self</span>.media_player.pause()<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-variable language_">self</span>.timer.start()<br>            <span class="hljs-variable language_">self</span>.play_button.setText(<span class="hljs-string">&quot;暂停&quot;</span>)<br>            <span class="hljs-variable language_">self</span>.media_player.play()<br>            <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update_video_frame</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.cap:<br>            <span class="hljs-keyword">return</span><br>            <br>        ret, frame = <span class="hljs-variable language_">self</span>.cap.read()<br>        <span class="hljs-keyword">if</span> ret:<br>            <span class="hljs-variable language_">self</span>.current_position = <span class="hljs-variable language_">self</span>.cap.get(cv2.CAP_PROP_POS_FRAMES) / <span class="hljs-variable language_">self</span>.cap.get(cv2.CAP_PROP_FPS)<br>            <span class="hljs-variable language_">self</span>.progress_slider.setValue(<span class="hljs-built_in">int</span>(<span class="hljs-variable language_">self</span>.current_position * <span class="hljs-number">1000</span> / <span class="hljs-variable language_">self</span>.video_duration))<br>            <span class="hljs-variable language_">self</span>.time_label.setText(<br>                <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;self.format_time(self.current_position)&#125;</span> / <span class="hljs-subst">&#123;self.format_time(self.video_duration)&#125;</span>&quot;</span><br>            )<br>            <span class="hljs-variable language_">self</span>.display_frame(frame)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-variable language_">self</span>.cap.<span class="hljs-built_in">set</span>(cv2.CAP_PROP_POS_FRAMES, <span class="hljs-number">0</span>)<br>            <span class="hljs-variable language_">self</span>.current_position = <span class="hljs-number">0</span><br>            <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">display_frame</span>(<span class="hljs-params">self, frame</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;调整视频帧大小以适应窗口&quot;&quot;&quot;</span><br>        <span class="hljs-comment"># 获取视频容器的大小</span><br>        container_size = <span class="hljs-variable language_">self</span>.video_label.size()<br>        <br>        <span class="hljs-comment"># 计算保持宽高比的新尺寸</span><br>        frame_height, frame_width = frame.shape[:<span class="hljs-number">2</span>]<br>        aspect_ratio = frame_width / frame_height<br>        <br>        <span class="hljs-comment"># 计算适合容器的新尺寸</span><br>        <span class="hljs-keyword">if</span> container_size.width() / container_size.height() &gt; aspect_ratio:<br>            <span class="hljs-comment"># 以高度为基准</span><br>            new_height = container_size.height()<br>            new_width = <span class="hljs-built_in">int</span>(new_height * aspect_ratio)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment"># 以宽度为基准</span><br>            new_width = container_size.width()<br>            new_height = <span class="hljs-built_in">int</span>(new_width / aspect_ratio)<br>        <br>        <span class="hljs-comment"># 调整帧大小</span><br>        frame = cv2.resize(frame, (new_width, new_height))<br>        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)<br>        <br>        <span class="hljs-comment"># 创建QImage</span><br>        h, w, ch = frame.shape<br>        bytes_per_line = ch * w<br>        qt_image = QImage(frame.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)<br>        <br>        <span class="hljs-comment"># 创建并设置pixmap</span><br>        pixmap = QPixmap.fromImage(qt_image)<br>        <span class="hljs-variable language_">self</span>.video_label.setPixmap(pixmap)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">select_video</span>(<span class="hljs-params">self</span>):<br>        file_path, _ = QFileDialog.getOpenFileName(<br>            <span class="hljs-variable language_">self</span>,<br>            <span class="hljs-string">&quot;选择视频文件&quot;</span>,<br>            <span class="hljs-string">&quot;&quot;</span>,<br>            <span class="hljs-string">&quot;视频文件 (*.mp4 *.avi *.mkv *.mov)&quot;</span><br>        )<br>        <br>        <span class="hljs-keyword">if</span> file_path:<br>            <span class="hljs-variable language_">self</span>.video_path = file_path<br>            <span class="hljs-variable language_">self</span>.path_label.setText(file_path)<br>            <br>            <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.cap <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                <span class="hljs-variable language_">self</span>.cap.release()<br>            <br>            <span class="hljs-comment"># 设置媒体播放器源</span><br>            <span class="hljs-variable language_">self</span>.media_player.setSource(QUrl.fromLocalFile(file_path))<br>            <br>            <span class="hljs-variable language_">self</span>.cap = cv2.VideoCapture(file_path)<br>            <span class="hljs-variable language_">self</span>.video_duration = <span class="hljs-variable language_">self</span>.cap.get(cv2.CAP_PROP_FRAME_COUNT) / <span class="hljs-variable language_">self</span>.cap.get(cv2.CAP_PROP_FPS)<br>            <br>            ret, frame = <span class="hljs-variable language_">self</span>.cap.read()<br>            <span class="hljs-keyword">if</span> ret:<br>                <span class="hljs-variable language_">self</span>.display_frame(frame)<br>                <span class="hljs-variable language_">self</span>.time_label.setText(<span class="hljs-string">f&quot;00:00:00 / <span class="hljs-subst">&#123;self.format_time(self.video_duration)&#125;</span>&quot;</span>)<br>                <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_start_time</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.cap:<br>            <span class="hljs-keyword">return</span><br>            <br>        current_time = <span class="hljs-variable language_">self</span>.format_time(<span class="hljs-variable language_">self</span>.current_position)<br>        h, m, s = current_time.split(<span class="hljs-string">&#x27;:&#x27;</span>)<br>        <br>        <span class="hljs-variable language_">self</span>.start_hour.setCurrentText(h)<br>        <span class="hljs-variable language_">self</span>.start_minute.setCurrentText(m)<br>        <span class="hljs-variable language_">self</span>.start_second.setCurrentText(s)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_end_time</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.cap:<br>            <span class="hljs-keyword">return</span><br>            <br>        current_time = <span class="hljs-variable language_">self</span>.format_time(<span class="hljs-variable language_">self</span>.current_position)<br>        h, m, s = current_time.split(<span class="hljs-string">&#x27;:&#x27;</span>)<br>        <br>        <span class="hljs-variable language_">self</span>.end_hour.setCurrentText(h)<br>        <span class="hljs-variable language_">self</span>.end_minute.setCurrentText(m)<br>        <span class="hljs-variable language_">self</span>.end_second.setCurrentText(s)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_time_str</span>(<span class="hljs-params">self, hour, minute, second</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;hour.currentText()&#125;</span>:<span class="hljs-subst">&#123;minute.currentText()&#125;</span>:<span class="hljs-subst">&#123;second.currentText()&#125;</span>&quot;</span><br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">clip_video</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.video_path:<br>            QMessageBox.critical(<span class="hljs-variable language_">self</span>, <span class="hljs-string">&quot;错误&quot;</span>, <span class="hljs-string">&quot;请先选择视频文件！&quot;</span>)<br>            <span class="hljs-keyword">return</span><br>            <br>        start = <span class="hljs-variable language_">self</span>.get_time_str(<span class="hljs-variable language_">self</span>.start_hour, <span class="hljs-variable language_">self</span>.start_minute, <span class="hljs-variable language_">self</span>.start_second)<br>        end = <span class="hljs-variable language_">self</span>.get_time_str(<span class="hljs-variable language_">self</span>.end_hour, <span class="hljs-variable language_">self</span>.end_minute, <span class="hljs-variable language_">self</span>.end_second)<br>        <br>        <span class="hljs-comment"># 生成时间戳</span><br>        timestamp = datetime.now().strftime(<span class="hljs-string">&quot;%Y%m%d_%H%M%S&quot;</span>)<br>        <br>        <span class="hljs-comment"># 生成输出文件名：原名称_时间戳.mp4</span><br>        file_name = os.path.splitext(os.path.basename(<span class="hljs-variable language_">self</span>.video_path))[<span class="hljs-number">0</span>]<br>        output_path = os.path.join(<br>            os.path.dirname(<span class="hljs-variable language_">self</span>.video_path),<br>            <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;file_name&#125;</span>_<span class="hljs-subst">&#123;timestamp&#125;</span>.mp4&quot;</span><br>        )<br>        <br>        <span class="hljs-comment"># 设置按钮状态</span><br>        <span class="hljs-variable language_">self</span>.sender().setEnabled(<span class="hljs-literal">False</span>)<br>        <span class="hljs-variable language_">self</span>.sender().setText(<span class="hljs-string">&quot;正在剪切...&quot;</span>)<br>        QApplication.processEvents()  <span class="hljs-comment"># 立即更新界面</span><br>        <br>        <span class="hljs-keyword">try</span>:<br>            ffmpeg_path = resource_path(os.path.join(<span class="hljs-string">&quot;ffmpeg&quot;</span>, <span class="hljs-string">&quot;ffmpeg.exe&quot;</span>))<br>            command = [<br>                ffmpeg_path,<br>                <span class="hljs-string">&quot;-i&quot;</span>, <span class="hljs-variable language_">self</span>.video_path,<br>                <span class="hljs-string">&quot;-ss&quot;</span>, start,<br>                <span class="hljs-string">&quot;-to&quot;</span>, end,<br>                <span class="hljs-string">&quot;-c&quot;</span>, <span class="hljs-string">&quot;copy&quot;</span>,<br>                output_path<br>            ]<br>            <br>            <span class="hljs-comment"># 执行剪切命令</span><br>            subprocess.run(command, check=<span class="hljs-literal">True</span>)<br>            QMessageBox.information(<span class="hljs-variable language_">self</span>, <span class="hljs-string">&quot;成功&quot;</span>, <span class="hljs-string">&quot;视频剪切完成！&quot;</span>)<br>            <br>        <span class="hljs-keyword">except</span> subprocess.CalledProcessError:<br>            QMessageBox.critical(<span class="hljs-variable language_">self</span>, <span class="hljs-string">&quot;错误&quot;</span>, <span class="hljs-string">&quot;视频剪切失败！&quot;</span>)<br>        <span class="hljs-keyword">except</span> FileNotFoundError:<br>            QMessageBox.critical(<span class="hljs-variable language_">self</span>, <span class="hljs-string">&quot;错误&quot;</span>, <span class="hljs-string">&quot;找不到ffmpeg.exe，请确保程序完整！&quot;</span>)<br>        <span class="hljs-keyword">finally</span>:<br>            <span class="hljs-comment"># 恢复按钮状态</span><br>            <span class="hljs-variable language_">self</span>.sender().setEnabled(<span class="hljs-literal">True</span>)<br>            <span class="hljs-variable language_">self</span>.sender().setText(<span class="hljs-string">&quot;开始剪切&quot;</span>)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update_mute_button_icon</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;更新静音按钮图标&quot;&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.audio_output.isMuted():<br>            <span class="hljs-variable language_">self</span>.mute_button.setIcon(<span class="hljs-variable language_">self</span>.style().standardIcon(QStyle.StandardPixmap.SP_MediaVolumeMuted))<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-variable language_">self</span>.mute_button.setIcon(<span class="hljs-variable language_">self</span>.style().standardIcon(QStyle.StandardPixmap.SP_MediaVolume))<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">toggle_mute</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;切换静音状态&quot;&quot;&quot;</span><br>        <span class="hljs-variable language_">self</span>.audio_output.setMuted(<span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.audio_output.isMuted())<br>        <span class="hljs-variable language_">self</span>.update_mute_button_icon()<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_volume</span>(<span class="hljs-params">self, value</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;设置音量&quot;&quot;&quot;</span><br>        <span class="hljs-variable language_">self</span>.audio_output.setVolume(value / <span class="hljs-number">100</span>)<br>        <span class="hljs-keyword">if</span> value &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-variable language_">self</span>.audio_output.setMuted(<span class="hljs-literal">False</span>)<br>            <span class="hljs-variable language_">self</span>.update_mute_button_icon()<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">closeEvent</span>(<span class="hljs-params">self, event</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.cap <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-variable language_">self</span>.cap.release()<br>        <span class="hljs-variable language_">self</span>.media_player.stop()<br>        event.accept()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">resizeEvent</span>(<span class="hljs-params">self, event</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;窗口大小改变时重新显示当前帧&quot;&quot;&quot;</span><br>        <span class="hljs-built_in">super</span>().resizeEvent(event)<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(<span class="hljs-variable language_">self</span>, <span class="hljs-string">&#x27;cap&#x27;</span>) <span class="hljs-keyword">and</span> <span class="hljs-variable language_">self</span>.cap <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-comment"># 获取当前帧</span><br>            current_frame = <span class="hljs-variable language_">self</span>.cap.get(cv2.CAP_PROP_POS_FRAMES)<br>            <span class="hljs-variable language_">self</span>.cap.<span class="hljs-built_in">set</span>(cv2.CAP_PROP_POS_FRAMES, current_frame - <span class="hljs-number">1</span>)<br>            ret, frame = <span class="hljs-variable language_">self</span>.cap.read()<br>            <span class="hljs-keyword">if</span> ret:<br>                <span class="hljs-variable language_">self</span>.display_frame(frame)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    app = QApplication(sys.argv)<br>    window = VideoClipper()<br>    window.show()<br>    sys.exit(app.<span class="hljs-built_in">exec</span>())<br></code></pre></td></tr></table></figure>
+
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/06/16/echarts%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE.html">echarts中国地图数据</a>
+                <p>2023-06-16</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7.html">html5兼容IE低版本</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/30/python-nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/pm2%E9%85%8D%E7%BD%AE.html">pm2配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/06/16/echarts%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE.html">echarts中国地图数据</a>
+                <p>2023-06-16</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7.html">html5兼容IE低版本</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/30/python-nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/pm2%E9%85%8D%E7%BD%AE.html">pm2配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(124)</a>
+        
+            <a href="/tag/hexo/">Hexo(4)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
+        
+            <a href="/tag/linux/">linux(17)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(6)</a>
+        
+            <a href="/tag/node/">node(37)</a>
+        
+            <a href="/tag/dns/">dns(8)</a>
+        
+            <a href="/tag/css/">css(14)</a>
+        
+            <a href="/tag/cursor/">cursor(1)</a>
+        
+            <a href="/tag/go/">go(57)</a>
+        
+            <a href="/tag/docker/">docker(1)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(1)</a>
+        
+            <a href="/tag/vps/">vps(8)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
+        
+            <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/jquery/">jquery(3)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/websocket/">websocket(3)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(8)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(4)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/npm/">npm(1)</a>
+        
+            <a href="/tag/php/">php(9)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(11)</a>
+        
+            <a href="/tag/%E7%BB%98%E5%9B%BE/">绘图(1)</a>
+        
+            <a href="/tag/react/">react(3)</a>
+        
+            <a href="/tag/svg/">svg(1)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/typescript/">typescript(2)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    // 文章全屏显示
+    document.querySelector('#extend').addEventListener('click',function(){
+        let ele = document.querySelector('.post-box').classList
+        if(ele.value.includes('post-full')){
+            ele.remove('post-full')
+        }else{
+            ele.add('post-full')
+        }
+    },false)
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 60
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>
