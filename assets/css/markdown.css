@@ -31,8 +31,7 @@
   margin: 0.7em 0;
 }
 .post-content h1::after {
-  left: 0;
-
+  left: -15px;
   width: 14px;
   height: 14px;
 }
@@ -41,7 +40,7 @@
   margin: 0.7em 0;
 }
 .post-content h2::after {
-  left: 1px;
+  left: -15px;
   width: 12px;
   height: 12px;
 }
@@ -59,7 +58,7 @@
   margin: 0.5em 0;
 }
 .post-content h4::after {
-  left: 3px;
+  left: -15px;
   width: 8px;
   height: 8px;
 }
@@ -70,7 +69,7 @@
 }
 .post-content h5::after,
 .post-content h6::after {
-  left: 4px;
+  left: -15px;
   width: 6px;
   height: 6px;
 }
