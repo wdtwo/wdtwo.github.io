@@ -82,7 +82,7 @@
 <div class="post-box flex flex-item-start">
     <article class="post">
         <i class="fa fa-bars extend" id="extend"></i>
-        <h1 class="post-title t-c">library镜像部署</h1>
+        <h1 class="post-title t-c"></h1>
         <div class="post-meta t-c flex">
             <!-- 作者 -->
             <div>
@@ -94,21 +94,17 @@
                 2025-01-25
             </div>
             
-                <div>
-                    <i class="fa fa-folder c-yellow"></i>
-                    <a class="archive-item-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-                </div>
-            
-            
-                <div>
-                    <i class="fa fa-tags c-green"></i>
-                    <a class="archive-item-tag-none-link" href="/tag/%E5%85%B6%E4%BB%96/" rel="tag">其他</a>
-                </div>
             
         </div>
         <hr class="line">
         <div class="post-content">
-            <h2 id="主力链接"><a href="#主力链接" class="headerlink" title="主力链接"></a>主力链接</h2><p><a target="_blank" rel="noopener" href="https://x.com/Z_Lib_official">twitter</a><br><a target="_blank" rel="noopener" href="https://c-lib.cn/sites/347.html">海盗游击队</a><br><a target="_blank" rel="noopener" href="https://www.ahhhhfs.com/19317/">ahhhhfs</a><br><a target="_blank" rel="noopener" href="https://discuss.sci-hub.org.cn/d/2579">Sci-Hub中文社区</a><br><a target="_blank" rel="noopener" href="https://www.tboxn.com/sites/320.html">tbox导航</a><br><a target="_blank" rel="noopener" href="https://www.tboxn.com/sites/1248.html">Library Genesis</a><br><a target="_blank" rel="noopener" href="https://zh.zlib-book.top/">直接访问</a></p>
+            <p>title: library镜像部署<br>layout: post<br>date: 2025-01-25 14:19:30<br>cover: <a target="_blank" rel="noopener" href="https://cdn.wdtwo.com/anzhiyu/node122345.webp">https://cdn.wdtwo.com/anzhiyu/node122345.webp</a><br>categories:</p>
+<ul>
+<li>其他<br>tags:</li>
+<li>其他</li>
+</ul>
+<hr>
+<h2 id="主力链接"><a href="#主力链接" class="headerlink" title="主力链接"></a>主力链接</h2><p><a target="_blank" rel="noopener" href="https://x.com/Z_Lib_official">twitter</a><br><a target="_blank" rel="noopener" href="https://c-lib.cn/sites/347.html">海盗游击队</a><br><a target="_blank" rel="noopener" href="https://www.ahhhhfs.com/19317/">ahhhhfs</a><br><a target="_blank" rel="noopener" href="https://discuss.sci-hub.org.cn/d/2579">Sci-Hub中文社区</a><br><a target="_blank" rel="noopener" href="https://www.tboxn.com/sites/320.html">tbox导航</a><br><a target="_blank" rel="noopener" href="https://www.tboxn.com/sites/1248.html">Library Genesis</a><br><a target="_blank" rel="noopener" href="https://zh.zlib-book.top/">直接访问</a></p>
 <p><a target="_blank" rel="noopener" href="https://zlib.pro/">Z-Library Pro助手</a></p>
 <h2 id="使用cloudflare-workers部署"><a href="#使用cloudflare-workers部署" class="headerlink" title="使用cloudflare workers部署"></a>使用cloudflare workers部署</h2><h3 id="worker-js"><a href="#worker-js" class="headerlink" title="worker.js"></a>worker.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 你要镜像的网站.</span><br><span class="hljs-keyword">const</span> upstream = <span class="hljs-string">&#x27;z-library.sk&#x27;</span><br><span class="hljs-comment">// 镜像网站的目录，比如你想镜像某个网站的二级目录则填写二级目录的目录名，镜像 google 用不到，默认即可.</span><br><span class="hljs-keyword">const</span> upstream_path = <span class="hljs-string">&#x27;/&#x27;</span><br><span class="hljs-comment">// 镜像站是否有手机访问专用网址，没有则填一样的.</span><br><span class="hljs-keyword">const</span> upstream_mobile = <span class="hljs-string">&#x27;z-library.sk&#x27;</span><br><span class="hljs-comment">// 屏蔽国家和地区.</span><br><span class="hljs-keyword">const</span> blocked_region = [<span class="hljs-string">&#x27;KP&#x27;</span>, <span class="hljs-string">&#x27;SY&#x27;</span>, <span class="hljs-string">&#x27;PK&#x27;</span>, <span class="hljs-string">&#x27;CU&#x27;</span>];<br><span class="hljs-comment">// 屏蔽 IP 地址.</span><br><span class="hljs-keyword">const</span> blocked_ip_address = [<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>]<br><span class="hljs-comment">// 镜像站是否开启 HTTPS.</span><br><span class="hljs-keyword">const</span> https = <span class="hljs-literal">true</span><br><span class="hljs-comment">// 文本替换.</span><br><span class="hljs-keyword">const</span> replace_dict = &#123;<br>    <span class="hljs-string">&#x27;$upstream&#x27;</span>: <span class="hljs-string">&#x27;$custom_domain&#x27;</span>,<br>&#125;<br><span class="hljs-comment">// 以下保持默认，不要动</span><br><span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>    event.<span class="hljs-title function_">respondWith</span>(<span class="hljs-title function_">fetchAndApply</span>(event.<span class="hljs-property">request</span>));<br>&#125;)<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchAndApply</span>(<span class="hljs-params">request</span>) &#123;<br>    <span class="hljs-keyword">const</span> region = request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cf-ipcountry&#x27;</span>).<span class="hljs-title function_">toUpperCase</span>();<br>    <span class="hljs-keyword">const</span> ip_address = request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cf-connecting-ip&#x27;</span>);<br>    <span class="hljs-keyword">const</span> user_agent = request.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;user-agent&#x27;</span>);<br>    <span class="hljs-keyword">let</span> response = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">let</span> url = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(request.<span class="hljs-property">url</span>);<br>    <span class="hljs-keyword">let</span> url_hostname = url.<span class="hljs-property">hostname</span>;<br>    <span class="hljs-keyword">if</span> (https == <span class="hljs-literal">true</span>) &#123;<br>        url.<span class="hljs-property">protocol</span> = <span class="hljs-string">&#x27;https:&#x27;</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        url.<span class="hljs-property">protocol</span> = <span class="hljs-string">&#x27;http:&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">await</span> <span class="hljs-title function_">device_status</span>(user_agent)) &#123;<br>        <span class="hljs-keyword">var</span> upstream_domain = upstream;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">var</span> upstream_domain = upstream_mobile;<br>    &#125;<br>    url.<span class="hljs-property">host</span> = upstream_domain;<br>    <span class="hljs-keyword">if</span> (url.<span class="hljs-property">pathname</span> == <span class="hljs-string">&#x27;/&#x27;</span>) &#123;<br>        url.<span class="hljs-property">pathname</span> = upstream_path;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        url.<span class="hljs-property">pathname</span> = upstream_path + url.<span class="hljs-property">pathname</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (blocked_region.<span class="hljs-title function_">includes</span>(region)) &#123;<br>        response = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;Access denied: WorkersProxy is not available in your region yet.&#x27;</span>, &#123;<br>            <span class="hljs-attr">status</span>: <span class="hljs-number">403</span><br>        &#125;);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (blocked_ip_address.<span class="hljs-title function_">includes</span>(ip_address)) &#123;<br>        response = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;Access denied: Your IP address is blocked by WorkersProxy.&#x27;</span>, &#123;<br>            <span class="hljs-attr">status</span>: <span class="hljs-number">403</span><br>        &#125;);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">let</span> method = request.<span class="hljs-property">method</span>;<br>        <span class="hljs-keyword">let</span> request_headers = request.<span class="hljs-property">headers</span>;<br>        <span class="hljs-keyword">let</span> new_request_headers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>(request_headers);<br>        new_request_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Host&#x27;</span>, url.<span class="hljs-property">hostname</span>);<br>        new_request_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Referer&#x27;</span>, url.<span class="hljs-property">hostname</span>);<br>        <span class="hljs-keyword">let</span> original_response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url.<span class="hljs-property">href</span>, &#123;<br>            <span class="hljs-attr">method</span>: method,<br>            <span class="hljs-attr">headers</span>: new_request_headers<br>        &#125;)<br>        <span class="hljs-keyword">let</span> original_response_clone = original_response.<span class="hljs-title function_">clone</span>();<br>        <span class="hljs-keyword">let</span> original_text = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">let</span> response_headers = original_response.<span class="hljs-property">headers</span>;<br>        <span class="hljs-keyword">let</span> new_response_headers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>(response_headers);<br>        <span class="hljs-keyword">let</span> status = original_response.<span class="hljs-property">status</span>;<br>        new_response_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;access-control-allow-origin&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>);<br>        new_response_headers.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;access-control-allow-credentials&#x27;</span>, <span class="hljs-literal">true</span>);<br>        new_response_headers.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&#x27;content-security-policy&#x27;</span>);<br>        new_response_headers.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&#x27;content-security-policy-report-only&#x27;</span>);<br>        new_response_headers.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&#x27;clear-site-data&#x27;</span>);<br>        <span class="hljs-keyword">const</span> content_type = new_response_headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;content-type&#x27;</span>);<br>        <span class="hljs-keyword">if</span> (content_type.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;text/html&#x27;</span>) &amp;&amp; content_type.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;UTF-8&#x27;</span>)) &#123;<br>            original_text = <span class="hljs-keyword">await</span> <span class="hljs-title function_">replace_response_text</span>(original_response_clone, upstream_domain, url_hostname);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            original_text = original_response_clone.<span class="hljs-property">body</span><br>        &#125;<br>        response = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(original_text, &#123;<br>            status,<br>            <span class="hljs-attr">headers</span>: new_response_headers<br>        &#125;)<br>    &#125;<br>    <span class="hljs-keyword">return</span> response;<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">replace_response_text</span>(<span class="hljs-params">response, upstream_domain, host_name</span>) &#123;<br>    <span class="hljs-keyword">let</span> text = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">text</span>()<br>    <span class="hljs-keyword">var</span> i, j;<br>    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> replace_dict) &#123;<br>        j = replace_dict[i]<br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-string">&#x27;$upstream&#x27;</span>) &#123;<br>            i = upstream_domain<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i == <span class="hljs-string">&#x27;$custom_domain&#x27;</span>) &#123;<br>            i = host_name<br>        &#125;<br>        <span class="hljs-keyword">if</span> (j == <span class="hljs-string">&#x27;$upstream&#x27;</span>) &#123;<br>            j = upstream_domain<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (j == <span class="hljs-string">&#x27;$custom_domain&#x27;</span>) &#123;<br>            j = host_name<br>        &#125;<br>        <span class="hljs-keyword">let</span> re = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(i, <span class="hljs-string">&#x27;g&#x27;</span>)<br>        text = text.<span class="hljs-title function_">replace</span>(re, j);<br>    &#125;<br>    <span class="hljs-keyword">return</span> text;<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">device_status</span>(<span class="hljs-params">user_agent_info</span>) &#123;<br>    <span class="hljs-keyword">var</span> agents = [<span class="hljs-string">&quot;Android&quot;</span>, <span class="hljs-string">&quot;iPhone&quot;</span>, <span class="hljs-string">&quot;SymbianOS&quot;</span>, <span class="hljs-string">&quot;Windows Phone&quot;</span>, <span class="hljs-string">&quot;iPad&quot;</span>, <span class="hljs-string">&quot;iPod&quot;</span>];<br>    <span class="hljs-keyword">var</span> flag = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> v = <span class="hljs-number">0</span>; v &lt; agents.<span class="hljs-property">length</span>; v++) &#123;<br>        <span class="hljs-keyword">if</span> (user_agent_info.<span class="hljs-title function_">indexOf</span>(agents[v]) &gt; <span class="hljs-number">0</span>) &#123;<br>            flag = <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> flag;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -124,56 +120,56 @@
     <ul>
         
             <li>
-                <a href="/2022/08/11/video%E8%A7%86%E9%A2%91%E6%B5%81%E5%AA%92%E4%BD%93HLS-m3u8%E6%A0%BC%E5%BC%8F%E5%8A%A0%E5%AF%86%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.html">video视频流媒体HLS m3u8格式加密视频开发</a>
-                <p>2022-08-11</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B771-80.html">超级散户71-80</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2024/01/04/js-%E7%A6%81%E6%AD%A2%E5%A4%8D%E5%88%B6.html">js-禁止复制</a>
-                <p>2024-01-04</p>
+                <a href="/2024/07/24/astro%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE.html">astro创建博客项目</a>
+                <p>2024-07-24</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E6%95%B0%E5%AD%97%E8%BD%AC%E9%92%B1%E6%A0%BC%E5%BC%8F.html">数字转钱格式</a>
-                <p>2023-02-14</p>
+                <a href="/2023/05/15/%E5%85%B6%E4%BB%96-%E5%AD%97%E5%B8%96%E6%A0%BC%E5%AD%90.html">字帖格子</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/10/13/linux-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">linux-frp内网穿透</a>
-                <p>2023-10-13</p>
+                <a href="/2023/11/22/koa2%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81html%E7%AD%89%E8%B5%84%E6%BA%90.html">koa加载静态html等资源</a>
+                <p>2023-11-22</p>
             </li>
         
             <li>
-                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
-                <p>2023-01-12</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E7%B3%96%E5%B0%BF%E7%97%85.html">中医秘方-治糖尿病</a>
+                <p>2023-02-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2022/08/11/video%E8%A7%86%E9%A2%91%E6%B5%81%E5%AA%92%E4%BD%93HLS-m3u8%E6%A0%BC%E5%BC%8F%E5%8A%A0%E5%AF%86%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.html">video视频流媒体HLS m3u8格式加密视频开发</a>
-                <p>2022-08-11</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B771-80.html">超级散户71-80</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2024/01/04/js-%E7%A6%81%E6%AD%A2%E5%A4%8D%E5%88%B6.html">js-禁止复制</a>
-                <p>2024-01-04</p>
+                <a href="/2024/07/24/astro%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE.html">astro创建博客项目</a>
+                <p>2024-07-24</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E6%95%B0%E5%AD%97%E8%BD%AC%E9%92%B1%E6%A0%BC%E5%BC%8F.html">数字转钱格式</a>
-                <p>2023-02-14</p>
+                <a href="/2023/05/15/%E5%85%B6%E4%BB%96-%E5%AD%97%E5%B8%96%E6%A0%BC%E5%AD%90.html">字帖格子</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/10/13/linux-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">linux-frp内网穿透</a>
-                <p>2023-10-13</p>
+                <a href="/2023/11/22/koa2%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81html%E7%AD%89%E8%B5%84%E6%BA%90.html">koa加载静态html等资源</a>
+                <p>2023-11-22</p>
             </li>
         
             <li>
-                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
-                <p>2023-01-12</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E7%B3%96%E5%B0%BF%E7%97%85.html">中医秘方-治糖尿病</a>
+                <p>2023-02-21</p>
             </li>
         
     </ul> -->
@@ -193,15 +189,17 @@
         
             <a href="/tag/js/">js(124)</a>
         
-            <a href="/tag/hexo/">Hexo(4)</a>
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
-            <a href="/tag/canvas/">canvas(5)</a>
+            <a href="/tag/hexo/">Hexo(4)</a>
         
             <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
-            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+            <a href="/tag/canvas/">canvas(5)</a>
         
             <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -210,8 +208,6 @@
             <a href="/tag/ajax/">ajax(1)</a>
         
             <a href="/tag/astro/">astro(3)</a>
-        
-            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
         
             <a href="/tag/axios/">axios(2)</a>
         
@@ -254,8 +250,6 @@
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
-        
-            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(7)</a>
         
             <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
         
@@ -323,11 +317,15 @@
         
             <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
         
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -347,11 +345,11 @@
         
             <a href="/tag/indexdb/">indexDB(1)</a>
         
-            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
-        
             <a href="/tag/json/">json(1)</a>
         
             <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         
