@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>js判断浏览器类型</p>
-<span id="more"></span>
-
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isMobile</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> u = navigator.<span class="hljs-property">userAgent</span>;<br>    <span class="hljs-keyword">var</span> app = navigator.<span class="hljs-property">appVersion</span>;<span class="hljs-comment">// appVersion 可返回浏览器的平台和版本信息。该属性是一个只读的字符串。</span><br>    <span class="hljs-keyword">var</span> browserLang = (navigator.<span class="hljs-property">browserLanguage</span> || navigator.<span class="hljs-property">language</span>).<span class="hljs-title function_">toLowerCase</span>();    <span class="hljs-comment">//获取浏览器语言</span><br><br>    <span class="hljs-keyword">var</span> deviceBrowser = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-keyword">return</span>&#123;<br>            <span class="hljs-attr">trident</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Trident&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//IE内核</span><br>            <span class="hljs-attr">presto</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Presto&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//opera内核</span><br>            <span class="hljs-attr">webKit</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;AppleWebKit&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//苹果、谷歌内核</span><br>            <span class="hljs-attr">gecko</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Gecko&#x27;</span>) &gt; -<span class="hljs-number">1</span> &amp;&amp; u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;KHTML&#x27;</span>) == -<span class="hljs-number">1</span>,  <span class="hljs-comment">//火狐内核</span><br>            <span class="hljs-attr">mobile</span>: !!u.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/AppleWebKit.*Mobile.*/</span>),  <span class="hljs-comment">//是否为移动终端</span><br>            <span class="hljs-attr">ios</span>: !!u.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\(i[^;]+;( U;)? CPU.Mac OS X/</span>),  <span class="hljs-comment">//ios终端</span><br>            <span class="hljs-attr">android</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Android&#x27;</span>) &gt; -<span class="hljs-number">1</span> || u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Linux&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//android终端或者uc浏览器</span><br>            <span class="hljs-attr">iPhone</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;iPhone&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//是否为iPhone或者QQHD浏览器</span><br>            <span class="hljs-attr">iPad</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;iPad&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//是否iPad</span><br>            <span class="hljs-attr">webApp</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Safari&#x27;</span>) == -<span class="hljs-number">1</span>,  <span class="hljs-comment">//是否web应用程序，没有头部和底部</span><br>            <span class="hljs-attr">weixin</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;MicroMessenger&#x27;</span>) &gt; -<span class="hljs-number">1</span>,  <span class="hljs-comment">//是否微信</span><br>            <span class="hljs-attr">qq</span>: u.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\sQQ/i</span>) == <span class="hljs-string">&quot; qq&quot;</span>,  <span class="hljs-comment">//是否QQ</span><br>        &#125;<br>    &#125;();<br><br>    <span class="hljs-keyword">return</span> deviceBrowser.<span class="hljs-property">mobile</span> || deviceBrowser.<span class="hljs-property">ios</span> || deviceBrowser.<span class="hljs-property">iPhone</span> || deviceBrowser.<span class="hljs-property">iPad</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -121,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2022/08/11/js-%E5%8F%96%E5%88%B0%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95.html">取到顶层对象的两种方法</a>
-                <p>2022-08-11</p>
+                <a href="/2023/09/10/golang-modules%E8%BF%9B%E8%A1%8C%E5%8C%85%E7%AE%A1%E7%90%86.html">golang-modules进行包管理</a>
+                <p>2023-09-10</p>
             </li>
         
             <li>
-                <a href="/2023/11/10/node%E8%BF%87%E6%BB%A4%E8%8A%82%E7%82%B9%E6%9C%89%E6%95%88%E6%80%A7.html">node过滤节点有效性</a>
-                <p>2023-11-10</p>
+                <a href="/2023/06/21/js%E8%87%AA%E5%8A%A8%E5%A4%8D%E5%88%B6.html">js自动复制</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/05/25/canvas%E6%94%BE%E7%83%9F%E8%8A%B1.html">canvas放烟花</a>
-                <p>2023-05-25</p>
+                <a href="/2023/02/14/bat%E6%89%B9%E5%A4%84%E7%90%86bat%E6%8F%92%E4%BB%B6.html">批处理bat插件</a>
+                <p>2023-02-14</p>
             </li>
         
             <li>
-                <a href="/2023/06/12/%E5%85%B6%E4%BB%96-%E7%B4%A0%E8%8F%9C%E8%8F%9C%E8%B0%B1.html">素菜菜谱</a>
-                <p>2023-06-12</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B771-80.html">超级散户71-80</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/03/31/dns-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E8%BD%AC%E6%8D%A2%E6%88%90ip%E5%9C%B0%E5%9D%80.html">dns-子网掩码转换成ip地址</a>
-                <p>2023-03-31</p>
+                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
+                <p>2024-03-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2022/08/11/js-%E5%8F%96%E5%88%B0%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95.html">取到顶层对象的两种方法</a>
-                <p>2022-08-11</p>
+                <a href="/2023/09/10/golang-modules%E8%BF%9B%E8%A1%8C%E5%8C%85%E7%AE%A1%E7%90%86.html">golang-modules进行包管理</a>
+                <p>2023-09-10</p>
             </li>
         
             <li>
-                <a href="/2023/11/10/node%E8%BF%87%E6%BB%A4%E8%8A%82%E7%82%B9%E6%9C%89%E6%95%88%E6%80%A7.html">node过滤节点有效性</a>
-                <p>2023-11-10</p>
+                <a href="/2023/06/21/js%E8%87%AA%E5%8A%A8%E5%A4%8D%E5%88%B6.html">js自动复制</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/05/25/canvas%E6%94%BE%E7%83%9F%E8%8A%B1.html">canvas放烟花</a>
-                <p>2023-05-25</p>
+                <a href="/2023/02/14/bat%E6%89%B9%E5%A4%84%E7%90%86bat%E6%8F%92%E4%BB%B6.html">批处理bat插件</a>
+                <p>2023-02-14</p>
             </li>
         
             <li>
-                <a href="/2023/06/12/%E5%85%B6%E4%BB%96-%E7%B4%A0%E8%8F%9C%E8%8F%9C%E8%B0%B1.html">素菜菜谱</a>
-                <p>2023-06-12</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B771-80.html">超级散户71-80</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/03/31/dns-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E8%BD%AC%E6%8D%A2%E6%88%90ip%E5%9C%B0%E5%9D%80.html">dns-子网掩码转换成ip地址</a>
-                <p>2023-03-31</p>
+                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
+                <p>2024-03-01</p>
             </li>
         
     </ul> -->
@@ -180,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -248,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -260,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -316,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -348,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

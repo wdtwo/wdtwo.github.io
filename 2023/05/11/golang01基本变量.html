@@ -114,8 +114,6 @@
 <li>流程控制</li>
 <li>函数和方法</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="常量变量"><a href="#常量变量" class="headerlink" title="常量变量"></a>常量变量</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> 变量名称 数据类型 = 值;<br><span class="hljs-keyword">const</span> 变量名称 数据类型 = 值;<br></code></pre></td></tr></table></figure>
 <h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-type">int</span>/<span class="hljs-type">int8</span>/<span class="hljs-type">int16</span>/<span class="hljs-type">int32</span>/<span class="hljs-type">int64</span>/<span class="hljs-type">uint</span>/<span class="hljs-type">uint8</span>/<span class="hljs-type">uint32</span>/<span class="hljs-type">uint64</span>/<span class="hljs-type">byte</span>/<span class="hljs-type">rune</span>/<span class="hljs-type">uintptr</span> =<span class="hljs-number">0</span><br><span class="hljs-type">float32</span>/<span class="hljs-type">float64</span> = <span class="hljs-number">0.0</span><br><span class="hljs-type">bool</span> = <span class="hljs-literal">false</span><br><span class="hljs-type">string</span> = <span class="hljs-string">&quot;&quot;</span><br>pointer/function/<span class="hljs-keyword">interface</span>/slice/channel/<span class="hljs-keyword">map</span>/<span class="hljs-type">error</span> = <span class="hljs-literal">nil</span><br>其他复合类型array/<span class="hljs-keyword">struct</span>默认值是内部数据类型的默认值<br></code></pre></td></tr></table></figure>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> pointerv *<span class="hljs-type">int</span> <span class="hljs-comment">//指针变量</span><br><span class="hljs-keyword">var</span> funcv <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>,<span class="hljs-type">int</span>)</span></span><span class="hljs-type">int</span> <span class="hljs-comment">//function变量</span><br><span class="hljs-keyword">var</span> interfacev <span class="hljs-keyword">interface</span>&#123;&#125;<span class="hljs-comment">//接口变量</span><br><span class="hljs-keyword">var</span> slicev []<span class="hljs-type">int</span> <span class="hljs-comment">//切片变量</span><br><span class="hljs-keyword">var</span> channelv <span class="hljs-keyword">chan</span> <span class="hljs-type">int</span> <span class="hljs-comment">//channel变量</span><br><span class="hljs-keyword">var</span> mapv <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">string</span> <span class="hljs-comment">//map变量</span><br><span class="hljs-keyword">var</span> errorv <span class="hljs-type">error</span> <br><span class="hljs-keyword">var</span> arrayv [<span class="hljs-number">3</span>]<span class="hljs-type">int</span> <span class="hljs-comment">//数组 =&gt; [0,0,0]</span><br><span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span>&#123;<br>    name <span class="hljs-type">string</span><br>    age <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-keyword">var</span> structv Person <span class="hljs-comment">//结构体变量 =&gt; &#123;&quot;&quot;,0&#125;</span><br></code></pre></td></tr></table></figure>
@@ -149,56 +147,56 @@
     <ul>
         
             <li>
-                <a href="/2024/03/11/vue%E8%AE%BE%E7%BD%AE%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86.html">vue设置开发请求代理</a>
-                <p>2024-03-11</p>
+                <a href="/2023/06/22/ffmpeg-ts%E8%A7%A3%E5%AF%86.html">ts解密</a>
+                <p>2023-06-22</p>
             </li>
         
             <li>
-                <a href="/2023/08/25/css%E6%8F%AD%E7%A7%98.html">css揭秘</a>
-                <p>2023-08-25</p>
+                <a href="/2023/06/16/echarts%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE.html">echarts中国地图数据</a>
+                <p>2023-06-16</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B711-20.html">超级散户11-20</a>
-                <p>2020-06-01</p>
+                <a href="/2023/05/15/ffmpeg-%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.html">FFMPEG 视频操作</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/04/07/%E8%AF%BB%E5%90%8E%E6%84%9F-%E4%BB%8A%E6%97%A5%E7%AE%80%E5%8F%B2.html">读后感-今日简史</a>
-                <p>2023-04-07</p>
+                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
+                <p>2024-09-10</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
-                <p>2022-08-11</p>
+                <a href="/2023/05/17/AI-openai.html">openai</a>
+                <p>2023-05-17</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/03/11/vue%E8%AE%BE%E7%BD%AE%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86.html">vue设置开发请求代理</a>
-                <p>2024-03-11</p>
+                <a href="/2023/06/22/ffmpeg-ts%E8%A7%A3%E5%AF%86.html">ts解密</a>
+                <p>2023-06-22</p>
             </li>
         
             <li>
-                <a href="/2023/08/25/css%E6%8F%AD%E7%A7%98.html">css揭秘</a>
-                <p>2023-08-25</p>
+                <a href="/2023/06/16/echarts%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE.html">echarts中国地图数据</a>
+                <p>2023-06-16</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B711-20.html">超级散户11-20</a>
-                <p>2020-06-01</p>
+                <a href="/2023/05/15/ffmpeg-%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.html">FFMPEG 视频操作</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/04/07/%E8%AF%BB%E5%90%8E%E6%84%9F-%E4%BB%8A%E6%97%A5%E7%AE%80%E5%8F%B2.html">读后感-今日简史</a>
-                <p>2023-04-07</p>
+                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
+                <p>2024-09-10</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
-                <p>2022-08-11</p>
+                <a href="/2023/05/17/AI-openai.html">openai</a>
+                <p>2023-05-17</p>
             </li>
         
     </ul> -->
@@ -208,27 +206,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -276,6 +274,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -288,11 +290,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -344,17 +346,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -376,9 +378,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

@@ -127,8 +127,6 @@
 <li>vuex</li>
 <li>vue两种开发模式</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="组件和模板"><a href="#组件和模板" class="headerlink" title="组件和模板"></a>组件和模板</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">my-template</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-template</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">   <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;my-template&#x27;</span>,&#123;</span><br><span class="language-javascript">       <span class="hljs-attr">template</span>:<span class="hljs-string">&#x27;&lt;h1&gt;hello world!&lt;/h1&gt;&#x27;</span></span><br><span class="language-javascript">   &#125;)</span><br><span class="language-javascript">   <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span><br><span class="language-javascript">       <span class="hljs-attr">el</span>:<span class="hljs-string">&quot;#box&quot;</span>,</span><br><span class="language-javascript">       <span class="hljs-attr">data</span>:&#123;</span><br><span class="language-javascript">           <span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;hello world&#x27;</span></span><br><span class="language-javascript">       &#125;</span><br><span class="language-javascript">   &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>----------------------------------------------------<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">my-template</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-template</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">   <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span><br><span class="language-javascript">       <span class="hljs-attr">el</span>:<span class="hljs-string">&quot;#box&quot;</span>,</span><br><span class="language-javascript">       <span class="hljs-attr">data</span>: &#123;</span><br><span class="language-javascript">           <span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;hello world&#x27;</span></span><br><span class="language-javascript">       &#125;,</span><br><span class="language-javascript">       <span class="hljs-attr">components</span>:&#123;</span><br><span class="language-javascript">           <span class="hljs-string">&#x27;my-template&#x27;</span>:&#123;</span><br><span class="language-javascript">               <span class="hljs-attr">data</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">                   <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">                       <span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;hello vue&#x27;</span></span><br><span class="language-javascript">                   &#125;</span><br><span class="language-javascript">               &#125;,</span><br><span class="language-javascript">               <span class="hljs-attr">template</span>:<span class="hljs-string">&#x27;&lt;div&gt;&#123;&#123; msg &#125;&#125;&lt;/div&gt;&#x27;</span></span><br><span class="language-javascript">           &#125;</span><br><span class="language-javascript">       &#125;</span><br><span class="language-javascript">   &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>----------------------------------------------------<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">my-template</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-template</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Home</span> = &#123;</span><br><span class="language-javascript">        <span class="hljs-attr">template</span>:<span class="hljs-string">&#x27;&lt;div&gt;hello world&lt;/div&gt;&#x27;</span></span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">    <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;my-template&#x27;</span>,<span class="hljs-title class_">Home</span>);</span><br><span class="language-javascript">    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">el</span>:<span class="hljs-string">&#x27;#box&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">data</span>:&#123;</span><br><span class="language-javascript">            <span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;hello&#x27;</span></span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">beforeCreate</span>()  <span class="hljs-comment">//组件刚被创建</span><br><span class="hljs-title function_">created</span>()       <span class="hljs-comment">//实例已经创建</span><br><span class="hljs-title function_">beforeMount</span>()   <span class="hljs-comment">//模板编译之前</span><br><span class="hljs-title function_">mounted</span>()       <span class="hljs-comment">//模板编译完成</span><br>---------------------------------<br><span class="hljs-title function_">beforeUpdate</span>()  <span class="hljs-comment">//组件更新之前*</span><br><span class="hljs-title function_">updated</span>()        <span class="hljs-comment">//组件更新完毕*</span><br><span class="hljs-title function_">beforeDestroy</span>() <span class="hljs-comment">//组件销毁之前</span><br><span class="hljs-title function_">destroyed</span>()       <span class="hljs-comment">//组件销毁 this.$destroy();</span><br></code></pre></td></tr></table></figure>
@@ -278,56 +276,56 @@
     <ul>
         
             <li>
-                <a href="/2024/07/29/vscode%E4%B8%AD%E6%8A%A5%E9%94%99valur.html">vscode中报错valur</a>
-                <p>2024-07-29</p>
+                <a href="/2024/02/28/ffmpeg%E5%A4%9A%E4%B8%AAmp4%E6%96%87%E4%BB%B6%E5%90%88%E5%B9%B6%E6%88%90%E4%B8%80%E4%B8%AAmp4%E6%96%87%E4%BB%B6.html">ffmpeg多个mp4文件合并成一个mp4文件</a>
+                <p>2024-02-28</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
-                <p>2022-08-11</p>
+                <a href="/2023/07/01/webpack%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE.html">webpack新建一个项目</a>
+                <p>2023-07-01</p>
             </li>
         
             <li>
-                <a href="/2023/09/16/golang-%E7%AE%A1%E9%81%93channel.html">golang-管道channel</a>
-                <p>2023-09-16</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-068%E6%8A%A4%E8%82%9D%E4%B8%B8.html">倪海厦-汉唐方剂-068护肝丸</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2024/01/09/react-clsx%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">react-clsx使用方法</a>
-                <p>2024-01-09</p>
+                <a href="/2023/06/30/python-nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
             </li>
         
             <li>
-                <a href="/2023/02/12/cloudflare-vless%E9%85%8D%E7%BD%AE.html">cloudflare-vless配置</a>
-                <p>2023-02-12</p>
+                <a href="/2023/08/01/%E8%AE%BE%E8%AE%A1-photoshop%E4%B8%8Ecreativecloud%E6%A1%8C%E9%9D%A2%E7%89%88%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5.html">photoshop与creativecloud桌面版连接失败</a>
+                <p>2023-08-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/07/29/vscode%E4%B8%AD%E6%8A%A5%E9%94%99valur.html">vscode中报错valur</a>
-                <p>2024-07-29</p>
+                <a href="/2024/02/28/ffmpeg%E5%A4%9A%E4%B8%AAmp4%E6%96%87%E4%BB%B6%E5%90%88%E5%B9%B6%E6%88%90%E4%B8%80%E4%B8%AAmp4%E6%96%87%E4%BB%B6.html">ffmpeg多个mp4文件合并成一个mp4文件</a>
+                <p>2024-02-28</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF.html">浏览器通信技术 websocket</a>
-                <p>2022-08-11</p>
+                <a href="/2023/07/01/webpack%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE.html">webpack新建一个项目</a>
+                <p>2023-07-01</p>
             </li>
         
             <li>
-                <a href="/2023/09/16/golang-%E7%AE%A1%E9%81%93channel.html">golang-管道channel</a>
-                <p>2023-09-16</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-068%E6%8A%A4%E8%82%9D%E4%B8%B8.html">倪海厦-汉唐方剂-068护肝丸</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2024/01/09/react-clsx%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html">react-clsx使用方法</a>
-                <p>2024-01-09</p>
+                <a href="/2023/06/30/python-nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
+                <p>2023-06-30</p>
             </li>
         
             <li>
-                <a href="/2023/02/12/cloudflare-vless%E9%85%8D%E7%BD%AE.html">cloudflare-vless配置</a>
-                <p>2023-02-12</p>
+                <a href="/2023/08/01/%E8%AE%BE%E8%AE%A1-photoshop%E4%B8%8Ecreativecloud%E6%A1%8C%E9%9D%A2%E7%89%88%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5.html">photoshop与creativecloud桌面版连接失败</a>
+                <p>2023-08-01</p>
             </li>
         
     </ul> -->
@@ -337,27 +335,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -405,6 +403,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -417,11 +419,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -473,17 +475,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -505,9 +507,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

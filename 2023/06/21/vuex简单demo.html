@@ -108,9 +108,7 @@
         </div>
         <hr class="line">
         <div class="post-content">
-            <span id="more"></span>
-
-<p><a href="'http://mobilesite.github.io/2016/12/18/vuex-introduction/'">原文</a></p>
+            <p><a href="'http://mobilesite.github.io/2016/12/18/vuex-introduction/'">原文</a></p>
 <p><code>cnpm install vuex -D</code><br><code>cnpm install vuex --save</code></p>
 <h2 id="单一状态树"><a href="#单一状态树" class="headerlink" title="单一状态树"></a>单一状态树</h2><h3 id="通常使用方法"><a href="#通常使用方法" class="headerlink" title="通常使用方法"></a>通常使用方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//store.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> vue<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vuex</span> <span class="hljs-keyword">from</span> vuex<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Vuex</span>);<br><br><span class="hljs-keyword">const</span> data = &#123;<br>    state : &#123;<br>        <span class="hljs-comment">//参数 相当于data</span><br>        count : <span class="hljs-number">0</span>,<br>        msg   : <span class="hljs-string">&quot;hello world&quot;</span><br>    &#125;,<br>    mutations : &#123;<br>        <span class="hljs-comment">//改变state的函数</span><br>        <span class="hljs-title function_">increment</span>(<span class="hljs-params">state,n</span>)&#123;<span class="hljs-comment">//n是可选参数</span><br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;运行到mutations&quot;</span>);<br>            state.<span class="hljs-property">count</span> += n;<br>        &#125;<br>    &#125;,<br>    actions : &#123;<br>        <span class="hljs-comment">//执行nutations的函数</span><br>        <span class="hljs-title function_">increment</span>(<span class="hljs-params">state</span>)&#123;<span class="hljs-comment">//与mutations中的名字相同只是为了容易判断是一套东西 其实可以不相同</span><br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;运行到actions&quot;</span>);<br>            state.<span class="hljs-title function_">commit</span>(<span class="hljs-string">&#x27;increment&#x27;</span>,<span class="hljs-number">10</span>);<span class="hljs-comment">//第二个为可选参数</span><br>        &#125;<br>    &#125;,<br>    getters : &#123;<br>        <span class="hljs-comment">//计算或过滤后再输出参数的函数</span><br>        <span class="hljs-title function_">divinstion</span>(<span class="hljs-params">state</span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;运行到getters&quot;</span>);<br>            <span class="hljs-keyword">return</span> state.<span class="hljs-property">count</span> / <span class="hljs-number">10</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vuex</span>.<span class="hljs-title class_">Store</span>(data);<br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//main.js</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store&#x27;</span><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  router,<br>  store,<br>  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> <span class="hljs-title function_">h</span>(<span class="hljs-title class_">App</span>)<br>&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure>
@@ -140,56 +138,56 @@
     <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7281-290.html">超级散户281-290</a>
-                <p>2020-06-01</p>
+                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
+                <p>2024-03-01</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7261-270.html">超级散户261-270</a>
-                <p>2020-06-01</p>
+                <a href="/2023/02/10/node%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4.html">node强制修改电脑时间</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2024/03/27/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7.html">安装企业微信调试工具devtool</a>
-                <p>2024-03-27</p>
+                <a href="/2023/10/19/golang%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BD%92%E5%B1%9E%E5%9C%B0%E4%BF%A1%E6%81%AF.html">golang查询ip地址的归属地信息</a>
+                <p>2023-10-19</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/php%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9D%97.html">php自动创建模块</a>
-                <p>2023-06-21</p>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
             </li>
         
             <li>
-                <a href="/2024/06/05/vue-router%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB.html">vue-router路由守卫</a>
-                <p>2024-06-05</p>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7281-290.html">超级散户281-290</a>
-                <p>2020-06-01</p>
+                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
+                <p>2024-03-01</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7261-270.html">超级散户261-270</a>
-                <p>2020-06-01</p>
+                <a href="/2023/02/10/node%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4.html">node强制修改电脑时间</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2024/03/27/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7.html">安装企业微信调试工具devtool</a>
-                <p>2024-03-27</p>
+                <a href="/2023/10/19/golang%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BD%92%E5%B1%9E%E5%9C%B0%E4%BF%A1%E6%81%AF.html">golang查询ip地址的归属地信息</a>
+                <p>2023-10-19</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/php%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9D%97.html">php自动创建模块</a>
-                <p>2023-06-21</p>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
             </li>
         
             <li>
-                <a href="/2024/06/05/vue-router%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB.html">vue-router路由守卫</a>
-                <p>2024-06-05</p>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
             </li>
         
     </ul> -->
@@ -199,27 +197,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -267,6 +265,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -279,11 +281,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -335,17 +337,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -367,9 +369,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

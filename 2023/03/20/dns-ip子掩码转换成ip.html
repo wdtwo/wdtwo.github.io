@@ -113,8 +113,6 @@
 <li>cloudfront</li>
 <li>cloudflare</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="gcore"><a href="#gcore" class="headerlink" title="gcore"></a>gcore</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">var</span> list = [<br>    <span class="hljs-string">&quot;93.123.11.0/26&quot;</span>,<br>    <span class="hljs-string">&quot;92.223.108.0/27&quot;</span>,<br>    <span class="hljs-string">&quot;92.223.92.16/28&quot;</span>,<br>    <span class="hljs-string">&quot;92.46.108.104/30&quot;</span>,<br>    <span class="hljs-string">&quot;194.152.37.176/28&quot;</span><br>  ]<br>  <br>  <span class="hljs-keyword">let</span> arr1 = []<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; list.<span class="hljs-property">length</span>;i++)&#123;<br>    arr1 = arr1.<span class="hljs-title function_">concat</span>(<span class="hljs-title function_">init</span>(list[i]))<br>  &#125;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;总ip:&quot;</span>arr1);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;总个数:&quot;</span>arr1.<span class="hljs-property">length</span>);<br><br><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params">ipmask</span>)&#123;<br><br>    <span class="hljs-comment">//分割掩码ip</span><br>    <span class="hljs-keyword">let</span> [ip,yanma] = ipmask.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;/&#x27;</span>)<br>    <span class="hljs-comment">//console.log(ip,yanma);</span><br><br>    <span class="hljs-keyword">let</span> morenyanma = [<span class="hljs-string">&#x27;11111111&#x27;</span>,<span class="hljs-string">&#x27;11111111&#x27;</span>,<span class="hljs-string">&#x27;11111111&#x27;</span>,<span class="hljs-string">&#x27;00000000&#x27;</span>]<br><br>    <span class="hljs-comment">//设置借用了几位主机码</span><br>    morenyanma[<span class="hljs-number">3</span>] = <span class="hljs-string">&quot;1&quot;</span>.<span class="hljs-title function_">repeat</span>(yanma - <span class="hljs-number">24</span>) + <span class="hljs-string">&quot;0&quot;</span>.<span class="hljs-title function_">repeat</span>(<span class="hljs-number">32</span> - yanma)<br><br>    ip = ip.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>)<br><br>    ip.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">v,w</span>)=&gt;</span>&#123;<br>      ip[w] = <span class="hljs-title function_">numToHex</span>(v)<br>    &#125;)<br><br>    <span class="hljs-comment">//console.log(ip);</span><br>    <span class="hljs-comment">//console.log(morenyanma);</span><br><br>    <span class="hljs-keyword">let</span> arr2 = []<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; ip.<span class="hljs-property">length</span>;i ++)&#123;<br>      arr2.<span class="hljs-title function_">push</span>( <span class="hljs-built_in">parseInt</span>(<span class="hljs-title function_">yu</span>(ip[i],morenyanma[i]),<span class="hljs-number">2</span>) )<br>    &#125;<br>    <span class="hljs-comment">//console.log(arr2);</span><br>    <span class="hljs-keyword">let</span> output = []<br>    <span class="hljs-comment">//console.log(Math.pow(2,32 - yanma));//网络号向主机号借几位, 可用主机号个数需要减2</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-number">2</span>,<span class="hljs-number">32</span> - yanma)-<span class="hljs-number">2</span>;i++)&#123;<br>      arr2 = arr2.<span class="hljs-title function_">concat</span>()<br>      arr2[<span class="hljs-number">3</span>] = arr2[<span class="hljs-number">3</span>]*<span class="hljs-number">1</span>+<span class="hljs-number">1</span><br>      output.<span class="hljs-title function_">push</span>(arr2)<br>    &#125;<br>    <span class="hljs-keyword">return</span> output<br>  &#125;<br><br>  <span class="hljs-comment">//与运算</span><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">yu</span>(<span class="hljs-params">a=<span class="hljs-string">&#x27;11111111&#x27;</span>,b=<span class="hljs-string">&#x27;00000000&#x27;</span></span>)&#123;<br>    <span class="hljs-keyword">var</span> arr1 = []<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ;i &lt; a.<span class="hljs-property">length</span>;i++)&#123;<br>      arr1.<span class="hljs-title function_">push</span>((a[i] == b[i]) ? a[i] : <span class="hljs-number">0</span>)<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr1.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br>  &#125;<br>  <br>  <span class="hljs-comment">//数字转换成二进制</span><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">numToHex</span>(<span class="hljs-params">num</span>)&#123;<br>    <span class="hljs-comment">//ip转换成2进制</span><br>    <span class="hljs-keyword">let</span> num1 = (num &gt;&gt;&gt; <span class="hljs-number">0</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">let</span> len = num1.<span class="hljs-property">length</span><br>    <span class="hljs-keyword">return</span> len &lt; <span class="hljs-number">8</span> ? <span class="hljs-string">`<span class="hljs-subst">$&#123;<span class="hljs-string">&quot;0&quot;</span>.repeat(<span class="hljs-number">8</span>-len)&#125;</span><span class="hljs-subst">$&#123;num1&#125;</span>`</span> : num1<br>  &#125;<br><br></code></pre></td></tr></table></figure>
 
 
@@ -129,56 +127,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%AA%8C%E8%AF%81.html">常用正则表达式验证</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/python%E5%B0%8F%E7%99%BD%E7%9A%84%E5%85%A5%E9%97%A8%E4%B9%A6.html">python小白的入门书</a>
+                <a href="/2023/06/21/koa2%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE.html">koa2请求配置</a>
                 <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/07/28/dns-%E5%A5%BD%E7%94%A8%E7%9A%84%E8%8A%82%E7%82%B9.html">dns-好用的节点</a>
-                <p>2023-07-28</p>
+                <a href="/2024/06/14/vite%E9%85%8D%E7%BD%AE.html">vite配置</a>
+                <p>2024-06-14</p>
             </li>
         
             <li>
-                <a href="/2023/09/15/golang-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%8E%A5%E5%8F%A3.html">golang-面向对象-接口</a>
-                <p>2023-09-15</p>
+                <a href="/2022/08/11/video%E8%A7%86%E9%A2%91%E6%B5%81%E5%AA%92%E4%BD%93HLS-m3u8%E6%A0%BC%E5%BC%8F%E5%8A%A0%E5%AF%86%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.html">video视频流媒体HLS m3u8格式加密视频开发</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
-                <p>2023-01-12</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-034%E8%A1%A5%E5%A4%A9%E4%B8%B8.html">倪海厦-汉唐方剂-034补天丸</a>
+                <p>2023-02-21</p>
+            </li>
+        
+            <li>
+                <a href="/2024/07/01/js-%E4%B8%BB%E5%8A%A8%E8%A7%A6%E5%8F%91onresize%E4%BA%8B%E4%BB%B6.html">js主动触发onresize事件</a>
+                <p>2024-07-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%AA%8C%E8%AF%81.html">常用正则表达式验证</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/python%E5%B0%8F%E7%99%BD%E7%9A%84%E5%85%A5%E9%97%A8%E4%B9%A6.html">python小白的入门书</a>
+                <a href="/2023/06/21/koa2%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE.html">koa2请求配置</a>
                 <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/07/28/dns-%E5%A5%BD%E7%94%A8%E7%9A%84%E8%8A%82%E7%82%B9.html">dns-好用的节点</a>
-                <p>2023-07-28</p>
+                <a href="/2024/06/14/vite%E9%85%8D%E7%BD%AE.html">vite配置</a>
+                <p>2024-06-14</p>
             </li>
         
             <li>
-                <a href="/2023/09/15/golang-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%8E%A5%E5%8F%A3.html">golang-面向对象-接口</a>
-                <p>2023-09-15</p>
+                <a href="/2022/08/11/video%E8%A7%86%E9%A2%91%E6%B5%81%E5%AA%92%E4%BD%93HLS-m3u8%E6%A0%BC%E5%BC%8F%E5%8A%A0%E5%AF%86%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91.html">video视频流媒体HLS m3u8格式加密视频开发</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
-                <p>2023-01-12</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-034%E8%A1%A5%E5%A4%A9%E4%B8%B8.html">倪海厦-汉唐方剂-034补天丸</a>
+                <p>2023-02-21</p>
+            </li>
+        
+            <li>
+                <a href="/2024/07/01/js-%E4%B8%BB%E5%8A%A8%E8%A7%A6%E5%8F%91onresize%E4%BA%8B%E4%BB%B6.html">js主动触发onresize事件</a>
+                <p>2024-07-01</p>
             </li>
         
     </ul> -->
@@ -188,27 +186,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -256,6 +254,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -268,11 +270,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -324,17 +326,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -356,9 +358,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

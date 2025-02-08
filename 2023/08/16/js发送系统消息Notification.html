@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>js发送系统消息Notification</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;#btn&#x27;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-comment">// Notification.requestPermission((res) =&gt; &#123;</span><br>    <span class="hljs-comment">//     console.log(res)  // granted 允许 、denied 拒绝、default 未询问</span><br>    <span class="hljs-comment">// &#125;)</span><br>    <span class="hljs-comment">//自定义通知内容和样式</span><br>    <span class="hljs-title class_">Notification</span>.<span class="hljs-title function_">requestPermission</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span>(res !== <span class="hljs-string">&#x27;granted&#x27;</span>) <span class="hljs-keyword">return</span><br><br>        <span class="hljs-comment">//参数详情</span><br>        <span class="hljs-comment">// body: 通知的正文，显示在标题下方</span><br>        <span class="hljs-comment">// tag：定义通知的标识，相同 tag 的通知正在显示的内容会被替换，已经自动关闭的会被替换不再弹出</span><br>        <span class="hljs-comment">// icon：通知图标的 URL</span><br>        <span class="hljs-comment">// image：通知中图像的 URL</span><br>        <span class="hljs-comment">// renotify：重复的 tag 是否再次通知，默认 false 不重复通知</span><br>        <span class="hljs-comment">// requireInteraction：是否强制手动关闭，默认 false 会自动关闭</span><br>        <span class="hljs-comment">// silent：是否静音，默认 false 会有提示声音</span><br>        <span class="hljs-comment">// 当通知创建后会被立即显示出来，过一段时间会自动关闭，包含 4 个事件</span><br>        <span class="hljs-keyword">let</span> notice = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Notification</span>(<span class="hljs-string">&quot;title&quot;</span>, &#123;<br>            <span class="hljs-attr">body</span>: <span class="hljs-string">&#x27;body&#x27;</span>,<br>            <span class="hljs-attr">tag</span>: <span class="hljs-string">&#x27;111&#x27;</span>,<br>            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;./a.png&#x27;</span>,<br>            <span class="hljs-attr">image</span>: <span class="hljs-string">&#x27;./a.png&#x27;</span>,<br>            <span class="hljs-attr">renotify</span>: <span class="hljs-literal">false</span>,<br>            <span class="hljs-attr">requireInteraction</span>: <span class="hljs-literal">true</span>,<br>            <span class="hljs-attr">silent</span>: <span class="hljs-literal">false</span>,<br>        &#125;)<br>        <span class="hljs-comment">// onshow：当通知显示给用户时触发</span><br>        <span class="hljs-comment">// onclick：当用户点击通知后触发（点击后通知会被关闭）</span><br>        <span class="hljs-comment">// onclose：当使用 notice.close.bind(notice) 关闭通知后触发（自动关闭的通知无法触发）</span><br>        <span class="hljs-comment">// onerror：当通知无法显示给用户时触发（常见于没有用户没有授权）</span><br>        notice.<span class="hljs-property">onshow</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;show&#x27;</span>)<br>            <span class="hljs-built_in">setTimeout</span>(notice.<span class="hljs-property">close</span>.<span class="hljs-title function_">bind</span>(notice), <span class="hljs-number">5000</span>)<br>        &#125;<br>        notice.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;click&#x27;</span>)<br>        &#125;<br>        notice.<span class="hljs-property">onclose</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;close&#x27;</span>)<br>        &#125;<br>        notice.<span class="hljs-property">onerror</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;error&#x27;</span>)<br>        &#125;<br>    &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
         </div>
     </article>
@@ -119,56 +118,56 @@
     <ul>
         
             <li>
-                <a href="/2024/12/25/markdown%E8%AF%AD%E6%B3%95.html">markdown语法</a>
-                <p>2024-12-25</p>
+                <a href="/2023/09/13/golang-%E7%BB%93%E6%9E%84%E4%BD%93.html">golang-结构体</a>
+                <p>2023-09-13</p>
             </li>
         
             <li>
-                <a href="/2024/06/26/js-%E5%A4%84%E7%90%86zip%E6%96%87%E4%BB%B6.html">js处理zip文件</a>
-                <p>2024-06-26</p>
+                <a href="/2023/09/10/golang-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86defer-recover.html">golang-错误处理refer+recover</a>
+                <p>2023-09-10</p>
             </li>
         
             <li>
-                <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html">js字符串转换成16进制编码</a>
-                <p>2023-02-23</p>
+                <a href="/2023/06/22/ffmpeg-ts%E8%A7%A3%E5%AF%86.html">ts解密</a>
+                <p>2023-06-22</p>
             </li>
         
             <li>
-                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
-                <p>2023-09-27</p>
+                <a href="/2023/06/16/echarts%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE.html">echarts中国地图数据</a>
+                <p>2023-06-16</p>
             </li>
         
             <li>
-                <a href="/2023/11/27/node%E4%BD%BF%E7%94%A8ffmpeg%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91%E5%92%8C%E5%A3%B0%E9%9F%B3.html">node使用ffmpeg录制视频和声音</a>
-                <p>2023-11-27</p>
+                <a href="/2024/06/10/docker%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html">docker环境安装</a>
+                <p>2024-06-10</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/12/25/markdown%E8%AF%AD%E6%B3%95.html">markdown语法</a>
-                <p>2024-12-25</p>
+                <a href="/2023/09/13/golang-%E7%BB%93%E6%9E%84%E4%BD%93.html">golang-结构体</a>
+                <p>2023-09-13</p>
             </li>
         
             <li>
-                <a href="/2024/06/26/js-%E5%A4%84%E7%90%86zip%E6%96%87%E4%BB%B6.html">js处理zip文件</a>
-                <p>2024-06-26</p>
+                <a href="/2023/09/10/golang-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86defer-recover.html">golang-错误处理refer+recover</a>
+                <p>2023-09-10</p>
             </li>
         
             <li>
-                <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html">js字符串转换成16进制编码</a>
-                <p>2023-02-23</p>
+                <a href="/2023/06/22/ffmpeg-ts%E8%A7%A3%E5%AF%86.html">ts解密</a>
+                <p>2023-06-22</p>
             </li>
         
             <li>
-                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
-                <p>2023-09-27</p>
+                <a href="/2023/06/16/echarts%E4%B8%AD%E5%9B%BD%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE.html">echarts中国地图数据</a>
+                <p>2023-06-16</p>
             </li>
         
             <li>
-                <a href="/2023/11/27/node%E4%BD%BF%E7%94%A8ffmpeg%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91%E5%92%8C%E5%A3%B0%E9%9F%B3.html">node使用ffmpeg录制视频和声音</a>
-                <p>2023-11-27</p>
+                <a href="/2024/06/10/docker%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html">docker环境安装</a>
+                <p>2024-06-10</p>
             </li>
         
     </ul> -->
@@ -178,27 +177,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -246,6 +245,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -258,11 +261,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -314,17 +317,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -346,9 +349,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

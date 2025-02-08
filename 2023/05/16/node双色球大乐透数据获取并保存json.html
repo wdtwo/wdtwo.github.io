@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>双色球大乐透数据获取并保存json</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>)<br><span class="hljs-keyword">const</span> &#123; <span class="hljs-variable constant_">JSDOM</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jsdom&#x27;</span>)<br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><br><span class="hljs-keyword">let</span> dataArr = []<br><span class="hljs-keyword">let</span> type = <span class="hljs-string">&#x27;大乐透&#x27;</span>;<span class="hljs-comment">//双色球 大乐透</span><br><span class="hljs-comment">//获取页面数据</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params">url</span>)&#123;<br>    <span class="hljs-title function_">request</span>(url,<span class="hljs-function">(<span class="hljs-params">err,res,body</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span>(res.<span class="hljs-property">statusCode</span> == <span class="hljs-number">200</span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;请求页面成功!&#x27;</span>);<br>            <span class="hljs-keyword">const</span> dom = <span class="hljs-keyword">new</span> <span class="hljs-title function_">JSDOM</span>(body)<br>            <span class="hljs-keyword">const</span> <span class="hljs-variable language_">document</span> = dom.<span class="hljs-property">window</span>.<span class="hljs-property">document</span>;<br>            <span class="hljs-keyword">const</span> tbody = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;#tdata&#x27;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;tr&#x27;</span>)<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;格式转换中...&#x27;</span>);<br>            tbody.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">v,i</span>)=&gt;</span>&#123;<br>                <span class="hljs-comment">//console.log(v.querySelectorAll(&#x27;td&#x27;)[0].innerHTML,i);</span><br>                dataArr[i] = []<br>                v.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;td&#x27;</span>).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">w,j</span>)=&gt;</span>&#123;<br>                    dataArr[i][j] = w.<span class="hljs-property">innerHTML</span><br>                    <span class="hljs-comment">//console.log(w.innerHTML,j);</span><br>                &#125;)<br>            &#125;)<br>            <br>            <span class="hljs-comment">// 调用fs.writeFile()方法，写入文件的内容</span><br>            fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">`./<span class="hljs-subst">$&#123;type&#125;</span>.json`</span>,<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(dataArr),<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)&#123;<br>                <span class="hljs-keyword">if</span>(!err)&#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;保存成功!&#x27;</span>);<br>                &#125;<br>            &#125;)<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;页面请求失败!&#x27;</span>);<br>        &#125;<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">let</span> dlt = <span class="hljs-string">&#x27;http://datachart.500.com/dlt/history/newinc/history.php?limit=200000&amp;sort=0&#x27;</span><br><span class="hljs-keyword">let</span> ssq = <span class="hljs-string">&#x27;http://datachart.500.com/ssq/history/newinc/history.php?limit=200000&amp;sort=0&#x27;</span><br><span class="hljs-title function_">init</span>(type == <span class="hljs-string">&#x27;双色球&#x27;</span> ? ssq : dlt)<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -120,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6.html">文件加载进度</a>
-                <p>2023-02-14</p>
+                <a href="/2023/03/29/golang%E4%BD%BF%E7%94%A8%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html">golang使用加密解密</a>
+                <p>2023-03-29</p>
             </li>
         
             <li>
-                <a href="/2025/01/25/library%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2.html"></a>
-                <p>2025-01-25</p>
+                <a href="/2023/06/21/vue-elementui%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">elementui问题汇总</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/07/01/js-tesseract-js%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AE.html">tesseract.js图片识别文字前端配置</a>
-                <p>2023-07-01</p>
+                <a href="/2023/05/16/node%E5%8F%8C%E8%89%B2%E7%90%83%E5%A4%A7%E4%B9%90%E9%80%8F%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E5%B9%B6%E4%BF%9D%E5%AD%98json.html">node双色球大乐透数据获取并保存json</a>
+                <p>2023-05-16</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/meta%E6%A0%87%E7%AD%BE.html">meta</a>
-                <p>2022-08-11</p>
+                <a href="/2020/06/22/%E7%82%92%E8%82%A1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.html">炒股入门知识</a>
+                <p>2020-06-22</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/ajax.html">ajax</a>
-                <p>2022-08-11</p>
+                <a href="/2023/06/22/node%E6%93%8D%E4%BD%9Cffmpeg.html">node操作ffmpeg</a>
+                <p>2023-06-22</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6.html">文件加载进度</a>
-                <p>2023-02-14</p>
+                <a href="/2023/03/29/golang%E4%BD%BF%E7%94%A8%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html">golang使用加密解密</a>
+                <p>2023-03-29</p>
             </li>
         
             <li>
-                <a href="/2025/01/25/library%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2.html"></a>
-                <p>2025-01-25</p>
+                <a href="/2023/06/21/vue-elementui%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">elementui问题汇总</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/07/01/js-tesseract-js%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AE.html">tesseract.js图片识别文字前端配置</a>
-                <p>2023-07-01</p>
+                <a href="/2023/05/16/node%E5%8F%8C%E8%89%B2%E7%90%83%E5%A4%A7%E4%B9%90%E9%80%8F%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E5%B9%B6%E4%BF%9D%E5%AD%98json.html">node双色球大乐透数据获取并保存json</a>
+                <p>2023-05-16</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/meta%E6%A0%87%E7%AD%BE.html">meta</a>
-                <p>2022-08-11</p>
+                <a href="/2020/06/22/%E7%82%92%E8%82%A1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.html">炒股入门知识</a>
+                <p>2020-06-22</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/ajax.html">ajax</a>
-                <p>2022-08-11</p>
+                <a href="/2023/06/22/node%E6%93%8D%E4%BD%9Cffmpeg.html">node操作ffmpeg</a>
+                <p>2023-06-22</p>
             </li>
         
     </ul> -->
@@ -179,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -247,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -259,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -315,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -347,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

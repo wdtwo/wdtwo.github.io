@@ -111,8 +111,6 @@
             <ul>
 <li>linux环境安装配置</li>
 </ul>
-<span id="more"></span>
-
 <h3 id="更改VPS系统时间（可选开启时间同步）"><a href="#更改VPS系统时间（可选开启时间同步）" class="headerlink" title="更改VPS系统时间（可选开启时间同步）"></a>更改VPS系统时间（可选开启时间同步）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">rm -rf /etc/localtime<br>ln -s /usr/share/zoneinfo/<span class="hljs-title class_">Asia</span>/<span class="hljs-title class_">Shanghai</span> /etc/localtime<br></code></pre></td></tr></table></figure>
 <h3 id="NTP同步时间-协议（可选择跳过）"><a href="#NTP同步时间-协议（可选择跳过）" class="headerlink" title="NTP同步时间 协议（可选择跳过）"></a>NTP同步时间 协议（可选择跳过）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Ubuntu/Debian系统</span><br>apt-get update<br>apt-get install ntp ntpdate -y<br><span class="hljs-comment">//CentOS/RHEL系统</span><br>yum install ntp ntpdate -y<br><span class="hljs-comment">//先停止NTP服务器，再更新时间</span><br>service ntpd stop                 <span class="hljs-comment">//停止ntp服务</span><br>ntpdate us.<span class="hljs-property">pool</span>.<span class="hljs-property">ntp</span>.<span class="hljs-property">org</span>           <span class="hljs-comment">//同步ntp时间</span><br>service ntpd start                <span class="hljs-comment">//启动ntp服务</span><br></code></pre></td></tr></table></figure>
 <h3 id="安装宝塔"><a href="#安装宝塔" class="headerlink" title="安装宝塔"></a>安装宝塔</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Debian</span><br>wget -O install.<span class="hljs-property">sh</span> <span class="hljs-attr">http</span>:<span class="hljs-comment">//download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh</span><br><span class="hljs-comment">//centos</span><br>yum install -y wget &amp;&amp; wget -O install.<span class="hljs-property">sh</span> <span class="hljs-attr">http</span>:<span class="hljs-comment">//download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></code></pre></td></tr></table></figure>
@@ -157,8 +155,13 @@
     <ul>
         
             <li>
-                <a href="/2022/08/11/ajax.html">ajax</a>
-                <p>2022-08-11</p>
+                <a href="/2024/02/01/iphone%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4%E5%BC%80%E5%8F%91.html">iphone快捷指令开发</a>
+                <p>2024-02-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
+                <p>2023-09-27</p>
             </li>
         
             <li>
@@ -167,26 +170,26 @@
             </li>
         
             <li>
-                <a href="/2023/05/11/golang02%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">数据类型</a>
-                <p>2023-05-11</p>
+                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%AA%8C%E8%AF%81.html">常用正则表达式验证</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/vue-elementui%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">elementui问题汇总</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2024/01/26/%E5%85%B6%E4%BB%96-%E6%B2%B9%E7%8C%B4%E6%92%AD%E6%94%BE%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E8%A7%86%E9%A2%91.html">油猴播放百度网盘视频</a>
-                <p>2024-01-26</p>
+                <a href="/2023/12/21/dns-%E4%BD%BF%E7%94%A8CloudflareTunnel%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">dns-使用CloudflareTunnel实现内网穿透</a>
+                <p>2023-12-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2022/08/11/ajax.html">ajax</a>
-                <p>2022-08-11</p>
+                <a href="/2024/02/01/iphone%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4%E5%BC%80%E5%8F%91.html">iphone快捷指令开发</a>
+                <p>2024-02-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
+                <p>2023-09-27</p>
             </li>
         
             <li>
@@ -195,18 +198,13 @@
             </li>
         
             <li>
-                <a href="/2023/05/11/golang02%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">数据类型</a>
-                <p>2023-05-11</p>
+                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%AA%8C%E8%AF%81.html">常用正则表达式验证</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/vue-elementui%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">elementui问题汇总</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2024/01/26/%E5%85%B6%E4%BB%96-%E6%B2%B9%E7%8C%B4%E6%92%AD%E6%94%BE%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E8%A7%86%E9%A2%91.html">油猴播放百度网盘视频</a>
-                <p>2024-01-26</p>
+                <a href="/2023/12/21/dns-%E4%BD%BF%E7%94%A8CloudflareTunnel%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">dns-使用CloudflareTunnel实现内网穿透</a>
+                <p>2023-12-21</p>
             </li>
         
     </ul> -->
@@ -216,27 +214,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -284,6 +282,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -296,11 +298,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -352,17 +354,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -384,9 +386,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

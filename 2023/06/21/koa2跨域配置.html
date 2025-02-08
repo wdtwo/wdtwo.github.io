@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/244ca8bb5b89">原文</a></p>
-<span id="more"></span>
-
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">async</span> (ctx, next) =&gt; &#123;<br>    <span class="hljs-comment">// 允许来自所有域名请求</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>);<br>    <span class="hljs-comment">// 这样就能只允许 http://localhost:8080 这个域名的请求了</span><br>    <span class="hljs-comment">// ctx.set(&quot;Access-Control-Allow-Origin&quot;, &quot;http://localhost:8080&quot;); </span><br><br>    <span class="hljs-comment">// 设置所允许的HTTP请求方法</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="hljs-string">&quot;OPTIONS, GET, PUT, POST, DELETE&quot;</span>);<br><br>    <span class="hljs-comment">// 字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段.</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="hljs-string">&quot;x-requested-with, accept, origin, content-type&quot;</span>);<br><br>    <span class="hljs-comment">// 服务器收到请求以后，检查了Origin、Access-Control-Request-Method和Access-Control-Request-Headers字段以后，确认允许跨源请求，就可以做出回应。</span><br><br>    <span class="hljs-comment">// Content-Type表示具体请求中的媒体类型信息</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;application/json;charset=utf-8&quot;</span>);<br><br>    <span class="hljs-comment">// 该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。</span><br>    <span class="hljs-comment">// 当设置成允许请求携带cookie时，需要保证&quot;Access-Control-Allow-Origin&quot;是服务器有的域名，而不能是&quot;*&quot;;</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Access-Control-Allow-Credentials&quot;</span>, <span class="hljs-literal">true</span>);<br><br>    <span class="hljs-comment">// 该字段可选，用来指定本次预检请求的有效期，单位为秒。</span><br>    <span class="hljs-comment">// 当请求方法是PUT或DELETE等特殊方法或者Content-Type字段的类型是application/json时，服务器会提前发送一次请求进行验证</span><br>    <span class="hljs-comment">// 下面的的设置只本次验证的有效时间，即在该时间段内服务端可以不用进行验证</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Access-Control-Max-Age&quot;</span>, <span class="hljs-number">300</span>);<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：</span><br><span class="hljs-comment">        Cache-Control、</span><br><span class="hljs-comment">        Content-Language、</span><br><span class="hljs-comment">        Content-Type、</span><br><span class="hljs-comment">        Expires、</span><br><span class="hljs-comment">        Last-Modified、</span><br><span class="hljs-comment">        Pragma。</span><br><span class="hljs-comment">    */</span><br>    <span class="hljs-comment">// 需要获取其他字段时，使用Access-Control-Expose-Headers，</span><br>    <span class="hljs-comment">// getResponseHeader(&#x27;myData&#x27;)可以返回我们所需的值</span><br>    <span class="hljs-comment">//https://www.rails365.net/articles/cors-jin-jie-expose-headers-wu</span><br>    ctx.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Access-Control-Expose-Headers&quot;</span>, <span class="hljs-string">&quot;myData&quot;</span>);<br>    <br>    <span class="hljs-keyword">await</span> <span class="hljs-title function_">next</span>();<br>&#125;)<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -121,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/15/linux%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7.html">linux修改ssh端口号</a>
+                <a href="/2022/08/11/html-meta%E6%A0%87%E7%AD%BE.html">meta</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
+                <p>2023-09-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/10/golang-%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">golang-复杂数据类型</a>
+                <p>2023-09-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/js%E8%B0%83%E7%94%A8%E6%89%8B%E6%9C%BA%E7%9B%B8%E6%9C%BA%E5%B9%B6%E8%8E%B7%E5%8F%96%E7%85%A7%E7%89%87.html">js调用手机相机并获取照片</a>
+                <p>2023-05-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/linux-wget%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html">wget使用教程</a>
                 <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2024/03/27/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7.html">安装企业微信调试工具devtool</a>
-                <p>2024-03-27</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/axios%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">axios配置和使用</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7131-140.html">超级散户131-140</a>
-                <p>2020-06-01</p>
-            </li>
-        
-            <li>
-                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
-                <p>2023-01-12</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/15/linux%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7.html">linux修改ssh端口号</a>
+                <a href="/2022/08/11/html-meta%E6%A0%87%E7%AD%BE.html">meta</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
+                <p>2023-09-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/10/golang-%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">golang-复杂数据类型</a>
+                <p>2023-09-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/js%E8%B0%83%E7%94%A8%E6%89%8B%E6%9C%BA%E7%9B%B8%E6%9C%BA%E5%B9%B6%E8%8E%B7%E5%8F%96%E7%85%A7%E7%89%87.html">js调用手机相机并获取照片</a>
+                <p>2023-05-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/linux-wget%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html">wget使用教程</a>
                 <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2024/03/27/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7.html">安装企业微信调试工具devtool</a>
-                <p>2024-03-27</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/axios%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">axios配置和使用</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7131-140.html">超级散户131-140</a>
-                <p>2020-06-01</p>
-            </li>
-        
-            <li>
-                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
-                <p>2023-01-12</p>
             </li>
         
     </ul> -->
@@ -180,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -248,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -260,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -316,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -348,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

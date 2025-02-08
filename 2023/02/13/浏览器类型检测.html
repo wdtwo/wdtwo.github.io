@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>浏览器类型检测</p>
-<span id="more"></span>
-
 <h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> browser = &#123;<br>    <span class="hljs-attr">versions</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> u = navigator.<span class="hljs-property">userAgent</span>, app = navigator.<span class="hljs-property">appVersion</span>;<br>        <span class="hljs-keyword">return</span> &#123;   <span class="hljs-comment">//移动终端浏览器版本信息</span><br>           <span class="hljs-attr">trident</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Trident&#x27;</span>) &gt; -<span class="hljs-number">1</span>, <span class="hljs-comment">//IE内核</span><br>           <span class="hljs-attr">presto</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Presto&#x27;</span>) &gt; -<span class="hljs-number">1</span>, <span class="hljs-comment">//opera内核</span><br>           <span class="hljs-attr">webKit</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;AppleWebKit&#x27;</span>) &gt; -<span class="hljs-number">1</span>, <span class="hljs-comment">//苹果、谷歌内核</span><br>           <span class="hljs-attr">gecko</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Gecko&#x27;</span>) &gt; -<span class="hljs-number">1</span> &amp;&amp; u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;KHTML&#x27;</span>) == -<span class="hljs-number">1</span>, <span class="hljs-comment">//火狐内核</span><br>           <span class="hljs-attr">mobile</span>: !!u.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/AppleWebKit.*Mobile.*/</span>), <span class="hljs-comment">//是否为移动终端</span><br>           <span class="hljs-attr">ios</span>: !!u.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>), <span class="hljs-comment">//ios终端</span><br>           <span class="hljs-attr">android</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Android&#x27;</span>) &gt; -<span class="hljs-number">1</span> || u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Linux&#x27;</span>) &gt; -<span class="hljs-number">1</span>, <span class="hljs-comment">//android终端或uc浏览器</span><br>           <span class="hljs-attr">iPhone</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;iPhone&#x27;</span>) &gt; -<span class="hljs-number">1</span>, <span class="hljs-comment">//是否为iPhone或者QQHD浏览器</span><br>           <span class="hljs-attr">iPad</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;iPad&#x27;</span>) &gt; -<span class="hljs-number">1</span>, <span class="hljs-comment">//是否iPad</span><br>           <span class="hljs-attr">webApp</span>: u.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;Safari&#x27;</span>) == -<span class="hljs-number">1</span> <span class="hljs-comment">//是否web应该程序，没有头部与底部</span><br>        &#125;;<br>    &#125;(),<br>    <span class="hljs-attr">language</span>: (navigator.<span class="hljs-property">browserLanguage</span> || navigator.<span class="hljs-property">language</span>).<span class="hljs-title function_">toLowerCase</span>()<br>&#125;<br><span class="hljs-keyword">if</span> (browser.<span class="hljs-property">versions</span>.<span class="hljs-property">mobile</span>) &#123;<span class="hljs-comment">//判断是否是移动设备打开。browser代码在下面</span><br>  <span class="hljs-keyword">var</span> ua = navigator.<span class="hljs-property">userAgent</span>.<span class="hljs-title function_">toLowerCase</span>();<span class="hljs-comment">//获取判断用的对象</span><br>  <span class="hljs-keyword">if</span> (ua.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/MicroMessenger/i</span>) == <span class="hljs-string">&quot;micromessenger&quot;</span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;在微信中打开&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (ua.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/WeiBo/i</span>) == <span class="hljs-string">&quot;weibo&quot;</span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;在新浪微博客户端打开&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (ua.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/QQ/i</span>) == <span class="hljs-string">&quot;qq&quot;</span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;在QQ空间打开&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (browser.<span class="hljs-property">versions</span>.<span class="hljs-property">ios</span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;是否在IOS浏览器打开&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span>(browser.<span class="hljs-property">versions</span>.<span class="hljs-property">android</span>)&#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;是否在安卓浏览器打开&quot;</span>);<br>  &#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;否则就是PC浏览器打开&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="php"><a href="#php" class="headerlink" title="php"></a>php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">is_wap</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;ALL_HTTP&#x27;</span>] = <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;ALL_HTTP&#x27;</span>])?<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;ALL_HTTP&#x27;</span>]:<span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-variable">$mobile_browser</span> = <span class="hljs-string">&#x27;0&#x27;</span>;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|iphone|ipad|ipod|android|xoom)/i&#x27;</span>, <span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_USER_AGENT&#x27;</span>])))<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-keyword">if</span>((<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_ACCEPT&#x27;</span>])) <span class="hljs-keyword">and</span> (<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_ACCEPT&#x27;</span>]),<span class="hljs-string">&#x27;application/vnd.wap.xhtml+xml&#x27;</span>) !== <span class="hljs-literal">false</span>))<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_X_WAP_PROFILE&#x27;</span>]))<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_PROFILE&#x27;</span>]))<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-variable">$mobile_ua</span> = <span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_USER_AGENT&#x27;</span>],<span class="hljs-number">0</span>,<span class="hljs-number">4</span>));<br>    <span class="hljs-variable">$mobile_agents</span> = <span class="hljs-keyword">array</span>(<br>        <span class="hljs-string">&#x27;w3c &#x27;</span>,<span class="hljs-string">&#x27;acs-&#x27;</span>,<span class="hljs-string">&#x27;alav&#x27;</span>,<span class="hljs-string">&#x27;alca&#x27;</span>,<span class="hljs-string">&#x27;amoi&#x27;</span>,<span class="hljs-string">&#x27;audi&#x27;</span>,<span class="hljs-string">&#x27;avan&#x27;</span>,<span class="hljs-string">&#x27;benq&#x27;</span>,<span class="hljs-string">&#x27;bird&#x27;</span>,<span class="hljs-string">&#x27;blac&#x27;</span>,<br>        <span class="hljs-string">&#x27;blaz&#x27;</span>,<span class="hljs-string">&#x27;brew&#x27;</span>,<span class="hljs-string">&#x27;cell&#x27;</span>,<span class="hljs-string">&#x27;cldc&#x27;</span>,<span class="hljs-string">&#x27;cmd-&#x27;</span>,<span class="hljs-string">&#x27;dang&#x27;</span>,<span class="hljs-string">&#x27;doco&#x27;</span>,<span class="hljs-string">&#x27;eric&#x27;</span>,<span class="hljs-string">&#x27;hipt&#x27;</span>,<span class="hljs-string">&#x27;inno&#x27;</span>,<br>        <span class="hljs-string">&#x27;ipaq&#x27;</span>,<span class="hljs-string">&#x27;java&#x27;</span>,<span class="hljs-string">&#x27;jigs&#x27;</span>,<span class="hljs-string">&#x27;kddi&#x27;</span>,<span class="hljs-string">&#x27;keji&#x27;</span>,<span class="hljs-string">&#x27;leno&#x27;</span>,<span class="hljs-string">&#x27;lg-c&#x27;</span>,<span class="hljs-string">&#x27;lg-d&#x27;</span>,<span class="hljs-string">&#x27;lg-g&#x27;</span>,<span class="hljs-string">&#x27;lge-&#x27;</span>,<br>        <span class="hljs-string">&#x27;maui&#x27;</span>,<span class="hljs-string">&#x27;maxo&#x27;</span>,<span class="hljs-string">&#x27;midp&#x27;</span>,<span class="hljs-string">&#x27;mits&#x27;</span>,<span class="hljs-string">&#x27;mmef&#x27;</span>,<span class="hljs-string">&#x27;mobi&#x27;</span>,<span class="hljs-string">&#x27;mot-&#x27;</span>,<span class="hljs-string">&#x27;moto&#x27;</span>,<span class="hljs-string">&#x27;mwbp&#x27;</span>,<span class="hljs-string">&#x27;nec-&#x27;</span>,<br>        <span class="hljs-string">&#x27;newt&#x27;</span>,<span class="hljs-string">&#x27;noki&#x27;</span>,<span class="hljs-string">&#x27;oper&#x27;</span>,<span class="hljs-string">&#x27;palm&#x27;</span>,<span class="hljs-string">&#x27;pana&#x27;</span>,<span class="hljs-string">&#x27;pant&#x27;</span>,<span class="hljs-string">&#x27;phil&#x27;</span>,<span class="hljs-string">&#x27;play&#x27;</span>,<span class="hljs-string">&#x27;port&#x27;</span>,<span class="hljs-string">&#x27;prox&#x27;</span>,<br>        <span class="hljs-string">&#x27;qwap&#x27;</span>,<span class="hljs-string">&#x27;sage&#x27;</span>,<span class="hljs-string">&#x27;sams&#x27;</span>,<span class="hljs-string">&#x27;sany&#x27;</span>,<span class="hljs-string">&#x27;sch-&#x27;</span>,<span class="hljs-string">&#x27;sec-&#x27;</span>,<span class="hljs-string">&#x27;send&#x27;</span>,<span class="hljs-string">&#x27;seri&#x27;</span>,<span class="hljs-string">&#x27;sgh-&#x27;</span>,<span class="hljs-string">&#x27;shar&#x27;</span>,<br>        <span class="hljs-string">&#x27;sie-&#x27;</span>,<span class="hljs-string">&#x27;siem&#x27;</span>,<span class="hljs-string">&#x27;smal&#x27;</span>,<span class="hljs-string">&#x27;smar&#x27;</span>,<span class="hljs-string">&#x27;sony&#x27;</span>,<span class="hljs-string">&#x27;sph-&#x27;</span>,<span class="hljs-string">&#x27;symb&#x27;</span>,<span class="hljs-string">&#x27;t-mo&#x27;</span>,<span class="hljs-string">&#x27;teli&#x27;</span>,<span class="hljs-string">&#x27;tim-&#x27;</span>,<br>        <span class="hljs-string">&#x27;tosh&#x27;</span>,<span class="hljs-string">&#x27;tsm-&#x27;</span>,<span class="hljs-string">&#x27;upg1&#x27;</span>,<span class="hljs-string">&#x27;upsi&#x27;</span>,<span class="hljs-string">&#x27;vk-v&#x27;</span>,<span class="hljs-string">&#x27;voda&#x27;</span>,<span class="hljs-string">&#x27;wap-&#x27;</span>,<span class="hljs-string">&#x27;wapa&#x27;</span>,<span class="hljs-string">&#x27;wapi&#x27;</span>,<span class="hljs-string">&#x27;wapp&#x27;</span>,<br>        <span class="hljs-string">&#x27;wapr&#x27;</span>,<span class="hljs-string">&#x27;webc&#x27;</span>,<span class="hljs-string">&#x27;winw&#x27;</span>,<span class="hljs-string">&#x27;winw&#x27;</span>,<span class="hljs-string">&#x27;xda&#x27;</span>,<span class="hljs-string">&#x27;xda-&#x27;</span><br>    );<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$mobile_ua</span>, <span class="hljs-variable">$mobile_agents</span>))<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;ALL_HTTP&#x27;</span>]), <span class="hljs-string">&#x27;operamini&#x27;</span>) !== <span class="hljs-literal">false</span>)<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-comment">// Pre-final check to reset everything if the user is on Windows</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_USER_AGENT&#x27;</span>]), <span class="hljs-string">&#x27;windows&#x27;</span>) !== <span class="hljs-literal">false</span>)<br>        <span class="hljs-variable">$mobile_browser</span>=<span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// But WP7 is also Windows, with a slightly different characteristic</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_USER_AGENT&#x27;</span>]), <span class="hljs-string">&#x27;windows phone&#x27;</span>) !== <span class="hljs-literal">false</span>)<br>        <span class="hljs-variable">$mobile_browser</span>++;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$mobile_browser</span>&gt;<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
@@ -122,56 +120,56 @@
     <ul>
         
             <li>
-                <a href="/2023/08/01/%E8%AE%BE%E8%AE%A1-photoshop%E4%B8%8Ecreativecloud%E6%A1%8C%E9%9D%A2%E7%89%88%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5.html">photoshop与creativecloud桌面版连接失败</a>
-                <p>2023-08-01</p>
+                <a href="/2023/05/16/node%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BDts%E6%96%87%E4%BB%B6.html">node多线程下载ts文件</a>
+                <p>2023-05-16</p>
             </li>
         
             <li>
-                <a href="/2023/02/17/StableDiffusion%E5%92%92%E8%AF%AD-KoreanDollLikeness-plus.html">Korean Doll Likeness咒语</a>
-                <p>2023-02-17</p>
+                <a href="/2023/08/02/pug%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8.html">pug模板使用</a>
+                <p>2023-08-02</p>
             </li>
         
             <li>
-                <a href="/2024/02/01/iphone%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4%E5%BC%80%E5%8F%91.html">iphone快捷指令开发</a>
-                <p>2024-02-01</p>
+                <a href="/2023/05/30/%E5%85%B6%E4%BB%96-%E5%B0%8F%E6%B5%B7%E8%B1%9A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.html">小海豚使用说明</a>
+                <p>2023-05-30</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/pm2%E9%85%8D%E7%BD%AE.html">pm2配置</a>
+                <a href="/2023/05/19/golang-web.html">go web</a>
+                <p>2023-05-19</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/pinia-%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">vue-pinia配置和使用</a>
                 <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html">js字符串转换成16进制编码</a>
-                <p>2023-02-23</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/08/01/%E8%AE%BE%E8%AE%A1-photoshop%E4%B8%8Ecreativecloud%E6%A1%8C%E9%9D%A2%E7%89%88%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5.html">photoshop与creativecloud桌面版连接失败</a>
-                <p>2023-08-01</p>
+                <a href="/2023/05/16/node%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BDts%E6%96%87%E4%BB%B6.html">node多线程下载ts文件</a>
+                <p>2023-05-16</p>
             </li>
         
             <li>
-                <a href="/2023/02/17/StableDiffusion%E5%92%92%E8%AF%AD-KoreanDollLikeness-plus.html">Korean Doll Likeness咒语</a>
-                <p>2023-02-17</p>
+                <a href="/2023/08/02/pug%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8.html">pug模板使用</a>
+                <p>2023-08-02</p>
             </li>
         
             <li>
-                <a href="/2024/02/01/iphone%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4%E5%BC%80%E5%8F%91.html">iphone快捷指令开发</a>
-                <p>2024-02-01</p>
+                <a href="/2023/05/30/%E5%85%B6%E4%BB%96-%E5%B0%8F%E6%B5%B7%E8%B1%9A%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.html">小海豚使用说明</a>
+                <p>2023-05-30</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/pm2%E9%85%8D%E7%BD%AE.html">pm2配置</a>
+                <a href="/2023/05/19/golang-web.html">go web</a>
+                <p>2023-05-19</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/pinia-%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">vue-pinia配置和使用</a>
                 <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html">js字符串转换成16进制编码</a>
-                <p>2023-02-23</p>
             </li>
         
     </ul> -->
@@ -181,27 +179,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -249,6 +247,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -261,11 +263,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -317,17 +319,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -349,9 +351,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

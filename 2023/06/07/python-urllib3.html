@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p><a target="_blank" rel="noopener" href="https://urllib3.readthedocs.io/en/latest/">https://urllib3.readthedocs.io/en/latest/</a></p>
-<span id="more"></span>
 <h4 id="基础代码"><a href="#基础代码" class="headerlink" title="基础代码"></a>基础代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib3<br>url = <span class="hljs-string">&#x27;http://www.google.com&#x27;</span><br>    http = urllib3.PoolManager(<br>        headers = &#123;<br>           <span class="hljs-string">&#x27;Upgrade-Insecure-Requests&#x27;</span>: <span class="hljs-string">&#x27;1&#x27;</span>,<br>           <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36&#x27;</span>,<br>           <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#x27;</span>,<br>           <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;gzip, deflate, sdch, br&#x27;</span>,<br>           <span class="hljs-string">&#x27;Accept-Language&#x27;</span>: <span class="hljs-string">&#x27;zh-CN,zh;q=0.8&#x27;</span>,<br>        &#125;<br>    )<br>    res = http.request(<span class="hljs-string">&#x27;GET&#x27;</span>,url)<br>    <span class="hljs-built_in">print</span>(res.data.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <br>    <span class="hljs-built_in">print</span>(res.status)<br>    <span class="hljs-built_in">print</span>(res.data)<br>    <span class="hljs-built_in">print</span>(res.header)<br></code></pre></td></tr></table></figure>
 <h4 id="post"><a href="#post" class="headerlink" title="post"></a>post</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">http.request(<span class="hljs-string">&#x27;POST&#x27;</span>,<span class="hljs-string">&#x27;http://google.com&#x27;</span>,fields=&#123;<span class="hljs-string">&#x27;hello&#x27;</span>:<span class="hljs-string">&#x27;world&#x27;</span>&#125;)<br></code></pre></td></tr></table></figure>
 <h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br>res = http.request(<span class="hljs-string">&#x27;GET&#x27;</span>,<span class="hljs-string">&#x27;http://google.com&#x27;</span>)<br>json.loads(res.data.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
@@ -142,56 +141,56 @@
     <ul>
         
             <li>
-                <a href="/2022/08/11/meta%E6%A0%87%E7%AD%BE.html">meta</a>
+                <a href="/2023/07/26/hexo%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.html">hexo设置静态文件目录</a>
+                <p>2023-07-26</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A82.html">indexDB浏览器存储本地数据</a>
                 <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E5%8F%96%E5%88%B0%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95.html">取到顶层对象的两种方法</a>
-                <p>2022-08-11</p>
+                <a href="/2024/04/28/js-%E5%89%8D%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%BA%93indexDB%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7dexie.js.html">js前端数据库indexDB管理工具dexie.js</a>
+                <p>2024-04-28</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/php%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9D%97.html">php自动创建模块</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2024/07/11/axios%E6%B7%BB%E5%8A%A0%E6%8B%A6%E6%88%AA%E5%99%A8.html">axios添加拦截器</a>
-                <p>2024-07-11</p>
-            </li>
-        
-            <li>
-                <a href="/2023/10/18/js%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E6%9B%B4%E6%96%B0.html">js获取网页更新</a>
-                <p>2023-10-18</p>
+                <a href="/2023/09/17/golang-%E5%8F%8D%E5%B0%84reflect.html">golang-反射reflect</a>
+                <p>2023-09-17</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2022/08/11/meta%E6%A0%87%E7%AD%BE.html">meta</a>
+                <a href="/2023/07/26/hexo%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.html">hexo设置静态文件目录</a>
+                <p>2023-07-26</p>
+            </li>
+        
+            <li>
+                <a href="/2023/09/09/golang-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">golang-数据类型转换</a>
+                <p>2023-09-09</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A82.html">indexDB浏览器存储本地数据</a>
                 <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/js-%E5%8F%96%E5%88%B0%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95.html">取到顶层对象的两种方法</a>
-                <p>2022-08-11</p>
+                <a href="/2024/04/28/js-%E5%89%8D%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%BA%93indexDB%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7dexie.js.html">js前端数据库indexDB管理工具dexie.js</a>
+                <p>2024-04-28</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/php%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9D%97.html">php自动创建模块</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2024/07/11/axios%E6%B7%BB%E5%8A%A0%E6%8B%A6%E6%88%AA%E5%99%A8.html">axios添加拦截器</a>
-                <p>2024-07-11</p>
-            </li>
-        
-            <li>
-                <a href="/2023/10/18/js%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E6%9B%B4%E6%96%B0.html">js获取网页更新</a>
-                <p>2023-10-18</p>
+                <a href="/2023/09/17/golang-%E5%8F%8D%E5%B0%84reflect.html">golang-反射reflect</a>
+                <p>2023-09-17</p>
             </li>
         
     </ul> -->
@@ -201,27 +200,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -269,6 +268,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -281,11 +284,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -337,17 +340,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -369,9 +372,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

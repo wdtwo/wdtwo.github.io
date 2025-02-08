@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>canvas放烟花</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>)<br>ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span><br>ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span><br><span class="hljs-keyword">var</span> sparks = []<br><span class="hljs-keyword">var</span> fireworks = []<br><span class="hljs-keyword">var</span> i = <span class="hljs-number">30</span>;<br><span class="hljs-keyword">while</span> (i--) &#123;<br>    fireworks.<span class="hljs-title function_">push</span>(<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Firework</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())<br>    )<br>&#125;<br><span class="hljs-title function_">render</span>()<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-built_in">setTimeout</span>(render, <span class="hljs-number">1000</span> / <span class="hljs-number">50</span>)<br>    ctx.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;rgba(21, 3, 72, 0.1)&#x27;</span>;<br>    ctx.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>, ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>)<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> firework <span class="hljs-keyword">of</span> fireworks) &#123;<br>        <span class="hljs-keyword">if</span> (firework.<span class="hljs-property">dead</span>) <span class="hljs-keyword">continue</span><br>        firework.<span class="hljs-title function_">move</span>()<br>        firework.<span class="hljs-title function_">draw</span>()<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> spark <span class="hljs-keyword">of</span> sparks) &#123;<br>        <span class="hljs-keyword">if</span> (spark.<span class="hljs-property">dead</span>) <span class="hljs-keyword">continue</span><br>        spark.<span class="hljs-title function_">move</span>()<br>        spark.<span class="hljs-title function_">draw</span>()<br>    &#125;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() &lt; <span class="hljs-number">0.05</span>) &#123;<br>        fireworks.<span class="hljs-title function_">push</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Firework</span>())<br>    &#125;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Spark</span>(<span class="hljs-params">x, y, color</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = x<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> = y<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dir</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * (<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * <span class="hljs-number">2</span>)<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dead</span> = <span class="hljs-literal">false</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span> = color<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">3</span> +<span class="hljs-number">3</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">walker</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Walker</span>(&#123;<br>        <span class="hljs-attr">radius</span>: <span class="hljs-number">1</span>,<br>        <span class="hljs-attr">speed</span>: <span class="hljs-number">0.25</span><br>    &#125;)<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gravity</span> = <span class="hljs-number">0.25</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dur</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> / <span class="hljs-number">0.09</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">move</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dur</span>--<br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">dur</span> &lt; <span class="hljs-number">0</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">dead</span> = <span class="hljs-literal">true</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> &gt; <span class="hljs-number">0</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> -= <span class="hljs-number">0.1</span><br>        <span class="hljs-keyword">var</span> walk = <span class="hljs-variable language_">this</span>.<span class="hljs-property">walker</span>.<span class="hljs-title function_">step</span>()<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> += <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">cos</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">dir</span> + walk) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> += <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sin</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">dir</span> + walk) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> += <span class="hljs-variable language_">this</span>.<span class="hljs-property">gravity</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">gravity</span> += <span class="hljs-number">0.05</span><br>    &#125;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">draw</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">drawCircle</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span>, <span class="hljs-number">3</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span>)<br>    &#125;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Firework</span>(<span class="hljs-params">x, y</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">xmove</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Walker</span>(&#123;<br>        <span class="hljs-attr">radius</span>: <span class="hljs-number">10</span>,<br>        <span class="hljs-attr">speed</span>: <span class="hljs-number">0.5</span><br>    &#125;)<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = x || <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> = y || ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">height</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * ctx.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> / <span class="hljs-number">2</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dead</span> = <span class="hljs-literal">false</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span> = <span class="hljs-title function_">randomColor</span>()<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">move</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> += <span class="hljs-variable language_">this</span>.<span class="hljs-property">xmove</span>.<span class="hljs-title function_">step</span>()<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">height</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> -= <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">burst</span>()<br>    &#125;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">draw</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">drawCircle</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span>, <span class="hljs-number">1</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span>)<br>    &#125;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">burst</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">dead</span> = <span class="hljs-literal">true</span><br>        <span class="hljs-keyword">var</span> i = <span class="hljs-number">100</span>;<br>        <span class="hljs-keyword">while</span> (i--) sparks.<span class="hljs-title function_">push</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Spark</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span>))<br>    &#125;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">drawCircle</span>(<span class="hljs-params">x, y, radius, color</span>) &#123;<br>    color = color || <span class="hljs-string">&#x27;#FFF&#x27;</span><br>    ctx.<span class="hljs-property">fillStyle</span> = color<br>    ctx.<span class="hljs-title function_">fillRect</span>(x - radius / <span class="hljs-number">2</span>, y - radius / <span class="hljs-number">2</span>, radius, radius)<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">randomColor</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;#FF2D1F&#x27;</span>, <span class="hljs-string">&#x27;#08AF77&#x27;</span>, <span class="hljs-string">&#x27;#36b89b&#x27;</span>, <span class="hljs-string">&#x27;#7bd7ec&#x27;</span>, <span class="hljs-string">&#x27;#66cbe1&#x27;</span>][<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">5</span>)];<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Walker</span>(<span class="hljs-params">options</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">step</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">direction</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span>) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> += <span class="hljs-variable language_">this</span>.<span class="hljs-property">direction</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span> ?<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span> -= <span class="hljs-variable language_">this</span>.<span class="hljs-property">direction</span> :<br>            (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>) ?<br>            (<span class="hljs-variable language_">this</span>.<span class="hljs-property">wander</span>) ?<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">newTarget</span>() :<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span> = -<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> :<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">newTarget</span>()<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">direction</span><br>    &#125;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">newTarget</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(<span class="hljs-number">0</span>)<br>    &#125;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">start</span> = <span class="hljs-number">0</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = <span class="hljs-number">0</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">radius</span> = options.<span class="hljs-property">radius</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">newTarget</span>()<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">direction</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">target</span>)<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">wander</span> = options.<span class="hljs-property">wander</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> = options.<span class="hljs-property">speed</span> || <span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -120,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2023/10/13/linux-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">linux-frp内网穿透</a>
-                <p>2023-10-13</p>
+                <a href="/2023/09/08/golang%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86gvm%E5%AE%89%E8%A3%85.html">golang版本管理gvm安装</a>
+                <p>2023-09-08</p>
             </li>
         
             <li>
-                <a href="/2023/08/17/%E5%85%B6%E4%BB%96-%E5%8D%83%E9%97%A8%E5%85%AB%E5%B0%86.html">千门八将</a>
-                <p>2023-08-17</p>
+                <a href="/2023/06/21/php-header%E6%93%8D%E4%BD%9C.html">php-header操作</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7271-280.html">超级散户271-280</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2024/07/01/js-%E4%B8%BB%E5%8A%A8%E8%A7%A6%E5%8F%91onresize%E4%BA%8B%E4%BB%B6.html">js主动触发onresize事件</a>
-                <p>2024-07-01</p>
+                <a href="/2023/09/20/golang-fyne%E7%BB%84%E4%BB%B6.html">golang-fyne组件</a>
+                <p>2023-09-20</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
-                <p>2022-08-11</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7391-399.html">超级散户391-399</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/10/13/linux-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">linux-frp内网穿透</a>
-                <p>2023-10-13</p>
+                <a href="/2023/09/08/golang%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86gvm%E5%AE%89%E8%A3%85.html">golang版本管理gvm安装</a>
+                <p>2023-09-08</p>
             </li>
         
             <li>
-                <a href="/2023/08/17/%E5%85%B6%E4%BB%96-%E5%8D%83%E9%97%A8%E5%85%AB%E5%B0%86.html">千门八将</a>
-                <p>2023-08-17</p>
+                <a href="/2023/06/21/php-header%E6%93%8D%E4%BD%9C.html">php-header操作</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7271-280.html">超级散户271-280</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2024/07/01/js-%E4%B8%BB%E5%8A%A8%E8%A7%A6%E5%8F%91onresize%E4%BA%8B%E4%BB%B6.html">js主动触发onresize事件</a>
-                <p>2024-07-01</p>
+                <a href="/2023/09/20/golang-fyne%E7%BB%84%E4%BB%B6.html">golang-fyne组件</a>
+                <p>2023-09-20</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
-                <p>2022-08-11</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7391-399.html">超级散户391-399</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul> -->
@@ -179,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -247,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -259,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -315,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -347,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

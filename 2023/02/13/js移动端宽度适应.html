@@ -112,8 +112,6 @@
 <li>transform:scale()</li>
 <li>rem</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="transform-scale"><a href="#transform-scale" class="headerlink" title="transform:scale()"></a>transform:scale()</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    * &#123;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;<span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;&#125;</span><br><span class="language-css">    <span class="hljs-selector-class">.wrap</span> &#123;<span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<span class="hljs-attribute">width</span>:<span class="hljs-number">320px</span>;<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<span class="hljs-attribute">position</span>: absolute;<span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;<span class="hljs-attribute">margin-left</span>:-<span class="hljs-number">160px</span>;&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrap&quot;</span>&gt;</span>body<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;load&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-title function_">setScale</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.wrap&quot;</span>),&#123;&#125;);</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    setScale=&gt;(t,obj)&#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="language-javascript">            <span class="hljs-keyword">if</span>(!obj.<span class="hljs-property">origin</span>)&#123;obj.<span class="hljs-property">origin</span> = <span class="hljs-string">&quot;top&quot;</span>&#125;</span><br><span class="language-javascript">            <span class="hljs-keyword">var</span> doc = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>;</span><br><span class="language-javascript">            <span class="hljs-keyword">let</span> [w,h] = [doc.<span class="hljs-property">offsetWidth</span>,doc.<span class="hljs-property">offsetHeight</span>];</span><br><span class="language-javascript">            <span class="hljs-keyword">let</span> scaleW = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(w/<span class="hljs-number">320</span>,<span class="hljs-number">2</span>);</span><br><span class="language-javascript">            <span class="hljs-keyword">let</span> str = <span class="hljs-string">`</span></span><br><span class="hljs-string"><span class="language-javascript">                transform:scale(<span class="hljs-subst">$&#123;scaleW&#125;</span>);</span></span><br><span class="hljs-string"><span class="language-javascript">                transform-origin:<span class="hljs-subst">$&#123;obj.origin&#125;</span>;</span></span><br><span class="hljs-string"><span class="language-javascript">                -webkit-transform:scale(<span class="hljs-subst">$&#123;scaleW&#125;</span>);</span></span><br><span class="hljs-string"><span class="language-javascript">                -webkit-transform-origin:<span class="hljs-subst">$&#123;obj.origin&#125;</span>;</span></span><br><span class="hljs-string"><span class="language-javascript">            `</span>;</span><br><span class="language-javascript">            t.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&quot;style&quot;</span>,str);</span><br><span class="language-javascript">        &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(e);</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <h2 id="rem缩放"><a href="#rem缩放" class="headerlink" title="rem缩放"></a>rem缩放</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">    * &#123;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;<span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;&#125;</span><br><span class="language-css">    <span class="hljs-selector-tag">html</span>&#123;<span class="hljs-attribute">font-size</span>:<span class="hljs-number">100px</span>;&#125;</span><br><span class="language-css">    <span class="hljs-selector-class">.wrap</span> &#123;<span class="hljs-attribute">position</span>: absolute;<span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;<span class="hljs-attribute">top</span>:<span class="hljs-number">0</span>;<span class="hljs-attribute">margin-left</span>:-<span class="hljs-number">3.74rem</span>;<span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<span class="hljs-attribute">width</span>:<span class="hljs-number">7.48rem</span>;<span class="hljs-attribute">text-align</span>: center;<span class="hljs-attribute">font-size</span>:.<span class="hljs-number">4rem</span>;&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrap&quot;</span>&gt;</span>body<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    [<span class="hljs-string">&quot;load&quot;</span>,<span class="hljs-string">&quot;resize&quot;</span>].<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">v,i</span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(v,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-title function_">setScale</span>();&#125;)</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> setScale = <span class="hljs-keyword">function</span>(<span class="hljs-params">t,obj</span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> w = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">offsetWidth</span>;</span><br><span class="language-javascript">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;html&quot;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = w/<span class="hljs-number">7.5</span> + <span class="hljs-string">&quot;px&quot;</span>;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">autoScale</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> winW = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-property">min</span> (<span class="hljs-number">1</span>,<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(winW / <span class="hljs-number">750</span>));<br>&#125;<br><span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span> = <span class="hljs-string">&#x27;font-size:&#x27;</span>+(<span class="hljs-number">100</span> * <span class="hljs-title function_">autoScale</span>())+<span class="hljs-string">&#x27;px&#x27;</span>;<br><span class="hljs-comment">//1rem = 100px</span><br></code></pre></td></tr></table></figure>
@@ -125,56 +123,56 @@
     <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7101-110.html">超级散户101-110</a>
-                <p>2020-06-01</p>
+                <a href="/2025/01/25/library%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2.html"></a>
+                <p>2025-01-25</p>
             </li>
         
             <li>
-                <a href="/2024/03/25/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%AE%89%E8%A3%85casaos.html">玩客云安装casaos</a>
-                <p>2024-03-25</p>
+                <a href="/2023/08/17/%E5%85%B6%E4%BB%96-%E5%8D%83%E9%97%A8%E5%85%AB%E5%B0%86.html">千门八将</a>
+                <p>2023-08-17</p>
             </li>
         
             <li>
-                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
-                <p>2024-03-01</p>
+                <a href="/2023/05/17/AI-openai.html">openai</a>
+                <p>2023-05-17</p>
             </li>
         
             <li>
-                <a href="/2023/09/10/golang-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html">golang-内置函数</a>
-                <p>2023-09-10</p>
+                <a href="/2024/03/26/js%E5%88%A4%E6%96%AD%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%98%AF%E7%94%B5%E8%84%91%E7%AB%AF%E8%BF%98%E6%98%AF%E6%89%8B%E6%9C%BA%E7%AB%AF.html">js判断企业微信是电脑端还是手机端</a>
+                <p>2024-03-26</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/python%E8%A1%A8%E6%A0%BC%E5%A4%9A%E5%B7%A5%E4%BD%9C%E7%BB%84%E5%90%88%E5%B9%B6%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E7%BB%84.html">python表格多工作组合并数据到一个组</a>
-                <p>2023-06-07</p>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7101-110.html">超级散户101-110</a>
-                <p>2020-06-01</p>
+                <a href="/2025/01/25/library%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2.html"></a>
+                <p>2025-01-25</p>
             </li>
         
             <li>
-                <a href="/2024/03/25/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%AE%89%E8%A3%85casaos.html">玩客云安装casaos</a>
-                <p>2024-03-25</p>
+                <a href="/2023/08/17/%E5%85%B6%E4%BB%96-%E5%8D%83%E9%97%A8%E5%85%AB%E5%B0%86.html">千门八将</a>
+                <p>2023-08-17</p>
             </li>
         
             <li>
-                <a href="/2024/03/01/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.html">chrome浏览器插件开发</a>
-                <p>2024-03-01</p>
+                <a href="/2023/05/17/AI-openai.html">openai</a>
+                <p>2023-05-17</p>
             </li>
         
             <li>
-                <a href="/2023/09/10/golang-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html">golang-内置函数</a>
-                <p>2023-09-10</p>
+                <a href="/2024/03/26/js%E5%88%A4%E6%96%AD%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%98%AF%E7%94%B5%E8%84%91%E7%AB%AF%E8%BF%98%E6%98%AF%E6%89%8B%E6%9C%BA%E7%AB%AF.html">js判断企业微信是电脑端还是手机端</a>
+                <p>2024-03-26</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/python%E8%A1%A8%E6%A0%BC%E5%A4%9A%E5%B7%A5%E4%BD%9C%E7%BB%84%E5%90%88%E5%B9%B6%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E7%BB%84.html">python表格多工作组合并数据到一个组</a>
-                <p>2023-06-07</p>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
             </li>
         
     </ul> -->
@@ -184,27 +182,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -252,6 +250,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -264,11 +266,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -320,17 +322,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -352,9 +354,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

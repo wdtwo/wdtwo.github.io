@@ -110,8 +110,6 @@
         <div class="post-content">
             <p>ios input file照片方向可能会导致旋转的问题</p>
 <p>(项目地址)[<a target="_blank" rel="noopener" href="https://github.com/exif-js/exif-js]">https://github.com/exif-js/exif-js]</a></p>
-<span id="more"></span>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- label绑定file被点击开始拍照 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;filebtn&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position:absolute;left:0;top:0;background:rgba(255,0,0,.01);width:100%;height:100%;z-index:9999999;display:none;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br><span class="hljs-comment">&lt;!-- file调用摄像机拍照 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">accept</span>=<span class="hljs-string">&quot;image/jpeg&quot;</span> <span class="hljs-attr">capture</span>=<span class="hljs-string">&quot;camera&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none;&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/exif.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> [w,h] = [<span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>,<span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>]     <span class="hljs-comment">//获取浏览器的宽高</span><br><span class="hljs-keyword">let</span> image = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>() <span class="hljs-comment">//新建一个图片对象 存储导入的图片</span><br><span class="hljs-keyword">let</span> orientation = <span class="hljs-number">0</span>;<span class="hljs-comment">//存储照片的方向值 3 6 8</span><br><span class="hljs-comment">//inputfile改变事件 获取inputfile中的图片</span><br>$(<span class="hljs-string">&quot;#file&quot;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;change&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)&#123;<br>    <span class="hljs-comment">//读取图片</span><br>    <span class="hljs-keyword">var</span> file = event.<span class="hljs-property">target</span>.<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>    <span class="hljs-comment">//使用插件读取图片的详细信息</span><br>    <span class="hljs-variable constant_">EXIF</span>.<span class="hljs-title function_">getData</span>(file, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">var</span> allTags = <span class="hljs-variable constant_">EXIF</span>.<span class="hljs-title function_">getAllTags</span>(<span class="hljs-variable language_">this</span>);<br>        orientation = allTags.<span class="hljs-property">Orientation</span>;<br>        <span class="hljs-comment">//console.log(allTags,orientation)</span><br>        <span class="hljs-comment">//alert(orientation)  //照片方向</span><br>    &#125;)<br>    <span class="hljs-comment">//新建一个图片</span><br>    <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>    reader.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) &#123;<br>        <span class="hljs-comment">//设置图片的src</span><br>        image.<span class="hljs-property">src</span> = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span><br>        image.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-comment">//图片加载完成后走判断图片方向的方法</span><br>            <span class="hljs-title class_">SetImg</span>(e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>)<br>        &#125;<br>    &#125;;<br>    reader.<span class="hljs-title function_">readAsDataURL</span>(file); <br>&#125;)<br><span class="hljs-comment">//判断图片方形并上传图片</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">SetImg</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;canvas&quot;</span>);<br>    <span class="hljs-keyword">let</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>    <span class="hljs-comment">//设置高度是照片等比例缩小的值</span><br>    <span class="hljs-keyword">let</span> h = w / image.<span class="hljs-property">width</span> * image.<span class="hljs-property">height</span>; <br>    canvas.<span class="hljs-property">width</span> = w; <br>    canvas.<span class="hljs-property">height</span> = h<br>    <span class="hljs-comment">//alert(`$&#123;w&#125;----$&#123;h&#125;`)</span><br>    <span class="hljs-keyword">switch</span> (orientation) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span> :<br>            <span class="hljs-comment">//ios可能是6 但是不需要旋转 所以此处用宽度大于高度的话就需要旋转 否则不需要旋转</span><br>            <span class="hljs-keyword">if</span>(w &gt;= h)&#123;<br>                <span class="hljs-comment">//需要顺时针（向左）90度旋转</span><br>                <span class="hljs-keyword">var</span> degree = <span class="hljs-number">90</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> / <span class="hljs-number">180</span>;<br>                context.<span class="hljs-title function_">rotate</span>(degree);<br>                context.<span class="hljs-title function_">drawImage</span>(image, <span class="hljs-number">0</span>, -w, h, w);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                context.<span class="hljs-title function_">drawImage</span>(image, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, w,h);<br>            &#125;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<br>            <span class="hljs-comment">//同上</span><br>            <span class="hljs-keyword">if</span>(w &gt;= h)&#123;<br>                <span class="hljs-comment">//需要逆时针（向右）90度旋转</span><br>                <span class="hljs-keyword">var</span> degree = <span class="hljs-number">270</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> / <span class="hljs-number">180</span>;<br>                context.<span class="hljs-title function_">rotate</span>(degree);<br>                context.<span class="hljs-title function_">drawImage</span>(image, -h, <span class="hljs-number">0</span>, h, w);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                context.<span class="hljs-title function_">drawImage</span>(image, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, w,h);<br>            &#125;<br>            <br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            <span class="hljs-comment">//需要180度旋转</span><br>            <span class="hljs-comment">//旋转180度不需要修改宽高</span><br>            <span class="hljs-keyword">var</span> degree = <span class="hljs-number">180</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> / <span class="hljs-number">180</span>;<br>            context.<span class="hljs-title function_">rotate</span>(degree);<br>            context.<span class="hljs-title function_">drawImage</span>(image, -w, -h, w, h);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-attr">default</span>:<br>            <span class="hljs-comment">//如果都不符合则直接绘图</span><br>            context.<span class="hljs-title function_">drawImage</span>(image, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, w,h);<br>    &#125;<br>    <span class="hljs-comment">//水平镜像</span><br>    context.<span class="hljs-title function_">scale</span>(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>    <span class="hljs-comment">//导出成jpeg格式base64</span><br>    <span class="hljs-keyword">var</span> imgSrc = canvas.<span class="hljs-title function_">toDataURL</span>(<span class="hljs-string">&quot;image/jpeg&quot;</span>);<br><br>    <span class="hljs-comment">//此处可以返回图片的base64作为返回值</span><br>    <span class="hljs-comment">//return imgSrc</span><br><br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>:<span class="hljs-string">&quot;/&quot;</span>,<br>        <span class="hljs-attr">method</span>:<span class="hljs-string">&quot;post&quot;</span>,<br>        <span class="hljs-attr">data</span>:&#123;<span class="hljs-attr">imgData</span>:imgSrc&#125;,<br>        <span class="hljs-attr">success</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)&#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(data)[<span class="hljs-string">&#x27;errCode&#x27;</span>] == <span class="hljs-number">0</span>)&#123;<br>                <span class="hljs-comment">//请求成功跳转页面</span><br>                <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;/&quot;</span><br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;服务器出错:&quot;</span>+err)<br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">error</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)&#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;请求出错:&quot;</span>+err)<br>        &#125;<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -128,56 +126,56 @@
     <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7141-150.html">超级散户141-150</a>
-                <p>2020-06-01</p>
+                <a href="/2024/12/31/html-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80.html">html-响应式布局</a>
+                <p>2024-12-31</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/ajax.html">ajax</a>
-                <p>2022-08-11</p>
+                <a href="/2024/11/28/%E6%B8%B8%E8%B5%84%E5%88%97%E4%BC%A0.html">游资列传</a>
+                <p>2024-11-28</p>
             </li>
         
             <li>
-                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-003%E8%AE%B0%E5%BF%86%E5%8A%9B%E5%87%8F%E9%80%80.html">倪海厦-汉唐方剂-003记忆力减退</a>
-                <p>2023-02-21</p>
+                <a href="/2023/05/12/%E5%9B%BD%E5%AD%A6-%E6%B1%89%E5%AD%97%E7%AC%94%E7%94%BB%E5%8A%A8%E7%94%BBsvg.html">汉字笔画动画svg</a>
+                <p>2023-05-12</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/js-axios%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">axios配置和使用</a>
-                <p>2023-06-21</p>
+                <a href="/2024/12/06/nuxt%E9%85%8D%E7%BD%AE.html">文档</a>
+                <p>2024-12-06</p>
             </li>
         
             <li>
-                <a href="/2023/06/13/js%E6%88%AA%E5%8F%96url%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0.html">js截取url中的参数</a>
-                <p>2023-06-13</p>
+                <a href="/2023/05/15/linux%E5%B7%A5%E5%85%B7%E7%AE%B1.html">linux工具箱</a>
+                <p>2023-05-15</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7141-150.html">超级散户141-150</a>
-                <p>2020-06-01</p>
+                <a href="/2024/12/31/html-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80.html">html-响应式布局</a>
+                <p>2024-12-31</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/ajax.html">ajax</a>
-                <p>2022-08-11</p>
+                <a href="/2024/11/28/%E6%B8%B8%E8%B5%84%E5%88%97%E4%BC%A0.html">游资列传</a>
+                <p>2024-11-28</p>
             </li>
         
             <li>
-                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-003%E8%AE%B0%E5%BF%86%E5%8A%9B%E5%87%8F%E9%80%80.html">倪海厦-汉唐方剂-003记忆力减退</a>
-                <p>2023-02-21</p>
+                <a href="/2023/05/12/%E5%9B%BD%E5%AD%A6-%E6%B1%89%E5%AD%97%E7%AC%94%E7%94%BB%E5%8A%A8%E7%94%BBsvg.html">汉字笔画动画svg</a>
+                <p>2023-05-12</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/js-axios%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8.html">axios配置和使用</a>
-                <p>2023-06-21</p>
+                <a href="/2024/12/06/nuxt%E9%85%8D%E7%BD%AE.html">文档</a>
+                <p>2024-12-06</p>
             </li>
         
             <li>
-                <a href="/2023/06/13/js%E6%88%AA%E5%8F%96url%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0.html">js截取url中的参数</a>
-                <p>2023-06-13</p>
+                <a href="/2023/05/15/linux%E5%B7%A5%E5%85%B7%E7%AE%B1.html">linux工具箱</a>
+                <p>2023-05-15</p>
             </li>
         
     </ul> -->
@@ -187,27 +185,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -255,6 +253,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -267,11 +269,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -323,17 +325,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -355,9 +357,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>你不知道的javascript上</p>
-<span id="more"></span>
-
 <h3 id="一个简单的闭包"><a href="#一个简单的闭包" class="headerlink" title="一个简单的闭包"></a>一个简单的闭包</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//demo1</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">bar</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;<br>    <span class="hljs-keyword">return</span> bar;<br>&#125;<br><span class="hljs-keyword">var</span> baz = <span class="hljs-title function_">foo</span>();<br><span class="hljs-title function_">baz</span>(); <span class="hljs-comment">//=&gt;2</span><br><span class="hljs-comment">//demo2</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br>    fuction <span class="hljs-title function_">baz</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;<br>    <span class="hljs-title function_">bar</span>(baz);<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">bar</span>(<span class="hljs-params">fn</span>)&#123;<br>    <span class="hljs-title function_">fn</span>();<br>&#125;<br><span class="hljs-comment">//demo3</span><br><span class="hljs-keyword">var</span> fn;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">baz</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;<br>    fn = baz;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">bar</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-title function_">fn</span>();<br>&#125;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-title function_">bar</span>();<br></code></pre></td></tr></table></figure>
 <p><code>无论通过什么手段将内部函数传递到所在作用域外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//demo1</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>    (<span class="hljs-keyword">function</span>(<span class="hljs-params">j</span>)&#123;<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(j);<br>        &#125;,<span class="hljs-number">1000</span>*j)<br>    &#125;)(i)<br>&#125;<br><span class="hljs-comment">//demo2</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>    &#125;,<span class="hljs-number">1000</span>*i)<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -182,56 +180,56 @@
     <ul>
         
             <li>
-                <a href="/2024/12/30/java%E8%8B%A5%E4%BE%9D%E6%A1%86%E6%9E%B6%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AE.html">java若依框架前端配置</a>
-                <p>2024-12-30</p>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/node-request%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%B9%B1%E7%A0%81.html">request请求数据乱码</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2024/08/12/js-%E5%BC%95%E5%AF%BC%E6%8F%92%E4%BB%B6.html">js引导插件</a>
-                <p>2024-08-12</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/15/linux-centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2022/08/11/svg.js.html">SVG.js</a>
+                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
                 <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/koa2%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.html">koa2跨域配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8.html">浏览器存储</a>
+                <p>2023-02-13</p>
+            </li>
+        
+            <li>
+                <a href="/2022/06/21/%E7%A7%BB%E5%8A%A8%E7%AB%AFhead.html">通用header</a>
+                <p>2022-06-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/12/30/java%E8%8B%A5%E4%BE%9D%E6%A1%86%E6%9E%B6%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AE.html">java若依框架前端配置</a>
-                <p>2024-12-30</p>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/node-request%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%B9%B1%E7%A0%81.html">request请求数据乱码</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2024/08/12/js-%E5%BC%95%E5%AF%BC%E6%8F%92%E4%BB%B6.html">js引导插件</a>
-                <p>2024-08-12</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/15/linux-centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2022/08/11/svg.js.html">SVG.js</a>
+                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
                 <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/21/koa2%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.html">koa2跨域配置</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8.html">浏览器存储</a>
+                <p>2023-02-13</p>
+            </li>
+        
+            <li>
+                <a href="/2022/06/21/%E7%A7%BB%E5%8A%A8%E7%AB%AFhead.html">通用header</a>
+                <p>2022-06-21</p>
             </li>
         
     </ul> -->
@@ -241,27 +239,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -309,6 +307,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -321,11 +323,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -377,17 +379,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -409,9 +411,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

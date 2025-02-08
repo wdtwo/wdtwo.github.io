@@ -112,8 +112,6 @@
 <li>返回当前时间戳</li>
 <li>从服务器返回请求连接的数据</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="返回当前时间戳"><a href="#返回当前时间戳" class="headerlink" title="返回当前时间戳"></a>返回当前时间戳</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">addEventListener</span>(<br>    <span class="hljs-string">&quot;fetch&quot;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>        event.<span class="hljs-title function_">respondWith</span>(<br>            <span class="hljs-title function_">handleRequest</span>(event.<span class="hljs-property">request</span>)<br>        )<br>    &#125;<br>)<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleRequest</span>(<span class="hljs-params">request</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getTime</span>(),&#123;<span class="hljs-attr">status</span>:<span class="hljs-number">200</span>&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="从服务器返回请求连接的数据"><a href="#从服务器返回请求连接的数据" class="headerlink" title="从服务器返回请求连接的数据"></a>从服务器返回请求连接的数据</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">addEventListener</span>(<br>    <span class="hljs-string">&quot;fetch&quot;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">let</span> url = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(event.<span class="hljs-property">request</span>.<span class="hljs-property">url</span>);<br>        url.<span class="hljs-property">hostname</span> = <span class="hljs-string">&quot;www.google.com&quot;</span>;<br>        url.<span class="hljs-property">protocol</span> = <span class="hljs-string">&quot;https&quot;</span>;<br>        <span class="hljs-keyword">let</span> request = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Request</span>(url, event.<span class="hljs-property">request</span>);<br>        event.<span class="hljs-title function_">respondWith</span>(<br>            <span class="hljs-title function_">fetch</span>(request)<br>        )<br>    &#125;<br>)<br></code></pre></td></tr></table></figure>
@@ -171,56 +169,56 @@
     <ul>
         
             <li>
-                <a href="/2024/02/29/bat%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%90%8D%E7%A7%B0.html">bat获取当前所在文件夹的名称</a>
-                <p>2024-02-29</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/19/golang-web.html">go web</a>
+                <a href="/2023/05/19/%E5%85%B6%E4%BB%96-beyond%E6%BF%80%E6%B4%BB%E7%A0%81.html">beyond激活码</a>
                 <p>2023-05-19</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7151-160.html">超级散户151-160</a>
-                <p>2020-06-01</p>
+                <a href="/2023/05/11/golang02%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">数据类型</a>
+                <p>2023-05-11</p>
             </li>
         
             <li>
-                <a href="/2023/09/13/golang-%E7%BB%93%E6%9E%84%E4%BD%93.html">golang-结构体</a>
-                <p>2023-09-13</p>
+                <a href="/2023/09/16/golang-xlsx%E5%8C%85%E6%93%8D%E4%BD%9C%E8%A1%A8%E6%A0%BC%E6%96%87%E4%BB%B6.html">golang-xlsx包操作表格文件</a>
+                <p>2023-09-16</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7111-120.html">超级散户111-120</a>
-                <p>2020-06-01</p>
+                <a href="/2023/06/21/vue-api-js%E5%A4%96%E9%83%A8%E8%B0%83%E7%94%A8ajax%E8%AF%B7%E6%B1%82.html">vue-api.js外部调用ajax请求</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">倪海厦-259经典配方</a>
+                <p>2023-02-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/02/29/bat%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%90%8D%E7%A7%B0.html">bat获取当前所在文件夹的名称</a>
-                <p>2024-02-29</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/19/golang-web.html">go web</a>
+                <a href="/2023/05/19/%E5%85%B6%E4%BB%96-beyond%E6%BF%80%E6%B4%BB%E7%A0%81.html">beyond激活码</a>
                 <p>2023-05-19</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7151-160.html">超级散户151-160</a>
-                <p>2020-06-01</p>
+                <a href="/2023/05/11/golang02%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">数据类型</a>
+                <p>2023-05-11</p>
             </li>
         
             <li>
-                <a href="/2023/09/13/golang-%E7%BB%93%E6%9E%84%E4%BD%93.html">golang-结构体</a>
-                <p>2023-09-13</p>
+                <a href="/2023/09/16/golang-xlsx%E5%8C%85%E6%93%8D%E4%BD%9C%E8%A1%A8%E6%A0%BC%E6%96%87%E4%BB%B6.html">golang-xlsx包操作表格文件</a>
+                <p>2023-09-16</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7111-120.html">超级散户111-120</a>
-                <p>2020-06-01</p>
+                <a href="/2023/06/21/vue-api-js%E5%A4%96%E9%83%A8%E8%B0%83%E7%94%A8ajax%E8%AF%B7%E6%B1%82.html">vue-api.js外部调用ajax请求</a>
+                <p>2023-06-21</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">倪海厦-259经典配方</a>
+                <p>2023-02-21</p>
             </li>
         
     </ul> -->
@@ -230,27 +228,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -298,6 +296,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -310,11 +312,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -366,17 +368,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -398,9 +400,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

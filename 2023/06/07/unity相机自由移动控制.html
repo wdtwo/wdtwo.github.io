@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>Unity 相机自由移动控制</p>
-<span id="more"></span>
 <p>将脚本挂载在相机上即可，脚本如下：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs c#"><br><span class="hljs-keyword">using</span> System.Collections;<br><span class="hljs-keyword">using</span> System.Collections.Generic;<br><span class="hljs-keyword">using</span> UnityEngine;<br>[<span class="hljs-meta">RequireComponent(typeof(Camera))</span>]<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CameraMoveController</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> speed = <span class="hljs-number">4.0f</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> shiftSpeed = <span class="hljs-number">16.0f</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> showInstructions = <span class="hljs-literal">true</span>;<br><br>    <span class="hljs-keyword">private</span> Vector3 startEulerAngles;<br>    <span class="hljs-keyword">private</span> Vector3 startMousePosition;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> realTime;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>()</span><br>    &#123;<br>        realTime = Time.realtimeSinceStartup;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>()</span><br>    &#123;<br>        <span class="hljs-built_in">float</span> forward = <span class="hljs-number">0.0f</span>;<br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))<br>        &#123;<br>            forward += <span class="hljs-number">1.0f</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))<br>        &#123;<br>            forward -= <span class="hljs-number">1.0f</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">float</span> up = <span class="hljs-number">0.0f</span>;<br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.E))<br>        &#123;<br>            up += <span class="hljs-number">1.0f</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.Q))<br>        &#123;<br>            up -= <span class="hljs-number">1.0f</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">float</span> right = <span class="hljs-number">0.0f</span>;<br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))<br>        &#123;<br>            right += <span class="hljs-number">1.0f</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))<br>        &#123;<br>            right -= <span class="hljs-number">1.0f</span>;<br>        &#125;<br><br>        <span class="hljs-built_in">float</span> currentSpeed = speed;<br>        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))<br>        &#123;<br>            currentSpeed = shiftSpeed;<br>        &#125;<br><br>        <span class="hljs-built_in">float</span> realTimeNow = Time.realtimeSinceStartup;<br>        <span class="hljs-built_in">float</span> deltaRealTime = realTimeNow - realTime;<br>        realTime = realTimeNow;<br><br>        Vector3 delta = <span class="hljs-keyword">new</span> Vector3(right, up, forward) * currentSpeed * deltaRealTime;<br><br>        transform.position += transform.TransformDirection(delta);<br><br>        Vector3 mousePosition = Input.mousePosition;<br><br>        <span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">1</span>))<br>        &#123;<br>            startMousePosition = mousePosition;<br>            startEulerAngles = transform.localEulerAngles;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (Input.GetMouseButton(<span class="hljs-number">1</span>))<br>        &#123;<br>            Vector3 offset = mousePosition - startMousePosition;<br>            transform.localEulerAngles = startEulerAngles + <span class="hljs-keyword">new</span> Vector3(-offset.y * <span class="hljs-number">360.0f</span> / Screen.height,<br>                offset.x * <span class="hljs-number">360.0f</span> / Screen.width, <span class="hljs-number">0.0f</span>);<br>        &#125;<br>    &#125;<br><br><br>    <span class="hljs-comment">//-------------------------------------------------</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnGUI</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (showInstructions)<br>        &#123;<br>            GUI.Label(<span class="hljs-keyword">new</span> Rect(<span class="hljs-number">10.0f</span>, <span class="hljs-number">10.0f</span>, <span class="hljs-number">600.0f</span>, <span class="hljs-number">400.0f</span>),<br>                <span class="hljs-string">&quot;WASD 前后左右移动相机\n &quot;</span> +<br>                <span class="hljs-string">&quot;EQ 上升、降低相机高度\n&quot;</span> +<br>                <span class="hljs-string">&quot;鼠标右键旋转相机\n&quot;</span>);<br>        &#125;<br>    &#125;<br><br>&#125;<br><br><br><br></code></pre></td></tr></table></figure>
 
@@ -123,56 +122,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
-                <p>2023-05-15</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">倪海厦-259经典配方</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2023/07/26/hexo%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.html">hexo设置静态文件目录</a>
-                <p>2023-07-26</p>
+                <a href="/2023/01/29/%E8%82%A1%E7%A5%A8-macd%E8%83%8C%E7%A6%BB%E7%9A%84%E6%97%B6%E9%97%B4%E5%91%A8%E6%9C%9F.html">macd背离的时间周期</a>
+                <p>2023-01-29</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B761-70.html">超级散户61-70</a>
-                <p>2020-06-01</p>
+                <a href="/2022/08/11/js-%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6%E5%85%BC%E5%AE%B9%E7%89%88%E6%9C%AC.html">鼠标滚轮事件兼容版本</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
-                <p>2024-09-10</p>
+                <a href="/2023/01/22/dns-gcore%E9%85%8D%E7%BD%AE.html">cloudflare gcore配置</a>
+                <p>2023-01-22</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B.html">浏览器类型检测</a>
-                <p>2023-02-13</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E8%84%B1%E5%8F%91.html">中医秘方-治脱发</a>
+                <p>2023-02-21</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
-                <p>2023-05-15</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">倪海厦-259经典配方</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2023/07/26/hexo%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.html">hexo设置静态文件目录</a>
-                <p>2023-07-26</p>
+                <a href="/2023/01/29/%E8%82%A1%E7%A5%A8-macd%E8%83%8C%E7%A6%BB%E7%9A%84%E6%97%B6%E9%97%B4%E5%91%A8%E6%9C%9F.html">macd背离的时间周期</a>
+                <p>2023-01-29</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B761-70.html">超级散户61-70</a>
-                <p>2020-06-01</p>
+                <a href="/2022/08/11/js-%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6%E5%85%BC%E5%AE%B9%E7%89%88%E6%9C%AC.html">鼠标滚轮事件兼容版本</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
-                <p>2024-09-10</p>
+                <a href="/2023/01/22/dns-gcore%E9%85%8D%E7%BD%AE.html">cloudflare gcore配置</a>
+                <p>2023-01-22</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B.html">浏览器类型检测</a>
-                <p>2023-02-13</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E6%B2%BB%E8%84%B1%E5%8F%91.html">中医秘方-治脱发</a>
+                <p>2023-02-21</p>
             </li>
         
     </ul> -->
@@ -182,27 +181,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -250,6 +249,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -262,11 +265,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -318,17 +321,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -350,9 +353,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>ffmpeg</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; spawn &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;child_process&#x27;</span>);<br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">transform</span>(<span class="hljs-params">sourceFile, outputStream, start, duration</span>) &#123;<br>    <span class="hljs-keyword">const</span> params = [<span class="hljs-string">`-ss`</span>, start, <span class="hljs-string">`-i`</span>, sourceFile, <span class="hljs-string">`-t`</span>, duration, <span class="hljs-string">&#x27;-f&#x27;</span>, <span class="hljs-string">&#x27;mpegts&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>];<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">r, j</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> cp = <span class="hljs-title function_">spawn</span>(<span class="hljs-string">&#x27;ffmpeg&#x27;</span>, params);<br>    <span class="hljs-comment">// ffmpeg 标准输出流</span><br>        cp.<span class="hljs-property">stdout</span>.<span class="hljs-title function_">pipe</span>(outputStream);<br>    <span class="hljs-comment">// 将 ffmpeg 执行的过程日志输出到程序的标准输出流，通常为console</span><br>        cp.<span class="hljs-property">stderr</span>.<span class="hljs-title function_">pipe</span>(process.<span class="hljs-property">stdout</span>);<br>        cp.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>            <span class="hljs-title function_">j</span>(err);<br>        &#125;);<br>        cp.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;close&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">code</span>) =&gt;</span> &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`ffmpeg process close all stdio with code <span class="hljs-subst">$&#123;code&#125;</span>`</span>);<br>            <span class="hljs-title function_">r</span>(code);<br>        &#125;);<br>        cp.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;exit&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">code</span>) =&gt;</span> &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`ffmpeg process exited with code <span class="hljs-subst">$&#123;code&#125;</span>`</span>);<br>        &#125;);<br>    &#125;);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">run</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> inputFile = path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;1.mp4&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(inputFile);<br>    <span class="hljs-keyword">const</span> output = fs.<span class="hljs-title function_">createWriteStream</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;output.mp4&#x27;</span>));<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(output);<br>    <span class="hljs-keyword">await</span> <span class="hljs-title function_">transform</span>(inputFile, output, <span class="hljs-number">0</span>, <span class="hljs-number">100</span>);<br>&#125;<br><br><span class="hljs-title function_">run</span>();<br></code></pre></td></tr></table></figure>
 
 <h2 id="执行cmd和ffmpeg"><a href="#执行cmd和ffmpeg" class="headerlink" title="执行cmd和ffmpeg"></a>执行cmd和ffmpeg</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> &#123; exec,spawn &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;child_process&#x27;</span>);<br><span class="hljs-title function_">init</span>()<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>)&#123;<br>    fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">`./out/ts.key`</span>,&#123;<span class="hljs-attr">encoding</span>:<span class="hljs-string">&quot;utf-8&quot;</span>&#125;,<span class="hljs-function">(<span class="hljs-params">error,res</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span>(error)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;读取key文件错误:&#x27;</span>,err);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">const</span> str = res.<span class="hljs-title function_">toString</span>()<br>            <span class="hljs-keyword">var</span> val = <span class="hljs-string">&#x27;&#x27;</span><br>            <span class="hljs-keyword">for</span>(key <span class="hljs-keyword">of</span> str)&#123;<br>                val += key.<span class="hljs-title function_">charCodeAt</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>)<br>            &#125;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;转换后的16进制:&#x27;</span>,val,<span class="hljs-string">&#x27;源数据:&#x27;</span>,str);<br>            <span class="hljs-title class_">CmdPlay</span>(val)<br>        &#125;<br>    &#125;)<br>&#125;<br><span class="hljs-comment">//执行bat脚本</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">CmdPlay</span>(<span class="hljs-params">val</span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;url&#x27;</span>,__filename,__dirname);<br>    <span class="hljs-title function_">exec</span>(__dirname+<span class="hljs-string">&#x27;/merge.bat&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">error,stdout,stderr</span>)=&gt;</span>&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;merge.bat:&#x27;</span>,error,stdout,stderr);<br>        <span class="hljs-keyword">if</span>(!error)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;合并视频并移动&#x27;</span>);<br>            <span class="hljs-comment">//参数</span><br>            <span class="hljs-keyword">let</span> params = [<br>                <span class="hljs-string">&#x27;aes-128-cbc&#x27;</span>,<br>                <span class="hljs-string">&#x27;-d&#x27;</span>,<br>                <span class="hljs-string">&#x27;-in&#x27;</span>,<br>                <span class="hljs-string">&#x27;./out/__.mp4&#x27;</span>,<br>                <span class="hljs-string">&#x27;-out&#x27;</span>,<br>                <span class="hljs-string">&#x27;./outPut.mp4&#x27;</span>,<br>                <span class="hljs-string">&#x27;-nosalt&#x27;</span>,<br>                <span class="hljs-string">&#x27;-iv&#x27;</span>,<br>                <span class="hljs-string">&#x27;00000000000000000000000000000000&#x27;</span>,<br>                <span class="hljs-string">&#x27;-K&#x27;</span>,<br>                val<br>            ]<br>            <span class="hljs-comment">//新建存储文件</span><br>            <span class="hljs-keyword">const</span> outputStream = fs.<span class="hljs-title function_">createWriteStream</span>(__dirname+ <span class="hljs-string">&#x27;output.mp4&#x27;</span>);<br>            <span class="hljs-keyword">const</span> openssl = <span class="hljs-title function_">spawn</span>(<span class="hljs-string">&#x27;openssl&#x27;</span>,params)<br>                openssl.<span class="hljs-property">stdout</span>.<span class="hljs-title function_">pipe</span>(outputStream);<br>                openssl.<span class="hljs-property">stderr</span>.<span class="hljs-title function_">pipe</span>(process.<span class="hljs-property">stdout</span>);<br>                openssl.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;openssl执行错误:&#x27;</span>,err);<br>                &#125;);<br>                openssl.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;close&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">code</span>) =&gt;</span> &#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;openssl执行结束:&#x27;</span>,code,<span class="hljs-string">&#x27;解码成功&#x27;</span>);<br>                    <span class="hljs-comment">//提取一张小图片</span><br>                    <span class="hljs-comment">//ffmpeg -i a.mp4 -y -f image2 -frames 1 a.jpg</span><br>                    <span class="hljs-comment">//把一张图片做成封面</span><br>                    <span class="hljs-comment">//ffmpeg -i 1.mp4 -i 1.jpg -map 1 -map 0 -c copy -disposition:0 attached_pic 2.mp4</span><br><br>                    <span class="hljs-title function_">exec</span>(__dirname+<span class="hljs-string">&#x27;/delete.bat&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">error,stdout,stderr</span>)=&gt;</span>&#123;&#125;)<br>                &#125;);<br>                openssl.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;exit&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">code</span>) =&gt;</span> &#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;openssl执行退出:&#x27;</span>,code);<br>                &#125;);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;合并视频失败&#x27;</span>);<br>        &#125;<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -121,56 +120,56 @@
     <ul>
         
             <li>
-                <a href="/2023/09/17/golang-%E5%8F%8D%E5%B0%84reflect.html">golang-反射reflect</a>
-                <p>2023-09-17</p>
+                <a href="/2023/09/15/golang-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85.html">golang-面向对象-封装</a>
+                <p>2023-09-15</p>
             </li>
         
             <li>
-                <a href="/2023/02/10/node%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4.html">node强制修改电脑时间</a>
-                <p>2023-02-10</p>
+                <a href="/2024/06/21/%E4%BD%BF%E7%94%A8Nuxt.js%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99.html">使用Nuxt.js生成静态网站</a>
+                <p>2024-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">倪海厦-259经典配方</a>
-                <p>2023-02-21</p>
+                <a href="/2023/05/19/js%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6.html">js鼠标滚轮事件</a>
+                <p>2023-05-19</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
-                <p>2023-05-15</p>
+                <a href="/2023/09/27/bat%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.html">bat解决中文乱码</a>
+                <p>2023-09-27</p>
             </li>
         
             <li>
-                <a href="/2023/07/07/AI-bingai%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.html">bingai聊天机器人开源项目部署</a>
-                <p>2023-07-07</p>
+                <a href="/2022/08/11/css%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
+                <p>2022-08-11</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/09/17/golang-%E5%8F%8D%E5%B0%84reflect.html">golang-反射reflect</a>
-                <p>2023-09-17</p>
+                <a href="/2023/09/15/golang-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85.html">golang-面向对象-封装</a>
+                <p>2023-09-15</p>
             </li>
         
             <li>
-                <a href="/2023/02/10/node%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E7%94%B5%E8%84%91%E6%97%B6%E9%97%B4.html">node强制修改电脑时间</a>
-                <p>2023-02-10</p>
+                <a href="/2024/06/21/%E4%BD%BF%E7%94%A8Nuxt.js%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99.html">使用Nuxt.js生成静态网站</a>
+                <p>2024-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-259%E7%BB%8F%E5%85%B8%E9%85%8D%E6%96%B9.html">倪海厦-259经典配方</a>
-                <p>2023-02-21</p>
+                <a href="/2023/05/19/js%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6.html">js鼠标滚轮事件</a>
+                <p>2023-05-19</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
-                <p>2023-05-15</p>
+                <a href="/2023/09/27/bat%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.html">bat解决中文乱码</a>
+                <p>2023-09-27</p>
             </li>
         
             <li>
-                <a href="/2023/07/07/AI-bingai%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.html">bingai聊天机器人开源项目部署</a>
-                <p>2023-07-07</p>
+                <a href="/2022/08/11/css%E6%96%87%E5%AD%97%E6%93%8D%E4%BD%9C.html">css 文字操作</a>
+                <p>2022-08-11</p>
             </li>
         
     </ul> -->
@@ -180,27 +179,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -248,6 +247,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -260,11 +263,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -316,17 +319,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -348,9 +351,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

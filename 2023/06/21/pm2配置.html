@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/47259f48c153">原文</a></p>
-<span id="more"></span>
-
 <p>PM2是可以用于生产环境的Nodejs的进程管理工具，并且它内置一个负载均衡。它不仅可以保证服务不会中断一直在线，并且提供0秒reload功能，还有其他一系列进程管理、监控功能。并且使用起来非常简单。pm2的官方文档已经进行详细的配置说明，在这里就不进行一一简述，主要讲的时我的koa项目怎样配合PM2进行相关管理或者说部署。PM2常用命令需要用的时候可以进行查看，没必要去背，用多就熟悉了。也可以结合在package.json里面，用自定义命令运行。我们在package.json的script配置和初始化文件ecosystem.config.js进行了多环境运行的配置，我们可以根据需要进行切换环境。</p>
 <h3 id="package-json文件添加如下："><a href="#package-json文件添加如下：" class="headerlink" title="package.json文件添加如下："></a>package.json文件添加如下：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;node ./bin/www&quot;</span>,<br>    <span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;pm2 start ecosystem.config.js --env dev&quot;</span>,<br>    <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;pm2 start ecosystem.config.js --env test&quot;</span>,<br>    <span class="hljs-string">&quot;pro&quot;</span>: <span class="hljs-string">&quot;pm2 start ecosystem.config.js --env pro&quot;</span>,<br>    <span class="hljs-string">&quot;logs&quot;</span>: <span class="hljs-string">&quot;pm2 logs&quot;</span>,<br>    <span class="hljs-string">&quot;stop&quot;</span>: <span class="hljs-string">&quot;pm2 stop ecosystem.config.js&quot;</span><br>&#125;,<br><br><span class="hljs-comment">//npm run start: 直接跑www文件，可用于调试</span><br><span class="hljs-comment">//npm run dev: 开发环境</span><br><span class="hljs-comment">//npm run test：测试环境</span><br><span class="hljs-comment">//npm run pro：生产环境</span><br><span class="hljs-comment">//npm run logs: 查看pm2的日志</span><br><span class="hljs-comment">//npm run stop： 停止pm2服务</span><br></code></pre></td></tr></table></figure>
 
@@ -127,56 +125,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/15/linux-wget%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html">wget使用教程</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2023/07/06/electron%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.html">electron学习教程</a>
-                <p>2023-07-06</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/php%E5%AF%B9mysql%E5%BE%97%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C.html">php对mysql得简单操作</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/11/golang-%E5%87%BD%E6%95%B0.html">golang-函数</a>
-                <p>2023-05-11</p>
-            </li>
-        
-            <li>
-                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B.html">浏览器类型检测</a>
+                <a href="/2023/02/13/canvas%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9.html">canvas图片压缩</a>
                 <p>2023-02-13</p>
+            </li>
+        
+            <li>
+                <a href="/2023/12/07/mysql5-6%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE.html">mysql5.6最低配置</a>
+                <p>2023-12-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/14/golang-io%E6%93%8D%E4%BD%9C.html">go-io操作</a>
+                <p>2023-04-14</p>
+            </li>
+        
+            <li>
+                <a href="/2024/05/16/js-swiper%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB.html">swiper方法汇总</a>
+                <p>2024-05-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/08/04/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%93%E5%AD%97%E6%9C%BA%E6%95%88%E6%9E%9C%E8%BE%93%E5%87%BA.html">js字符串打字机效果输出</a>
+                <p>2023-08-04</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/15/linux-wget%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html">wget使用教程</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2023/07/06/electron%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B.html">electron学习教程</a>
-                <p>2023-07-06</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/21/php%E5%AF%B9mysql%E5%BE%97%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C.html">php对mysql得简单操作</a>
-                <p>2023-06-21</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/11/golang-%E5%87%BD%E6%95%B0.html">golang-函数</a>
-                <p>2023-05-11</p>
-            </li>
-        
-            <li>
-                <a href="/2023/02/13/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B.html">浏览器类型检测</a>
+                <a href="/2023/02/13/canvas%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9.html">canvas图片压缩</a>
                 <p>2023-02-13</p>
+            </li>
+        
+            <li>
+                <a href="/2023/12/07/mysql5-6%E6%9C%80%E4%BD%8E%E9%85%8D%E7%BD%AE.html">mysql5.6最低配置</a>
+                <p>2023-12-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/04/14/golang-io%E6%93%8D%E4%BD%9C.html">go-io操作</a>
+                <p>2023-04-14</p>
+            </li>
+        
+            <li>
+                <a href="/2024/05/16/js-swiper%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB.html">swiper方法汇总</a>
+                <p>2024-05-16</p>
+            </li>
+        
+            <li>
+                <a href="/2023/08/04/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%93%E5%AD%97%E6%9C%BA%E6%95%88%E6%9E%9C%E8%BE%93%E5%87%BA.html">js字符串打字机效果输出</a>
+                <p>2023-08-04</p>
             </li>
         
     </ul> -->
@@ -186,27 +184,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -254,6 +252,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -266,11 +268,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -322,17 +324,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -354,9 +356,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

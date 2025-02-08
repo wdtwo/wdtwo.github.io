@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>福彩双色球保存到mysql数据库</p>
-<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup  <span class="hljs-comment"># 爬虫库</span><br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> urllib3<br><span class="hljs-keyword">import</span> pymysql<br><span class="hljs-keyword">import</span> time<br><br>count = <span class="hljs-number">0</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">saveDatasMySQL</span>(<span class="hljs-params">datas_box,i</span>):<br>    <span class="hljs-comment">#打开数据库连接</span><br>    <span class="hljs-comment"># conn = pymysql.connect(&#x27;106.13.69.54&#x27;,user = &quot;wdtwo_com&quot;,passwd = &quot;L7cyyje8hBf43sDW&quot;,db = &quot;wdtwo_com&quot;)</span><br>    conn = pymysql.connect(<span class="hljs-string">&#x27;localhost&#x27;</span>, user=<span class="hljs-string">&quot;root&quot;</span>, passwd=<span class="hljs-string">&quot;123456&quot;</span>, db=<span class="hljs-string">&quot;test&quot;</span>)<br>    <span class="hljs-comment"># print (conn)</span><br>    <span class="hljs-comment"># print (type(conn))</span><br>    <span class="hljs-comment">#获取游标</span><br>    cursor=conn.cursor()<br>    sql=<span class="hljs-string">&quot;insert into lottery_ssq(`createtime`,`time`,red1,red2,red3,red4,red5,red6,blue1) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)&quot;</span><br>    <span class="hljs-comment"># insert=cursor.executemany(sql,[(&#x27;a&#x27;,&#x27;b&#x27;,1,2,3,4,5,6,7)])</span><br>    insert=cursor.executemany(sql,datas_box)<br>    <span class="hljs-comment"># print (&#x27;批量插入返回受影响的行数：&#x27;,insert)</span><br>    cursor.close()<br>    conn.commit()<br>    conn.close()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;sql执行成功---&#x27;</span>+<span class="hljs-built_in">str</span>(i))<br>    time.sleep(<span class="hljs-number">.5</span>)<br><br><span class="hljs-comment"># 获取网页内容</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_html</span>(<span class="hljs-params">url,i</span>):<br>    datas_box = []<br>    http = urllib3.PoolManager()<br>    res = http.request(<span class="hljs-string">&#x27;GET&#x27;</span>, url)<br>    html = res.data.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><br>    soup = BeautifulSoup(html, <span class="hljs-string">&#x27;lxml&#x27;</span>)<br>    <span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> soup.table.children:<br>        <span class="hljs-comment"># print(str(child))</span><br>        str111 = re.findall(<span class="hljs-string">&#x27;&lt;td align=&quot;center&quot;&gt;(.*?)&lt;/td&gt;&#x27;</span>,<span class="hljs-built_in">str</span>(child))<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(str111) &gt; <span class="hljs-number">0</span>:<br>            str_red = re.findall(<span class="hljs-string">&#x27;&lt;em class=&quot;rr&quot;&gt;(.*?)&lt;/em&gt;&#x27;</span>, <span class="hljs-built_in">str</span>(child))<br>            str_blue = re.findall(<span class="hljs-string">&#x27;&lt;em&gt;(.*?)&lt;/em&gt;&#x27;</span>, <span class="hljs-built_in">str</span>(child))<br>            <span class="hljs-comment"># print(str111[0:2],str_red,str_blue)</span><br>            datas_box.append((str111[<span class="hljs-number">0</span>],str111[<span class="hljs-number">1</span>],str_red[<span class="hljs-number">0</span>],str_red[<span class="hljs-number">1</span>],str_red[<span class="hljs-number">2</span>],str_red[<span class="hljs-number">3</span>],str_red[<span class="hljs-number">4</span>],str_red[<span class="hljs-number">5</span>],str_blue[<span class="hljs-number">0</span>]))<br>    <span class="hljs-comment"># print(datas_box)</span><br>    saveDatasMySQL(datas_box,i)<br><span class="hljs-comment"># get_html(&#x27;http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html&#x27;)</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">html</span>(<span class="hljs-params">arg</span>):<br>    <span class="hljs-built_in">print</span>(arg)<br>i = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">129</span>):<br>    get_html(<span class="hljs-string">&#x27;http://kaijiang.zhcw.com/zhcw/html/ssq/list_&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;.html&#x27;</span>,i)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;--执行完毕--&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -120,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2024/06/26/js-%E5%A4%84%E7%90%86zip%E6%96%87%E4%BB%B6.html">js处理zip文件</a>
-                <p>2024-06-26</p>
+                <a href="/2023/09/10/golang-%E5%8C%85%E7%9A%84%E5%BC%95%E7%94%A8.html">golang-包的引用</a>
+                <p>2023-09-10</p>
             </li>
         
             <li>
-                <a href="/2023/12/08/react%E5%AD%A6%E4%B9%A0.html">react学习</a>
-                <p>2023-12-08</p>
+                <a href="/2024/06/10/docker%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html">docker环境安装</a>
+                <p>2024-06-10</p>
             </li>
         
             <li>
-                <a href="/2023/04/25/golang%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB.html">golang简单爬虫</a>
-                <p>2023-04-25</p>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
-                <p>2023-06-21</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7231-240.html">超级散户231-240</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2022/11/09/%E6%90%AC%E7%93%A6%E5%B7%A5%E6%8E%A8%E8%8D%90.html">搬瓦工vps推荐</a>
-                <p>2022-11-09</p>
+                <a href="/2023/05/25/jquery%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E5%89%AA%E5%88%87%E4%BA%8B%E4%BB%B6.html">jquery复制粘贴剪切事件</a>
+                <p>2023-05-25</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/06/26/js-%E5%A4%84%E7%90%86zip%E6%96%87%E4%BB%B6.html">js处理zip文件</a>
-                <p>2024-06-26</p>
+                <a href="/2023/09/10/golang-%E5%8C%85%E7%9A%84%E5%BC%95%E7%94%A8.html">golang-包的引用</a>
+                <p>2023-09-10</p>
             </li>
         
             <li>
-                <a href="/2023/12/08/react%E5%AD%A6%E4%B9%A0.html">react学习</a>
-                <p>2023-12-08</p>
+                <a href="/2024/06/10/docker%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html">docker环境安装</a>
+                <p>2024-06-10</p>
             </li>
         
             <li>
-                <a href="/2023/04/25/golang%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB.html">golang简单爬虫</a>
-                <p>2023-04-25</p>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
-                <p>2023-06-21</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7231-240.html">超级散户231-240</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2022/11/09/%E6%90%AC%E7%93%A6%E5%B7%A5%E6%8E%A8%E8%8D%90.html">搬瓦工vps推荐</a>
-                <p>2022-11-09</p>
+                <a href="/2023/05/25/jquery%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E5%89%AA%E5%88%87%E4%BA%8B%E4%BB%B6.html">jquery复制粘贴剪切事件</a>
+                <p>2023-05-25</p>
             </li>
         
     </ul> -->
@@ -179,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -247,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -259,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -315,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -347,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

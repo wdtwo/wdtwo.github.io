@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>多线程下载</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>).<span class="hljs-title function_">defaults</span>(&#123;<br>        <span class="hljs-attr">proxy</span>: <span class="hljs-string">&quot;http://127.0.0.1:10809&quot;</span>,<br>        <span class="hljs-attr">rejectunauthorized</span>: <span class="hljs-literal">false</span>,<br>    &#125;)<br>    <br><br><span class="hljs-keyword">var</span> core = <span class="hljs-number">4</span><span class="hljs-comment">//几线程运行</span><br><span class="hljs-keyword">var</span> tsNameLen = <span class="hljs-number">4</span> <span class="hljs-comment">//补零长度</span><br><span class="hljs-keyword">var</span> len = -<span class="hljs-number">1</span><br><span class="hljs-keyword">var</span> userAgent = &#123;<span class="hljs-string">&#x27;user-agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4947.0 Safari/537.36&#x27;</span>&#125;<br><span class="hljs-keyword">var</span> delTsList = []<br><span class="hljs-comment">// console.log(&#x27;开始删除&#x27;)</span><br><span class="hljs-comment">// delTsFunc(0)  </span><br><span class="hljs-keyword">var</span> baseUrl = <span class="hljs-string">&#x27;https://url.com&#x27;</span><br><span class="hljs-keyword">var</span> tsList = baseUrl+<span class="hljs-string">`index`</span><br>    <span class="hljs-comment">//tsList = tsList.slice(0,-7)</span><br><br><span class="hljs-comment">//下载文件 </span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">url,filename</span>)&#123;<br>    fs.<span class="hljs-title function_">readFile</span>(__dirname + <span class="hljs-string">`/out/<span class="hljs-subst">$&#123;len&#125;</span>.ts`</span>,<span class="hljs-function">(<span class="hljs-params">error,res</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span>(error)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`ts-url:`</span>,url)<br>            request.<span class="hljs-title function_">head</span>(url,userAgent,<span class="hljs-function">(<span class="hljs-params">err,res,body</span>)=&gt;</span>&#123;<br>                <span class="hljs-keyword">if</span>(!res)&#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;下载没有成功&#x27;</span>,res);<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(filename != <span class="hljs-string">&#x27;key&#x27;</span>)&#123;<br>                    <span class="hljs-keyword">if</span>(res.<span class="hljs-property">statusCode</span> != <span class="hljs-number">404</span>)&#123;<br>                        <span class="hljs-title function_">request</span>(url,userAgent).<span class="hljs-title function_">pipe</span>(fs.<span class="hljs-title function_">createWriteStream</span>(__dirname + <span class="hljs-string">`/out/<span class="hljs-subst">$&#123;addZero(filename)&#125;</span>.ts`</span>)).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;close&#x27;</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>                            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(filename,<span class="hljs-string">&#x27;文件下载完成&#x27;</span>,__dirname + <span class="hljs-string">`/out/<span class="hljs-subst">$&#123;addZero(filename)&#125;</span>.ts`</span>)<br>                            <span class="hljs-comment">//count += core</span><br>                            len++<br>                            <span class="hljs-title function_">download</span>(tsList+<span class="hljs-string">`<span class="hljs-subst">$&#123;len&#125;</span>.ts`</span>,<span class="hljs-title function_">addZero</span>(len),len)<br>                        &#125;)<br>                    &#125;<span class="hljs-keyword">else</span>&#123;<br>                        <span class="hljs-title function_">request</span>(url).<span class="hljs-title function_">pipe</span>(fs.<span class="hljs-title function_">createWriteStream</span>(__dirname + <span class="hljs-string">`/out/<span class="hljs-subst">$&#123;addZero(filename)&#125;</span>.ts_bak`</span>))<br>                    &#125;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    <span class="hljs-title function_">request</span>(url,userAgent).<span class="hljs-title function_">pipe</span>(fs.<span class="hljs-title function_">createWriteStream</span>(__dirname + <span class="hljs-string">`/out/ts.key`</span>)).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;close&#x27;</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>                        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(filename,<span class="hljs-string">&#x27;文件下载完成&#x27;</span>,__dirname + <span class="hljs-string">`/out/ts.key`</span>)<br>                    &#125;)<br>                &#125;<br>            &#125;)<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//count += core</span><br>            len++<br>            <span class="hljs-title function_">download</span>(tsList+<span class="hljs-string">`<span class="hljs-subst">$&#123;len&#125;</span>.ts`</span>,len)<br>        &#125;<br>    &#125;)<br>&#125;<br><br><span class="hljs-comment">//异步调用</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//等待删除小文件提示 否则看不到是否删除了</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;n &lt; core;n++)&#123;<br>        len++<br>        <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">download</span>(tsList+<span class="hljs-string">`<span class="hljs-subst">$&#123;len&#125;</span>.ts`</span>,len)<br>    &#125;<br>    <span class="hljs-comment">//下载key文件</span><br>    <span class="hljs-keyword">await</span> <span class="hljs-title function_">download</span>(baseUrl+<span class="hljs-string">`ts.key`</span>,<span class="hljs-string">&#x27;key&#x27;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;start&#x27;</span><br>&#125;<br><span class="hljs-comment">//启动程序</span><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-title function_">init</span>().<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;init:&#x27;</span>,data);<br>    &#125;);<br>&#125;,<span class="hljs-number">1000</span>)<br><span class="hljs-comment">//补零</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">addZero</span>(<span class="hljs-params">n</span>)&#123;<br>    <span class="hljs-comment">//return n;</span><br>    <span class="hljs-keyword">return</span> (<span class="hljs-title class_">Array</span>(tsNameLen).<span class="hljs-title function_">join</span>(<span class="hljs-number">0</span>)+n).<span class="hljs-title function_">slice</span>(-tsNameLen)<br>&#125;<br><span class="hljs-comment">//删除小文件</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">delTsFunc</span>(<span class="hljs-params">n</span>)&#123;<br>    <span class="hljs-keyword">let</span> link = __dirname + <span class="hljs-string">`/out/<span class="hljs-subst">$&#123;addZero(n)&#125;</span>.ts`</span><br>    <br>    fs.<span class="hljs-title function_">stat</span>(link,<span class="hljs-function">(<span class="hljs-params">error,res</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span>(!error)&#123;<br>            <span class="hljs-keyword">if</span>(res.<span class="hljs-property">size</span>&lt;<span class="hljs-number">2048</span>)&#123;<br>                fs.<span class="hljs-title function_">unlink</span>(link,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>                    <span class="hljs-comment">//console.log(&#x27;删除了&#x27;,addZero(n),res.size)</span><br>                    delTsList.<span class="hljs-title function_">push</span>(<span class="hljs-title function_">addZero</span>(n))<br>                &#125;)<br>            &#125;<br>            <span class="hljs-title function_">delTsFunc</span>(++n)<br>        &#125;<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
     </article>
@@ -119,56 +118,56 @@
     <ul>
         
             <li>
-                <a href="/2023/01/07/Hexo-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">Hexo安装配置</a>
-                <p>2023-01-07</p>
+                <a href="/2023/06/29/js%E4%B8%AD%E5%9B%BD%E5%9F%8E%E5%B8%82%E7%9A%84json%E6%95%B0%E7%BB%84.html">中国城市的json数组</a>
+                <p>2023-06-29</p>
             </li>
         
             <li>
-                <a href="/2023/07/07/AI-bingai%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.html">bingai聊天机器人开源项目部署</a>
-                <p>2023-07-07</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7331-340.html">超级散户331-340</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/03/24/node%E6%89%A7%E8%A1%8Ccmd%E5%91%BD%E4%BB%A4%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html">node执行cmd命令乱码问题</a>
-                <p>2023-03-24</p>
+                <a href="/2023/03/29/golang%E4%BD%BF%E7%94%A8%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html">golang使用加密解密</a>
+                <p>2023-03-29</p>
             </li>
         
             <li>
-                <a href="/2023/06/27/echarts%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">charts使用问题汇总</a>
-                <p>2023-06-27</p>
+                <a href="/2023/02/06/node%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E7%9A%84%E5%B0%8F%E8%AF%B4.html">node爬虫抓取网页内容的小说保存为txt</a>
+                <p>2023-02-06</p>
             </li>
         
             <li>
-                <a href="/2023/04/10/AI-controlnet%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD.html">controlnet模型下载</a>
-                <p>2023-04-10</p>
+                <a href="/2023/05/24/js%E5%88%A4%E6%96%ADios%E7%85%A7%E7%89%87%E6%96%B9%E5%90%91.html">js判断ios照片方向</a>
+                <p>2023-05-24</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/01/07/Hexo-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">Hexo安装配置</a>
-                <p>2023-01-07</p>
+                <a href="/2023/06/29/js%E4%B8%AD%E5%9B%BD%E5%9F%8E%E5%B8%82%E7%9A%84json%E6%95%B0%E7%BB%84.html">中国城市的json数组</a>
+                <p>2023-06-29</p>
             </li>
         
             <li>
-                <a href="/2023/07/07/AI-bingai%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2.html">bingai聊天机器人开源项目部署</a>
-                <p>2023-07-07</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7331-340.html">超级散户331-340</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/03/24/node%E6%89%A7%E8%A1%8Ccmd%E5%91%BD%E4%BB%A4%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html">node执行cmd命令乱码问题</a>
-                <p>2023-03-24</p>
+                <a href="/2023/03/29/golang%E4%BD%BF%E7%94%A8%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.html">golang使用加密解密</a>
+                <p>2023-03-29</p>
             </li>
         
             <li>
-                <a href="/2023/06/27/echarts%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">charts使用问题汇总</a>
-                <p>2023-06-27</p>
+                <a href="/2023/02/06/node%E7%88%AC%E8%99%AB%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E7%9A%84%E5%B0%8F%E8%AF%B4.html">node爬虫抓取网页内容的小说保存为txt</a>
+                <p>2023-02-06</p>
             </li>
         
             <li>
-                <a href="/2023/04/10/AI-controlnet%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD.html">controlnet模型下载</a>
-                <p>2023-04-10</p>
+                <a href="/2023/05/24/js%E5%88%A4%E6%96%ADios%E7%85%A7%E7%89%87%E6%96%B9%E5%90%91.html">js判断ios照片方向</a>
+                <p>2023-05-24</p>
             </li>
         
     </ul> -->
@@ -178,27 +177,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -246,6 +245,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -258,11 +261,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -314,17 +317,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -346,9 +349,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

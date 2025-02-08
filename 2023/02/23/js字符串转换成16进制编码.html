@@ -112,8 +112,6 @@
 <li>字符串转换成16进制</li>
 <li>16进制转换成字符串</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="字符串转换成16进制"><a href="#字符串转换成16进制" class="headerlink" title="字符串转换成16进制"></a>字符串转换成16进制</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">stringToHex</span>(<span class="hljs-params">str</span>) &#123;<br>  <span class="hljs-keyword">var</span> hex = <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;str.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> charCode = str.<span class="hljs-title function_">charCodeAt</span>(i).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>);<br>    hex += (charCode.<span class="hljs-property">length</span> &lt; <span class="hljs-number">2</span> ? <span class="hljs-string">&#x27;0&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>) + charCode;<br>  &#125;<br>  <span class="hljs-keyword">return</span> hex;<br>&#125;<br><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;Hello world!&quot;</span>;<br><span class="hljs-keyword">var</span> hex = <span class="hljs-title function_">stringToHex</span>(str);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hex); <span class="hljs-comment">// 输出 &quot;48656c6c6f20e4b896e7958c21&quot;</span><br></code></pre></td></tr></table></figure>
 <p><strong>需要注意的是，由于JavaScript字符串的编码方式是UTF-16，因此如果十六进制字符串表示的是UTF-8编码的文本，那么使用该方法可能会导致字符串被错误地解码。在这种情况下，您需要使用一些第三方库，如iconv-lite等，来将字符串正确地解码。</strong></p>
 <h2 id="16进制转换成字符串"><a href="#16进制转换成字符串" class="headerlink" title="16进制转换成字符串"></a>16进制转换成字符串</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> hex = <span class="hljs-string">&quot;48656c6c6f20576f726c6421&quot;</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;hex.<span class="hljs-property">length</span>; i+=<span class="hljs-number">2</span>) &#123;<br>  str += <span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(<span class="hljs-built_in">parseInt</span>(hex.<span class="hljs-title function_">substr</span>(i, <span class="hljs-number">2</span>), <span class="hljs-number">16</span>));<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">// 输出 &quot;Hello World!&quot;</span><br><br></code></pre></td></tr></table></figure>
@@ -127,56 +125,56 @@
     <ul>
         
             <li>
-                <a href="/2023/07/06/node%E6%A8%A1%E6%8B%9Fwebsocket%E6%8F%A1%E6%89%8B%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE.html">node模拟websocket握手推送数据</a>
-                <p>2023-07-06</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-000%E5%B8%B8%E7%94%A8%E5%8E%A8%E6%88%BF%E8%AE%B2%E8%A7%A3%E8%AF%B4%E6%98%8E.html">倪海厦-汉唐方剂-000常用厨房讲解说明</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2020/06/22/%E7%82%92%E8%82%A1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.html">炒股入门知识</a>
-                <p>2020-06-22</p>
+                <a href="/2024/07/29/astro%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99sharp.html">astro打包报错sharp</a>
+                <p>2024-07-29</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
-                <p>2023-06-21</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B761-70.html">超级散户61-70</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/05/11/%E5%B8%B8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7emoji.html">emoji</a>
-                <p>2023-05-11</p>
+                <a href="/2023/09/16/golang-xlsx%E5%8C%85%E6%93%8D%E4%BD%9C%E8%A1%A8%E6%A0%BC%E6%96%87%E4%BB%B6.html">golang-xlsx包操作表格文件</a>
+                <p>2023-09-16</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/webpack%E9%85%8D%E7%BD%AEvue-config.html">webpack配置vue.config</a>
-                <p>2023-06-21</p>
+                <a href="/2022/08/11/js-%E5%8F%96%E5%88%B0%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95.html">取到顶层对象的两种方法</a>
+                <p>2022-08-11</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/07/06/node%E6%A8%A1%E6%8B%9Fwebsocket%E6%8F%A1%E6%89%8B%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE.html">node模拟websocket握手推送数据</a>
-                <p>2023-07-06</p>
+                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-000%E5%B8%B8%E7%94%A8%E5%8E%A8%E6%88%BF%E8%AE%B2%E8%A7%A3%E8%AF%B4%E6%98%8E.html">倪海厦-汉唐方剂-000常用厨房讲解说明</a>
+                <p>2023-02-21</p>
             </li>
         
             <li>
-                <a href="/2020/06/22/%E7%82%92%E8%82%A1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.html">炒股入门知识</a>
-                <p>2020-06-22</p>
+                <a href="/2024/07/29/astro%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99sharp.html">astro打包报错sharp</a>
+                <p>2024-07-29</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
-                <p>2023-06-21</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B761-70.html">超级散户61-70</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/05/11/%E5%B8%B8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7emoji.html">emoji</a>
-                <p>2023-05-11</p>
+                <a href="/2023/09/16/golang-xlsx%E5%8C%85%E6%93%8D%E4%BD%9C%E8%A1%A8%E6%A0%BC%E6%96%87%E4%BB%B6.html">golang-xlsx包操作表格文件</a>
+                <p>2023-09-16</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/webpack%E9%85%8D%E7%BD%AEvue-config.html">webpack配置vue.config</a>
-                <p>2023-06-21</p>
+                <a href="/2022/08/11/js-%E5%8F%96%E5%88%B0%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95.html">取到顶层对象的两种方法</a>
+                <p>2022-08-11</p>
             </li>
         
     </ul> -->
@@ -186,27 +184,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -254,6 +252,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -266,11 +268,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -322,17 +324,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -354,9 +356,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

@@ -113,7 +113,6 @@
 <li>径向渐变</li>
 <li>visualMap 相关性</li>
 </ul>
-<span id="more"></span>
 <h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">itemStyle</span>: &#123;<br>    <span class="hljs-comment">//color: &#x27;rgba(255,0,0,.5)&#x27;, // 设置散点的颜色为蓝色</span><br>    <span class="hljs-attr">color</span>: <span class="hljs-keyword">new</span> echarts.<span class="hljs-property">graphic</span>.<span class="hljs-title class_">RadialGradient</span>(<br>    <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,       <span class="hljs-comment">//4个参数用于配置渐变色的起止位置, 这4个参数依次对应右/下/左/上四个方位. 而0 0 0 1则代表渐变色从正上方开始</span><br>    [<br>        &#123;<span class="hljs-attr">offset</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span>&#125;,<br>        &#123;<span class="hljs-attr">offset</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;#fff&#x27;</span>&#125;<br>    ]                <br>    )<br>&#125;,<br></code></pre></td></tr></table></figure>
 
 <h2 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">itemStyle</span>: &#123;<br>    <span class="hljs-attr">color</span>: &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;radial&#x27;</span>, <span class="hljs-comment">// 设置为径向渐变色</span><br>    <span class="hljs-attr">x</span>: <span class="hljs-number">0.5</span>, <span class="hljs-comment">// 渐变色的中心点 x 坐标</span><br>    <span class="hljs-attr">y</span>: <span class="hljs-number">0.5</span>, <span class="hljs-comment">// 渐变色的中心点 y 坐标</span><br>    <span class="hljs-attr">r</span>: <span class="hljs-number">0.5</span>, <span class="hljs-comment">// 渐变色的半径，取值范围为 0-1</span><br>    <span class="hljs-attr">colorStops</span>: [<br>        &#123; <span class="hljs-attr">offset</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;rgba(255, 0, 0, 0.5)&#x27;</span> &#125;, <span class="hljs-comment">// 渐变色的起始颜色</span><br>        &#123; <span class="hljs-attr">offset</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;rgba(255, 0, 0, 0)&#x27;</span> &#125; <span class="hljs-comment">// 渐变色的结束颜色</span><br>    ]<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -141,56 +140,56 @@
     <ul>
         
             <li>
-                <a href="/2023/06/07/python%E7%A6%8F%E5%BD%A9%E5%8F%8C%E8%89%B2%E7%90%83%E4%BF%9D%E5%AD%98%E5%88%B0mysql%E6%95%B0%E6%8D%AE%E5%BA%93.html">python福彩双色球保存到mysql数据库</a>
-                <p>2023-06-07</p>
+                <a href="/2023/02/10/%E8%82%A1%E7%A5%A8-%E6%8D%A2%E6%89%8B%E7%8E%87%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8B%E6%8D%A2%E6%89%8B%E7%8E%87%E8%B6%8B%E5%8A%BF.html">换手率三剑客之换手率趋势</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7151-160.html">超级散户151-160</a>
-                <p>2020-06-01</p>
+                <a href="/2022/08/11/js-ajax%E9%85%8D%E7%BD%AE.html">ajax配置</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/11/30/js-webrtc%E5%BD%95%E5%88%B6%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A3%B0%E9%9F%B3.html">webrtc录制麦克风声音</a>
-                <p>2023-11-30</p>
+                <a href="/2023/02/12/%E8%82%A1%E7%A5%A8-%E5%90%8C%E8%8A%B1%E9%A1%BA%E6%99%BA%E8%83%BD%E9%80%89%E8%82%A1.html">同花顺智能选股</a>
+                <p>2023-02-12</p>
             </li>
         
             <li>
-                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
-                <p>2023-09-27</p>
+                <a href="/2020/05/06/python%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E4%BF%9D%E5%AD%98%E5%88%B0csv.html">python抓取网页内容保存到csv</a>
+                <p>2020-05-06</p>
             </li>
         
             <li>
-                <a href="/2023/01/11/dns-cloudflare-workers.html">cloudflare-workers</a>
-                <p>2023-01-11</p>
+                <a href="/2023/07/06/node%E6%A8%A1%E6%8B%9Fwebsocket%E6%8F%A1%E6%89%8B%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE.html">node模拟websocket握手推送数据</a>
+                <p>2023-07-06</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/06/07/python%E7%A6%8F%E5%BD%A9%E5%8F%8C%E8%89%B2%E7%90%83%E4%BF%9D%E5%AD%98%E5%88%B0mysql%E6%95%B0%E6%8D%AE%E5%BA%93.html">python福彩双色球保存到mysql数据库</a>
-                <p>2023-06-07</p>
+                <a href="/2023/02/10/%E8%82%A1%E7%A5%A8-%E6%8D%A2%E6%89%8B%E7%8E%87%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8B%E6%8D%A2%E6%89%8B%E7%8E%87%E8%B6%8B%E5%8A%BF.html">换手率三剑客之换手率趋势</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7151-160.html">超级散户151-160</a>
-                <p>2020-06-01</p>
+                <a href="/2022/08/11/js-ajax%E9%85%8D%E7%BD%AE.html">ajax配置</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/11/30/js-webrtc%E5%BD%95%E5%88%B6%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A3%B0%E9%9F%B3.html">webrtc录制麦克风声音</a>
-                <p>2023-11-30</p>
+                <a href="/2023/02/12/%E8%82%A1%E7%A5%A8-%E5%90%8C%E8%8A%B1%E9%A1%BA%E6%99%BA%E8%83%BD%E9%80%89%E8%82%A1.html">同花顺智能选股</a>
+                <p>2023-02-12</p>
             </li>
         
             <li>
-                <a href="/2023/09/27/linux-VPS%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E5%90%88%E9%9B%86.html">linux-VPS常用测试脚本合集</a>
-                <p>2023-09-27</p>
+                <a href="/2020/05/06/python%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E4%BF%9D%E5%AD%98%E5%88%B0csv.html">python抓取网页内容保存到csv</a>
+                <p>2020-05-06</p>
             </li>
         
             <li>
-                <a href="/2023/01/11/dns-cloudflare-workers.html">cloudflare-workers</a>
-                <p>2023-01-11</p>
+                <a href="/2023/07/06/node%E6%A8%A1%E6%8B%9Fwebsocket%E6%8F%A1%E6%89%8B%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE.html">node模拟websocket握手推送数据</a>
+                <p>2023-07-06</p>
             </li>
         
     </ul> -->
@@ -200,27 +199,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -268,6 +267,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -280,11 +283,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -336,17 +339,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -368,9 +371,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

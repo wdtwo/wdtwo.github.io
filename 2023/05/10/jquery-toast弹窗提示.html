@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>toast弹窗提示</p>
-<span id="more"></span>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;test&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px;height: auto;margin-top: 30px&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toast_div&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:300px;height:300px;border:1px solid #aaa;margin-top: 20px;margin:0 auto&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;showtoastFromDiv()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #65D08E;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>在元素垂直显示toast<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;showtoastFromDivbottom()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #60DDE4;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>在元素底部分显示toast<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;showtoastFromDocument()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #DC93F4;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>在body底部提示<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;showtoastFromDocumentCenter()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #F387A1;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>在body中中部提示<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;toastbackground()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #EFBF66;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>其他背景色toast<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;bounceInLeft()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #5395D1;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>bounceInLeft-hastrans<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;bounceInUp()&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;background: #CC4532;color:#fff;padding:10px 0;text-align: center;cursor: pointer;margin: 10px 0;border-radius: 4px;line-height: inherit;&quot;</span>&gt;</span>bounceInUp-hastrans<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">showtoastFromDiv</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    $(<span class="hljs-string">&#x27;.toast_div&#x27;</span>).<span class="hljs-title function_">toast</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">content</span>:<span class="hljs-string">&#x27;这是默认的提示信息&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">duration</span>:<span class="hljs-number">1000</span></span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">showtoastFromDivbottom</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    $(<span class="hljs-string">&#x27;.toast_div&#x27;</span>).<span class="hljs-title function_">toast</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">content</span>:<span class="hljs-string">&#x27;这是默认的提示信息&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">duration</span>:<span class="hljs-number">3000</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">isCenter</span>:<span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateIn</span>:<span class="hljs-string">&#x27;bounceIn-hastrans&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateOut</span>:<span class="hljs-string">&#x27;bounceOut-hastrans&#x27;</span>,</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">showtoastFromDocument</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    <span class="hljs-title function_">showMessage</span>(<span class="hljs-string">&#x27;这是提示消息哈！&#x27;</span>);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">showtoastFromDocumentCenter</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    <span class="hljs-title function_">showMessage</span>(<span class="hljs-string">&#x27;这是提示消息哈！&#x27;</span>,<span class="hljs-number">3000</span>,<span class="hljs-literal">true</span>,<span class="hljs-string">&#x27;bounceInUp-hastrans&#x27;</span>,<span class="hljs-string">&#x27;bounceOutDown-hastrans&#x27;</span>);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">toastbackground</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">    $(<span class="hljs-string">&#x27;body&#x27;</span>).<span class="hljs-title function_">toast</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">position</span>:<span class="hljs-string">&#x27;fixed&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">content</span>:<span class="hljs-string">&#x27;这是默认的提示信息&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">duration</span>:<span class="hljs-number">3000</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">isCenter</span>:<span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">background</span>:<span class="hljs-string">&#x27;rgba(230,0,0,0.5)&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateIn</span>:<span class="hljs-string">&#x27;bounceIn-hastrans&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateOut</span>:<span class="hljs-string">&#x27;bounceOut-hastrans&#x27;</span>,</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">bounceInLeft</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    $(<span class="hljs-string">&#x27;body&#x27;</span>).<span class="hljs-title function_">toast</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">position</span>:<span class="hljs-string">&#x27;fixed&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">content</span>:<span class="hljs-string">&#x27;这是默认的提示信息&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">duration</span>:<span class="hljs-number">3000</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">isCenter</span>:<span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">background</span>:<span class="hljs-string">&#x27;rgba(230,0,0,0.5)&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateIn</span>:<span class="hljs-string">&#x27;bounceInLeft-hastrans&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateOut</span>:<span class="hljs-string">&#x27;bounceOutRight-hastrans&#x27;</span>,</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">bounceInUp</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">    $(<span class="hljs-string">&#x27;body&#x27;</span>).<span class="hljs-title function_">toast</span>(&#123;</span><br><span class="language-javascript">        <span class="hljs-attr">position</span>:<span class="hljs-string">&#x27;fixed&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">content</span>:<span class="hljs-string">&#x27;这是默认的提示信息&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">duration</span>:<span class="hljs-number">3000</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">isCenter</span>:<span class="hljs-literal">false</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">background</span>:<span class="hljs-string">&#x27;#4EA44E&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateIn</span>:<span class="hljs-string">&#x27;bounceInUp-hastrans&#x27;</span>,</span><br><span class="language-javascript">        <span class="hljs-attr">animateOut</span>:<span class="hljs-string">&#x27;bounceOutDown-hastrans&#x27;</span>,</span><br><span class="language-javascript">    &#125;);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@charset</span> <span class="hljs-string">&quot;UTF-8&quot;</span>;<br><span class="hljs-comment">/* Welcome to Compass.</span><br><span class="hljs-comment"> * In this file you should write your main styles. (or centralize your imports)</span><br><span class="hljs-comment"> * Import this file using the following HTML or equivalent:</span><br><span class="hljs-comment"> * &lt;link href=&quot;/stylesheets/screen.css&quot; media=&quot;screen, projection&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt; */</span><br><span class="hljs-comment">/* line 5, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">html</span>, <span class="hljs-selector-tag">body</span>, <span class="hljs-selector-tag">div</span>, <span class="hljs-selector-tag">span</span>, applet, <span class="hljs-selector-tag">object</span>, <span class="hljs-selector-tag">iframe</span>,<br><span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span>, <span class="hljs-selector-tag">h3</span>, <span class="hljs-selector-tag">h4</span>, <span class="hljs-selector-tag">h5</span>, <span class="hljs-selector-tag">h6</span>, <span class="hljs-selector-tag">p</span>, <span class="hljs-selector-tag">blockquote</span>, pre,<br><span class="hljs-selector-tag">a</span>, <span class="hljs-selector-tag">abbr</span>, acronym, <span class="hljs-selector-tag">address</span>, big, <span class="hljs-selector-tag">cite</span>, <span class="hljs-selector-tag">code</span>,<br><span class="hljs-selector-tag">del</span>, <span class="hljs-selector-tag">dfn</span>, <span class="hljs-selector-tag">em</span>, <span class="hljs-selector-tag">img</span>, <span class="hljs-selector-tag">ins</span>, <span class="hljs-selector-tag">kbd</span>, <span class="hljs-selector-tag">q</span>, s, <span class="hljs-selector-tag">samp</span>,<br>small, strike, <span class="hljs-selector-tag">strong</span>, sub, <span class="hljs-selector-tag">sup</span>, tt, <span class="hljs-selector-tag">var</span>,<br><span class="hljs-selector-tag">b</span>, u, <span class="hljs-selector-tag">i</span>, center,<br><span class="hljs-selector-tag">dl</span>, <span class="hljs-selector-tag">dt</span>, <span class="hljs-selector-tag">dd</span>, <span class="hljs-selector-tag">ol</span>, <span class="hljs-selector-tag">ul</span>, <span class="hljs-selector-tag">li</span>,<br><span class="hljs-selector-tag">fieldset</span>, <span class="hljs-selector-tag">form</span>, <span class="hljs-selector-tag">label</span>, <span class="hljs-selector-tag">legend</span>,<br><span class="hljs-selector-tag">table</span>, <span class="hljs-selector-tag">caption</span>, <span class="hljs-selector-tag">tbody</span>, <span class="hljs-selector-tag">tfoot</span>, <span class="hljs-selector-tag">thead</span>, <span class="hljs-selector-tag">tr</span>, <span class="hljs-selector-tag">th</span>, <span class="hljs-selector-tag">td</span>,<br><span class="hljs-selector-tag">article</span>, <span class="hljs-selector-tag">aside</span>, <span class="hljs-selector-tag">canvas</span>, <span class="hljs-selector-tag">details</span>, embed,<br><span class="hljs-selector-tag">figure</span>, <span class="hljs-selector-tag">figcaption</span>, <span class="hljs-selector-tag">footer</span>, <span class="hljs-selector-tag">header</span>, <span class="hljs-selector-tag">hgroup</span>,<br><span class="hljs-selector-tag">menu</span>, <span class="hljs-selector-tag">nav</span>, output, ruby, <span class="hljs-selector-tag">section</span>, <span class="hljs-selector-tag">summary</span>,<br><span class="hljs-selector-tag">time</span>, <span class="hljs-selector-tag">mark</span>, <span class="hljs-selector-tag">audio</span>, <span class="hljs-selector-tag">video</span> &#123;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">font</span>: inherit;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">vertical-align</span>: baseline;<br>&#125;<br><span class="hljs-comment">/* line 22, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">html</span> &#123;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-comment">/* line 24, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">ol</span>, <span class="hljs-selector-tag">ul</span> &#123;<br>  <span class="hljs-attribute">list-style</span>: none;<br>&#125;<br><span class="hljs-comment">/* line 26, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">table</span> &#123;<br>  <span class="hljs-attribute">border-collapse</span>: collapse;<br>  <span class="hljs-attribute">border-spacing</span>: <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/* line 28, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">caption</span>, <span class="hljs-selector-tag">th</span>, <span class="hljs-selector-tag">td</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: left;<br>  <span class="hljs-attribute">font-weight</span>: normal;<br>  <span class="hljs-attribute">vertical-align</span>: middle;<br>&#125;<br><span class="hljs-comment">/* line 30, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">q</span>, <span class="hljs-selector-tag">blockquote</span> &#123;<br>  <span class="hljs-attribute">quotes</span>: none;<br>&#125;<br><span class="hljs-comment">/* line 103, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">q</span><span class="hljs-selector-pseudo">:before</span>, <span class="hljs-selector-tag">q</span><span class="hljs-selector-pseudo">:after</span>, <span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:before</span>, <span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:after</span> &#123;<br>  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-attribute">content</span>: none;<br>&#125;<br><span class="hljs-comment">/* line 32, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">img</span> &#123;<br>  <span class="hljs-attribute">border</span>: none;<br>&#125;<br><span class="hljs-comment">/* line 116, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */</span><br><span class="hljs-selector-tag">article</span>, <span class="hljs-selector-tag">aside</span>, <span class="hljs-selector-tag">details</span>, <span class="hljs-selector-tag">figcaption</span>, <span class="hljs-selector-tag">figure</span>, <span class="hljs-selector-tag">footer</span>, <span class="hljs-selector-tag">header</span>, <span class="hljs-selector-tag">hgroup</span>, <span class="hljs-selector-tag">main</span>, <span class="hljs-selector-tag">menu</span>, <span class="hljs-selector-tag">nav</span>, <span class="hljs-selector-tag">section</span>, <span class="hljs-selector-tag">summary</span> &#123;<br>  <span class="hljs-attribute">display</span>: block;<br>&#125;<br><span class="hljs-comment">/* line 13, ../sass/toast.scss */</span><br><span class="hljs-selector-class">.cpt-toast</span> &#123;<br>  <span class="hljs-attribute">position</span>: fixed;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">0.3s</span>;<br>  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">300px</span>;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">20px</span>;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">vertical-align</span>: middle;<br>  *<span class="hljs-attribute">vertical-align</span>: auto;<br>  *<span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>;<br>  *<span class="hljs-attribute">display</span>: inline;<br>  -moz-<span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.3s</span> ease;<br>  -o-<span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.3s</span> ease;<br>  -webkit-<span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.3s</span> ease;<br>  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.3s</span> ease;<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate3d</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;微软雅黑&#x27;</span>,<span class="hljs-string">&#x27;Microsoft Yahei&#x27;</span>;<br>  -moz-<span class="hljs-attribute">user-select</span>: -moz-none;<br>  -ms-<span class="hljs-attribute">user-select</span>: none;<br>  -webkit-<span class="hljs-attribute">user-select</span>: none;<br>  <span class="hljs-attribute">user-select</span>: none;<br>  <span class="hljs-attribute">word-wrap</span>: break-word;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -122,56 +121,56 @@
     <ul>
         
             <li>
-                <a href="/2024/07/24/astro%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE.html">astro创建博客项目</a>
-                <p>2024-07-24</p>
+                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
+                <p>2023-01-12</p>
             </li>
         
             <li>
-                <a href="/2023/09/10/golang-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html">golang-内置函数</a>
-                <p>2023-09-10</p>
+                <a href="/2023/11/30/js-webrtc%E5%BD%95%E5%88%B6%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A3%B0%E9%9F%B3.html">webrtc录制麦克风声音</a>
+                <p>2023-11-30</p>
             </li>
         
             <li>
-                <a href="/2023/11/22/koa2%E8%A7%A3%E6%9E%90%E4%BC%A0%E9%80%92%E8%BF%87%E6%9D%A5%E7%9A%84%E5%8F%82%E6%95%B0.html">koa解析传递过来的参数</a>
-                <p>2023-11-22</p>
+                <a href="/2023/09/17/golang%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
+                <p>2023-09-17</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/websocket%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE.html">websocket页面配置</a>
-                <p>2023-02-13</p>
+                <a href="/2023/05/15/mysql%E5%AF%86%E7%A0%81.html">mysql密码</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
-                <p>2022-08-11</p>
+                <a href="/2023/03/14/golang%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0.html">golang视频教程笔记</a>
+                <p>2023-03-14</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/07/24/astro%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE.html">astro创建博客项目</a>
-                <p>2024-07-24</p>
+                <a href="/2023/01/12/algolia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">algolia常见问题解决办法</a>
+                <p>2023-01-12</p>
             </li>
         
             <li>
-                <a href="/2023/09/10/golang-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html">golang-内置函数</a>
-                <p>2023-09-10</p>
+                <a href="/2023/11/30/js-webrtc%E5%BD%95%E5%88%B6%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A3%B0%E9%9F%B3.html">webrtc录制麦克风声音</a>
+                <p>2023-11-30</p>
             </li>
         
             <li>
-                <a href="/2023/11/22/koa2%E8%A7%A3%E6%9E%90%E4%BC%A0%E9%80%92%E8%BF%87%E6%9D%A5%E7%9A%84%E5%8F%82%E6%95%B0.html">koa解析传递过来的参数</a>
-                <p>2023-11-22</p>
+                <a href="/2023/09/17/golang%E5%9F%BA%E4%BA%8ETCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1.html">golang基于TCP协议的网络通信</a>
+                <p>2023-09-17</p>
             </li>
         
             <li>
-                <a href="/2023/02/13/websocket%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE.html">websocket页面配置</a>
-                <p>2023-02-13</p>
+                <a href="/2023/05/15/mysql%E5%AF%86%E7%A0%81.html">mysql密码</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
-                <p>2022-08-11</p>
+                <a href="/2023/03/14/golang%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0.html">golang视频教程笔记</a>
+                <p>2023-03-14</p>
             </li>
         
     </ul> -->
@@ -181,27 +180,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -249,6 +248,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -261,11 +264,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -317,17 +320,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -349,9 +352,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

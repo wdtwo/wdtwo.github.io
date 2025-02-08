@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>移动端手机摇一摇</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//首先，定义一个摇动的阈值</span><br><span class="hljs-keyword">var</span> <span class="hljs-variable constant_">SHAKE_THRESHOLD</span> = <span class="hljs-number">3000</span>;<br><span class="hljs-comment">//定义一个变量保存上次更新的时间</span><br><span class="hljs-keyword">var</span> last_update = <span class="hljs-number">0</span>,x,y,z,last_x,last_y,last_z;<br><span class="hljs-comment">//为了方便控制，增加一个计数器</span><br>yyopen = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">deviceMotionHandler</span>(<span class="hljs-params">eventData</span>)&#123;<br>  　　<span class="hljs-comment">//获取含重力的加速度</span><br>  　　<span class="hljs-keyword">var</span> acceleration = eventData.<span class="hljs-property">accelerationIncludingGravity</span>;<br>  　　<span class="hljs-comment">//获取当前时间</span><br>  　　<span class="hljs-keyword">var</span> curTime = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getTime</span>();<br>  　　<span class="hljs-keyword">var</span> diffTime = curTime - last_update;<br>  　　<span class="hljs-comment">//固定时间段</span><br>  　　<span class="hljs-keyword">if</span> (diffTime &gt; <span class="hljs-number">100</span>)&#123;<br>        last_update = curTime,<br>        x = acceleration.<span class="hljs-property">x</span>,<br>        y = acceleration.<span class="hljs-property">y</span>,<br>        z = acceleration.<span class="hljs-property">z</span>;<br>        <span class="hljs-keyword">var</span> speed = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(x + y + z - last_x - last_y - last_z) / diffTime * <span class="hljs-number">10000</span>);<br>        <span class="hljs-keyword">if</span>(speed &gt; <span class="hljs-variable constant_">SHAKE_THRESHOLD</span>)&#123;<br>            <span class="hljs-keyword">if</span>(yyopen &gt;= <span class="hljs-number">1</span>)&#123;<br>                $(<span class="hljs-string">&quot;#main&quot;</span>).<span class="hljs-title function_">html</span>(speed+<span class="hljs-string">&#x27;,&#x27;</span>+ ++yyopen)<br>            &#125;<br>        &#125;<br>    &#125;<br>    last_x = x,last_y = y,last_z = z;<br>&#125;<br>$(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">DeviceMotionEvent</span>)&#123;<br>    　　　　<span class="hljs-comment">// 移动浏览器支持运动传感事件</span><br>    　　　　<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;devicemotion&#x27;</span>, deviceMotionHandler, <span class="hljs-literal">false</span>);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -120,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2023/11/13/js%E9%80%9A%E8%BF%87blob%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.html">js通过blob下载文件</a>
-                <p>2023-11-13</p>
+                <a href="/2023/07/28/dns-%E5%A5%BD%E7%94%A8%E7%9A%84%E8%8A%82%E7%82%B9.html">dns-好用的节点</a>
+                <p>2023-07-28</p>
             </li>
         
             <li>
-                <a href="/2024/03/26/js%E5%88%A4%E6%96%AD%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%98%AF%E7%94%B5%E8%84%91%E7%AB%AF%E8%BF%98%E6%98%AF%E6%89%8B%E6%9C%BA%E7%AB%AF.html">js判断企业微信是电脑端还是手机端</a>
-                <p>2024-03-26</p>
+                <a href="/2024/03/22/%E7%8E%A9%E5%AE%A2%E4%BA%91-casaos%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6.html">玩客云-casaos安装软件</a>
+                <p>2024-03-22</p>
             </li>
         
             <li>
-                <a href="/2023/01/09/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E5%A4%A9%E7%BA%AA-%E5%A4%A9%E6%9C%BA%E9%81%93.html">倪海厦-天纪-天机道</a>
-                <p>2023-01-09</p>
+                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E9%98%B4%E7%AC%A6%E7%BB%8F.html">阴符经</a>
+                <p>2024-01-11</p>
             </li>
         
             <li>
-                <a href="/2024/12/25/markdown%E8%AF%AD%E6%B3%95.html">markdown语法</a>
-                <p>2024-12-25</p>
+                <a href="/2024/01/01/%E6%B7%98%E8%82%A1%E5%90%A7%E9%BE%99%E5%A4%B4%E6%88%98%E6%B3%95.html">淘股吧龙头战法</a>
+                <p>2024-01-01</p>
             </li>
         
             <li>
-                <a href="/2024/03/09/vue%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%8F%90%E7%A4%BA%E8%AF%81%E4%B9%A6%E8%BF%87%E6%9C%9F.html">vue安装依赖提示证书过期</a>
-                <p>2024-03-09</p>
+                <a href="/2023/05/15/node-request%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%B9%B1%E7%A0%81.html">request请求数据乱码</a>
+                <p>2023-05-15</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/11/13/js%E9%80%9A%E8%BF%87blob%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.html">js通过blob下载文件</a>
-                <p>2023-11-13</p>
+                <a href="/2023/07/28/dns-%E5%A5%BD%E7%94%A8%E7%9A%84%E8%8A%82%E7%82%B9.html">dns-好用的节点</a>
+                <p>2023-07-28</p>
             </li>
         
             <li>
-                <a href="/2024/03/26/js%E5%88%A4%E6%96%AD%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%98%AF%E7%94%B5%E8%84%91%E7%AB%AF%E8%BF%98%E6%98%AF%E6%89%8B%E6%9C%BA%E7%AB%AF.html">js判断企业微信是电脑端还是手机端</a>
-                <p>2024-03-26</p>
+                <a href="/2024/03/22/%E7%8E%A9%E5%AE%A2%E4%BA%91-casaos%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6.html">玩客云-casaos安装软件</a>
+                <p>2024-03-22</p>
             </li>
         
             <li>
-                <a href="/2023/01/09/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E5%A4%A9%E7%BA%AA-%E5%A4%A9%E6%9C%BA%E9%81%93.html">倪海厦-天纪-天机道</a>
-                <p>2023-01-09</p>
+                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E9%98%B4%E7%AC%A6%E7%BB%8F.html">阴符经</a>
+                <p>2024-01-11</p>
             </li>
         
             <li>
-                <a href="/2024/12/25/markdown%E8%AF%AD%E6%B3%95.html">markdown语法</a>
-                <p>2024-12-25</p>
+                <a href="/2024/01/01/%E6%B7%98%E8%82%A1%E5%90%A7%E9%BE%99%E5%A4%B4%E6%88%98%E6%B3%95.html">淘股吧龙头战法</a>
+                <p>2024-01-01</p>
             </li>
         
             <li>
-                <a href="/2024/03/09/vue%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%8F%90%E7%A4%BA%E8%AF%81%E4%B9%A6%E8%BF%87%E6%9C%9F.html">vue安装依赖提示证书过期</a>
-                <p>2024-03-09</p>
+                <a href="/2023/05/15/node-request%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E4%B9%B1%E7%A0%81.html">request请求数据乱码</a>
+                <p>2023-05-15</p>
             </li>
         
     </ul> -->
@@ -179,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -247,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -259,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -315,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -347,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

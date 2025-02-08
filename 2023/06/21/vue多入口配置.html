@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/05c1bc5074a9">原文</a></p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">npm install -g @vue/cli<br>npm uninstall -g vue-cli<br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//vue.config.js</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    <span class="hljs-attr">pages</span>: &#123;<br>        <span class="hljs-attr">console</span>: &#123;<br>            <span class="hljs-comment">// 应用入口配置，相当于单页面应用的main.js，必需项</span><br>            <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;src/modules/console/console.js&#x27;</span>,<br>            <span class="hljs-comment">// 应用的模版，相当于单页面应用的public/index.html，可选项，省略时默认与模块名一致</span><br>            <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;public/console.html&#x27;</span>,<br>            <span class="hljs-comment">// 编译后在dist目录的输出文件名，可选项，省略时默认与模块名一致</span><br>            <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;console.html&#x27;</span>,<br>            <span class="hljs-comment">// 标题，可选项，一般情况不使用，通常是在路由切换时设置title</span><br>            <span class="hljs-comment">// 需要注意的是使用title属性template 中的 title 标签需要是 &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;</span><br>            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;console page&#x27;</span>,<br>            <span class="hljs-comment">// 包含的模块，可选项</span><br>            <span class="hljs-attr">chunks</span>: [<span class="hljs-string">&#x27;console&#x27;</span>]<br>        &#125;,<br>        <span class="hljs-comment">// 只有entry属性时，直接用字符串表示模块入口</span><br>        <span class="hljs-attr">client</span>: <span class="hljs-string">&#x27;src/modules/client/client.js&#x27;</span><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//解决多入口文件tit无法修改问题</span><br>npm install vue-chat-title -S<br></code></pre></td></tr></table></figure>
@@ -126,56 +125,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/15/linux-centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
+                <a href="/2023/05/15/%E5%85%B6%E4%BB%96-%E5%AD%97%E5%B8%96%E6%A0%BC%E5%AD%90.html">字帖格子</a>
                 <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7241-250.html">超级散户241-250</a>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/css-media.html">media每天变换改变宽度</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
+            </li>
+        
+            <li>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7221-230.html">超级散户221-230</a>
                 <p>2020-06-01</p>
-            </li>
-        
-            <li>
-                <a href="/2023/09/08/ffmpeg-gui%E5%B7%A5%E5%85%B7.html">ffmpeg-gui工具</a>
-                <p>2023-09-08</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%AA%8C%E8%AF%81.html">常用正则表达式验证</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2023/03/14/golang%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0.html">golang视频教程笔记</a>
-                <p>2023-03-14</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/15/linux-centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
+                <a href="/2023/05/15/%E5%85%B6%E4%BB%96-%E5%AD%97%E5%B8%96%E6%A0%BC%E5%AD%90.html">字帖格子</a>
                 <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7241-250.html">超级散户241-250</a>
+                <a href="/2023/05/25/jquery%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E5%8F%AF%E5%8F%98%E7%8A%B6%E6%80%81%E5%AF%BC%E8%88%AA%E5%8A%A8%E7%94%BB.html">jquery返回顶部可变状态导航动画</a>
+                <p>2023-05-25</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/css-media.html">media每天变换改变宽度</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
+            </li>
+        
+            <li>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7221-230.html">超级散户221-230</a>
                 <p>2020-06-01</p>
-            </li>
-        
-            <li>
-                <a href="/2023/09/08/ffmpeg-gui%E5%B7%A5%E5%85%B7.html">ffmpeg-gui工具</a>
-                <p>2023-09-08</p>
-            </li>
-        
-            <li>
-                <a href="/2023/05/15/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%AA%8C%E8%AF%81.html">常用正则表达式验证</a>
-                <p>2023-05-15</p>
-            </li>
-        
-            <li>
-                <a href="/2023/03/14/golang%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0.html">golang视频教程笔记</a>
-                <p>2023-03-14</p>
             </li>
         
     </ul> -->
@@ -185,27 +184,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -253,6 +252,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -265,11 +268,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -321,17 +324,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -353,9 +356,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

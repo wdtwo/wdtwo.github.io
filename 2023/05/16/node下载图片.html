@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>下载图片</p>
-<span id="more"></span>
-
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>)<br><br><span class="hljs-keyword">var</span> tsList = <span class="hljs-string">&#x27;图片地址.png&#x27;</span><br>core = <span class="hljs-number">1</span><span class="hljs-comment">//几线程运行</span><br><br><span class="hljs-comment">//下载文件</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">url</span>)&#123;<br>    request.<span class="hljs-title function_">head</span>(url,<span class="hljs-function">(<span class="hljs-params">err,res,body</span>)=&gt;</span>&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">statusCode</span>)<br>        <span class="hljs-keyword">if</span>(res.<span class="hljs-property">statusCode</span> == <span class="hljs-number">200</span>)&#123;<br>            <span class="hljs-title function_">request</span>(url).<span class="hljs-title function_">pipe</span>(fs.<span class="hljs-title function_">createWriteStream</span>(__dirname + <span class="hljs-string">`/out/pic.jpg`</span>)).<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;close&#x27;</span>,<span class="hljs-function">()=&gt;</span>&#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(url,<span class="hljs-string">&#x27;文件下载完成&#x27;</span>)<br>            &#125;)<br>        &#125;<br>    &#125;)<br>&#125;<br><span class="hljs-comment">//异步调用</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;n &lt; core;n++)&#123;<br>        <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">download</span>(tsList)<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;start&#x27;</span><br>&#125;<br><span class="hljs-comment">//启动程序</span><br><span class="hljs-title function_">init</span>().<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
         </div>
@@ -121,56 +119,56 @@
     <ul>
         
             <li>
-                <a href="/2023/11/30/js-webrtc%E5%BD%95%E5%88%B6%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A3%B0%E9%9F%B3.html">webrtc录制麦克风声音</a>
-                <p>2023-11-30</p>
+                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/10/19/golang%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BD%92%E5%B1%9E%E5%9C%B0%E4%BF%A1%E6%81%AF.html">golang查询ip地址的归属地信息</a>
-                <p>2023-10-19</p>
+                <a href="/2023/06/21/koa2%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.html">koa2跨域配置</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2025/01/25/library%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2.html"></a>
-                <p>2025-01-25</p>
+                <a href="/2024/04/21/%E7%8E%A9%E5%AE%A2%E4%BA%91armbian%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98.html">玩客云armbian挂载硬盘.md</a>
+                <p>2024-04-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-003%E8%AE%B0%E5%BF%86%E5%8A%9B%E5%87%8F%E9%80%80.html">倪海厦-汉唐方剂-003记忆力减退</a>
-                <p>2023-02-21</p>
+                <a href="/2024/06/21/%E4%BD%BF%E7%94%A8Nuxt.js%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99.html">使用Nuxt.js生成静态网站</a>
+                <p>2024-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/FFMPEG%20%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.html">FFMPEG 视频操作</a>
-                <p>2023-05-15</p>
+                <a href="/2023/02/14/bat%E6%89%B9%E5%A4%84%E7%90%86bat%E6%8F%92%E4%BB%B6.html">批处理bat插件</a>
+                <p>2023-02-14</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/11/30/js-webrtc%E5%BD%95%E5%88%B6%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A3%B0%E9%9F%B3.html">webrtc录制麦克风声音</a>
-                <p>2023-11-30</p>
+                <a href="/2022/08/11/html5%E6%96%B0%E6%A0%87%E7%AD%BE.html">html5新标签</a>
+                <p>2022-08-11</p>
             </li>
         
             <li>
-                <a href="/2023/10/19/golang%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BD%92%E5%B1%9E%E5%9C%B0%E4%BF%A1%E6%81%AF.html">golang查询ip地址的归属地信息</a>
-                <p>2023-10-19</p>
+                <a href="/2023/06/21/koa2%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.html">koa2跨域配置</a>
+                <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2025/01/25/library%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2.html"></a>
-                <p>2025-01-25</p>
+                <a href="/2024/04/21/%E7%8E%A9%E5%AE%A2%E4%BA%91armbian%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98.html">玩客云armbian挂载硬盘.md</a>
+                <p>2024-04-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/21/%E4%B8%AD%E5%8C%BB-%E5%80%AA%E6%B5%B7%E5%8E%A6-%E6%B1%89%E5%94%90%E6%96%B9%E5%89%82-003%E8%AE%B0%E5%BF%86%E5%8A%9B%E5%87%8F%E9%80%80.html">倪海厦-汉唐方剂-003记忆力减退</a>
-                <p>2023-02-21</p>
+                <a href="/2024/06/21/%E4%BD%BF%E7%94%A8Nuxt.js%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99.html">使用Nuxt.js生成静态网站</a>
+                <p>2024-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/05/15/FFMPEG%20%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.html">FFMPEG 视频操作</a>
-                <p>2023-05-15</p>
+                <a href="/2023/02/14/bat%E6%89%B9%E5%A4%84%E7%90%86bat%E6%8F%92%E4%BB%B6.html">批处理bat插件</a>
+                <p>2023-02-14</p>
             </li>
         
     </ul> -->
@@ -180,27 +178,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -248,6 +246,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -260,11 +262,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -316,17 +318,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -348,9 +350,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

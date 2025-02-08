@@ -109,7 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>苹果手机使用video播放视频流会自动全屏播放视频</p>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> video = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;videoElement&quot;</span>);<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">FrameRates</span> = &#123;<br>    <span class="hljs-attr">film</span>: <span class="hljs-number">24</span>,<br>    <span class="hljs-variable constant_">NTSC</span> : <span class="hljs-number">29.97</span>,<br>    <span class="hljs-attr">NTSC_Film</span>: <span class="hljs-number">23.98</span>,<br>    <span class="hljs-variable constant_">NTSC_HD</span> : <span class="hljs-number">59.94</span>,<br>    <span class="hljs-attr">PAL</span>: <span class="hljs-number">25</span>,<br>    <span class="hljs-attr">PAL_HD</span>: <span class="hljs-number">50</span>,<br>    <span class="hljs-attr">web</span>: <span class="hljs-number">30</span>,<br>    <span class="hljs-attr">high</span>: <span class="hljs-number">60</span><br>&#125;;<br>debug = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    video.<span class="hljs-property">src</span> = <span class="hljs-string">&quot;./1.mp4&quot;</span>;<br>    video.<span class="hljs-title function_">play</span>();<br><br>    <span class="hljs-comment">//新建一个canvas</span><br>    <span class="hljs-keyword">let</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;canvas&quot;</span>);<br>    <span class="hljs-keyword">let</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>    canvas.<span class="hljs-property">width</span> = w; <br>    canvas.<span class="hljs-property">height</span> = h; <br>    <span class="hljs-comment">//在canvas上绘制视频</span><br>    context.<span class="hljs-title function_">drawImage</span>(video, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,w, h);<br>&#125;, <span class="hljs-number">500</span>);<br></code></pre></td></tr></table></figure>
 <p>requestAnimationFrame.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Provides requestAnimationFrame/cancelRequestAnimation in a cross browser way.</span><br><span class="hljs-comment"> * from paul irish + jerome etienne</span><br><span class="hljs-comment"> * - http://paulirish.com/2011/requestanimationframe-for-smart-animating/</span><br><span class="hljs-comment"> * - http://notes.jetienne.com/2011/05/18/cancelRequestAnimFrame-for-paul-irish-requestAnimFrame.html</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">if</span> ( !<span class="hljs-variable language_">window</span>.<span class="hljs-property">requestAnimationFrame</span> ) &#123;<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">requestAnimationFrame</span> = ( <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">webkitRequestAnimationFrame</span> ||<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">mozRequestAnimationFrame</span> ||<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">oRequestAnimationFrame</span> ||<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">msRequestAnimationFrame</span> ||<br>        <span class="hljs-keyword">function</span>(<span class="hljs-params"> <span class="hljs-comment">/* function FrameRequestCallback */</span> callback, <span class="hljs-comment">/* DOMElement Element */</span> element </span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-built_in">setTimeout</span>( callback, <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> );<br>        &#125;;<br>    &#125; )();<br>&#125;<br><span class="hljs-keyword">if</span> ( !<span class="hljs-variable language_">window</span>.<span class="hljs-property">cancelRequestAnimationFrame</span> ) &#123;<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">cancelRequestAnimationFrame</span> = ( <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">webkitCancelRequestAnimationFrame</span> ||<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">mozCancelRequestAnimationFrame</span> ||<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">oCancelRequestAnimationFrame</span> ||<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">msCancelRequestAnimationFrame</span> ||<br>        <span class="hljs-built_in">clearTimeout</span><br>    &#125; )();<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -121,56 +120,56 @@
     <ul>
         
             <li>
-                <a href="/2024/03/27/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7.html">安装企业微信调试工具devtool</a>
-                <p>2024-03-27</p>
+                <a href="/2023/05/11/golang02%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">数据类型</a>
+                <p>2023-05-11</p>
             </li>
         
             <li>
-                <a href="/2023/09/07/windows%E9%85%8D%E7%BD%AEgo%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.html">windows配置go添加到环境变量</a>
-                <p>2023-09-07</p>
+                <a href="/2023/11/13/js%E9%80%9A%E8%BF%87blob%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.html">js通过blob下载文件</a>
+                <p>2023-11-13</p>
             </li>
         
             <li>
-                <a href="/2024/04/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2title.html">微信小程序修改页面title</a>
-                <p>2024-04-28</p>
+                <a href="/2023/02/10/%E8%82%A1%E7%A5%A8-%E6%8D%A2%E6%89%8B%E7%8E%87%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8B%E6%8D%A2%E6%89%8B%E7%8E%87%E8%B6%8B%E5%8A%BF.html">换手率三剑客之换手率趋势</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2023/05/19/js%E6%91%84%E5%83%8F%E5%A4%B4%E6%93%8D%E4%BD%9C.html">js摄像头操作</a>
-                <p>2023-05-19</p>
+                <a href="/2023/06/13/%E5%85%B6%E4%BB%96-%E7%83%A4%E5%85%A8%E7%BE%8A%E7%83%A4%E7%BE%8A%E6%8E%92%E7%83%A4%E7%BE%8A%E8%85%BF.html">烤全羊烤羊排烤羊腿</a>
+                <p>2023-06-13</p>
             </li>
         
             <li>
-                <a href="/2023/02/12/%E8%82%A1%E7%A5%A8-%E9%87%8F%E6%AF%94.html">股票-量比</a>
-                <p>2023-02-12</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7251-260.html">超级散户251-260</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/03/27/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7.html">安装企业微信调试工具devtool</a>
-                <p>2024-03-27</p>
+                <a href="/2023/05/11/golang02%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">数据类型</a>
+                <p>2023-05-11</p>
             </li>
         
             <li>
-                <a href="/2023/09/07/windows%E9%85%8D%E7%BD%AEgo%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.html">windows配置go添加到环境变量</a>
-                <p>2023-09-07</p>
+                <a href="/2023/11/13/js%E9%80%9A%E8%BF%87blob%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.html">js通过blob下载文件</a>
+                <p>2023-11-13</p>
             </li>
         
             <li>
-                <a href="/2024/04/28/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2title.html">微信小程序修改页面title</a>
-                <p>2024-04-28</p>
+                <a href="/2023/02/10/%E8%82%A1%E7%A5%A8-%E6%8D%A2%E6%89%8B%E7%8E%87%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8B%E6%8D%A2%E6%89%8B%E7%8E%87%E8%B6%8B%E5%8A%BF.html">换手率三剑客之换手率趋势</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2023/05/19/js%E6%91%84%E5%83%8F%E5%A4%B4%E6%93%8D%E4%BD%9C.html">js摄像头操作</a>
-                <p>2023-05-19</p>
+                <a href="/2023/06/13/%E5%85%B6%E4%BB%96-%E7%83%A4%E5%85%A8%E7%BE%8A%E7%83%A4%E7%BE%8A%E6%8E%92%E7%83%A4%E7%BE%8A%E8%85%BF.html">烤全羊烤羊排烤羊腿</a>
+                <p>2023-06-13</p>
             </li>
         
             <li>
-                <a href="/2023/02/12/%E8%82%A1%E7%A5%A8-%E9%87%8F%E6%AF%94.html">股票-量比</a>
-                <p>2023-02-12</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7251-260.html">超级散户251-260</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul> -->
@@ -180,27 +179,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -248,6 +247,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -260,11 +263,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -316,17 +319,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -348,9 +351,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

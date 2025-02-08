@@ -112,8 +112,6 @@
 <li>检测编码方式</li>
 <li>转换编码方式并保存</li>
 </ul>
-<span id="more"></span>
-
 <h2 id="检测编码方式"><a href="#检测编码方式" class="headerlink" title="检测编码方式"></a>检测编码方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install chardet iconv-lite<br></code></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-keyword">const</span> chardet = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;chardet&#x27;</span>);<br><span class="hljs-keyword">const</span> iconv = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;iconv-lite&#x27;</span>);<br><br><span class="hljs-keyword">const</span> filename = <span class="hljs-string">&#x27;./input.md&#x27;</span>;<br><br><span class="hljs-comment">// 读取文件内容并检测编码方式</span><br>fs.<span class="hljs-title function_">readFile</span>(filename, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (err) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error reading file:&#x27;</span>, err);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 检测编码方式</span><br>  <span class="hljs-keyword">const</span> encoding = chardet.<span class="hljs-title function_">detect</span>(data);<br><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Detected encoding:&#x27;</span>, encoding);<br><br>  <span class="hljs-comment">// 使用 iconv-lite 将文件内容转换为 UTF-8 编码</span><br>  <span class="hljs-keyword">const</span> utf8String = iconv.<span class="hljs-title function_">decode</span>(data, encoding);<br><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;UTF-8 content:&#x27;</span>, utf8String);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
@@ -128,56 +126,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/19/golang-web.html">go web</a>
-                <p>2023-05-19</p>
+                <a href="/2023/02/17/StableDiffusion-lora%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85.html">lora模型下载与安装</a>
+                <p>2023-02-17</p>
             </li>
         
             <li>
-                <a href="/2024/04/21/%E7%8E%A9%E5%AE%A2%E4%BA%91armbian%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98.html">玩客云armbian挂载硬盘.md</a>
-                <p>2024-04-21</p>
+                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7271-280.html">超级散户271-280</a>
-                <p>2020-06-01</p>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni-plus.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
             </li>
         
             <li>
-                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
-                <p>2024-09-10</p>
+                <a href="/2025/01/08/123%E4%B8%AA%E4%BA%8F%E9%92%B1%E6%A1%88%E4%BE%8B.html">123个亏钱案例（第一版）</a>
+                <p>2025-01-08</p>
             </li>
         
             <li>
-                <a href="/2023/06/30/PaddleDetection%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">PaddleDetection官方安装教程</a>
-                <p>2023-06-30</p>
+                <a href="/2024/07/29/astro%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99sharp.html">astro打包报错sharp</a>
+                <p>2024-07-29</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/19/golang-web.html">go web</a>
-                <p>2023-05-19</p>
+                <a href="/2023/02/17/StableDiffusion-lora%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85.html">lora模型下载与安装</a>
+                <p>2023-02-17</p>
             </li>
         
             <li>
-                <a href="/2024/04/21/%E7%8E%A9%E5%AE%A2%E4%BA%91armbian%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98.html">玩客云armbian挂载硬盘.md</a>
-                <p>2024-04-21</p>
+                <a href="/2023/05/15/linux%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.html">linux环境安装配置</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7271-280.html">超级散户271-280</a>
-                <p>2020-06-01</p>
+                <a href="/2023/02/16/StableDiffusion%E5%92%92%E8%AF%AD-Chilloutmix-Ni-plus.html">Chilloutmix-Ni咒语</a>
+                <p>2023-02-16</p>
             </li>
         
             <li>
-                <a href="/2024/09/10/threejs%E5%85%A5%E9%97%A8.html">threejs入门</a>
-                <p>2024-09-10</p>
+                <a href="/2025/01/08/123%E4%B8%AA%E4%BA%8F%E9%92%B1%E6%A1%88%E4%BE%8B.html">123个亏钱案例（第一版）</a>
+                <p>2025-01-08</p>
             </li>
         
             <li>
-                <a href="/2023/06/30/PaddleDetection%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">PaddleDetection官方安装教程</a>
-                <p>2023-06-30</p>
+                <a href="/2024/07/29/astro%E6%89%93%E5%8C%85%E6%8A%A5%E9%94%99sharp.html">astro打包报错sharp</a>
+                <p>2024-07-29</p>
             </li>
         
     </ul> -->
@@ -187,27 +185,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -255,6 +253,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -267,11 +269,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -323,17 +325,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -355,9 +357,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

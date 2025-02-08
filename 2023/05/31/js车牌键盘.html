@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p>车牌键盘</p>
-<span id="more"></span>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;add-plate flex flex-jus-between&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">//车牌数组暴露出来</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> list = []</span><br><span class="language-javascript">    <span class="hljs-comment">//绑定单独</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> li = $(<span class="hljs-string">&#x27;.add-plate li&#x27;</span>)</span><br><span class="language-javascript">    li.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> index = $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">index</span>()</span><br><span class="language-javascript">        <span class="hljs-comment">//如果当前位置或者前一个位置有值则可以点击</span></span><br><span class="language-javascript">        <span class="hljs-keyword">if</span>(list[index] || list[index-<span class="hljs-number">1</span>] )&#123;</span><br><span class="language-javascript">            borad.<span class="hljs-title function_">change</span>(index)</span><br><span class="language-javascript">            li.<span class="hljs-title function_">eq</span>(index).<span class="hljs-title function_">addClass</span>(<span class="hljs-string">&#x27;active&#x27;</span>).<span class="hljs-title function_">siblings</span>().<span class="hljs-title function_">removeClass</span>()</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;)</span><br><span class="language-javascript">    <span class="hljs-comment">//键盘实例化</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> borad = <span class="hljs-keyword">new</span> <span class="hljs-title function_">plateKeyBorad</span>(&#123;<span class="hljs-attr">callback</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>)&#123;</span><br><span class="language-javascript">        list = obj.<span class="hljs-property">list</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list);</span><br><span class="language-javascript">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt;= <span class="hljs-number">7</span>;i++)&#123;</span><br><span class="language-javascript">            li.<span class="hljs-title function_">eq</span>(i).<span class="hljs-title function_">html</span>(obj.<span class="hljs-property">list</span>[i] ? obj.<span class="hljs-property">list</span>[i] : <span class="hljs-string">&quot;&quot;</span>)</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">        li.<span class="hljs-title function_">eq</span>(obj.<span class="hljs-property">list</span>.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">7</span> ? obj.<span class="hljs-property">list</span>.<span class="hljs-property">length</span> : <span class="hljs-number">7</span>).<span class="hljs-title function_">addClass</span>(<span class="hljs-string">&#x27;active&#x27;</span>).<span class="hljs-title function_">siblings</span>().<span class="hljs-title function_">removeClass</span>()</span><br><span class="language-javascript">        <span class="hljs-keyword">if</span>(obj.<span class="hljs-property">list</span>.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">7</span>)&#123;</span><br><span class="language-javascript">            li.<span class="hljs-title function_">eq</span>(<span class="hljs-number">7</span>).<span class="hljs-title function_">html</span>(<span class="hljs-string">&quot;&lt;div&gt;新&lt;br&gt;能源&lt;/div&gt;&quot;</span>)</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">        over = obj.<span class="hljs-property">list</span>.<span class="hljs-property">length</span> &gt;= <span class="hljs-number">7</span></span><br><span class="language-javascript">    &#125;&#125;)</span><br><span class="language-javascript">    <span class="hljs-comment">//设置默认值</span></span><br><span class="language-javascript">    li.<span class="hljs-title function_">eq</span>(<span class="hljs-number">7</span>).<span class="hljs-title function_">html</span>(<span class="hljs-string">&quot;&lt;div&gt;新&lt;br&gt;能源&lt;/div&gt;&quot;</span>)</span><br><span class="language-javascript">    li.<span class="hljs-title function_">eq</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">addClass</span>(<span class="hljs-string">&#x27;active&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//车牌键盘</span><br><span class="hljs-keyword">let</span> plateKeyBorad = <span class="hljs-keyword">function</span>(<span class="hljs-params">func</span>)&#123;<br>    <span class="hljs-comment">//绑定显示的元素</span><br>    <span class="hljs-keyword">let</span> ele = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        ele.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;id&#x27;</span>,<span class="hljs-string">&quot;plate-keyborad&quot;</span>)<br><br>    <span class="hljs-keyword">let</span> arrArea = <span class="hljs-string">&#x27;京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使&#x27;</span>;<br>    <span class="hljs-keyword">let</span> arrLetter = <span class="hljs-string">&quot;1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;<br>    <br>    <span class="hljs-comment">//保存车牌数据</span><br>    <span class="hljs-keyword">let</span> plateStr = []<br>    <span class="hljs-keyword">let</span> keyboradArea = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        keyboradArea.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>,<span class="hljs-string">&quot;keyborad-area&quot;</span>)<br>    <span class="hljs-comment">//生成地区键盘的内容</span><br>    <span class="hljs-keyword">for</span>(a <span class="hljs-keyword">of</span> arrArea)&#123;<br>        <span class="hljs-keyword">let</span> e = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        <span class="hljs-keyword">let</span> o = a<br>        e.<span class="hljs-property">innerHTML</span> = o<br>        e.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-title function_">judgePlateLen</span>(o)<br>        &#125;)<br>        keyboradArea.<span class="hljs-title function_">appendChild</span>(e)<br>    &#125;<br>    <span class="hljs-comment">//占位好看</span><br>    <span class="hljs-keyword">for</span>(a <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;ABCDEF&quot;</span>)&#123;<br>        <span class="hljs-keyword">let</span> e = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        e.<span class="hljs-property">innerHTML</span> = a<br>        e.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>,<span class="hljs-string">&quot;disabled&quot;</span>)<br>        keyboradArea.<span class="hljs-title function_">appendChild</span>(e)<br>    &#125;<br>    <span class="hljs-comment">//添加删除按钮</span><br>    <span class="hljs-keyword">let</span> areaDel = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        areaDel.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>,<span class="hljs-string">&quot;del&quot;</span>)<br>        areaDel.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-title function_">delPlate</span>()<br>        &#125;)<br>    keyboradArea.<span class="hljs-title function_">appendChild</span>(areaDel)<br><br>    <span class="hljs-keyword">let</span> keyboradLetter = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        keyboradLetter.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>,<span class="hljs-string">&quot;keyborad-letter &quot;</span>)<br>    <span class="hljs-comment">//生成字母键盘的内容</span><br>    <span class="hljs-keyword">for</span>(a <span class="hljs-keyword">of</span> arrLetter)&#123;<br>        <span class="hljs-keyword">let</span> e = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        <span class="hljs-keyword">let</span> o = a<br>        e.<span class="hljs-property">innerHTML</span> = a<br>        <span class="hljs-comment">//车牌内没有的字母</span><br>        <span class="hljs-keyword">if</span>([<span class="hljs-string">&quot;I&quot;</span>,<span class="hljs-string">&quot;O&quot;</span>].<span class="hljs-title function_">includes</span>(a))&#123;<br>            e.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>,<span class="hljs-string">&quot;disabled&quot;</span>)<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            e.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>                <span class="hljs-title function_">judgePlateLen</span>(o)<br>            &#125;)<br>        &#125;<br>        keyboradLetter.<span class="hljs-title function_">appendChild</span>(e)<br>    &#125;<br>    <span class="hljs-comment">//添加删除按钮</span><br>    <span class="hljs-keyword">let</span> letterDel = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>)<br>        letterDel.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;class&#x27;</span>,<span class="hljs-string">&quot;del&quot;</span>)<br>        letterDel.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-title function_">delPlate</span>()<br>        &#125;)<br>    keyboradLetter.<span class="hljs-title function_">appendChild</span>(letterDel)<br><br>    <span class="hljs-comment">//把元素添加到页面中</span><br>    ele.<span class="hljs-title function_">appendChild</span>(keyboradArea)<br>    ele.<span class="hljs-title function_">appendChild</span>(keyboradLetter)<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(ele)<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">judgePlateLen</span>(<span class="hljs-params">letter</span>)&#123;<br>        <span class="hljs-keyword">if</span>(changeWait)&#123;<br>            plateStr[changeNum] = letter<br>            <span class="hljs-comment">//console.log(plateStr);</span><br>            <span class="hljs-keyword">if</span>(func.<span class="hljs-property">callback</span>)&#123;<br>                func.<span class="hljs-title function_">callback</span>(&#123;<span class="hljs-attr">list</span>:plateStr&#125;)<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-title function_">callback</span>(&#123;<span class="hljs-attr">type</span>:plateStr&#125;)<br>            &#125;<br>            changeWait = <span class="hljs-literal">false</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">//如果有则是添加 如果没有则是删除</span><br>        <br>        <span class="hljs-comment">//添加完成以后点击数组也不会增加了</span><br>        <span class="hljs-keyword">if</span>(plateStr.<span class="hljs-property">length</span> &gt;= <span class="hljs-number">8</span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;新能源车添加完成&#x27;</span>);<br>            <span class="hljs-keyword">if</span>(letter)&#123;<br>                plateStr[plateStr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>] = letter<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(letter)&#123;<br>                <span class="hljs-comment">//向数组中添加新字符</span><br>                plateStr.<span class="hljs-title function_">push</span>(letter)<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(plateStr.<span class="hljs-property">length</span> == <span class="hljs-number">7</span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;燃油车添加完成&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span>(plateStr.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">0</span>)&#123;<br>            keyboradLetter.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span><br>            keyboradArea.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;flex&quot;</span><br>        &#125;<br>        <span class="hljs-comment">//如果长度大于1则显示字母键盘</span><br>        <span class="hljs-keyword">if</span>(plateStr.<span class="hljs-property">length</span> &gt;= <span class="hljs-number">1</span>)&#123;<br>            keyboradArea.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span><br>            keyboradLetter.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;flex&quot;</span><br>        &#125;<br>        <span class="hljs-comment">//console.log(plateStr);</span><br>        <span class="hljs-keyword">if</span>(func.<span class="hljs-property">callback</span>)&#123;<br>            func.<span class="hljs-title function_">callback</span>(&#123;<span class="hljs-attr">list</span>:plateStr&#125;)<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-title function_">callback</span>(&#123;<span class="hljs-attr">type</span>:plateStr&#125;)<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//删除最后一位</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">delPlate</span>(<span class="hljs-params"></span>)&#123;<br>        plateStr.<span class="hljs-title function_">pop</span>()<br>        <span class="hljs-title function_">judgePlateLen</span>()<br>    &#125;<br>    <span class="hljs-comment">//回调</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">callback</span>(<span class="hljs-params">obj</span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-property">plateStr</span>);<br>    &#125;<br>    <span class="hljs-comment">//点击了元素开始等待更改单个数据更改完了以后改回状态</span><br>    <span class="hljs-keyword">let</span> changeWait = <span class="hljs-literal">false</span><br>    <span class="hljs-keyword">let</span> changeNum = -<span class="hljs-number">1</span><br>    <span class="hljs-comment">//更改车牌</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">change</span>(<span class="hljs-params">num</span>)&#123;<br>        changeNum = num<br>        changeWait = <span class="hljs-literal">true</span><br>        <span class="hljs-keyword">if</span>(num &lt;= <span class="hljs-number">0</span>)&#123;<br>            keyboradLetter.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span><br>            keyboradArea.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;flex&quot;</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            keyboradArea.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span><br>            keyboradLetter.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;flex&quot;</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123;<br>        change<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -123,56 +121,56 @@
     <ul>
         
             <li>
-                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E5%A4%AA%E5%85%AC%E9%98%B4%E8%B0%8B.html">太公阴谋</a>
-                <p>2024-01-11</p>
+                <a href="/2023/05/15/centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2024/06/05/vue-router%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB.html">vue-router路由守卫</a>
-                <p>2024-06-05</p>
+                <a href="/2023/05/17/%E4%BB%A3%E7%A0%81%E5%AE%B9%E5%99%A8.html">代码容器</a>
+                <p>2023-05-17</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6.html">文件加载进度</a>
-                <p>2023-02-14</p>
+                <a href="/2024/03/07/js-InvalidHostheader%E6%97%A0%E6%95%88%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%A4%B4.html">Invalid Host header无效的主机头</a>
+                <p>2024-03-07</p>
             </li>
         
             <li>
-                <a href="/2023/05/11/%E5%B8%B8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7.html">常用特殊符号</a>
-                <p>2023-05-11</p>
+                <a href="/2023/10/10/golang-%E6%89%B9%E9%87%8Fpingip%E5%9C%B0%E5%9D%80%E6%93%8D%E4%BD%9C.html">golang-批量pingip地址操作</a>
+                <p>2023-10-10</p>
             </li>
         
             <li>
-                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
-                <p>2023-09-16</p>
+                <a href="/2023/09/08/ffmpeg-gui%E5%B7%A5%E5%85%B7.html">ffmpeg-gui工具</a>
+                <p>2023-09-08</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2024/01/11/%E5%9B%BD%E5%AD%A6-%E5%A4%AA%E5%85%AC%E9%98%B4%E8%B0%8B.html">太公阴谋</a>
-                <p>2024-01-11</p>
+                <a href="/2023/05/15/centos7%E7%94%A8yum%E5%AE%89%E8%A3%85node.js.html">nodejs安装</a>
+                <p>2023-05-15</p>
             </li>
         
             <li>
-                <a href="/2024/06/05/vue-router%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB.html">vue-router路由守卫</a>
-                <p>2024-06-05</p>
+                <a href="/2023/05/17/%E4%BB%A3%E7%A0%81%E5%AE%B9%E5%99%A8.html">代码容器</a>
+                <p>2023-05-17</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6.html">文件加载进度</a>
-                <p>2023-02-14</p>
+                <a href="/2024/03/07/js-InvalidHostheader%E6%97%A0%E6%95%88%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%A4%B4.html">Invalid Host header无效的主机头</a>
+                <p>2024-03-07</p>
             </li>
         
             <li>
-                <a href="/2023/05/11/%E5%B8%B8%E7%94%A8%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7.html">常用特殊符号</a>
-                <p>2023-05-11</p>
+                <a href="/2023/10/10/golang-%E6%89%B9%E9%87%8Fpingip%E5%9C%B0%E5%9D%80%E6%93%8D%E4%BD%9C.html">golang-批量pingip地址操作</a>
+                <p>2023-10-10</p>
             </li>
         
             <li>
-                <a href="/2023/09/16/golang-%E5%8D%8F%E7%A8%8BGoroutine.html">golang-协程goroutine</a>
-                <p>2023-09-16</p>
+                <a href="/2023/09/08/ffmpeg-gui%E5%B7%A5%E5%85%B7.html">ffmpeg-gui工具</a>
+                <p>2023-09-08</p>
             </li>
         
     </ul> -->
@@ -182,27 +180,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -250,6 +248,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -262,11 +264,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -318,17 +320,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -350,9 +352,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

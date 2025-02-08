@@ -109,8 +109,6 @@
         <hr class="line">
         <div class="post-content">
             <p><a href="'https://vuex.vuejs.org/zh-cn/'">官网</a></p>
-<span id="more"></span>
-
 <h2 id="开发环境配置"><a href="#开发环境配置" class="headerlink" title="开发环境配置"></a>开发环境配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> baseURL<br><span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> == <span class="hljs-string">&#x27;development&#x27;</span>) &#123;<br>  <span class="hljs-comment">//开发环境</span><br>    baseURL = <span class="hljs-string">&#x27;/api&#x27;</span>;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    baseURL = <span class="hljs-string">&#x27;/&#x27;</span><br>&#125;<br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">baseURL</span> = baseURL<br></code></pre></td></tr></table></figure>
 
 <h2 id="vue-config-js"><a href="#vue-config-js" class="headerlink" title="vue.config.js"></a>vue.config.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-comment">//publicPath: &#x27;./&#x27;,//基本路径 </span><br>  <span class="hljs-attr">outputDir</span>: <span class="hljs-string">&#x27;dist&#x27;</span>,   <span class="hljs-comment">//build输出目录</span><br>  <span class="hljs-attr">assetsDir</span>: <span class="hljs-string">&#x27;assets&#x27;</span>, <span class="hljs-comment">//静态资源目录（js, css, img）</span><br>  <span class="hljs-comment">//indexPath: &#x27;/&#x27;,//页面路径</span><br>  <span class="hljs-attr">filenameHashing</span>:<span class="hljs-literal">false</span>,<span class="hljs-comment">//去掉hash版本号</span><br>  <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 阻止map文件生成</span><br>  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">//是否开启eslint 代码检查工具</span><br>  <span class="hljs-attr">devServer</span>: &#123;<br>    <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//是否自动弹出浏览器页面</span><br>    <span class="hljs-attr">host</span>: <span class="hljs-string">&quot;localhost&quot;</span>,<span class="hljs-comment">//本地地址</span><br>    <span class="hljs-attr">port</span>: <span class="hljs-string">&#x27;8080&#x27;</span>,<span class="hljs-comment">//本地端口</span><br>    <span class="hljs-attr">https</span>: <span class="hljs-literal">false</span>,  <span class="hljs-comment">//是否使用https协议</span><br>    <span class="hljs-attr">hotOnly</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">//是否开启热更新</span><br>    <span class="hljs-attr">proxy</span>: &#123;<br>    <span class="hljs-comment">//main.js</span><br>    <span class="hljs-comment">//Vue.config.productionTip = false</span><br>    <span class="hljs-comment">//Vue.prototype.axios = axios</span><br>    <span class="hljs-comment">//axios.defaults.baseURL = &#x27;/api&#x27;</span><br>      <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>        <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;https://api.wdtwo.com/&#x27;</span>, <span class="hljs-comment">//API服务器的地址</span><br>        <span class="hljs-attr">ws</span>: <span class="hljs-literal">true</span>,  <span class="hljs-comment">//代理websockets</span><br>        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 虚拟的站点需要更换origin 是否开启跨域</span><br>        <span class="hljs-attr">pathRewrite</span>: &#123;   <span class="hljs-comment">//重写路径 比如&#x27;/api/aaa/ccc&#x27;重写为&#x27;/aaa/ccc&#x27;</span><br>          <span class="hljs-string">&#x27;^/api&#x27;</span>: <span class="hljs-string">&#x27;/&#x27;</span>   <span class="hljs-comment">// 这种接口配置出来     http://XX.XX.XX.XX:8083/api/login</span><br>          <span class="hljs-comment">//&#x27;^/api&#x27;: &#x27;/api&#x27; 这种接口配置出来     http://XX.XX.XX.XX:8083/login</span><br>        &#125;<br>      &#125;<br>    &#125;,<br>  &#125;,<br>  <span class="hljs-attr">css</span>: &#123;<br>      <span class="hljs-comment">// 将组件内的 CSS 提取到一个单独的 CSS 文件 (只用在生产环境中)</span><br>      <span class="hljs-attr">extract</span>: <span class="hljs-literal">true</span>,<br>      <span class="hljs-comment">// 是否开启 CSS source map</span><br>      <span class="hljs-comment">//sourceMap: false</span><br>  &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -123,56 +121,56 @@
     <ul>
         
             <li>
-                <a href="/2023/07/31/dns-ip%E6%AE%B5%E6%B1%82%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81.html">dns-ip段求子网掩码</a>
-                <p>2023-07-31</p>
+                <a href="/2023/11/22/koa2%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1404%E4%BF%A1%E6%81%AF.html">koa配置路由404信息</a>
+                <p>2023-11-22</p>
             </li>
         
             <li>
-                <a href="/2023/11/02/golang-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.html">golang-中文乱码</a>
-                <p>2023-11-02</p>
-            </li>
-        
-            <li>
-                <a href="/2020/01/01/video.html">Include Video in the Posts</a>
-                <p>2020-01-01</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/02/js%E5%88%A4%E6%96%AD%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B.html">js判断浏览器类型</a>
-                <p>2023-06-02</p>
-            </li>
-        
-            <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7251-260.html">超级散户251-260</a>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7161-170.html">超级散户161-170</a>
                 <p>2020-06-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/07/06/echarts%E6%B8%85%E7%A9%BA%E5%9B%BE%E8%A1%A8.html">echarts清空图表</a>
+                <p>2023-07-06</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/js-%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E4%B8%8A.html">你不知道的javascript上</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/jquery-toast%E5%BC%B9%E7%AA%97%E6%8F%90%E7%A4%BA.html">toast弹窗提示</a>
+                <p>2023-05-10</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/07/31/dns-ip%E6%AE%B5%E6%B1%82%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81.html">dns-ip段求子网掩码</a>
-                <p>2023-07-31</p>
+                <a href="/2023/11/22/koa2%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1404%E4%BF%A1%E6%81%AF.html">koa配置路由404信息</a>
+                <p>2023-11-22</p>
             </li>
         
             <li>
-                <a href="/2023/11/02/golang-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.html">golang-中文乱码</a>
-                <p>2023-11-02</p>
-            </li>
-        
-            <li>
-                <a href="/2020/01/01/video.html">Include Video in the Posts</a>
-                <p>2020-01-01</p>
-            </li>
-        
-            <li>
-                <a href="/2023/06/02/js%E5%88%A4%E6%96%AD%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B.html">js判断浏览器类型</a>
-                <p>2023-06-02</p>
-            </li>
-        
-            <li>
-                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7251-260.html">超级散户251-260</a>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7161-170.html">超级散户161-170</a>
                 <p>2020-06-01</p>
+            </li>
+        
+            <li>
+                <a href="/2023/07/06/echarts%E6%B8%85%E7%A9%BA%E5%9B%BE%E8%A1%A8.html">echarts清空图表</a>
+                <p>2023-07-06</p>
+            </li>
+        
+            <li>
+                <a href="/2022/08/11/js-%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E4%B8%8A.html">你不知道的javascript上</a>
+                <p>2022-08-11</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/jquery-toast%E5%BC%B9%E7%AA%97%E6%8F%90%E7%A4%BA.html">toast弹窗提示</a>
+                <p>2023-05-10</p>
             </li>
         
     </ul> -->
@@ -182,27 +180,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -250,6 +248,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -262,11 +264,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -318,17 +320,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -350,9 +352,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         

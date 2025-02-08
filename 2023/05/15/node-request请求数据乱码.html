@@ -113,7 +113,6 @@
 <li>设置响应头的 <code>Accept-Encoding</code> 字段为 ‘utf-8’</li>
 <li>使用第三方库 <code>iconv-lite</code> 进行编码转换</li>
 </ol>
-<span id="more"></span>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>);<br><span class="hljs-keyword">const</span> options = &#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://example.com&#x27;</span>,<br>  <span class="hljs-attr">encoding</span>: <span class="hljs-string">&#x27;utf8&#x27;</span> <span class="hljs-comment">// 设置编码方式为 &#x27;utf8&#x27;</span><br>&#125;;<br><span class="hljs-title function_">request</span>(options, <span class="hljs-function">(<span class="hljs-params">error, response, body</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (!error &amp;&amp; response.<span class="hljs-property">statusCode</span> === <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(body); <span class="hljs-comment">// 这里的 body 应该显示中文正常</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>);<br><span class="hljs-keyword">const</span> options = &#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://example.com&#x27;</span>,<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;utf-8&#x27;</span> <span class="hljs-comment">// 指定接受的编码方式为 &#x27;utf-8&#x27;</span><br>  &#125;<br>&#125;;<br><span class="hljs-title function_">request</span>(options, <span class="hljs-function">(<span class="hljs-params">error, response, body</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (!error &amp;&amp; response.<span class="hljs-property">statusCode</span> === <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(body); <span class="hljs-comment">// 这里的 body 应该显示中文正常</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
@@ -130,56 +129,56 @@
     <ul>
         
             <li>
-                <a href="/2023/06/30/nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
-                <p>2023-06-30</p>
+                <a href="/2023/09/13/golang-%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9E%E4%BE%8B.html">golang-创建结构体实例</a>
+                <p>2023-09-13</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
+                <a href="/2023/06/21/vuex%E7%AE%80%E5%8D%95demo.html">vuex简单demo</a>
                 <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6.html">移动端touch事件</a>
-                <p>2023-02-14</p>
+                <a href="/2023/05/10/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E7%BD%AE%E7%AD%89%E6%AF%94%E7%BC%A9%E6%94%BE.html">移动端设置等比缩放</a>
+                <p>2023-05-10</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/node%E5%BC%80%E5%90%AF%E4%B8%80%E4%B8%AAhttp%E6%9C%8D%E5%8A%A1.html">node开启一个http服务</a>
-                <p>2023-06-07</p>
+                <a href="/2023/01/29/%E8%82%A1%E7%A5%A8-macd%E8%83%8C%E7%A6%BB%E7%9A%84%E6%97%B6%E9%97%B4%E5%91%A8%E6%9C%9F.html">macd背离的时间周期</a>
+                <p>2023-01-29</p>
             </li>
         
             <li>
-                <a href="/2023/05/16/node%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BDts%E6%96%87%E4%BB%B6.html">node多线程下载ts文件</a>
-                <p>2023-05-16</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B711-20.html">超级散户11-20</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/06/30/nvdia%E5%AE%89%E8%A3%85PaddleDetection.html">nvdia安装PaddleDetection</a>
-                <p>2023-06-30</p>
+                <a href="/2023/09/13/golang-%E5%88%9B%E5%BB%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9E%E4%BE%8B.html">golang-创建结构体实例</a>
+                <p>2023-09-13</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/koa2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.html">koa2使用入门</a>
+                <a href="/2023/06/21/vuex%E7%AE%80%E5%8D%95demo.html">vuex简单demo</a>
                 <p>2023-06-21</p>
             </li>
         
             <li>
-                <a href="/2023/02/14/%E7%A7%BB%E5%8A%A8%E7%AB%AFtouch%E4%BA%8B%E4%BB%B6.html">移动端touch事件</a>
-                <p>2023-02-14</p>
+                <a href="/2023/05/10/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E7%BD%AE%E7%AD%89%E6%AF%94%E7%BC%A9%E6%94%BE.html">移动端设置等比缩放</a>
+                <p>2023-05-10</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/node%E5%BC%80%E5%90%AF%E4%B8%80%E4%B8%AAhttp%E6%9C%8D%E5%8A%A1.html">node开启一个http服务</a>
-                <p>2023-06-07</p>
+                <a href="/2023/01/29/%E8%82%A1%E7%A5%A8-macd%E8%83%8C%E7%A6%BB%E7%9A%84%E6%97%B6%E9%97%B4%E5%91%A8%E6%9C%9F.html">macd背离的时间周期</a>
+                <p>2023-01-29</p>
             </li>
         
             <li>
-                <a href="/2023/05/16/node%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BDts%E6%96%87%E4%BB%B6.html">node多线程下载ts文件</a>
-                <p>2023-05-16</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B711-20.html">超级散户11-20</a>
+                <p>2020-06-01</p>
             </li>
         
     </ul> -->
@@ -189,27 +188,27 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
-        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
-            <a href="/tag/js/">js(124)</a>
+            <a href="/tag/js/">js(125)</a>
         
             <a href="/tag/ffmpeg/">ffmpeg(6)</a>
         
             <a href="/tag/hexo/">Hexo(4)</a>
         
-            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
-        
             <a href="/tag/canvas/">canvas(5)</a>
         
-            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
         
             <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
         
             <a href="/tag/stablediffusion/">stablediffusion(3)</a>
         
@@ -257,6 +256,10 @@
         
             <a href="/tag/websocket/">websocket(3)</a>
         
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
             <a href="/tag/ios/">ios(2)</a>
         
             <a href="/tag/koa2/">koa2(8)</a>
@@ -269,11 +272,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
-            <a href="/tag/sql/">sql(1)</a>
-        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -325,17 +328,17 @@
         
             <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
         
-            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+            <a href="/tag/ollama/">ollama(1)</a>
         
             <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
         
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
             <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
-            <a href="/tag/ollama/">ollama(1)</a>
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
-        
-            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
         
             <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
         
@@ -357,9 +360,9 @@
         
             <a href="/tag/json/">json(1)</a>
         
-            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
             <a href="/tag/ps/">PS(1)</a>
         
