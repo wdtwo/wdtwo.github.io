@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="author" content="GaryWang">
+	<meta name='renderer' content='webkit'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+    <title>WDTWO Blog</title>
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/assets/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="light">
+
+    <div class="loading flex">
+        <div></div>
+    </div>
+
+    <!-- 调试信息 -->
+    <!-- 
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px;">
+            页面类型: post<br>
+            页面路径: 2025/03/04/远程桌面rustdesk部署.html<br>
+            是否为文章页: true<br>
+            是否为首页: false
+        </div>
+     -->
+    <header class="flex flex-jus-between">
+    <h1 class="header-title">
+        <a href="/" class="header-title">
+            WDTWO Blog
+        </a>
+    </h1>
+    <div class="flex">
+        <div class="menu-list animated">
+            
+                <a class="menu-item" href="/archives">目录</a>
+            
+                <a class="menu-item" href="/category">分类</a>
+            
+                <a class="menu-item" href="/tag">标签</a>
+            
+                <a class="menu-item" href="/static/mark/index.html">书签</a>
+            
+            <i class="fa fa-times mobile-close-menu"></i>
+        </div>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-bars mobile-menu"></i>
+        <i class="fa fa-sun"></i>
+        <i class="fa fa-moon"></i>
+    </div>
+</header>
+
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+        // 搜索按钮点击事件
+        document.querySelector('.fa-search').addEventListener('click',function(){
+            showSearchPage()
+        })
+        document.querySelector('.search-page-bg').addEventListener('click',function(){
+            hideSearchPage()
+        })  
+        // 显示菜单
+        document.querySelector('.mobile-menu').addEventListener('click',function(){
+            showMobileMenu()
+        })
+        document.querySelector('.mobile-close-menu').addEventListener('click',function(){
+            hideMobileMenu()
+        })
+    })
+</script>
+    <div class="main">
+        <!-- 添加 highlight.js 的样式 -->
+<link rel="stylesheet" href="/assets/css/atom-one-dark-reasonable.css">
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<div class="post-box flex flex-item-start">
+    <article class="post">
+        <i class="fa fa-bars extend" id="extend"></i>
+        <h1 class="post-title t-c">远程桌面rustdesk部署</h1>
+        <div class="post-meta t-c flex">
+            <!-- 作者 -->
+            <div>
+                <i class="fa fa-user c-purple"></i>
+                Gary Wang
+             </div>
+            <div>
+                <i class="fa fa-calendar c-orange"></i>
+                2025-03-04
+            </div>
+            
+                <div>
+                    <i class="fa fa-folder c-yellow"></i>
+                    <a class="archive-item-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                </div>
+            
+            
+                <div>
+                    <i class="fa fa-tags c-green"></i>
+                    <a class="archive-item-tag-none-link" href="/tag/docker/" rel="tag">docker</a>,<a class="archive-item-tag-none-link" href="/tag/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" rel="tag">远程桌面</a>
+                </div>
+            
+        </div>
+        <hr class="line">
+        <div class="post-content">
+            <h2 id="使用-Docker-安装-RustDesk"><a href="#使用-Docker-安装-RustDesk" class="headerlink" title="使用 Docker 安装 RustDesk"></a>使用 Docker 安装 RustDesk</h2><p>RustDesk 提供了官方的 Docker 镜像，可以直接使用。</p>
+<h3 id="1-拉取-RustDesk-镜像"><a href="#1-拉取-RustDesk-镜像" class="headerlink" title="1. 拉取 RustDesk 镜像"></a>1. 拉取 RustDesk 镜像</h3><p>运行以下命令拉取 RustDesk 的 Docker 镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull rustdesk/rustdesk-server<br></code></pre></td></tr></table></figure>
+<h3 id="2-运行-RustDesk-服务"><a href="#2-运行-RustDesk-服务" class="headerlink" title="2. 运行 RustDesk 服务"></a>2. 运行 RustDesk 服务</h3><p>RustDesk 包含两个主要组件：<br>hbbs：RustDesk 的 ID 服务器和中继服务器。<br>hbbr：RustDesk 的中继服务器。<br>运行 hbbs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name hbbs -p 12311:12311 -p 21116:21116 -p 21116:21116/udp -p 21118:21118 <br></code></pre></td></tr></table></figure>
+<p>-v &#x2F;path&#x2F;to&#x2F;data:&#x2F;root rustdesk&#x2F;rustdesk-server hbbs<br>-d：后台运行容器。<br>–name hbbs：容器名称。<br>-p：端口映射（21115 用于 TCP，21116 用于 TCP&#x2F;UDP，21118 用于 Web 客户端）。<br>-v &#x2F;path&#x2F;to&#x2F;data:&#x2F;root：将容器内的 &#x2F;root 目录挂载到本地的 &#x2F;path&#x2F;to&#x2F;data，用于持久化数据。</p>
+<p>运行 hbbr</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name hbbr -p 12311:12311 -p 21119:21119 -v /path/to/data:/root rustdesk/rustdesk-server hbbr<br></code></pre></td></tr></table></figure>
+<p>-p 21117:21117：TCP 端口。<br>-p 21119:21119：Web 客户端端口。</p>
+<h3 id="3-配置-RustDesk-客户端"><a href="#3-配置-RustDesk-客户端" class="headerlink" title="3. 配置 RustDesk 客户端"></a>3. 配置 RustDesk 客户端</h3><p>下载并安装 RustDesk 客户端：</p>
+<p>访问 RustDesk 官网 下载适合你操作系统的客户端。<br>打开 RustDesk 客户端，进入设置。<br>在 ID 服务器 和 中继服务器 中填写你的服务器地址（例如 your-server-ip）。<br>保存设置并重启客户端。</p>
+<h3 id="4-验证安装"><a href="#4-验证安装" class="headerlink" title="4. 验证安装"></a>4. 验证安装</h3><p>在客户端中输入对方的 RustDesk ID 和密码，尝试连接。<br>如果连接成功，说明 RustDesk 服务已正常运行。</p>
+<h3 id="5-停止和删除容器"><a href="#5-停止和删除容器" class="headerlink" title="5. 停止和删除容器"></a>5. 停止和删除容器</h3><p>如果需要停止或删除容器，可以使用以下命令：<br>停止容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker stop hbbs hbbr<br></code></pre></td></tr></table></figure>
+<p>删除容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">rm</span> hbbs hbbr<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name rustdesk-server -p 12301:21115 -p 12302:21116 -p 12303:21116/udp -p 12304:21117 -p 12305:21118 -p 12306:21119 rustdesk/rustdesk-server<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="密钥文件"><a href="#密钥文件" class="headerlink" title="密钥文件"></a>密钥文件</h3><ol>
+<li><p>RustDesk 服务器（hbbs）在首次运行时会在其工作目录中生成两个密钥文件：<br>id_ed25519：私钥文件。<br>id_ed25519.pub：公钥文件。<br>如果你挂载了本地目录到容器（例如 -v &#x2F;path&#x2F;to&#x2F;data:&#x2F;root），这些文件会保存在本地的 &#x2F;path&#x2F;to&#x2F;data 目录中。</p>
+</li>
+<li><p>检查密钥文件是否存在<br>进入挂载的本地目录：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /path/to/data<br></code></pre></td></tr></table></figure>
+<p>检查是否存在以下文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l id_ed25519 id_ed25519.pub<br></code></pre></td></tr></table></figure>
+<p>如果文件不存在，说明 hbbs 没有正确生成密钥文件。<br>如果文件存在，继续下一步。</p>
+<ol start="3">
+<li>确保客户端使用正确的公钥<br>RustDesk 客户端需要配置服务器的公钥（id_ed25519.pub 文件内容）。</li>
+</ol>
+<p>打开 id_ed25519.pub 文件，查看公钥内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi /path/to/data/id_ed25519.pub<br></code></pre></td></tr></table></figure>
+<p>输出示例：<br>abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890<br>在 RustDesk 客户端中配置公钥：<br>打开 RustDesk 客户端。<br>进入 设置 -&gt; 网络。<br>在 Key 字段中填入 id_ed25519.pub 文件的内容。<br>保存设置并重启客户端。</p>
+<ol start="4">
+<li>重新启动 RustDesk 服务<br>如果密钥文件已正确配置，但仍然遇到问题，可以尝试重新启动 RustDesk 服务。</li>
+</ol>
+<p>停止并删除现有的 hbbs 和 hbbr 容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker stop hbbs hbbr<br>docker <span class="hljs-built_in">rm</span> hbbs hbbr<br></code></pre></td></tr></table></figure>
+<p>重新运行 hbbs 和 hbbr 容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name hbbs -p 21115:21115 -p 21116:21116 -p 21116:21116/udp -p 21118:21118 -v /path/to/data:/root rustdesk/rustdesk-server hbbs<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name hbbr -p 21117:21117 -p 21119:21119 -v /path/to/data:/root rustdesk/rustdesk-server hbbr<br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li>验证连接</li>
+</ol>
+<h2 id="自定义端口号"><a href="#自定义端口号" class="headerlink" title="自定义端口号"></a>自定义端口号</h2><p>21116同时要开启TCP和UDP。<br>其中21115是hbbs用作NAT类型测试，<br>21116&#x2F;UDP是hbbs用作ID注册与心跳服务，<br>21116&#x2F;TCP是hbbs用作TCP打洞与连接服务，<br>21117是hbbr用作中继服务,<br>21118和21119是为了支持网页客户端。<br>如果您不需要网页客户端（21118，21119）支持，对应端口可以不开。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 拉取镜像</span><br>docker pull rustdesk/rustdesk-server<br><span class="hljs-comment"># 删除之前的容器（如果有）</span><br>docker <span class="hljs-built_in">rm</span> -f rustdesk-server<br><br>docker run -d \<br>  --name rustdesk-hbbs \<br>  -p 12302:21115 \<br>  -p 12301:21116 \<br>  -p 12301:21116/udp \<br>  -v /root:/root \<br>  rustdesk/rustdesk-server:latest \<br>  hbbs<br><br>docker run -d \<br>  --name rustdesk-hbbs \<br>  -p 12305:21115 \<br>  -p 12306:21116 \<br>  -p 12307:21117 \<br>  -p 12308:21118 \<br>  -p 12309:21119 \<br>  -p 12306:21116/udp \<br>  -v /root:/root \<br>  rustdesk/rustdesk-server:latest \<br>  hbbs<br></code></pre></td></tr></table></figure>
+
+<h2 id="如果不能生成秘钥公钥"><a href="#如果不能生成秘钥公钥" class="headerlink" title="如果不能生成秘钥公钥"></a>如果不能生成秘钥公钥</h2><p>使用openssl 和ssh-keygen生成的密钥是不好使的</p>
+
+        </div>
+    </article>
+    <div class="w300 m-l-15 fixed-item-right">
+        <div class="hot-list">
+    <div class="f14 hot-list-title">推荐阅读</div>
+    <ul>
+        
+            <li>
+                <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html">js字符串转换成16进制编码</a>
+                <p>2023-02-23</p>
+            </li>
+        
+            <li>
+                <a href="/2023/11/10/golang-%E6%B5%8B%E8%AF%95%E9%80%9A%E8%BF%87%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%BB%B6%E8%BF%9F.html">golang-测试通过特定端口连接到服务器的延迟</a>
+                <p>2023-11-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/python-bs4%E8%A7%A3%E6%9E%90html%E6%95%B0%E6%8D%AE.html">BeautifulSoup简单实用教程</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/js%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2.html">js关闭当前页面</a>
+                <p>2023-05-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/14/m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86.html">m3u8格式ts文件解密</a>
+                <p>2023-02-14</p>
+            </li>
+        
+    </ul>
+    <!-- <ul>
+        
+            <li>
+                <a href="/2023/02/23/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%9016%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81.html">js字符串转换成16进制编码</a>
+                <p>2023-02-23</p>
+            </li>
+        
+            <li>
+                <a href="/2023/11/10/golang-%E6%B5%8B%E8%AF%95%E9%80%9A%E8%BF%87%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%BB%B6%E8%BF%9F.html">golang-测试通过特定端口连接到服务器的延迟</a>
+                <p>2023-11-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/python-bs4%E8%A7%A3%E6%9E%90html%E6%95%B0%E6%8D%AE.html">BeautifulSoup简单实用教程</a>
+                <p>2023-06-07</p>
+            </li>
+        
+            <li>
+                <a href="/2023/05/10/js%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2.html">js关闭当前页面</a>
+                <p>2023-05-10</p>
+            </li>
+        
+            <li>
+                <a href="/2023/02/14/m3u8%E6%A0%BC%E5%BC%8Fts%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86.html">m3u8格式ts文件解密</a>
+                <p>2023-02-14</p>
+            </li>
+        
+    </ul> -->
+</div>
+        <div class="m-t-15"></div>
+        <div class="tag-list">
+    <div class="f14 tag-list-title">标签列表</div>
+    <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
+        
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
+            <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
+        
+            <a href="/tag/ai/">AI(7)</a>
+        
+            <a href="/tag/chatgpt/">chatgpt(2)</a>
+        
+            <a href="/tag/js/">js(125)</a>
+        
+            <a href="/tag/ffmpeg/">ffmpeg(6)</a>
+        
+            <a href="/tag/hexo/">Hexo(4)</a>
+        
+            <a href="/tag/canvas/">canvas(5)</a>
+        
+            <a href="/tag/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(7)</a>
+        
+            <a href="/tag/paddledetection/">PaddleDetection(4)</a>
+        
+            <a href="/tag/stablediffusion/">StableDiffusion(5)</a>
+        
+            <a href="/tag/stablediffusion/">stablediffusion(3)</a>
+        
+            <a href="/tag/linux/">linux(17)</a>
+        
+            <a href="/tag/ajax/">ajax(1)</a>
+        
+            <a href="/tag/astro/">astro(3)</a>
+        
+            <a href="/tag/axios/">axios(2)</a>
+        
+            <a href="/tag/bat/">bat(6)</a>
+        
+            <a href="/tag/node/">node(37)</a>
+        
+            <a href="/tag/dns/">dns(8)</a>
+        
+            <a href="/tag/css/">css(14)</a>
+        
+            <a href="/tag/cursor/">cursor(1)</a>
+        
+            <a href="/tag/go/">go(57)</a>
+        
+            <a href="/tag/docker/">docker(2)</a>
+        
+            <a href="/tag/echarts/">echarts(2)</a>
+        
+            <a href="/tag/charts/">charts(1)</a>
+        
+            <a href="/tag/electron/">electron(1)</a>
+        
+            <a href="/tag/git/">git(1)</a>
+        
+            <a href="/tag/vps/">vps(8)</a>
+        
+            <a href="/tag/html/">html(6)</a>
+        
+            <a href="/tag/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端(6)</a>
+        
+            <a href="/tag/vue/">vue(26)</a>
+        
+            <a href="/tag/jquery/">jquery(3)</a>
+        
+            <a href="/tag/video/">video(2)</a>
+        
+            <a href="/tag/websocket/">websocket(3)</a>
+        
+            <a href="/tag/nodejs/">nodejs(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86/">加密(1)</a>
+        
+            <a href="/tag/ios/">ios(2)</a>
+        
+            <a href="/tag/koa2/">koa2(8)</a>
+        
+            <a href="/tag/%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83/">测试环境(1)</a>
+        
+            <a href="/tag/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">视频处理(3)</a>
+        
+            <a href="/tag/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器(1)</a>
+        
+            <a href="/tag/markdown/">markdown(1)</a>
+        
+            <a href="/tag/sql/">sql(1)</a>
+        
+            <a href="/tag/nginx/">nginx(4)</a>
+        
+            <a href="/tag/vue3/">vue3(1)</a>
+        
+            <a href="/tag/express/">express(2)</a>
+        
+            <a href="/tag/mysql/">mysql(2)</a>
+        
+            <a href="/tag/ocr/">ocr(1)</a>
+        
+            <a href="/tag/%E7%88%AC%E8%99%AB/">爬虫(12)</a>
+        
+            <a href="/tag/nuxt/">nuxt(3)</a>
+        
+            <a href="/tag/npm/">npm(1)</a>
+        
+            <a href="/tag/php/">php(9)</a>
+        
+            <a href="/tag/pm2/">pm2(1)</a>
+        
+            <a href="/tag/python/">python(11)</a>
+        
+            <a href="/tag/%E7%BB%98%E5%9B%BE/">绘图(1)</a>
+        
+            <a href="/tag/react/">react(3)</a>
+        
+            <a href="/tag/svg/">svg(1)</a>
+        
+            <a href="/tag/threejs/">threejs(2)</a>
+        
+            <a href="/tag/tvbox/">tvbox(1)</a>
+        
+            <a href="/tag/typescript/">typescript(2)</a>
+        
+            <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
+        
+            <a href="/tag/vscode/">vscode(1)</a>
+        
+            <a href="/tag/pinia/">pinia(1)</a>
+        
+            <a href="/tag/vue-router/">vue-router(1)</a>
+        
+            <a href="/tag/vuex/">vuex(1)</a>
+        
+            <a href="/tag/webpack/">webpack(2)</a>
+        
+            <a href="/tag/%E4%B8%AD%E5%8C%BB/">中医(13)</a>
+        
+            <a href="/tag/%E5%AE%B9%E5%99%A8/">容器(1)</a>
+        
+            <a href="/tag/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信(1)</a>
+        
+            <a href="/tag/ollama/">ollama(1)</a>
+        
+            <a href="/tag/%E5%85%B6%E4%BB%96/">其他(6)</a>
+        
+            <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
+        
+            <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
+        
+            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
+        
+            <a href="/tag/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/">加密解密(1)</a>
+        
+            <a href="/tag/%E5%B0%8F%E7%9A%AE/">小皮(1)</a>
+        
+            <a href="/tag/emoji/">emoji(2)</a>
+        
+            <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
+        
+            <a href="/tag/date/">Date(1)</a>
+        
+            <a href="/tag/cookie/">cookie(1)</a>
+        
+            <a href="/tag/localstorage/">localStorage(1)</a>
+        
+            <a href="/tag/indexdb/">indexDB(1)</a>
+        
+            <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
+        
+            <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
+        
+            <a href="/tag/json/">json(1)</a>
+        
+            <a href="/tag/ps/">PS(1)</a>
+        
+            <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/">远程桌面(1)</a>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+<script>
+    // 文章全屏显示
+    document.querySelector('#extend').addEventListener('click',function(){
+        let ele = document.querySelector('.post-box').classList
+        if(ele.value.includes('post-full')){
+            ele.remove('post-full')
+        }else{
+            ele.add('post-full')
+        }
+    },false)
+    function addCopyButtons() {
+        // 获取所有代码块
+        const codeBlocks = document.querySelectorAll('pre code');
+        
+        codeBlocks.forEach((codeBlock) => {
+            // 创建复制按钮
+            const copyButton = document.createElement('i');
+            copyButton.className = 'copy-button fa fa-copy';
+            
+            // 查找最近的 .highlight 父元素
+            const highlightBlock = codeBlock.closest('.highlight');
+            if (highlightBlock) {
+                highlightBlock.insertBefore(copyButton, highlightBlock.firstChild);
+            }
+            
+            // 添加点击事件
+            copyButton.addEventListener('click', () => {
+                // 获取格式化的代码内容
+                const code = codeBlock.innerText || codeBlock.textContent;
+                
+                // 使用 textarea 来保持文本格式
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                
+                try {
+                    // 尝试使用新的 API
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.className = 'copy-button fa fa-check';
+                        setTimeout(() => {
+                            copyButton.className = 'copy-button fa fa-copy';
+                        }, 2000);
+                    });
+                } catch (err) {
+                    // 降级方案：使用 document.execCommand
+                    document.execCommand('copy');
+                    copyButton.className = 'copy-button fa fa-check';
+                    setTimeout(() => {
+                        copyButton.className = 'copy-button fa fa-copy';
+                    }, 2000);
+                }
+                
+                // 清理临时元素
+                document.body.removeChild(textarea);
+            });
+        });
+    }
+    // 页面加载完成后添加复制按钮
+document.addEventListener('DOMContentLoaded', addCopyButtons);
+
+</script>
+    </div>
+    <footer>
+    <div>
+        copyright © 2024 Gary Wang 
+    </div>
+</footer>
+    <div class="search-page animated">
+    <div class="search-page-content">
+        <i class="fa fa-times search-close"></i>
+        <h1>内容搜索</h1>
+        <form onsubmit="formSubmit(event)" class="search-page-form re">
+            <input type="text" placeholder="查找" name="keyword" id="search-input" autocomplete="off">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="search-page-result" id="search-result">
+        </div>
+    </div>
+    <div class="search-page-bg"></div>
+</div>
+<script>
+    //所有搜索数据
+    let searchData = [];
+    
+    // 加载搜索数据
+    fetch('/search.xml')
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            searchData = Array.from(data.getElementsByTagName('entry')).map(entry => ({
+                title: entry.getElementsByTagName('title')[0].textContent,
+                content: entry.getElementsByTagName('content')[0].textContent,
+                url: entry.getElementsByTagName('url')[0].textContent
+            }));
+        });
+
+    // 搜索功能实现
+    function formSubmit(event) {
+        event.preventDefault();
+        // 搜索关键词
+        const keyword = document.getElementById('search-input').value.toLowerCase();
+        // 搜索结果
+        const results = searchData.filter(item => 
+            item.title.toLowerCase().includes(keyword) || item.content.toLowerCase().includes(keyword)
+        );
+        const resultDiv = document.getElementById('search-result');
+        if(results.length === 0 || keyword === ''){
+            resultDiv.innerHTML = '<div class="search-page-result-item t-c f13">没有找到相关内容</div>';
+        }else{
+            resultDiv.innerHTML = results.map(item => `
+                <div class="search-page-result-item">
+                    <a href="${item.url}">
+                        <h5>${item.title}</h5>
+                    </a>
+                </div>
+            `).join('');
+        }
+    }
+    document.querySelector('.search-close').addEventListener('click',function(){
+        hideSearchPage()
+    })
+</script>
+    <!-- <div class="gotopage" id="gotopage">
+        <i class="far fa-arrow-alt-circle-up"></i>
+    </div> -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/func.js"></script>
+    <script src="/assets/live2dw/lib/L2Dwidget.js"></script>
+    <script>
+        // 加载动画
+        window.addEventListener('DOMContentLoaded',function(){
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            },800)
+        },false)
+        
+        /* 看板娘 */
+        L2Dwidget.init({
+            "pluginRootPath"  : "/assets/live2dw/",
+            "pluginJsPath"	  : "/assets/live2dw/lib/",
+            "pluginModelPath" : "/assets/live2dw/assets/",
+            "tagMode"		  : false,
+            "debug"			  : false,
+            "model"			  : {
+                "jsonPath" : "/assets/live2dw/assets/kesshouban.model.json"
+            },
+            "display" : {
+                "position" : "right",
+                "width"	   : 250,
+                "height"   : 250,
+                "hOffset"  : -70,
+                "vOffset"  : 60
+            },
+            "dialog"	: {
+                "enable" : true
+            },
+            "mobile"	: {
+                "show" : true
+            },
+            "react"		: {
+                "opacity" : 1
+            },
+            "log" : false
+        });
+        const addEvent = function(){
+            const live2dWidget = document.getElementById('live2d-widget')
+            setTimeout(function(){
+                if(live2dWidget){
+                    live2dWidget.addEventListener('click',function(e){
+                        document.querySelector('.main').scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    })
+                }else{
+                    addEvent()
+                }
+            },1000)
+        }
+        addEvent()
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5bd3afcce7474fcdbf639fab1999e804"}'></script> -->
+    <!-- End Cloudflare Web Analytics -->
+    <!-- <script src='//unpkg.com/@waline/client/dist/waline.js'></script>
+    <link href='//unpkg.com/@waline/client/dist/waline.css' rel='stylesheet'/> -->
+</body>
+</html>

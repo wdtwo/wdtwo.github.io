@@ -108,7 +108,7 @@
         </div>
         <hr class="line">
         <div class="post-content">
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 获取用户媒体设备（麦克风）</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(navigator.<span class="hljs-property">mediaDevices</span>);<br><span class="hljs-keyword">var</span> mediaRecorder<br>navigator.<span class="hljs-property">mediaDevices</span>.<span class="hljs-title function_">getUserMedia</span>(&#123; <span class="hljs-attr">audio</span>: <span class="hljs-literal">true</span> &#125;)<br>.<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">stream</span>) &#123;<br>    <span class="hljs-comment">// 创建 MediaRecorder 对象</span><br>    mediaRecorder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MediaRecorder</span>(stream);<br><br>    <span class="hljs-comment">// 存放录制的音频数据</span><br>    <span class="hljs-keyword">var</span> chunks = [];<br><br>    <span class="hljs-comment">// 监听数据可用事件</span><br>    mediaRecorder.<span class="hljs-property">ondataavailable</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) &#123;<br>        <span class="hljs-keyword">if</span> (event.<span class="hljs-property">data</span>.<span class="hljs-property">size</span> &gt; <span class="hljs-number">0</span>) &#123;<br>            chunks.<span class="hljs-title function_">push</span>(event.<span class="hljs-property">data</span>);<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chunks);<br>        &#125;<br>    &#125;;<br>    <br>    <span class="hljs-comment">// 监听录制完成事件</span><br>    mediaRecorder.<span class="hljs-property">onstop</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-comment">// 创建 Blob 对象，其中包含录制的音频数据</span><br>        <span class="hljs-keyword">var</span> audioBlob = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>(chunks, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;audio/wav&#x27;</span> &#125;);<br>        <span class="hljs-comment">// // 创建一个音频元素并播放录制的音频</span><br>        <span class="hljs-comment">// var audioElement = new Audio(URL.createObjectURL(audioBlob));</span><br>        <span class="hljs-comment">// audioElement.play();</span><br>        <span class="hljs-comment">// document.querySelector(&quot;#audio&quot;).setAttribute(&#x27;src&#x27;,URL.createObjectURL(audioBlob))</span><br>        <span class="hljs-keyword">const</span> link = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br>        link.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span><br>        link.<span class="hljs-property">href</span> = <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(audioBlob)<br>        link.<span class="hljs-property">download</span> = <span class="hljs-string">`a<span class="hljs-subst">$&#123;<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">9999</span>)&#125;</span>.mp3`</span><br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(link)<br>        link.<span class="hljs-title function_">click</span>()<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(link)<br>    &#125;;<br><br>    <br>&#125;)<br>.<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;获取麦克风失败：&#x27;</span>, err);<br>&#125;);<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#start&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// 开始录制</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;开始&#x27;</span>);<br>    mediaRecorder.<span class="hljs-title function_">start</span>();<br>&#125;,<span class="hljs-literal">false</span>)<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#end&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;结束&#x27;</span>);<br>    mediaRecorder.<span class="hljs-title function_">stop</span>();<br>&#125;,<span class="hljs-literal">false</span>)<br></code></pre></td></tr></table></figure>
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 获取用户媒体设备（麦克风）</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(navigator.<span class="hljs-property">mediaDevices</span>);<br><span class="hljs-keyword">var</span> mediaRecorder<br>navigator.<span class="hljs-property">mediaDevices</span>.<span class="hljs-title function_">getUserMedia</span>(&#123; <span class="hljs-attr">audio</span>: <span class="hljs-literal">true</span> &#125;)<br>.<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">stream</span>) &#123;<br>    <span class="hljs-comment">// 创建 MediaRecorder 对象</span><br>    mediaRecorder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MediaRecorder</span>(stream);<br><br>    <span class="hljs-comment">// 存放录制的音频数据</span><br>    <span class="hljs-keyword">var</span> chunks = [];<br><br>    <span class="hljs-comment">// 监听数据可用事件</span><br>    mediaRecorder.<span class="hljs-property">ondataavailable</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) &#123;<br>        <span class="hljs-keyword">if</span> (event.<span class="hljs-property">data</span>.<span class="hljs-property">size</span> &gt; <span class="hljs-number">0</span>) &#123;<br>            chunks.<span class="hljs-title function_">push</span>(event.<span class="hljs-property">data</span>);<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chunks);<br>        &#125;<br>    &#125;;<br>    <br>    <span class="hljs-comment">// 监听录制完成事件</span><br>    mediaRecorder.<span class="hljs-property">onstop</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-comment">// 创建 Blob 对象，其中包含录制的音频数据</span><br>        <span class="hljs-keyword">var</span> audioBlob = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>(chunks, &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;audio/wav&#x27;</span> &#125;);<br>        <span class="hljs-comment">// // 创建一个音频元素并播放录制的音频</span><br>        <span class="hljs-comment">// var audioElement = new Audio(URL.createObjectURL(audioBlob));</span><br>        <span class="hljs-comment">// audioElement.play();</span><br>        <span class="hljs-comment">// document.querySelector(&quot;#audio&quot;).setAttribute(&#x27;src&#x27;,URL.createObjectURL(audioBlob))</span><br>        <span class="hljs-keyword">const</span> link = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br>        link.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span><br>        link.<span class="hljs-property">href</span> = <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(audioBlob)<br>        link.<span class="hljs-property">download</span> = <span class="hljs-string">`a<span class="hljs-subst">$&#123;<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">9999</span>)&#125;</span>.mp3`</span><br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(link)<br>        link.<span class="hljs-title function_">click</span>()<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(link)<br>    &#125;;<br>&#125;)<br>.<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;获取麦克风失败：&#x27;</span>, err);<br>&#125;);<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#start&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// 开始录制</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;开始&#x27;</span>);<br>    mediaRecorder.<span class="hljs-title function_">start</span>();<br>&#125;,<span class="hljs-literal">false</span>)<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#end&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;结束&#x27;</span>);<br>    mediaRecorder.<span class="hljs-title function_">stop</span>();<br>&#125;,<span class="hljs-literal">false</span>)<br></code></pre></td></tr></table></figure>
 
 
 
@@ -120,56 +120,56 @@
     <ul>
         
             <li>
-                <a href="/2023/05/31/js%E6%A8%A1%E6%8B%9Fios%E4%B8%8B%E6%8B%89%E6%A1%86%E6%A0%B7%E5%BC%8F.html">js模拟ios下拉框样式</a>
-                <p>2023-05-31</p>
+                <a href="/2023/11/28/linux%E8%BD%BB%E9%87%8F%E4%BA%91%E5%AE%89%E8%A3%85centos5-8.html">linux-轻量云安装centos5.8</a>
+                <p>2023-11-28</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/vue-api-js%E5%A4%96%E9%83%A8%E8%B0%83%E7%94%A8ajax%E8%AF%B7%E6%B1%82.html">vue-api.js外部调用ajax请求</a>
-                <p>2023-06-21</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7131-140.html">超级散户131-140</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/05/19/%E5%85%B6%E4%BB%96-beyond%E6%BF%80%E6%B4%BB%E7%A0%81.html">beyond激活码</a>
-                <p>2023-05-19</p>
+                <a href="/2023/02/10/%E5%90%8C%E8%8A%B1%E9%A1%BA%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E.html">同花顺状态说明</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2023/08/18/css%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C.html">css毛玻璃效果</a>
-                <p>2023-08-18</p>
+                <a href="/2023/05/10/html%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E6%8F%90%E7%A4%BA%E6%A1%86.html">html提交成功提示框</a>
+                <p>2023-05-10</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
+                <a href="/2023/08/25/css%E6%8F%AD%E7%A7%98.html">css揭秘</a>
+                <p>2023-08-25</p>
             </li>
         
     </ul>
     <!-- <ul>
         
             <li>
-                <a href="/2023/05/31/js%E6%A8%A1%E6%8B%9Fios%E4%B8%8B%E6%8B%89%E6%A1%86%E6%A0%B7%E5%BC%8F.html">js模拟ios下拉框样式</a>
-                <p>2023-05-31</p>
+                <a href="/2023/11/28/linux%E8%BD%BB%E9%87%8F%E4%BA%91%E5%AE%89%E8%A3%85centos5-8.html">linux-轻量云安装centos5.8</a>
+                <p>2023-11-28</p>
             </li>
         
             <li>
-                <a href="/2023/06/21/vue-api-js%E5%A4%96%E9%83%A8%E8%B0%83%E7%94%A8ajax%E8%AF%B7%E6%B1%82.html">vue-api.js外部调用ajax请求</a>
-                <p>2023-06-21</p>
+                <a href="/2020/06/01/%E8%B6%85%E7%BA%A7%E6%95%A3%E6%88%B7131-140.html">超级散户131-140</a>
+                <p>2020-06-01</p>
             </li>
         
             <li>
-                <a href="/2023/05/19/%E5%85%B6%E4%BB%96-beyond%E6%BF%80%E6%B4%BB%E7%A0%81.html">beyond激活码</a>
-                <p>2023-05-19</p>
+                <a href="/2023/02/10/%E5%90%8C%E8%8A%B1%E9%A1%BA%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E.html">同花顺状态说明</a>
+                <p>2023-02-10</p>
             </li>
         
             <li>
-                <a href="/2023/08/18/css%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C.html">css毛玻璃效果</a>
-                <p>2023-08-18</p>
+                <a href="/2023/05/10/html%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E6%8F%90%E7%A4%BA%E6%A1%86.html">html提交成功提示框</a>
+                <p>2023-05-10</p>
             </li>
         
             <li>
-                <a href="/2023/06/07/typescript%E5%BC%95%E7%94%A8jquery.html">typescript引用jquery</a>
-                <p>2023-06-07</p>
+                <a href="/2023/08/25/css%E6%8F%AD%E7%A7%98.html">css揭秘</a>
+                <p>2023-08-25</p>
             </li>
         
     </ul> -->
@@ -179,11 +179,11 @@
     <div class="f14 tag-list-title">标签列表</div>
     <div class="flex flex-wrap flex-jus-start flex-item-start tag-list-content">
         
+            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
+        
             <a href="/tag/%E7%8E%84%E5%AD%A6/">玄学(2)</a>
         
             <a href="/tag/ai/">AI(7)</a>
-        
-            <a href="/tag/%E7%BD%91%E8%B5%9A/">网赚(46)</a>
         
             <a href="/tag/chatgpt/">chatgpt(2)</a>
         
@@ -223,7 +223,7 @@
         
             <a href="/tag/go/">go(57)</a>
         
-            <a href="/tag/docker/">docker(1)</a>
+            <a href="/tag/docker/">docker(2)</a>
         
             <a href="/tag/echarts/">echarts(2)</a>
         
@@ -263,11 +263,11 @@
         
             <a href="/tag/markdown/">markdown(1)</a>
         
+            <a href="/tag/sql/">sql(1)</a>
+        
             <a href="/tag/nginx/">nginx(4)</a>
         
             <a href="/tag/vue3/">vue3(1)</a>
-        
-            <a href="/tag/sql/">sql(1)</a>
         
             <a href="/tag/express/">express(2)</a>
         
@@ -299,9 +299,9 @@
         
             <a href="/tag/typescript/">typescript(2)</a>
         
-            <a href="/tag/unity/">unity(1)</a>
-        
             <a href="/tag/demo/">Demo(1)</a>
+        
+            <a href="/tag/unity/">unity(1)</a>
         
             <a href="/tag/vscode/">vscode(1)</a>
         
@@ -325,9 +325,9 @@
         
             <a href="/tag/%E6%BF%80%E6%B4%BB%E7%A0%81/">激活码(1)</a>
         
-            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
-        
             <a href="/tag/%E7%BE%8E%E9%A3%9F/">美食(3)</a>
+        
+            <a href="/tag/%E5%9B%BD%E5%AD%A6/">国学(6)</a>
         
             <a href="/tag/%E5%89%8D%E7%AB%AF/">前端(1)</a>
         
@@ -337,9 +337,9 @@
         
             <a href="/tag/emoji/">emoji(2)</a>
         
-            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
-        
             <a href="/tag/%E5%BE%AE%E4%BF%A1/">微信(3)</a>
+        
+            <a href="/tag/%E6%B1%89%E5%AD%97/">汉字(1)</a>
         
             <a href="/tag/date/">Date(1)</a>
         
@@ -349,15 +349,17 @@
         
             <a href="/tag/indexdb/">indexDB(1)</a>
         
-            <a href="/tag/json/">json(1)</a>
-        
             <a href="/tag/%E6%A8%A1%E6%9D%BF/">模板(1)</a>
         
             <a href="/tag/%E8%82%A1%E7%A5%A8/">股票(6)</a>
         
+            <a href="/tag/json/">json(1)</a>
+        
             <a href="/tag/ps/">PS(1)</a>
         
             <a href="/tag/%E8%AF%BB%E4%B9%A6%E4%BC%9A/">读书会(1)</a>
+        
+            <a href="/tag/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/">远程桌面(1)</a>
         
     </div>
 </div>
